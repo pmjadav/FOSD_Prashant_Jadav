@@ -1,9 +1,14 @@
-# FOSD · CEUC301 · Prashant Jadav
+# FOSD · CEUC301 Course Website
 
-Professional static course website for Fundamentals of Operating System Design.
+Updated for the supplied 2026–27 FOSD syllabus and laboratory manual.
 
-## PDF placeholders
-Topic-wise lecture links are prepared under `files/notes/`. Upload each PDF using the filename shown in the lecture/unit page and the existing link will work automatically on GitHub Pages.
+- 9 syllabus units with topic-wise PDF placeholders.
+- 15 laboratory practical sessions following the supplied laboratory-manual structure.
+- GeeksforGeeks removed from online learning resources.
+- Existing question bank and course-resource folders retained.
+
+## Adding lecture PDFs
+Upload PDFs under `files/notes/` using the exact filename shown by each topic link.
 
 ## GitHub Pages
-Publish from `main` branch and `/` root.
+Publish from `main` branch and `/ (root)`.
