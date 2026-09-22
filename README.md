@@ -1,39 +1,33 @@
-# FOSD Course Website — CEUC301
+# FOSD Course Website
 
-A static course website for Fundamentals of Operating System Design.
+**Fundamentals of Operating System Design (CEUC301)**
 
-## Run locally
-Open `index.html` in a browser.
+Course instructor: **Prashant Jadav**
 
-For a local development server, from this folder run:
-`python -m http.server 8000`
+## GitHub Pages
 
-Then open:
-`http://localhost:8000`
+This is a static website and can be deployed directly from the `main` branch with GitHub Pages.
 
-## Deploy to GitHub Pages
-1. Create a GitHub repository.
-2. Upload all files and folders.
-3. Go to Settings → Pages.
-4. Select the main branch and root folder.
-5. Save.
+Repository example:
+`FOSD_Prashant_Jadav`
 
-## Customize
-- Replace the instructor/contact text in the footer.
-- Add your PDFs/PPTs under `files/`.
-- Update lecture links in `lectures.html`.
-- Add or edit practical instructions under `practicals/`.
-- Modify colors and layout in `assets/css/style.css`.
-- Add functionality in `assets/js/script.js`.
+Website example:
+`https://pmjadav.github.io/FOSD_Prashant_Jadav/`
 
-## Included
-- Responsive navigation
-- Light/dark mode
-- Course overview
-- COs and syllabus
-- 7 unit pages
-- Lecture resource page with search
-- 8 practical pages
-- Question bank with search
-- Resources page
-- Mobile-friendly design
+## Structure
+
+- `index.html` — redesigned course homepage
+- `syllabus.html` — course outcomes and syllabus
+- `lectures.html` — lecture material
+- `practicals.html` — practical list
+- `question-bank.html` — practice questions
+- `resources.html` — books, websites and tools
+- `units/` — Unit 1–7 pages
+- `practicals/` — Practical 1–8 pages
+- `files/` — folders for notes, presentations, assignments and question papers
+- `assets/css/style.css` — responsive visual design
+- `assets/js/script.js` — mobile navigation, dark mode and search
+
+## Deployment
+
+Push the contents of this folder to the `main` branch. In GitHub, enable Pages using **Deploy from a branch → main → / (root)**.
