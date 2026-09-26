@@ -1,5 +1,367 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practical 5 | FOSD · CEUC301</title><meta name="description" content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav"><link rel="stylesheet" href="../assets/css/style.css"></head><body>
-<div class="topbar"><div class="container">CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301</div></div>
-<nav class="navbar"><div class="container nav-inner"><a class="brand" href="../index.html"><span class="logo">OS</span><span><b>FOSD</b><small>CEUC301 · Course Portal</small></span></a><div class="nav-links"><a class="" href="../index.html">Home</a><a class="" href="../syllabus.html">Syllabus</a><a class="" href="../lectures.html">Lecture Notes</a><a class="active" href="../practicals.html">Practicals</a><a class="" href="../question-bank.html">Question Bank</a><a class="" href="../resources.html">Resources</a></div><div class="nav-actions"><button class="icon-btn" id="themeToggle">◐</button><button class="menu-btn" id="menuToggle">☰</button></div></div></nav>
-<div class="page-hero"><div class="container"><div class="breadcrumb">Home / Practicals / Practical 5</div><h1>Practical 5: Thread Creation and Context-Switch Cost</h1><p>CO Mapping: CO2, CO3 · Laboratory session: 2 hours</p></div></div>
-<section><div class="container"><div class="notice"><strong>Assessment:</strong> Each practical is assessed out of 10 marks. Students perform the experiment, record observations, complete supplementary work and answer viva questions.</div><div class="card detail-card"><h2>1. Problem Definition</h2><p>A web server must handle thousands of simultaneous client requests while minimizing response time, memory consumption, and context-switch overhead. Develop a multithreaded application using POSIX Threads (Pthreads) to investigate concurrent execution, resource sharing, thread synchronization, and scalability. Compare thread-based execution with process-based and sequential execution, and recommend the most appropriate design for high-performance server applications.</p></div><div class="cards two"><div class="card detail-card"><h2>2. Key Questions / Analysis / Interpretation</h2><p>Implementation Differentiate processes and threads with respect to resource sharing and execution. How do pthread_create() and pthread_join() coordinate thread execution? How does increasing the number of threads affect execution time and CPU utilization? Interpret thread activity using ps -eLf, top -H, and /proc/&lt;pid&gt;/task. CO2, CO3 12 | P a g e Compare sequential, multiprocess, and multithreaded implementations. Explain context switching overhead in thread-based applications. Recommend an optimal threading strategy for multicore systems with justification.</p></div><div class="card detail-card"><h2>3. Supplementary Problems</h2><p>Easy: Create two threads that perform independent computations. Medium: Implement matrix addition using multiple threads. Hard: Develop a multithreaded matrix multiplication program and evaluate scalability on multicore processors.</p></div><div class="card detail-card"><h2>4. Key Skills to be Addressed</h2><p>POSIX thread programming Concurrent programming Context switching analysis Performance evaluation Thread synchronization Linux performance monitoring</p></div><div class="card detail-card"><h2>5. Applications</h2><p>Web servers Database management systems Parallel computing Scientific simulations Image and video processing Cloud and distributed computing</p></div><div class="card detail-card"><h2>6. Learning Outcome</h2><p>Students will implement multithreaded applications using POSIX Threads, analyze thread execution and context switching, evaluate scalability using quantitative performance metrics, and justify thread-based solutions for multicore computing environments.</p></div><div class="card detail-card"><h2>7. Dataset / Test Data</h2><p>Execute applications using 1, 2, 4, 8, and 16 threads. Use computational tasks such as matrix addition, matrix multiplication, large-array summation, and prime number generation. Record execution time, CPU utilization, memory usage, context switches, and speedup.</p></div><div class="card detail-card"><h2>8. Tools / Technology to be Used</h2><p>Ubuntu 24.04 LTS GCC Compiler Linux Terminal POSIX Threads (pthread) pthread_create() pthread_join() ps -eLf top -H htop perf stat /proc/&lt;pid&gt;/task</p></div><div class="card detail-card"><h2>9. Total Hours of Problem Definition and Implementation</h2><p>Activity Hours 13 | P a g e Problem Definition &amp; Analysis 0.5 Implementation &amp; Testing 1.5 Total 2.0</p></div><div class="card detail-card"><h2>10. Total Hours of Engagement</h2><p>Activity Hours Pre-laboratory Study 1 Laboratory Session 2 Performance Analysis &amp; Report 1 Post-laboratory Work 1 Total 5</p></div><div class="card detail-card"><h2>11. Post Laboratory Work Description</h2><p>Prepare a comparative study of POSIX Threads, OpenMP, Intel TBB, Java Threads, and Go Goroutines. Compare their programming models, scheduling mechanisms, scalability, synchronization techniques, and suitability for multicore and distributed systems.</p></div><div class="card detail-card"><h2>12. Rubrics</h2><p>Criterion Marks Problem Analysis 2 Implementation 3 Analysis &amp; Interpretation 2 Supplementary Problem 1 Post Laboratory Work 1 Viva 1</p></div></div><div style="margin-top:20px"><a class="btn" href="../practicals.html">← All practical sessions</a></div></div></section><footer class="footer"><div class="container footer-grid"><div><h3>FOSD · CEUC301</h3><p>Fundamentals of Operating System Design<br>Course website by Prashant Jadav.</p></div><div><h3>Course</h3><p><a href="../syllabus.html">Syllabus</a><br><a href="../lectures.html">Lecture Notes</a><br><a href="../practicals.html">Practicals</a></p></div><div><h3>Resources</h3><p><a href="../question-bank.html">Question Bank</a><br><a href="../resources.html">References</a></p></div></div><div class="container footer-bottom">© 2026 Prashant Jadav · Faculty of Technology and Engineering, CHARUSAT</div></footer><script src="../assets/js/script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>
+            Practical 5 | FOSD · CEUC301
+        </title>
+        <meta name="description" content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav">
+        <link rel="stylesheet" href="../assets/css/style.css">
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="container">
+                CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container nav-inner">
+                <a class="brand" href="../index.html"><span class="logo"> OS</span><span><b> FOSD</b><small> CEUC301 · Course Portal</small></span></a>
+                <div class="nav-links">
+                    <a class="" href="../index.html"> Home</a><a class="" href="../syllabus.html"> Syllabus</a><a class="" href="../lectures.html"> Lecture Notes</a><a class="active" href="../practicals.html"> Practicals</a><a class="" href="../question-bank.html"> Question Bank</a><a class="" href="../resources.html"> Resources</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn" id="themeToggle">
+                        ◐
+                    </button>
+                    <button class="menu-btn" id="menuToggle">
+                        ☰
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    Home / Practicals / Practical 5
+                </div>
+                <h1>
+                    Practical 5: Thread Creation and Context-Switch Cost
+                </h1>
+                <p>
+                    CO Mapping: CO2, CO3 · Laboratory session: 2 hours
+                </p>
+            </div>
+        </div>
+        <section>
+            <div class="container">
+                <div class="notice">
+                    <strong> Assessment:</strong> Each practical is assessed out of 10 marks. Students perform the experiment, record observations, complete supplementary work and answer viva questions.
+                </div>
+                <div class="card detail-card">
+                    <h2>
+                        1. Problem Definition
+                    </h2>
+                    <p>
+                        A web server must handle thousands of simultaneous client requests while minimizing response time, memory consumption, and context-switch overhead. Develop a multithreaded application using POSIX Threads (Pthreads) to investigate concurrent execution, resource sharing, thread synchronization, and scalability. Compare thread-based execution with process-based and sequential execution, and recommend the most appropriate design for high-performance server applications.
+                    </p>
+                </div>
+                <div class="cards two">
+                    <div class="card detail-card">
+                        <h2>
+                            2. Key Questions / Analysis / Interpretation
+                        </h2>
+                        <p>
+                            Implementation CO2, CO3 12 | P a g e
+                        </p>
+                        <ol>
+                            <li>
+                                Differentiate processes and threads with respect to resource sharing and execution.
+                            </li>
+                            <li>
+                                How do pthread_create() and pthread_join() coordinate thread execution?
+                            </li>
+                            <li>
+                                How does increasing the number of threads affect execution time and CPU utilization?
+                            </li>
+                            <li>
+                                Interpret thread activity using ps -eLf, top -H, and /proc/&lt;pid&gt;/task.
+                            </li>
+                            <li>
+                                Compare sequential, multiprocess, and multithreaded implementations.
+                            </li>
+                            <li>
+                                Explain context switching overhead in thread-based applications.
+                            </li>
+                            <li>
+                                Recommend an optimal threading strategy for multicore systems with justification.
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            3. Supplementary Problems
+                        </h2>
+                        <ul>
+                            <li>
+                                Easy: Create two threads that perform independent computations.
+                            </li>
+                            <li>
+                                Medium: Implement matrix addition using multiple threads.
+                            </li>
+                            <li>
+                                Hard: Develop a multithreaded matrix multiplication program and evaluate scalability on multicore processors.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            4. Key Skills to be Addressed
+                        </h2>
+                        <ul>
+                            <li>
+                                POSIX thread programming
+                            </li>
+                            <li>
+                                Concurrent programming
+                            </li>
+                            <li>
+                                Context switching analysis
+                            </li>
+                            <li>
+                                Performance evaluation
+                            </li>
+                            <li>
+                                Thread synchronization
+                            </li>
+                            <li>
+                                Linux performance monitoring
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            5. Applications
+                        </h2>
+                        <ul>
+                            <li>
+                                High-performance computing
+                            </li>
+                            <li>
+                                Scientific simulations
+                            </li>
+                            <li>
+                                Game engines
+                            </li>
+                            <li>
+                                Web servers
+                            </li>
+                            <li>
+                                Multimedia applications
+                            </li>
+                            <li>
+                                Data analytics
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            6. Learning Outcome
+                        </h2>
+                        <p>
+                            Students will implement multithreaded applications using POSIX Threads, analyze thread execution and context switching, evaluate scalability using quantitative performance metrics, and justify thread-based solutions for multicore computing environments.
+                        </p>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            7. Dataset / Test Data
+                        </h2>
+                        <p>
+                            Execute applications using 1, 2, 4, 8, and 16 threads. Use computational tasks such as matrix addition, matrix multiplication, large-array summation, and prime number generation. Record execution time, CPU utilization, memory usage, context switches, and speedup.
+                        </p>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            8. Tools / Technology to be Used
+                        </h2>
+                        <ul>
+                            <li>
+                                Ubuntu 24.04 LTS
+                            </li>
+                            <li>
+                                GCC Compiler
+                            </li>
+                            <li>
+                                Linux Terminal
+                            </li>
+                            <li>
+                                POSIX Threads (pthread)
+                            </li>
+                            <li>
+                                <code>pthread_create()</code>
+                            </li>
+                            <li>
+                                <code>pthread_join()</code>
+                            </li>
+                            <li>
+                                <code>ps -eLf</code>
+                            </li>
+                            <li>
+                                <code>top -H</code>
+                            </li>
+                            <li>
+                                <code>htop</code>
+                            </li>
+                            <li>
+                                <code>perf stat</code>
+                            </li>
+                            <li>
+                                <code>/proc/&lt;pid&gt;/task</code>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            9. Total Hours of Problem Definition and Implementation
+                        </h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Problem Definition &amp; Analysis</td>
+                                    <td>0.5</td>
+                                </tr>
+                                <tr>
+                                    <td>Implementation &amp; Testing</td>
+                                    <td>1.5</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>2.0</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            10. Total Hours of Engagement
+                        </h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pre-lab Study</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Laboratory Session</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Result Analysis</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Post-lab Work</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>5</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            11. Post Laboratory Work Description
+                        </h2>
+                        <p>
+                            Prepare a comparative study of POSIX Threads, OpenMP, Intel TBB, Java Threads, and Go Goroutines. Compare their programming models, scheduling mechanisms, scalability, synchronization techniques, and suitability for multicore and distributed systems.
+                        </p>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            12. Rubrics
+                        </h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Criterion</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Problem Analysis</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Implementation</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Analysis &amp; Interpretation</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Supplementary Problem</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Post Laboratory Work</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Viva</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>10</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="margin-top:20px">
+                    <a class="btn" href="../practicals.html"> ← All practical sessions</a>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div>
+                    <h3>
+                        FOSD · CEUC301
+                    </h3>
+                    <p>
+                        Fundamentals of Operating System Design<br> Course website by Prashant Jadav.
+                    </p>
+                </div>
+                <div>
+                    <h3>
+                        Course
+                    </h3>
+                    <p>
+                        <a href="../syllabus.html"> Syllabus</a><br><a href="../lectures.html"> Lecture Notes</a><br><a href="../practicals.html"> Practicals</a>
+                    </p>
+                </div>
+                <div>
+                    <h3>
+                        Resources
+                    </h3>
+                    <p>
+                        <a href="../question-bank.html"> Question Bank</a><br><a href="../resources.html"> References</a>
+                    </p>
+                </div>
+            </div>
+            <div class="container footer-bottom">
+                © 2026 Prashant Jadav · Faculty of Technology and Engineering, CHARUSAT
+            </div>
+        </footer>
+        <script src="../assets/js/script.js">
+        </script>
+    </body>
+</html>

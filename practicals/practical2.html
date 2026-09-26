@@ -1,5 +1,389 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practical 2 | FOSD · CEUC301</title><meta name="description" content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav"><link rel="stylesheet" href="../assets/css/style.css"></head><body>
-<div class="topbar"><div class="container">CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301</div></div>
-<nav class="navbar"><div class="container nav-inner"><a class="brand" href="../index.html"><span class="logo">OS</span><span><b>FOSD</b><small>CEUC301 · Course Portal</small></span></a><div class="nav-links"><a class="" href="../index.html">Home</a><a class="" href="../syllabus.html">Syllabus</a><a class="" href="../lectures.html">Lecture Notes</a><a class="active" href="../practicals.html">Practicals</a><a class="" href="../question-bank.html">Question Bank</a><a class="" href="../resources.html">Resources</a></div><div class="nav-actions"><button class="icon-btn" id="themeToggle">◐</button><button class="menu-btn" id="menuToggle">☰</button></div></div></nav>
-<div class="page-hero"><div class="container"><div class="breadcrumb">Home / Practicals / Practical 2</div><h1>Practical 2: Process Creation and Lifecycle Analysis</h1><p>CO Mapping: CO2 · Laboratory session: 2 hours</p></div></div>
-<section><div class="container"><div class="notice"><strong>Assessment:</strong> Each practical is assessed out of 10 marks. Students perform the experiment, record observations, complete supplementary work and answer viva questions.</div><div class="card detail-card"><h2>1. Problem Definition</h2><p>A software company is developing a build automation system similar to &#x27;make&#x27;. The system must create child processes, execute compiler programs, synchronize execution and ensure linking begins only after successful completion of all compilation tasks. Develop a Linux application using fork(), exec(), wait() and waitpid() to study process creation, execution, synchronization and process hierarchy.</p></div><div class="cards two"><div class="card detail-card"><h2>2. Key Questions / Analysis / Interpretation</h2><p>Implementation Differentiate fork(), exec(), wait() and waitpid(). How does exec() change the process image? Explain parent-child relationships using process IDs. Compare execution with and without wait(). How are zombie and orphan processes created? Interpret observations from ps, pstree and /proc. Recommend an efficient process creation strategy for a build system.</p></div><div class="card detail-card"><h2>3. Supplementary Problems</h2><p>Easy: Create one child process and display PID and PPID. Medium: Create three child processes executing different Linux commands. Hard: Implement a simplified parallel build utility using fork(), exec() and wait().</p></div><div class="card detail-card"><h2>4. Key Skills to be Addressed</h2><p>Linux process management System call programming Process synchronization Process hierarchy analysis Debugging using Linux utilities Performance evaluation</p></div><div class="card detail-card"><h2>5. Applications</h2><p>Build automation tools Unix shell Web servers Batch processing systems Compiler toolchains Cloud task execution</p></div><div class="card detail-card"><h2>6. Learning Outcome</h2><p>Students will implement process creation and synchronization using Linux system calls, analyze process life cycles, interpret execution behaviour and justify process coordination strategies for real-world applications.</p></div><div class="card detail-card"><h2>7. Dataset / Test Data</h2><p>Execute programs with one, two and three child processes. Test Linux commands such as &#x27;ls&#x27;, &#x27;pwd&#x27;, &#x27;date&#x27; and &#x27;whoami&#x27; through exec(). Record PID, PPID, exit status, termination order and process tree using pstree, ps and /proc. CO2 7 | P a g e</p></div><div class="card detail-card"><h2>8. Tools / Technology to be Used</h2><p>Ubuntu 24.04 LTS GCC Compiler Linux Terminal POSIX APIs fork(), exec(), wait(), waitpid() ps pstree top strace /proc file system</p></div><div class="card detail-card"><h2>9. Total Hours of Problem Definition and Implementation</h2><p>Activity Hours Problem Definition &amp; Analysis 0.5 Implementation &amp; Testing 1.5 Total 2.0</p></div><div class="card detail-card"><h2>10. Total Hours of Engagement</h2><p>Activity Hours Pre-lab Study 1 Laboratory Session 2 Result Analysis 1 Post-lab Work 1 Total 5</p></div><div class="card detail-card"><h2>11. Post Laboratory Work Description</h2><p>Prepare a comparative report on fork(), vfork(), clone() and posix_spawn(). Discuss memory usage, execution overhead, scalability and their suitability for modern operating systems.</p></div><div class="card detail-card"><h2>12. Rubrics</h2><p>Criterion Marks Problem Analysis 2 Implementation 3 Analysis &amp; Interpretation 2 Supplementary Problem 1 Post Laboratory Work 1 Viva 1</p></div></div><div style="margin-top:20px"><a class="btn" href="../practicals.html">← All practical sessions</a></div></div></section><footer class="footer"><div class="container footer-grid"><div><h3>FOSD · CEUC301</h3><p>Fundamentals of Operating System Design<br>Course website by Prashant Jadav.</p></div><div><h3>Course</h3><p><a href="../syllabus.html">Syllabus</a><br><a href="../lectures.html">Lecture Notes</a><br><a href="../practicals.html">Practicals</a></p></div><div><h3>Resources</h3><p><a href="../question-bank.html">Question Bank</a><br><a href="../resources.html">References</a></p></div></div><div class="container footer-bottom">© 2026 Prashant Jadav · Faculty of Technology and Engineering, CHARUSAT</div></footer><script src="../assets/js/script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>
+            Practical 2 | FOSD · CEUC301
+        </title>
+        <meta name="description" content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav">
+        <link rel="stylesheet" href="../assets/css/style.css">
+    </head>
+    <body>
+        <div class="topbar">
+            <div class="container">
+                CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container nav-inner">
+                <a class="brand" href="../index.html"><span
+                    class="logo"> OS</span><span><b> FOSD</b><small> CEUC301 · Course Portal</small></span></a>
+                <div class="nav-links">
+                    <a class="" href="../index.html"> Home</a><a class=""
+                    href="../syllabus.html"> Syllabus</a><a class="" href="../lectures.html"> Lecture Notes</a><a
+                    class="active" href="../practicals.html"> Practicals</a><a class=""
+                    href="../question-bank.html"> Question Bank</a><a class="" href="../resources.html"> Resources</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn" id="themeToggle">
+                        ◐
+                    </button>
+                    <button class="menu-btn"
+                    id="menuToggle">
+                        ☰
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="page-hero">
+            <div class="container">
+                <div class="breadcrumb">
+                    Home / Practicals / Practical 2
+                </div>
+                <h1>
+                    Practical 2: Process Creation and Lifecycle Analysis
+                </h1>
+                <p>
+                    CO Mapping: CO2 · Laboratory session: 2 hours
+                </p>
+            </div>
+        </div>
+        <section>
+            <div class="container">
+                <div class="notice">
+                    <strong> Assessment:</strong> Each practical is assessed out of 10 marks. Students
+                perform the experiment, record observations, complete supplementary work and answer viva questions.
+                </div>
+                <div class="card detail-card">
+                    <h2>
+                        1. Problem Definition
+                    </h2>
+                    <p>
+                        A software company is developing a build automation system similar to &#x27;make&#x27;. The system
+                    must create child processes, execute compiler programs, synchronize execution and ensure linking
+                    begins only after successful completion of all compilation tasks. Develop a Linux application using
+                    fork(), exec(), wait() and waitpid() to study process creation, execution, synchronization and
+                    process hierarchy.
+                    </p>
+                </div>
+                <div class="cards two">
+                    <div class="card detail-card">
+                        <h2>
+                            2. Key Questions / Analysis / Interpretation
+                        </h2>
+                        <p>
+                            Implementation
+                        </p>
+                        <ol>
+                            <li>
+                                Differentiate fork(), exec(), wait() and waitpid().
+                            </li>
+                            <li>
+                                How does exec() change the process image?
+                            </li>
+                            <li>
+                                Explain parent-child relationships using process IDs.
+                            </li>
+                            <li>
+                                Compare execution with and without wait().
+                            </li>
+                            <li>
+                                How are zombie and orphan processes created?
+                            </li>
+                            <li>
+                                Interpret observations from ps, pstree and /proc.
+                            </li>
+                            <li>
+                                Recommend an efficient process creation strategy for a build system.
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            3. Supplementary Problems
+                        </h2>
+                        <ul>
+                            <li>
+                                Easy: Create one child process and display PID and PPID.
+                            </li>
+                            <li>
+                                Medium: Create three child processes executing different Linux commands.
+                            </li>
+                            <li>
+                                Hard: Implement a simplified parallel build utility using fork(), exec() and wait().
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            4. Key Skills to be Addressed
+                        </h2>
+                        <ul>
+                            <li>
+                                Linux process management
+                            </li>
+                            <li>
+                                System call programming
+                            </li>
+                            <li>
+                                Process synchronization
+                            </li>
+                            <li>
+                                Process hierarchy analysis
+                            </li>
+                            <li>
+                                Debugging using Linux utilities
+                            </li>
+                            <li>
+                                Performance evaluation
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            5. Applications
+                        </h2>
+                        <ul>
+                            <li>
+                                Build automation tools
+                            </li>
+                            <li>
+                                Unix shell
+                            </li>
+                            <li>
+                                Web servers
+                            </li>
+                            <li>
+                                Batch processing systems
+                            </li>
+                            <li>
+                                Compiler toolchains
+                            </li>
+                            <li>
+                                Cloud task execution
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            6. Learning Outcome
+                        </h2>
+                        <p>
+                            Students will implement process creation and synchronization using Linux system calls, analyze
+                        process life cycles, interpret execution behaviour and justify process coordination strategies
+                        for real-world applications.
+                        </p>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            7. Dataset / Test Data
+                        </h2>
+                        <p>
+                            Execute programs with one, two and three child processes. Test Linux commands such as
+                        &#x27;ls&#x27;, &#x27;pwd&#x27;, &#x27;date&#x27; and &#x27;whoami&#x27; through exec(). Record
+                        PID, PPID, exit status, termination order and process tree using pstree, ps and /proc. CO2
+                        </p>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            8. Tools / Technology to be Used
+                        </h2>
+                        <ul>
+                            <li>
+                                Ubuntu 24.04 LTS
+                            </li>
+                            <li>
+                                GCC Compiler
+                            </li>
+                            <li>
+                                Linux Terminal
+                            </li>
+                            <li>
+                                POSIX APIs
+                            </li>
+                            <li>
+                                <code>fork()</code>
+                            </li>
+                            <li>
+                                <code>exec()</code>
+                            </li>
+                            <li>
+                                <code>wait()</code>
+                            </li>
+                            <li>
+                                <code>waitpid()</code>
+                            </li>
+                            <li>
+                                <code>ps</code>
+                            </li>
+                            <li>
+                                <code>pstree</code>
+                            </li>
+                            <li>
+                                <code>top</code>
+                            </li>
+                            <li>
+                                <code>strace</code>
+                            </li>
+                            <li>
+                                <code>/proc filesystem</code>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            9. Total Hours of Problem Definition and Implementation
+                        </h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Problem Definition &amp; Analysis</td>
+                                    <td>0.5</td>
+                                </tr>
+                                <tr>
+                                    <td>Implementation &amp; Testing</td>
+                                    <td>1.5</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>2.0</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            10. Total Hours of Engagement
+                        </h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pre-lab Study</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Laboratory Session</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Result Analysis</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Post-lab Work</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>5</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            11. Post Laboratory Work Description
+                        </h2>
+                        <p>
+                            Prepare a comparative report on fork(), vfork(), clone() and posix_spawn(). Discuss memory usage,
+                        execution overhead, scalability and their suitability for modern operating systems.
+                        </p>
+                    </div>
+                    <div class="card detail-card">
+                        <h2>
+                            12. Rubrics
+                        </h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Criterion</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Problem Analysis</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Implementation</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Analysis &amp; Interpretation</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Supplementary Problem</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Post Laboratory Work</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Viva</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>10</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="margin-top:20px">
+                    <a class="btn" href="../practicals.html"> ← All practical sessions</a>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div>
+                    <h3>
+                        FOSD · CEUC301
+                    </h3>
+                    <p>
+                        Fundamentals of Operating System Design<br> Course website by Prashant Jadav.
+                    </p>
+                </div>
+                <div>
+                    <h3>
+                        Course
+                    </h3>
+                    <p>
+                        <a href="../syllabus.html"> Syllabus</a><br><a href="../lectures.html"> Lecture Notes</a><br><a
+                        href="../practicals.html"> Practicals</a>
+                    </p>
+                </div>
+                <div>
+                    <h3>
+                        Resources
+                    </h3>
+                    <p>
+                        <a href="../question-bank.html"> Question Bank</a><br><a href="../resources.html"> References</a>
+                    </p>
+                </div>
+            </div>
+            <div class="container footer-bottom">
+                © 2026 Prashant Jadav · Faculty of Technology and Engineering, CHARUSAT
+            </div>
+        </footer>
+        <script src="../assets/js/script.js">
+        </script>
+    </body>
+</html>
