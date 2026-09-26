@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,184 +8,614 @@
   <meta name="description" content="Learning resources for Fundamentals of Operating System Design (CEUC301).">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    .resource-hero{padding:58px 0 52px;background:linear-gradient(135deg,#071d3a 0%,#0b3970 55%,#1167b1 100%);color:#fff}
-    .resource-hero .eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;opacity:.8}
-    .resource-hero h1{font-size:clamp(2.1rem,4vw,3.6rem);margin:10px 0 12px;line-height:1.08}
-    .resource-hero p{max-width:780px;margin:0;color:#dbeafe;font-size:1.05rem;line-height:1.7}
-    .resource-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-    .resource-tabs a{padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.18);font-weight:700}
-    .resource-tabs a:hover{background:rgba(255,255,255,.2)}
-    .resource-section{padding:38px 0}
-    .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .resource-card{background:var(--card,#fff);border:1px solid var(--line,#e5e7eb);border-radius:18px;padding:22px;box-shadow:var(--shadow,0 8px 25px rgba(15,23,42,.06));height:100%;display:flex;flex-direction:column}
-    .resource-card .icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#eaf3ff;color:#0b63ce;font-size:1.25rem;margin-bottom:15px}
-    .resource-card h3{margin:0 0 8px;font-size:1.08rem}
-    .resource-card p{color:var(--muted,#64748b);line-height:1.6;margin:0 0 16px}
-    .resource-card .meta{font-size:.78rem;font-weight:800;color:#2563eb;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
-    .resource-card .resource-link{margin-top:auto;display:inline-flex;align-items:center;gap:6px;color:#0b63ce;font-weight:800;text-decoration:none}
-    .resource-card .resource-link:hover{text-decoration:underline}
-    .book-list{display:grid;gap:12px}
-    .book-item{display:flex;gap:15px;align-items:flex-start;padding:16px 18px;background:var(--card,#fff);border:1px solid var(--line,#e5e7eb);border-radius:15px}
-    .book-no{min-width:32px;height:32px;border-radius:10px;background:#eaf3ff;color:#0b63ce;display:grid;place-items:center;font-weight:900}
-    .book-item strong{display:block;margin-bottom:3px}.book-item span{color:var(--muted,#64748b);font-size:.92rem;line-height:1.5}
-    .bridge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .bridge-item{padding:18px;border:1px solid var(--line,#e5e7eb);border-radius:15px;background:var(--card,#fff)}
-    .bridge-item strong{display:block;margin-bottom:6px}.bridge-item p{margin:0;color:var(--muted,#64748b);line-height:1.55}
-    .notice-box{margin-top:28px;padding:18px 20px;border-radius:15px;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a5f}
-    .notice-box strong{display:block;margin-bottom:5px}
-    .section-title{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}.section-title h2{margin:4px 0 0}.section-title p{margin:0;color:var(--muted,#64748b)}
-    @media(max-width:900px){.resource-grid{grid-template-columns:repeat(2,1fr)}.bridge-grid{grid-template-columns:1fr}}
-    @media(max-width:620px){.resource-grid{grid-template-columns:1fr}.resource-hero{padding:42px 0}.section-title{display:block}}
+    .resource-hero {
+      padding: 58px 0 52px;
+      background: linear-gradient(135deg, #071d3a 0%, #0b3970 55%, #1167b1 100%);
+      color: #fff
+    }
+
+    .resource-hero .eyebrow {
+      font-size: .78rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 800;
+      opacity: .8
+    }
+
+    .resource-hero h1 {
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+      margin: 10px 0 12px;
+      line-height: 1.08
+    }
+
+    .resource-hero p {
+      max-width: 780px;
+      margin: 0;
+      color: #dbeafe;
+      font-size: 1.05rem;
+      line-height: 1.7
+    }
+
+    .resource-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px
+    }
+
+    .resource-tabs a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, .18);
+      font-weight: 700
+    }
+
+    .resource-tabs a:hover {
+      background: rgba(255, 255, 255, .2)
+    }
+
+    .resource-section {
+      padding: 38px 0
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    .resource-card {
+      background: var(--card, #fff);
+      border: 1px solid var(--line, #e5e7eb);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow, 0 8px 25px rgba(15, 23, 42, .06));
+      height: 100%;
+      display: flex;
+      flex-direction: column
+    }
+
+    .resource-card .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #eaf3ff;
+      color: #0b63ce;
+      font-size: 1.25rem;
+      margin-bottom: 15px
+    }
+
+    .resource-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem
+    }
+
+    .resource-card p {
+      color: var(--muted, #64748b);
+      line-height: 1.6;
+      margin: 0 0 16px
+    }
+
+    .resource-card .meta {
+      font-size: .78rem;
+      font-weight: 800;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 8px
+    }
+
+    .resource-card .resource-link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #0b63ce;
+      font-weight: 800;
+      text-decoration: none
+    }
+
+    .resource-card .resource-link:hover {
+      text-decoration: underline
+    }
+
+    .book-list {
+      display: grid;
+      gap: 12px
+    }
+
+    .book-item {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      background: var(--card, #fff);
+      border: 1px solid var(--line, #e5e7eb);
+      border-radius: 15px
+    }
+
+    .book-no {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #eaf3ff;
+      color: #0b63ce;
+      display: grid;
+      place-items: center;
+      font-weight: 900
+    }
+
+    .book-item strong {
+      display: block;
+      margin-bottom: 3px
+    }
+
+    .book-item span {
+      color: var(--muted, #64748b);
+      font-size: .92rem;
+      line-height: 1.5
+    }
+
+    .bridge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    .bridge-item {
+      padding: 18px;
+      border: 1px solid var(--line, #e5e7eb);
+      border-radius: 15px;
+      background: var(--card, #fff)
+    }
+
+    .bridge-item strong {
+      display: block;
+      margin-bottom: 6px
+    }
+
+    .bridge-item p {
+      margin: 0;
+      color: var(--muted, #64748b);
+      line-height: 1.55
+    }
+
+    .notice-box {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border-radius: 15px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a5f
+    }
+
+    .notice-box strong {
+      display: block;
+      margin-bottom: 5px
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 20px
+    }
+
+    .section-title h2 {
+      margin: 4px 0 0
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted, #64748b)
+    }
+
+    @media(max-width:900px) {
+      .resource-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .bridge-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:620px) {
+      .resource-grid {
+        grid-template-columns: 1fr
+      }
+
+      .resource-hero {
+        padding: 42px 0
+      }
+
+      .section-title {
+        display: block
+      }
+    }
   </style>
 </head>
+
 <body>
-<div class="topbar"><div class="container">CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301</div></div>
-
-<nav class="navbar">
-  <div class="container nav-inner">
-    <a class="brand" href="index.html"><span class="logo">OS</span><span><b>FOSD</b><small>CEUC301 · Course Portal</small></span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="syllabus.html">Syllabus</a>
-      <a href="lectures.html">Lecture Notes</a>
-      <a href="practicals.html">Practicals</a>
-      <a href="question-bank.html">Question Bank</a>
-      <a class="active" href="resources.html">Resources</a>
-    </div>
-    <div class="nav-actions"><button class="icon-btn" id="themeToggle" title="Toggle dark mode">◐</button><button class="menu-btn" id="menuToggle">☰</button></div>
+  <div class="topbar">
+    <div class="container">CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301</div>
   </div>
-</nav>
 
-<header class="resource-hero">
-  <div class="container">
-    <div class="eyebrow">FOSD · CEUC301 · Semester V</div>
-    <h1>Learning Resources</h1>
-    <p>Curated study material for Fundamentals of Operating System Design, organized around the approved syllabus, recommended books, bridge topics, and practical Linux system work.</p>
-    <div class="resource-tabs">
-      <a href="#textbooks">Text Books</a><a href="#references">Reference Books</a><a href="#bridge">Bridge & Self-Study</a><a href="#online">Online Learning</a><a href="#interactive">Interactive Learning</a>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="logo">OS</span><span><b>FOSD</b><small>CEUC301 · Course
+            Portal</small></span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="syllabus.html">Syllabus</a>
+        <a href="lectures.html">Lecture Notes</a>
+        <a href="practicals.html">Practicals</a>
+        <a href="question-bank.html">Question Bank</a>
+        <a class="active" href="resources.html">Resources</a>
+      </div>
+      <div class="nav-actions"><button class="icon-btn" id="themeToggle" title="Toggle dark mode">◐</button><button
+          class="menu-btn" id="menuToggle">☰</button></div>
     </div>
-  </div>
-</header>
+  </nav>
 
-<main>
-<section class="resource-section" id="textbooks">
-  <div class="container">
-    <div class="section-title"><div><div class="kicker">Recommended Study Material</div><h2>Text Books</h2></div><p>Primary books listed in the CEUC301 syllabus.</p></div>
-    <div class="book-list">
-      <div class="book-item"><div class="book-no">1</div><div><strong>Operating Systems: Internals and Design Principles</strong><span>William Stallings · 9th Edition · Pearson · 2021</span></div></div>
-      <div class="book-item"><div class="book-no">2</div><div><strong>Operating System Concepts</strong><span>Abraham Silberschatz, Peter B. Galvin & Greg Gagne · 10th Edition · Wiley · 2025</span></div></div>
-      <div class="book-item"><div class="book-no">3</div><div><strong>Modern Operating Systems</strong><span>Andrew S. Tanenbaum & Herbert Bos · 5th Edition · Pearson · 2022</span></div></div>
+  <header class="resource-hero">
+    <div class="container">
+      <div class="eyebrow">FOSD · CEUC301 · Semester V</div>
+      <h1>Learning Resources</h1>
+      <p>Curated study material for Fundamentals of Operating System Design, organized around the approved syllabus,
+        recommended books, bridge topics, and practical Linux system work.</p>
+      <div class="resource-tabs">
+        <a href="#textbooks">Text Books</a><a href="#references">Reference Books</a><a href="#bridge">Bridge &
+          Self-Study</a><a href="#online">Online Learning</a><a href="#interactive">Interactive Learning</a>
+      </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="resource-section" id="references">
-  <div class="container">
-    <div class="section-title"><div><div class="kicker">Additional Reading</div><h2>Reference Books</h2></div><p>Reference titles specified in the syllabus.</p></div>
-    <div class="resource-grid">
-      <article class="resource-card"><div class="icon">📘</div><h3>Operating Systems: Design and Implementation</h3><p>Andrew S. Tanenbaum & Albert S. Woodhull · 3rd Edition · Prentice Hall · 2006</p></article>
-      <article class="resource-card"><div class="icon">🐧</div><h3>Linux Kernel Development</h3><p>Robert Love · 3rd Edition · Addison-Wesley Professional · 2010</p></article>
-      <article class="resource-card"><div class="icon">⚙️</div><h3>The Design of the UNIX Operating System</h3><p>Maurice J. Bach · 1st Edition · Prentice Hall · 1986</p></article>
-      <article class="resource-card"><div class="icon">⏱️</div><h3>Real-Time Systems</h3><p>Jane W. S. Liu · 1st Edition · Prentice Hall · 2000</p></article>
-      <article class="resource-card"><div class="icon">📱</div><h3>Embedded Android</h3><p>Karim Yaghmour · 1st Edition · O’Reilly Media · 2013</p></article>
+  <main>
+    <section class="resource-section" id="textbooks">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <div class="kicker">Recommended Study Material</div>
+            <h2>Text Books</h2>
+          </div>
+          <p>Primary books listed in the CEUC301 syllabus.</p>
+        </div>
+        <div class="book-list">
+          <div class="book-item">
+            <div class="book-no">1</div>
+            <div><strong>Operating Systems: Internals and Design Principles</strong><span>William Stallings · 9th
+                Edition · Pearson · 2021</span></div>
+          </div>
+          <div class="book-item">
+            <div class="book-no">2</div>
+            <div><strong>Operating System Concepts</strong><span>Abraham Silberschatz, Peter B. Galvin & Greg Gagne ·
+                10th Edition · Wiley · 2025</span></div>
+          </div>
+          <div class="book-item">
+            <div class="book-no">3</div>
+            <div><strong>Modern Operating Systems</strong><span>Andrew S. Tanenbaum & Herbert Bos · 5th Edition ·
+                Pearson · 2022</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resource-section" id="references">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <div class="kicker">Additional Reading</div>
+            <h2>Reference Books</h2>
+          </div>
+          <p>Reference titles specified in the syllabus.</p>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="icon">📘</div>
+            <h3>Operating Systems: Design and Implementation</h3>
+            <p>Andrew S. Tanenbaum & Albert S. Woodhull · 3rd Edition · Prentice Hall · 2006</p>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🐧</div>
+            <h3>Linux Kernel Development</h3>
+            <p>Robert Love · 3rd Edition · Addison-Wesley Professional · 2010</p>
+          </article>
+          <article class="resource-card">
+            <div class="icon">⚙️</div>
+            <h3>The Design of the UNIX Operating System</h3>
+            <p>Maurice J. Bach · 1st Edition · Prentice Hall · 1986</p>
+          </article>
+          <article class="resource-card">
+            <div class="icon">⏱️</div>
+            <h3>Real-Time Systems</h3>
+            <p>Jane W. S. Liu · 1st Edition · Prentice Hall · 2000</p>
+          </article>
+          <article class="resource-card">
+            <div class="icon">📱</div>
+            <h3>Embedded Android</h3>
+            <p>Karim Yaghmour · 1st Edition · O’Reilly Media · 2013</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resource-section" id="bridge">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <div class="kicker">Foundation Topics</div>
+            <h2>Bridge Topics & Self-Study</h2>
+          </div>
+          <p>Topics identified in the supplied CEUC301 syllabus.</p>
+        </div>
+        <div class="bridge-grid">
+          <div class="bridge-item"><strong>Instruction Cycle & Context Switching</strong>
+            <p>Instruction cycle and execution, timer interrupts, and hardware-level context switching.</p>
+          </div>
+          <div class="bridge-item"><strong>OS Functionalities & Objectives</strong>
+            <p>Operating system functionalities, objectives, and operating system types.</p>
+          </div>
+          <div class="bridge-item"><strong>Memory Hierarchy & Address Translation</strong>
+            <p>Memory hierarchy and address translation as preparation for memory-management topics.</p>
+          </div>
+          <div class="bridge-item"><strong>Memory Layout in C</strong>
+            <p>Text, data, heap, and stack memory layout, preferably using the C language.</p>
+          </div>
+          <div class="bridge-item"><strong>Locking in DBMS</strong>
+            <p>Database locking concepts that provide background for synchronization and concurrency control.</p>
+          </div>
+          <div class="bridge-item"><strong>Cache vs. Virtual Memory</strong>
+            <p>Comparison of cache and virtual-memory concepts as preparation for memory-system design.</p>
+          </div>
+          <div class="bridge-item"><strong>Hardware Synchronization Primitives</strong>
+            <p>Hardware synchronization primitives supporting concurrency-control concepts.</p>
+          </div>
+          <div class="bridge-item"><strong>File Systems & Indexing</strong>
+            <p>File-system concepts and indexing structures as preparation for file-system design.</p>
+          </div>
+        </div>
+        <div class="notice-box"><strong>Suggested use</strong>Review these foundation topics before the corresponding
+          lecture unit. The syllabus recommends connecting internal OS mechanisms to practical implementation and
+          performance analysis.</div>
+      </div>
+    </section>
+
+    <section class="resource-section" id="online">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <div class="kicker">Online Learning</div>
+            <h2>Online Learning Resources</h2>
+          </div>
+          <p>Courses, lecture material, textbooks, videos, and technical references for FOSD self-study.</p>
+        </div>
+
+        <div class="section-title" style="margin-top:34px">
+          <div>
+            <div class="kicker">Structured Courses</div>
+            <h2>Online Courses</h2>
+          </div>
+          <p>Courses that provide systematic coverage of operating-system concepts.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="icon">🎓</div>
+            <div class="meta">Coursera · BITS Pilani</div>
+            <h3>Operating Systems</h3>
+            <p>Comprehensive coverage of OS fundamentals, process management, CPU scheduling, memory management,
+              synchronization, deadlocks, file systems, I/O, and storage management.</p><a class="resource-link"
+              href="https://www.coursera.org/learn/bits-operating-systems" target="_blank"
+              rel="noopener noreferrer">View course →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🧠</div>
+            <div class="meta">Coursera · Codio</div>
+            <h3>Introduction to Operating Systems Specialization</h3>
+            <p>A four-course series covering virtualization, memory management, concurrency, and persistence, with
+              practical system-programming activities.</p><a class="resource-link"
+              href="https://www.coursera.org/specializations/codio-introduction-operating-systems" target="_blank"
+              rel="noopener noreferrer">View specialization →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🎓</div>
+            <div class="meta">NPTEL · IIT Madras</div>
+            <h3>Introduction to Operating Systems</h3>
+            <p>An OS course based on xv6 covering memory management, processes, interrupts, scheduling, synchronization,
+              deadlocks, and OS security.</p><a class="resource-link" href="https://nptel.ac.in/courses/106106144"
+              target="_blank" rel="noopener noreferrer">View course →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🏛️</div>
+            <div class="meta">NPTEL · IISc Bangalore</div>
+            <h3>Operating Systems</h3>
+            <p>Lecture material covering process management, memory management, file systems, I/O management, resource
+              sharing, IPC, real-time operating systems, and Unix/Linux topics.</p><a class="resource-link"
+              href="https://nptel.ac.in/courses/106108101" target="_blank" rel="noopener noreferrer">View course →</a>
+          </article>
+        </div>
+
+        <div class="section-title" style="margin-top:42px">
+          <div>
+            <div class="kicker">University Resources</div>
+            <h2>Lecture Notes & Course Material</h2>
+          </div>
+          <p>University-level material for deeper understanding of OS design and implementation.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="icon">🏛️</div>
+            <div class="meta">MIT OpenCourseWare</div>
+            <h3>Operating System Engineering</h3>
+            <p>Lecture notes, readings, laboratory assignments, problem sets, and xv6 material covering OS engineering
+              and implementation.</p><a class="resource-link"
+              href="https://ocw.mit.edu/courses/6-1810-operating-system-engineering-fall-2023/" target="_blank"
+              rel="noopener noreferrer">Open MIT course →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">📚</div>
+            <div class="meta">MIT OpenCourseWare</div>
+            <h3>xv6 Study Materials</h3>
+            <p>Teaching resources for understanding kernels, system calls, virtual memory, threads, context switches,
+              file systems, and OS implementation.</p><a class="resource-link"
+              href="https://ocw.mit.edu/courses/6-828-operating-system-engineering-fall-2012/pages/study-materials/"
+              target="_blank" rel="noopener noreferrer">Open study materials →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🎥</div>
+            <div class="meta">NPTEL / SWAYAM</div>
+            <h3>Video Lectures & Courses</h3>
+            <p>Search NPTEL for operating systems, advanced operating systems, real-time systems, Linux, and
+              systems-programming courses.</p><a class="resource-link" href="https://nptel.ac.in/" target="_blank"
+              rel="noopener noreferrer">Visit NPTEL →</a>
+          </article>
+        </div>
+
+        <div class="section-title" style="margin-top:42px">
+          <div>
+            <div class="kicker">Open Learning Material</div>
+            <h2>Free Online Textbooks</h2>
+          </div>
+          <p>Open-access reading material for reinforcing core FOSD concepts.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="icon">📖</div>
+            <div class="meta">Free Online Textbook</div>
+            <h3>Operating Systems: Three Easy Pieces</h3>
+            <p>A freely available operating-systems textbook covering virtualization, concurrency, and persistence.</p>
+            <a class="resource-link" href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank"
+              rel="noopener noreferrer">Open OSTEP →</a>
+          </article>
+        </div>
+
+        <div class="section-title" style="margin-top:42px">
+          <div>
+            <div class="kicker">Technical References</div>
+            <h2>Online References & Documentation</h2>
+          </div>
+          <p>Primary technical documentation for Linux and systems programming.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="icon">🐧</div>
+            <div class="meta">Unix / Linux Reference</div>
+            <h3>Unix / Linux Commands</h3>
+            <p>Reference guide for commonly used Unix/Linux commands, command syntax, file management, process
+              management, permissions, and system administration.</p>
+            <a class="resource-link"
+              href="https://docs.google.com/document/d/1jM4EHQ1Efqtu-9gNvX8PVcf3xNwGqJex/edit?usp=sharing"
+              target="_blank" rel="noopener noreferrer">Open document →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🐧</div>
+            <div class="meta">Linux Documentation</div>
+            <h3>Linux Kernel Documentation</h3>
+            <p>Primary documentation for Linux kernel subsystems, interfaces, and kernel-level concepts.</p><a
+              class="resource-link" href="https://docs.kernel.org/" target="_blank" rel="noopener noreferrer">Open
+              documentation →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">⌨️</div>
+            <div class="meta">System Programming</div>
+            <h3>Linux man-pages</h3>
+            <p>Reference documentation for system calls, library interfaces, commands, and Linux programming interfaces.
+            </p><a class="resource-link" href="https://man7.org/linux/man-pages/" target="_blank"
+              rel="noopener noreferrer">Open man-pages →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🔬</div>
+            <div class="meta">Course Materials</div>
+            <h3>Topic-wise Lecture PDFs</h3>
+            <p>Course-specific lecture PDFs are provided through the Lecture Notes page as they are uploaded.</p><a
+              class="resource-link" href="lectures.html">Go to Lecture Notes →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🧪</div>
+            <div class="meta">Course Practice</div>
+            <h3>Laboratory Manual & Practicals</h3>
+            <p>Use the practical sessions to connect OS theory with Linux system calls, processes, threads,
+              synchronization, memory, I/O, and performance analysis.</p><a class="resource-link"
+              href="practicals.html">Open Practicals →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resource-section" id="interactive">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <div class="kicker">Hands-on Learning</div>
+            <h2>Interactive Learning</h2>
+          </div>
+          <p>Virtual laboratories and browser-based simulations for experimenting with OS concepts.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="icon">🧪</div>
+            <div class="meta">Government of India · Virtual Labs</div>
+            <h3>Operating Systems Virtual Lab</h3>
+            <p>Interactive experiments for process states, context switching, scheduling, and synchronization-related OS
+              concepts.</p><a class="resource-link" href="https://www.vlab.co.in/" target="_blank"
+              rel="noopener noreferrer">Open Virtual Labs →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">🖥️</div>
+            <div class="meta">Interactive OS Simulator</div>
+            <h3>OS Lab</h3>
+            <p>Browser-based simulations for CPU scheduling, memory allocation, paging, disk scheduling, and
+              page-replacement algorithms.</p><a class="resource-link" href="https://oslab.xikai.me/" target="_blank"
+              rel="noopener noreferrer">Open OS Lab →</a>
+          </article>
+          <article class="resource-card">
+            <div class="icon">📊</div>
+            <div class="meta">Educational Simulations</div>
+            <h3>VisualizeIT · Operating Systems</h3>
+            <p>Interactive visualizations for operating-system algorithms and concepts.</p><a class="resource-link"
+              href="https://visualize-it.tech/simulations" target="_blank" rel="noopener noreferrer">Explore Simulations
+              →</a>
+          </article>
+        </div>
+
+        <div class="notice-box"><strong>Suggested use</strong>Use the interactive resources alongside the corresponding
+          FOSD lecture unit. Students should first understand the algorithm or mechanism from the lecture material and
+          then use the simulator or virtual laboratory to observe its behavior.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>FOSD · CEUC301</h3>
+        <p>Fundamentals of Operating System Design<br>Course portal by Prashant Jadav.</p>
+      </div>
+      <div>
+        <h3>Course</h3>
+        <p><a href="syllabus.html">Syllabus</a><br><a href="lectures.html">Lecture Notes</a><br><a
+            href="practicals.html">Practicals</a></p>
+      </div>
+      <div>
+        <h3>Resources</h3>
+        <p><a href="question-bank.html">Question Bank</a><br><a href="resources.html">Learning Resources</a></p>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="resource-section" id="bridge">
-  <div class="container">
-    <div class="section-title"><div><div class="kicker">Foundation Topics</div><h2>Bridge Topics & Self-Study</h2></div><p>Topics identified in the supplied CEUC301 syllabus.</p></div>
-    <div class="bridge-grid">
-      <div class="bridge-item"><strong>Instruction Cycle & Context Switching</strong><p>Instruction cycle and execution, timer interrupts, and hardware-level context switching.</p></div>
-      <div class="bridge-item"><strong>OS Functionalities & Objectives</strong><p>Operating system functionalities, objectives, and operating system types.</p></div>
-      <div class="bridge-item"><strong>Memory Hierarchy & Address Translation</strong><p>Memory hierarchy and address translation as preparation for memory-management topics.</p></div>
-      <div class="bridge-item"><strong>Memory Layout in C</strong><p>Text, data, heap, and stack memory layout, preferably using the C language.</p></div>
-      <div class="bridge-item"><strong>Locking in DBMS</strong><p>Database locking concepts that provide background for synchronization and concurrency control.</p></div>
-      <div class="bridge-item"><strong>Cache vs. Virtual Memory</strong><p>Comparison of cache and virtual-memory concepts as preparation for memory-system design.</p></div>
-      <div class="bridge-item"><strong>Hardware Synchronization Primitives</strong><p>Hardware synchronization primitives supporting concurrency-control concepts.</p></div>
-      <div class="bridge-item"><strong>File Systems & Indexing</strong><p>File-system concepts and indexing structures as preparation for file-system design.</p></div>
-    </div>
-    <div class="notice-box"><strong>Suggested use</strong>Review these foundation topics before the corresponding lecture unit. The syllabus recommends connecting internal OS mechanisms to practical implementation and performance analysis.</div>
-  </div>
-</section>
-
-<section class="resource-section" id="online">
-  <div class="container">
-    <div class="section-title">
-      <div><div class="kicker">Online Learning</div><h2>Online Learning Resources</h2></div>
-      <p>Courses, lecture material, textbooks, videos, and technical references for FOSD self-study.</p>
-    </div>
-
-    <div class="section-title" style="margin-top:34px">
-      <div><div class="kicker">Structured Courses</div><h2>Online Courses</h2></div>
-      <p>Courses that provide systematic coverage of operating-system concepts.</p>
-    </div>
-
-    <div class="resource-grid">
-      <article class="resource-card"><div class="icon">🎓</div><div class="meta">Coursera · BITS Pilani</div><h3>Operating Systems</h3><p>Comprehensive coverage of OS fundamentals, process management, CPU scheduling, memory management, synchronization, deadlocks, file systems, I/O, and storage management.</p><a class="resource-link" href="https://www.coursera.org/learn/bits-operating-systems" target="_blank" rel="noopener noreferrer">View course →</a></article>
-      <article class="resource-card"><div class="icon">🧠</div><div class="meta">Coursera · Codio</div><h3>Introduction to Operating Systems Specialization</h3><p>A four-course series covering virtualization, memory management, concurrency, and persistence, with practical system-programming activities.</p><a class="resource-link" href="https://www.coursera.org/specializations/codio-introduction-operating-systems" target="_blank" rel="noopener noreferrer">View specialization →</a></article>
-      <article class="resource-card"><div class="icon">🎓</div><div class="meta">NPTEL · IIT Madras</div><h3>Introduction to Operating Systems</h3><p>An OS course based on xv6 covering memory management, processes, interrupts, scheduling, synchronization, deadlocks, and OS security.</p><a class="resource-link" href="https://nptel.ac.in/courses/106106144" target="_blank" rel="noopener noreferrer">View course →</a></article>
-      <article class="resource-card"><div class="icon">🏛️</div><div class="meta">NPTEL · IISc Bangalore</div><h3>Operating Systems</h3><p>Lecture material covering process management, memory management, file systems, I/O management, resource sharing, IPC, real-time operating systems, and Unix/Linux topics.</p><a class="resource-link" href="https://nptel.ac.in/courses/106108101" target="_blank" rel="noopener noreferrer">View course →</a></article>
-    </div>
-
-    <div class="section-title" style="margin-top:42px">
-      <div><div class="kicker">University Resources</div><h2>Lecture Notes & Course Material</h2></div>
-      <p>University-level material for deeper understanding of OS design and implementation.</p>
-    </div>
-
-    <div class="resource-grid">
-      <article class="resource-card"><div class="icon">🏛️</div><div class="meta">MIT OpenCourseWare</div><h3>Operating System Engineering</h3><p>Lecture notes, readings, laboratory assignments, problem sets, and xv6 material covering OS engineering and implementation.</p><a class="resource-link" href="https://ocw.mit.edu/courses/6-1810-operating-system-engineering-fall-2023/" target="_blank" rel="noopener noreferrer">Open MIT course →</a></article>
-      <article class="resource-card"><div class="icon">📚</div><div class="meta">MIT OpenCourseWare</div><h3>xv6 Study Materials</h3><p>Teaching resources for understanding kernels, system calls, virtual memory, threads, context switches, file systems, and OS implementation.</p><a class="resource-link" href="https://ocw.mit.edu/courses/6-828-operating-system-engineering-fall-2012/pages/study-materials/" target="_blank" rel="noopener noreferrer">Open study materials →</a></article>
-      <article class="resource-card"><div class="icon">🎥</div><div class="meta">NPTEL / SWAYAM</div><h3>Video Lectures & Courses</h3><p>Search NPTEL for operating systems, advanced operating systems, real-time systems, Linux, and systems-programming courses.</p><a class="resource-link" href="https://nptel.ac.in/" target="_blank" rel="noopener noreferrer">Visit NPTEL →</a></article>
-    </div>
-
-    <div class="section-title" style="margin-top:42px">
-      <div><div class="kicker">Open Learning Material</div><h2>Free Online Textbooks</h2></div>
-      <p>Open-access reading material for reinforcing core FOSD concepts.</p>
-    </div>
-
-    <div class="resource-grid">
-      <article class="resource-card"><div class="icon">📖</div><div class="meta">Free Online Textbook</div><h3>Operating Systems: Three Easy Pieces</h3><p>A freely available operating-systems textbook covering virtualization, concurrency, and persistence.</p><a class="resource-link" href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noopener noreferrer">Open OSTEP →</a></article>
-    </div>
-
-    <div class="section-title" style="margin-top:42px">
-      <div><div class="kicker">Technical References</div><h2>Online References & Documentation</h2></div>
-      <p>Primary technical documentation for Linux and systems programming.</p>
-    </div>
-
-    <div class="resource-grid">
-      <article class="resource-card"><div class="icon">🐧</div><div class="meta">Linux Documentation</div><h3>Linux Kernel Documentation</h3><p>Primary documentation for Linux kernel subsystems, interfaces, and kernel-level concepts.</p><a class="resource-link" href="https://docs.kernel.org/" target="_blank" rel="noopener noreferrer">Open documentation →</a></article>
-      <article class="resource-card"><div class="icon">⌨️</div><div class="meta">System Programming</div><h3>Linux man-pages</h3><p>Reference documentation for system calls, library interfaces, commands, and Linux programming interfaces.</p><a class="resource-link" href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener noreferrer">Open man-pages →</a></article>
-      <article class="resource-card"><div class="icon">🔬</div><div class="meta">Course Materials</div><h3>Topic-wise Lecture PDFs</h3><p>Course-specific lecture PDFs are provided through the Lecture Notes page as they are uploaded.</p><a class="resource-link" href="lectures.html">Go to Lecture Notes →</a></article>
-      <article class="resource-card"><div class="icon">🧪</div><div class="meta">Course Practice</div><h3>Laboratory Manual & Practicals</h3><p>Use the practical sessions to connect OS theory with Linux system calls, processes, threads, synchronization, memory, I/O, and performance analysis.</p><a class="resource-link" href="practicals.html">Open Practicals →</a></article>
-    </div>
-  </div>
-</section>
-
-<section class="resource-section" id="interactive">
-  <div class="container">
-    <div class="section-title">
-      <div><div class="kicker">Hands-on Learning</div><h2>Interactive Learning</h2></div>
-      <p>Virtual laboratories and browser-based simulations for experimenting with OS concepts.</p>
-    </div>
-
-    <div class="resource-grid">
-      <article class="resource-card"><div class="icon">🧪</div><div class="meta">Government of India · Virtual Labs</div><h3>Operating Systems Virtual Lab</h3><p>Interactive experiments for process states, context switching, scheduling, and synchronization-related OS concepts.</p><a class="resource-link" href="https://www.vlab.co.in/" target="_blank" rel="noopener noreferrer">Open Virtual Labs →</a></article>
-      <article class="resource-card"><div class="icon">🖥️</div><div class="meta">Interactive OS Simulator</div><h3>OS Lab</h3><p>Browser-based simulations for CPU scheduling, memory allocation, paging, disk scheduling, and page-replacement algorithms.</p><a class="resource-link" href="https://oslab.xikai.me/" target="_blank" rel="noopener noreferrer">Open OS Lab →</a></article>
-      <article class="resource-card"><div class="icon">📊</div><div class="meta">Educational Simulations</div><h3>VisualizeIT · Operating Systems</h3><p>Interactive visualizations for operating-system algorithms and concepts.</p><a class="resource-link" href="https://visualize-it.tech/simulations" target="_blank" rel="noopener noreferrer">Explore Simulations →</a></article>
-    </div>
-
-    <div class="notice-box"><strong>Suggested use</strong>Use the interactive resources alongside the corresponding FOSD lecture unit. Students should first understand the algorithm or mechanism from the lecture material and then use the simulator or virtual laboratory to observe its behavior.</div>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer"><div class="container footer-grid">
-  <div><h3>FOSD · CEUC301</h3><p>Fundamentals of Operating System Design<br>Course portal by Prashant Jadav.</p></div>
-  <div><h3>Course</h3><p><a href="syllabus.html">Syllabus</a><br><a href="lectures.html">Lecture Notes</a><br><a href="practicals.html">Practicals</a></p></div>
-  <div><h3>Resources</h3><p><a href="question-bank.html">Question Bank</a><br><a href="resources.html">Learning Resources</a></p></div>
-</div><div class="container footer-bottom">© 2026 Prashant Jadav · Faculty of Technology and Engineering, CHARUSAT</div></footer>
-<script src="assets/js/script.js"></script>
+    <div class="container footer-bottom">© 2026 Prashant Jadav · Faculty of Technology and Engineering, CHARUSAT</div>
+  </footer>
+  <script src="assets/js/script.js"></script>
 </body>
+
 </html>
