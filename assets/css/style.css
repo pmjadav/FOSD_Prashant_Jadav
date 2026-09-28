@@ -142,3 +142,12 @@ body.dark {
 .info-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}.info-strip>div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.info-strip strong{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue2)}.info-strip span{display:block;font-weight:800;margin-top:4px}.cards.two{grid-template-columns:repeat(2,1fr)}.detail-card{margin:18px 0}.container>.card.detail-card{width:100%}.cards.two>.card.detail-card{width:100%;min-width:0}.resource-list{display:grid;gap:12px}.resource{display:flex;justify-content:space-between;align-items:center;gap:16px}.resource small{display:block;color:var(--muted);margin-top:4px}.practical-no{font-size:.72rem;letter-spacing:.12em;color:var(--blue2);font-weight:900;margin-bottom:4px}.topic-list{display:grid;gap:10px}.topic-link{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:13px 16px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}.topic-link:hover{border-color:#9ac7ff;transform:translateY(-1px)}.pdf-note{font-size:.72rem;color:var(--muted);font-weight:800;white-space:nowrap}.notice{padding:16px 18px;border:1px solid #b9d8ff;background:var(--soft);border-radius:14px}.list{padding-left:20px}.list li{margin:6px 0}@media(max-width:800px){.info-strip{grid-template-columns:repeat(2,1fr)}.container>.card.detail-card{width:100%}.cards.two>.card.detail-card{width:100%;min-width:0}
 .cards.two{grid-template-columns:1fr}.resource{align-items:flex-start;flex-direction:column}}
 .detail-card table{width:100%;max-width:100%;min-width:0;table-layout:fixed;border-collapse:collapse}.detail-card th,.detail-card td{overflow-wrap:anywhere}
+
+.evaluation-intro{margin:0 0 18px;color:var(--muted)}
+.evaluation-info h3{margin-top:0}
+.evaluation-info p+p{margin-top:8px}
+.evaluation-note{margin:0 0 14px;color:var(--muted)}
+.evaluation-total>*{background:var(--soft);border-top:2px solid var(--blue2);font-weight:900}
+.evaluation-summary{border-top:4px solid var(--blue)}
+.dark .evaluation-total>*{color:var(--ink)}
+.teaching-scheme{padding:0;margin:26px 0}

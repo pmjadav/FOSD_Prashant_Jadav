@@ -49,6 +49,7 @@ function setActiveNavigation() {
         const isActive = link.dataset.navPage === pagePath
             || (link.dataset.navGroup === "units" && pagePath.startsWith("units/"))
             || (link.dataset.navGroup === "practicals" && pagePath.startsWith("practicals/"))
+            || (link.dataset.navGroup === "resources" && pagePath.startsWith("resources/"))
             || (link.dataset.navGroup === "question-bank" && questionBankPages.has(pagePath));
 
         if (isActive) {
