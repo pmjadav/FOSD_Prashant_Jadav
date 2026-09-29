@@ -151,3 +151,5 @@ body.dark {
 .evaluation-summary{border-top:4px solid var(--blue)}
 .dark .evaluation-total>*{color:var(--ink)}
 .teaching-scheme{padding:0;margin:26px 0}
+.lecture-units .section-head{align-items:flex-start;flex-direction:column}
+.lecture-units>.card{min-width:0}
