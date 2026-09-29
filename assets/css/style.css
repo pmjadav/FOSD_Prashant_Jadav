@@ -153,3 +153,5 @@ body.dark {
 .teaching-scheme{padding:0;margin:26px 0}
 .lecture-units .section-head{align-items:flex-start;flex-direction:column}
 .lecture-units>.card{min-width:0}
+.question-bank-return{display:flex;justify-content:flex-end;margin-top:20px}
+.question-bank-return-top{margin:0 0 16px}
