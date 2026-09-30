@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Home | FOSD · CEUC301</title>
     <meta name="description" content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav">
+    <script>if(localStorage.getItem("fosd-dark")==="true"){document.documentElement.classList.add("dark");}</script>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png">
     <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png">
@@ -58,6 +59,20 @@
                 <div class="quick-icon">🧩</div><strong>Units</strong><span>Explore by topic</span>
             </a></div>
     </div>
+    <section id="latest-announcements" class="announcement-section" aria-labelledby="latest-announcements-heading" hidden>
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <div class="kicker">Stay up to date</div>
+                    <h2 id="latest-announcements-heading">Latest Announcements</h2>
+                </div>
+            </div>
+            <div id="homepage-announcements" class="announcement-grid announcement-grid-home" aria-live="polite"></div>
+            <div class="announcement-all-link">
+                <a class="btn btn-primary" href="announcements.html">View All Announcements →</a>
+            </div>
+        </div>
+    </section>
     <section>
         <div class="container">
             <div class="section-head">

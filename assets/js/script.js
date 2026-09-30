@@ -1,6 +1,11 @@
 const scriptUrl = document.currentScript ? document.currentScript.src : window.location.href;
 const siteRoot = new URL("../../", scriptUrl);
 
+if (document.documentElement.classList.contains("dark")) {
+    document.body.classList.add("dark");
+    document.documentElement.classList.remove("dark");
+}
+
 async function loadComponent(containerId, componentPath) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -68,9 +73,6 @@ function initializeSiteFeatures() {
 
     const theme = document.getElementById("themeToggle");
     if (theme) {
-        if (localStorage.getItem("fosd-dark") === "true") {
-            document.body.classList.add("dark");
-        }
         theme.addEventListener("click", () => {
             document.body.classList.toggle("dark");
             localStorage.setItem("fosd-dark", document.body.classList.contains("dark"));
@@ -97,10 +99,272 @@ function initializeSiteFeatures() {
     });
 }
 
+const announcementTypes = new Set(["important", "academic", "practical", "resource", "website"]);
+
+function resolveAnnouncementLink(value) {
+    const link = new URL(value, siteRoot);
+    if (!["http:", "https:"].includes(link.protocol)) {
+        throw new Error(`Unsupported announcement link protocol: ${link.protocol}`);
+    }
+    if (link.origin === siteRoot.origin && !link.pathname.startsWith(siteRoot.pathname)) {
+        throw new Error("Announcement links must stay within the site base path.");
+    }
+    return link;
+}
+
+function validateAnnouncementText(value, field, index) {
+    if (value !== undefined && typeof value !== "string") {
+        throw new Error(`Announcement at index ${index} has invalid ${field}.`);
+    }
+}
+
+function validateAnnouncementLink(value, field, index) {
+    validateAnnouncementText(value, field, index);
+    if (value && value.trim()) {
+        try {
+            resolveAnnouncementLink(value.trim());
+        } catch {
+            throw new Error(`Announcement at index ${index} has an invalid ${field}.`);
+        }
+    }
+}
+
+function validateAnnouncement(announcement, index) {
+    if (
+        !announcement
+        || typeof announcement !== "object"
+        || Array.isArray(announcement)
+        || typeof announcement.title !== "string"
+        || typeof announcement.description !== "string"
+        || typeof announcement.date !== "string"
+        || !/^\d{4}-\d{2}-\d{2}$/.test(announcement.date)
+        || Number.isNaN(Date.parse(`${announcement.date}T00:00:00Z`))
+        || new Date(`${announcement.date}T00:00:00Z`).toISOString().slice(0, 10) !== announcement.date
+        || !announcementTypes.has(announcement.type)
+    ) {
+        throw new Error(`Announcement at index ${index} has invalid required fields.`);
+    }
+
+    validateAnnouncementLink(announcement.link, "link", index);
+    validateAnnouncementText(announcement.linkText, "link text", index);
+
+    if (announcement.eventDetails !== undefined) {
+        const details = announcement.eventDetails;
+        if (!details || typeof details !== "object" || Array.isArray(details)) {
+            throw new Error(`Announcement at index ${index} has invalid event details.`);
+        }
+        validateAnnouncementText(details.dateTime, "event date and time", index);
+        validateAnnouncementText(details.venue, "event venue", index);
+
+        if (details.registration !== undefined) {
+            const registration = details.registration;
+            if (!registration || typeof registration !== "object" || Array.isArray(registration)) {
+                throw new Error(`Announcement at index ${index} has invalid registration details.`);
+            }
+            validateAnnouncementLink(registration.url, "registration URL", index);
+            validateAnnouncementText(registration.text, "registration text", index);
+        }
+    }
+
+    if (announcement.expert !== undefined) {
+        const expert = announcement.expert;
+        if (!expert || typeof expert !== "object" || Array.isArray(expert)) {
+            throw new Error(`Announcement at index ${index} has invalid expert details.`);
+        }
+        validateAnnouncementText(expert.name, "expert name", index);
+        validateAnnouncementText(expert.designation, "expert designation", index);
+        validateAnnouncementLink(expert.linkedin, "expert LinkedIn URL", index);
+    }
+}
+
+async function loadAnnouncements() {
+    const response = await fetch(new URL("data/announcements.json", siteRoot));
+    if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    const announcements = Array.isArray(data) ? data : [data];
+    announcements.forEach(validateAnnouncement);
+
+    return announcements.sort((first, second) => second.date.localeCompare(first.date));
+}
+
+function createAnnouncementCard(announcement, isLatest, compact = false) {
+    const card = document.createElement("article");
+    card.className = "card announcement-card";
+    if (compact) {
+        card.classList.add("announcement-card-compact");
+    }
+    if (isLatest) {
+        card.classList.add("announcement-card-latest");
+    }
+
+    const labels = document.createElement("div");
+    labels.className = "announcement-labels";
+
+    const type = document.createElement("span");
+    type.className = `announcement-type announcement-type-${announcement.type}`;
+    type.textContent = announcement.type.toUpperCase();
+    labels.append(type);
+
+    if (isLatest) {
+        const latest = document.createElement("span");
+        latest.className = "announcement-latest";
+        latest.textContent = "Latest";
+        labels.append(latest);
+    }
+
+    const title = document.createElement("h3");
+    title.textContent = announcement.title;
+    title.className = "announcement-title";
+
+    const date = document.createElement("time");
+    date.className = "announcement-date";
+    date.dateTime = announcement.date;
+    date.textContent = new Intl.DateTimeFormat("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC"
+    }).format(new Date(`${announcement.date}T00:00:00Z`));
+
+    const description = document.createElement(compact ? "p" : "div");
+    description.className = compact
+        ? "announcement-description announcement-description-preview"
+        : "announcement-description";
+    if (compact) {
+        description.textContent = announcement.description.replace(/\s+/g, " ").trim();
+    } else {
+        announcement.description.split(/\n\s*\n/).forEach(paragraphText => {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = paragraphText;
+            description.append(paragraph);
+        });
+    }
+
+    card.append(labels, title, date, description);
+
+    if (announcement.eventDetails && !compact) {
+        const eventDetails = document.createElement("section");
+        eventDetails.className = "announcement-event";
+        eventDetails.setAttribute("aria-label", "Event details");
+        const eventHeading = document.createElement("h4");
+        eventHeading.textContent = "Event details";
+        eventDetails.append(eventHeading);
+
+        const detailsGrid = document.createElement("dl");
+        detailsGrid.className = "announcement-event-grid";
+        [
+            ["Date & time", announcement.eventDetails.dateTime],
+            ["Venue", announcement.eventDetails.venue]
+        ].forEach(([label, value]) => {
+            if (!value) return;
+            const item = document.createElement("div");
+            const term = document.createElement("dt");
+            term.textContent = label;
+            const detail = document.createElement("dd");
+            detail.textContent = value;
+            item.append(term, detail);
+            detailsGrid.append(item);
+        });
+        eventDetails.append(detailsGrid);
+        card.append(eventDetails);
+    }
+
+    if (announcement.expert && !compact) {
+        const expert = document.createElement("div");
+        expert.className = "announcement-expert";
+        const expertHeading = document.createElement("h4");
+        expertHeading.textContent = "Featuring";
+        expert.append(expertHeading);
+
+        const expertName = document.createElement("strong");
+        expertName.textContent = announcement.expert.name || "Guest expert";
+        expert.append(expertName);
+        if (announcement.expert.designation) {
+            const designation = document.createElement("p");
+            designation.textContent = announcement.expert.designation;
+            expert.append(designation);
+        }
+        if (announcement.expert.linkedin && announcement.expert.linkedin.trim()) {
+            const profile = resolveAnnouncementLink(announcement.expert.linkedin.trim());
+            const profileLink = document.createElement("a");
+            profileLink.href = profile.href;
+            profileLink.textContent = "View LinkedIn profile ↗";
+            profileLink.target = "_blank";
+            profileLink.rel = "noopener noreferrer";
+            expert.append(profileLink);
+        }
+        card.append(expert);
+    }
+
+    const registration = announcement.eventDetails?.registration;
+    const actionUrl = registration?.url || announcement.link;
+    const actionText = registration?.text || announcement.linkText || "View announcement →";
+    if (actionUrl && actionUrl.trim()) {
+        const link = resolveAnnouncementLink(actionUrl.trim());
+        const anchor = document.createElement("a");
+        anchor.className = `btn announcement-link${registration ? " btn-primary" : ""}`;
+        anchor.href = link.href;
+        anchor.textContent = actionText;
+        if (link.origin !== siteRoot.origin) {
+            anchor.target = "_blank";
+            anchor.rel = "noopener noreferrer";
+        }
+        card.append(anchor);
+    }
+
+    return card;
+}
+
+function showAnnouncementMessage(container, message, isError = false) {
+    const notice = document.createElement("p");
+    notice.className = isError ? "notice announcement-message announcement-error" : "notice announcement-message";
+    notice.setAttribute("role", isError ? "alert" : "status");
+    notice.textContent = message;
+    container.replaceChildren(notice);
+}
+
+function renderAnnouncementList(container, announcements, limit, compact = false) {
+    const displayed = announcements.slice(0, limit);
+    container.replaceChildren(...displayed.map((announcement, index) =>
+        createAnnouncementCard(announcement, index === 0, compact)
+    ));
+    return displayed.length > 0;
+}
+
+async function renderAnnouncements() {
+    const fullList = document.getElementById("announcements-list");
+    const homepageList = document.getElementById("homepage-announcements");
+    const homepageSection = document.getElementById("latest-announcements");
+    if (!fullList && !homepageList) return;
+
+    try {
+        const announcements = await loadAnnouncements();
+        if (fullList && !renderAnnouncementList(fullList, announcements, announcements.length)) {
+            showAnnouncementMessage(fullList, "No announcements are available at this time.");
+        }
+        if (homepageList && renderAnnouncementList(homepageList, announcements, 3, true)) {
+            homepageSection.hidden = false;
+        }
+    } catch (error) {
+        console.error("Unable to load announcements:", error);
+        if (fullList) {
+            showAnnouncementMessage(fullList, "Announcements could not be loaded. Please try again later.", true);
+        }
+        if (homepageList) {
+            showAnnouncementMessage(homepageList, "Announcements could not be loaded. Please try again later.", true);
+            homepageSection.hidden = false;
+        }
+    }
+}
+
 async function initializeSite() {
     await Promise.all([
         loadComponent("site-navbar", "components/navbar.html"),
-        loadComponent("site-footer", "components/footer.html")
+        loadComponent("site-footer", "components/footer.html"),
+        renderAnnouncements()
     ]);
     setActiveNavigation();
     initializeSiteFeatures();

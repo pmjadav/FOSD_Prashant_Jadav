@@ -1,0 +1,21 @@
+[
+  {
+    "date": "2026-10-03",
+    "type": "academic",
+    "title": "Hands-on Workshop: From Code to Control – Hands-on Embedded System with FreeRTOS",
+    "description": "Dear Students,\n\nWe are pleased to announce a Hands-on Workshop on \"From code to control – Hands-on Embedded System with FreeRTOS\".\n\nExplore task creation, scheduling, and synchronization using FreeRTOS through hands-on exercises, and learn how software controls embedded hardware. Through practical implementation, you will gain valuable technical skills that are highly relevant for campus placements, technical interviews, coding assessments, and software development careers.",
+    "eventDetails": {
+      "dateTime": "03rd October 2026; 9:30 a.m. onwards",
+      "venue": "Announce later",
+      "registration": {
+        "url": "https://forms.gle/yKtsnpkVkZ3Vjzt16",
+        "text": "Register Now →"
+      }
+    },
+    "expert": {
+      "name": "Dr. Jignesh Patoliya",
+      "designation": "Senior Engineer - EInfochips",
+      "linkedin": "https://www.linkedin.com/in/dr-jignesh-patoliya-0230ab1b4/"
+    }
+  }
+]
