@@ -182,6 +182,7 @@ html.dark {
 .announcement-event-grid>div{padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:var(--card)}
 .announcement-event-grid dt{color:var(--muted);font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
 .announcement-event-grid dd{margin:4px 0 0;font-weight:750;overflow-wrap:anywhere}
+.announcement-registration-note{margin:20px 0 0;padding:14px 16px;border-left:3px solid var(--blue);border-radius:0 10px 10px 0;background:var(--soft);color:var(--muted);font-weight:650}
 .announcement-expert strong{font-size:1.05rem}
 .announcement-expert p{margin:3px 0 8px;color:var(--muted)}
 .announcement-expert a{color:var(--blue2);font-weight:800}

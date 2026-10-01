@@ -129,6 +129,15 @@ function validateAnnouncementLink(value, field, index) {
     }
 }
 
+function validateRegistration(registration, index) {
+    if (!registration || typeof registration !== "object" || Array.isArray(registration)) {
+        throw new Error(`Announcement at index ${index} has invalid registration details.`);
+    }
+    validateAnnouncementText(registration.description, "registration description", index);
+    validateAnnouncementLink(registration.url, "registration URL", index);
+    validateAnnouncementText(registration.text, "registration text", index);
+}
+
 function validateAnnouncement(announcement, index) {
     if (
         !announcement
@@ -153,17 +162,20 @@ function validateAnnouncement(announcement, index) {
         if (!details || typeof details !== "object" || Array.isArray(details)) {
             throw new Error(`Announcement at index ${index} has invalid event details.`);
         }
-        validateAnnouncementText(details.dateTime, "event date and time", index);
-        validateAnnouncementText(details.venue, "event venue", index);
-
-        if (details.registration !== undefined) {
-            const registration = details.registration;
-            if (!registration || typeof registration !== "object" || Array.isArray(registration)) {
-                throw new Error(`Announcement at index ${index} has invalid registration details.`);
+        Object.entries(details).forEach(([key, value]) => {
+            if (key === "registration") {
+                validateRegistration(value, index);
+            } else if (
+                typeof value !== "string"
+                && !(typeof value === "number" && Number.isFinite(value))
+            ) {
+                throw new Error(`Announcement at index ${index} has invalid event detail "${key}".`);
             }
-            validateAnnouncementLink(registration.url, "registration URL", index);
-            validateAnnouncementText(registration.text, "registration text", index);
-        }
+        });
+    }
+
+    if (announcement.registration !== undefined) {
+        validateRegistration(announcement.registration, index);
     }
 
     if (announcement.expert !== undefined) {
@@ -175,6 +187,20 @@ function validateAnnouncement(announcement, index) {
         validateAnnouncementText(expert.designation, "expert designation", index);
         validateAnnouncementLink(expert.linkedin, "expert LinkedIn URL", index);
     }
+}
+
+function formatAnnouncementDetailLabel(key) {
+    const knownLabels = {
+        date: "Event date",
+        dateTime: "Date & time",
+        maximumTeams: "Maximum teams"
+    };
+    if (knownLabels[key]) return knownLabels[key];
+
+    const label = key
+        .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+        .toLowerCase();
+    return label.replace(/^./, character => character.toUpperCase());
 }
 
 async function loadAnnouncements() {
@@ -255,21 +281,28 @@ function createAnnouncementCard(announcement, isLatest, compact = false) {
 
         const detailsGrid = document.createElement("dl");
         detailsGrid.className = "announcement-event-grid";
-        [
-            ["Date & time", announcement.eventDetails.dateTime],
-            ["Venue", announcement.eventDetails.venue]
-        ].forEach(([label, value]) => {
-            if (!value) return;
+        Object.entries(announcement.eventDetails)
+            .filter(([key]) => key !== "registration")
+            .forEach(([key, value]) => {
+            if (value === "") return;
             const item = document.createElement("div");
             const term = document.createElement("dt");
-            term.textContent = label;
+            term.textContent = formatAnnouncementDetailLabel(key);
             const detail = document.createElement("dd");
-            detail.textContent = value;
+            detail.textContent = String(value);
             item.append(term, detail);
             detailsGrid.append(item);
         });
         eventDetails.append(detailsGrid);
         card.append(eventDetails);
+    }
+
+    const registration = announcement.registration || announcement.eventDetails?.registration;
+    if (registration?.description && !compact) {
+        const registrationNote = document.createElement("p");
+        registrationNote.className = "announcement-registration-note";
+        registrationNote.textContent = registration.description;
+        card.append(registrationNote);
     }
 
     if (announcement.expert && !compact) {
@@ -299,7 +332,6 @@ function createAnnouncementCard(announcement, isLatest, compact = false) {
         card.append(expert);
     }
 
-    const registration = announcement.eventDetails?.registration;
     const actionUrl = registration?.url || announcement.link;
     const actionText = registration?.text || announcement.linkText || "View announcement →";
     if (actionUrl && actionUrl.trim()) {
