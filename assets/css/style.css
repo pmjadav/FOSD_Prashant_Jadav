@@ -156,6 +156,9 @@ html.dark {
 .lecture-units>.card{min-width:0}
 .question-bank-return{display:flex;justify-content:flex-end;margin-top:20px}
 .question-bank-return-top{margin:0 0 16px}
+.additional-learning-section{padding-top:0}
+.additional-learning-card h2{margin:0 0 8px}
+.additional-learning-card p{margin:0;color:var(--muted)}
 .announcement-section{padding:38px 0}
 .announcement-section[hidden]{display:none}
 .announcement-grid{display:grid;gap:16px}

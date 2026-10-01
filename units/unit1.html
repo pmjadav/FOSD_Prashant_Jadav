@@ -1,59 +1,153 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Unit 1 | FOSD · CEUC301</title>
-    <meta name="description" content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav">
-    <script>if(localStorage.getItem("fosd-dark")==="true"){document.documentElement.classList.add("dark");}</script>
-    <link rel="stylesheet" href="../assets/css/style.css">
-<link rel="icon" type="image/png" href="../assets/images/fosd-favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/fosd-favicon.png">
-    </head>
+    <meta
+      name="description"
+      content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav"
+    />
+    <script>
+      if (localStorage.getItem("fosd-dark") === "true") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/fosd-favicon.png"
+    />
+    <link rel="apple-touch-icon" href="../assets/images/fosd-favicon.png" />
+  </head>
 
-<body>
+  <body>
     <div class="topbar">
-        <div class="container">CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301</div>
+      <div class="container">
+        CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301
+      </div>
     </div>
     <div id="site-navbar"></div>
     <div class="page-hero">
-        <div class="container">
-            <div class="breadcrumb">Home / Lecture Notes / Unit 1</div>
-            <h1>Unit 1: Operating System Design, Processes and Threads</h1>
-        </div>
+      <div class="container">
+        <div class="breadcrumb">Home / Lecture Notes / Unit 1</div>
+        <h1>Unit 1: Operating System Design, Processes and Threads</h1>
+      </div>
     </div>
     <section>
-        <div class="container">
-
-            <div class="card" style="margin-top:20px">
-                <div class="section-head">
-                    <div><span class="badge">UNIT 1 · 5 HRS</span>
-                        <h2>Operating System Design, Processes and Threads</h2>
-                    </div><a class="btn" href="../lectures.html">← Lecture Notes</a>
-                </div>
-                <div class="topic-list"><a class="topic-link pdf-placeholder"
-                        href="../files/notes/unit1-design-goals-performance-scalability-reliability-security-portability-and-interoperability.pdf"><span>📄
-                            Design goals: Performance, Scalability, Reliability, Security, Portability and
-                            Interoperability</span><span class="pdf-note">Lecture Note</span></a><a
-                        class="topic-link pdf-placeholder"
-                        href="../files/notes/unit1-kernel-architectures-monolithic-microkernel-hybrid-design-trade-offs.pdf"><span>📄
-                            Kernel architectures: Monolithic, Microkernel, Hybrid (design trade-offs)</span><span
-                            class="pdf-note">Lecture Note</span></a><a class="topic-link pdf-placeholder"
-                        href="../files/notes/unit1-process-control-block-pcb-and-thread-control-block-tcb-internals.pdf"><span>📄
-                            Process Control Block (PCB) and Thread Control Block (TCB) internals</span><span
-                            class="pdf-note">Lecture Note</span></a><a class="topic-link pdf-placeholder"
-                        href="../files/notes/unit1-process-and-thread-switching-overhead-and-performance-evaluation.pdf"><span>📄
-                            Process and Thread switching: overhead and performance evaluation</span><span
-                            class="pdf-note">Lecture Note</span></a><a class="topic-link pdf-placeholder"
-                        href="../files/notes/unit1-kernel-vs-user-level-threads-design-and-performance-implications.pdf"><span>📄
-                            Kernel vs. user-level threads: design and performance implications</span><span
-                            class="pdf-note">Lecture Note</span></a></div>
+      <div class="container">
+        <div class="card" style="margin-top: 20px">
+          <div class="section-head">
+            <div>
+              <span class="badge">UNIT 1 · 5 HRS</span>
+              <h2>Operating System Design, Processes and Threads</h2>
             </div>
+            <a class="btn" href="../lectures.html">← Lecture Notes</a>
+          </div>
+          <div class="topic-list">
+            <a
+              class="topic-link pdf-placeholder"
+              href="../files/notes/unit1-design-goals-performance-scalability-reliability-security-portability-and-interoperability.pdf"
+              ><span
+                >📄 Design goals: Performance, Scalability, Reliability,
+                Security, Portability and Interoperability</span
+              ><span class="pdf-note">Lecture Note</span></a
+            ><a
+              class="topic-link pdf-placeholder"
+              href="../files/notes/unit1-kernel-architectures-monolithic-microkernel-hybrid-design-trade-offs.pdf"
+              ><span
+                >📄 Kernel architectures: Monolithic, Microkernel, Hybrid
+                (design trade-offs)</span
+              ><span class="pdf-note">Lecture Note</span></a
+            ><a
+              class="topic-link pdf-placeholder"
+              href="../files/notes/unit1-process-control-block-pcb-and-thread-control-block-tcb-internals.pdf"
+              ><span
+                >📄 Process Control Block (PCB) and Thread Control Block (TCB)
+                internals</span
+              ><span class="pdf-note">Lecture Note</span></a
+            ><a
+              class="topic-link pdf-placeholder"
+              href="../files/notes/unit1-process-and-thread-switching-overhead-and-performance-evaluation.pdf"
+              ><span
+                >📄 Process and Thread switching: overhead and performance
+                evaluation</span
+              ><span class="pdf-note">Lecture Note</span></a
+            ><a
+              class="topic-link pdf-placeholder"
+              href="../files/notes/unit1-kernel-vs-user-level-threads-design-and-performance-implications.pdf"
+              ><span
+                >📄 Kernel vs. user-level threads: design and performance
+                implications</span
+              ><span class="pdf-note">Lecture Note</span></a
+            >
+          </div>
         </div>
+      </div>
+    </section>
+    <section class="additional-learning-section">
+      <div class="container">
+        <div class="card additional-learning-card">
+          <h2>Additional Learning Material</h2>
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_why_do_we_need_os.pdf"
+            ><span>📄 Why do we need an Operating System?</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_types_of_os.pdf"
+            ><span>📄 Types of Operating Systems</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_os_services.pdf"
+            ><span>📄 Operating Systems Services</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_shell_and_kernel.pdf"
+            ><span>📄 Shell and Kernel</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_library_functions.pdf"
+            ><span>📄 Library Functions</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_types_of_os.pdf"
+            ><span>📄 System Calls</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_user_kernel_mode.pdf"
+            ><span>📄 User Mode and Kernel Mode</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_processor_mode_bits_and_protection.pdf"
+            ><span>📄 Processor Mode bits and Protection</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+          <a
+            class="topic-link pdf-placeholder"
+            href="../files/notes/unit1_user_kernel_address_space.pdf"
+            ><span>📄 User Address Space and Kernel Address Space</span
+            ><span class="pdf-note">Lecture Note</span></a
+          >
+        </div>
+      </div>
     </section>
     <div id="site-footer"></div>
     <script src="../assets/js/script.js"></script>
-</body>
-
+  </body>
 </html>
