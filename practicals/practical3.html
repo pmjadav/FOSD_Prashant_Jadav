@@ -1,340 +1,306 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>
-            Practical 3 | FOSD · CEUC301
-        </title>
-        <meta name="description" content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav">
-        <script>if(localStorage.getItem("fosd-dark")==="true"){document.documentElement.classList.add("dark");}</script>
-        <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="icon" type="image/png" href="../assets/images/fosd-favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/fosd-favicon.png">
-    </head>
-    <body>
-        <div class="topbar">
-            <div class="container">
-                CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301
-            </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Practical 3 | FOSD · CEUC301</title>
+    <meta
+      name="description"
+      content="Fundamentals of Operating System Design — CEUC301 — Prashant Jadav"
+    />
+    <script>
+      if (localStorage.getItem("fosd-dark") === "true") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/fosd-favicon.png"
+    />
+    <link rel="apple-touch-icon" href="../assets/images/fosd-favicon.png" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        CHARUSAT · Faculty of Technology and Engineering · FOSD · CEUC301
+      </div>
+    </div>
+    <div id="site-navbar"></div>
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb">Home / Practicals / Practical 3</div>
+        <h1>Practical 3: POSIX File Operations and I/O Performance</h1>
+        <p>CO Mapping: CO1, CO6 · Laboratory session: 2 hours</p>
+      </div>
+    </div>
+    <section>
+      <div class="container">
+        <div class="notice">
+          <strong> Assessment:</strong> Each practical is assessed out of 10
+          marks. Students perform the experiment, record observations, complete
+          supplementary work and answer viva questions.
         </div>
-        <div id="site-navbar"></div>
-        <div class="page-hero">
-            <div class="container">
-                <div class="breadcrumb">
-                    Home / Practicals / Practical 3
-                </div>
-                <h1>
-                    Practical 3: POSIX File Operations and I/O Performance
-                </h1>
-                <p>
-                    CO Mapping: CO1, CO6 · Laboratory session: 2 hours
-                </p>
-            </div>
+        <div class="card detail-card">
+          <h2>1. Problem Definition</h2>
+          <p>
+            A company is developing a secure backup utility for Linux servers to
+            copy large files, preserve metadata, detect I/O errors, and support
+            random file access. Develop a Linux application using POSIX system
+            calls such as open(), read(), write(), lseek(), stat(), and close()
+            to perform file operations. Compare the implementation with buffered
+            C library functions and recommend the most appropriate approach for
+            different storage applications.
+          </p>
         </div>
-        <section>
-            <div class="container">
-                <div class="notice">
-                    <strong> Assessment:</strong> Each practical is assessed out of 10 marks. Students perform the experiment, record observations, complete supplementary work and answer viva questions.
-                </div>
-                <div class="card detail-card">
-                    <h2>
-                        1. Problem Definition
-                    </h2>
-                    <p>
-                        A company is developing a secure backup utility for Linux servers to copy large files, preserve metadata, detect I/O errors, and support random file access. Develop a Linux application using POSIX system calls such as open(), read(), write(), lseek(), stat(), and close() to perform file operations. Compare the implementation with buffered C library functions and recommend the most appropriate approach for different storage applications.
-                    </p>
-                </div>
-                <div class="cards two">
-                    <div class="card detail-card">
-                        <h2>
-                            2. Key Questions / Analysis / Interpretation
-                        </h2>
-                        <p>
-                            Implementation CO1, CO6 8 | P a g e
-                        </p>
-                        <ol>
-                            <li>
-                                Differentiate POSIX system calls and standard C library file I/O.
-                            </li>
-                            <li>
-                                Why are file descriptors used after opening a file?
-                            </li>
-                            <li>
-                                How does buffer size influence execution time and throughput?
-                            </li>
-                            <li>
-                                Interpret the output of stat(), lsof, strace, and /proc/self/fd.
-                            </li>
-                            <li>
-                                How are file access permissions verified?
-                            </li>
-                            <li>
-                                Compare sequential and random file access using lseek().
-                            </li>
-                            <li>
-                                Recommend an appropriate file I/O technique for large file transfers.
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            3. Supplementary Problems
-                        </h2>
-                        <ul>
-                            <li>
-                                Easy: Display file metadata using stat().
-                            </li>
-                            <li>
-                                Medium: Implement random file access using lseek().
-                            </li>
-                            <li>
-                                Hard: Develop a file synchronization utility that copies only modified files while preserving permissions.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            4. Key Skills to be Addressed
-                        </h2>
-                        <ul>
-                            <li>
-                                Linux system programming
-                            </li>
-                            <li>
-                                POSIX file system calls
-                            </li>
-                            <li>
-                                Error handling using errno and perror()
-                            </li>
-                            <li>
-                                File descriptor management
-                            </li>
-                            <li>
-                                Performance evaluation
-                            </li>
-                            <li>
-                                Linux diagnostic tools
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            5. Applications
-                        </h2>
-                        <ul>
-                            <li>
-                                Backup and recovery software
-                            </li>
-                            <li>
-                                File synchronization tools
-                            </li>
-                            <li>
-                                Log management systems
-                            </li>
-                            <li>
-                                Database storage engines
-                            </li>
-                            <li>
-                                Operating system utilities
-                            </li>
-                            <li>
-                                Cloud storage applications
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            6. Learning Outcome
-                        </h2>
-                        <p>
-                            Students will implement Linux file operations using POSIX system calls, analyze file management mechanisms, compare different I/O techniques, interpret performance results, and justify appropriate file handling strategies for real-world applications.
-                        </p>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            7. Dataset / Test Data
-                        </h2>
-                        <p>
-                            Use text files of approximately 1 KB, 100 KB, 1 MB, 10 MB, and 100 MB. Perform sequential copying, random access using lseek(), metadata retrieval using stat(), and compare different buffer sizes (1 KB, 4 KB, 16 KB, and 64 KB). Record execution time, throughput, and system call counts.
-                        </p>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            8. Tools / Technology to be Used
-                        </h2>
-                        <ul>
-                            <li>
-                                Ubuntu 24.04 LTS
-                            </li>
-                            <li>
-                                GCC Compiler
-                            </li>
-                            <li>
-                                Linux Terminal
-                            </li>
-                            <li>
-                                POSIX APIs
-                            </li>
-                            <li>
-                                <code>open()</code>
-                            </li>
-                            <li>
-                                <code>read()</code>
-                            </li>
-                            <li>
-                                <code>write()</code>
-                            </li>
-                            <li>
-                                <code>lseek()</code>
-                            </li>
-                            <li>
-                                <code>stat()</code>
-                            </li>
-                            <li>
-                                <code>close()</code>
-                            </li>
-                            <li>
-                                <code>strace</code>
-                            </li>
-                            <li>
-                                <code>stat</code>
-                            </li>
-                            <li>
-                                <code>lsof</code>
-                            </li>
-                            <li>
-                                <code>/proc filesystem</code>
-                            </li>
-                            <li>
-                                <code>time utility</code>
-                            </li>
-                            <li>
-                                9 | P a g e
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            9. Total Hours of Problem Definition and Implementation
-                        </h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Activity</th>
-                                    <th>Hours</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Problem Definition &amp; Analysis</td>
-                                    <td>0.5</td>
-                                </tr>
-                                <tr>
-                                    <td>Implementation &amp; Testing</td>
-                                    <td>1.5</td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <th>2.0</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            10. Total Hours of Engagement
-                        </h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Activity</th>
-                                    <th>Hours</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Pre-lab Study</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Laboratory Session</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Result Analysis</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Post-lab Work</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <th>5</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            11. Post Laboratory Work Description
-                        </h2>
-                        <p>
-                            Prepare a comparative report on POSIX system calls, standard C library I/O, memory-mapped I/O (mmap), and sendfile(). Compare their performance, portability, kernel involvement, memory usage, and suitable application domains. Recommend an appropriate approach for large-scale backup and storage systems.
-                        </p>
-                    </div>
-                    <div class="card detail-card">
-                        <h2>
-                            12. Rubrics
-                        </h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Criterion</th>
-                                    <th>Marks</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Problem Analysis</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Implementation</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>Analysis &amp; Interpretation</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Supplementary Problem</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Post Laboratory Work</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <td>Viva</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <th>10</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div style="margin-top:20px">
-                    <a class="btn" href="../practicals.html"> ← All practical sessions</a>
-                </div>
-            </div>
-        </section>
-        <div id="site-footer"></div>
-        <script src="../assets/js/script.js">
-        </script>
-    </body>
+        <div class="cards two">
+          <div class="card detail-card">
+            <h2>2. Key Questions / Analysis / Interpretation</h2>
+            <p>Implementation CO1, CO6 8 | P a g e</p>
+            <ol>
+              <li>
+                Differentiate POSIX system calls and standard C library file
+                I/O.
+              </li>
+              <li>Why are file descriptors used after opening a file?</li>
+              <li>
+                How does buffer size influence execution time and throughput?
+              </li>
+              <li>
+                Interpret the output of stat(), lsof, strace, and /proc/self/fd.
+              </li>
+              <li>How are file access permissions verified?</li>
+              <li>Compare sequential and random file access using lseek().</li>
+              <li>
+                Recommend an appropriate file I/O technique for large file
+                transfers.
+              </li>
+            </ol>
+          </div>
+          <div class="card detail-card">
+            <h2>3. Supplementary Problems</h2>
+            <ul>
+              <li>Easy: Display file metadata using stat().</li>
+              <li>Medium: Implement random file access using lseek().</li>
+              <li>
+                Hard: Develop a file synchronization utility that copies only
+                modified files while preserving permissions.
+              </li>
+            </ul>
+          </div>
+          <div class="card detail-card">
+            <h2>4. Key Skills to be Addressed</h2>
+            <ul>
+              <li>Linux system programming</li>
+              <li>POSIX file system calls</li>
+              <li>Error handling using errno and perror()</li>
+              <li>File descriptor management</li>
+              <li>Performance evaluation</li>
+              <li>Linux diagnostic tools</li>
+            </ul>
+          </div>
+          <div class="card detail-card">
+            <h2>5. Applications</h2>
+            <ul>
+              <li>Backup and recovery software</li>
+              <li>File synchronization tools</li>
+              <li>Log management systems</li>
+              <li>Database storage engines</li>
+              <li>Operating system utilities</li>
+              <li>Cloud storage applications</li>
+            </ul>
+          </div>
+          <div class="card detail-card">
+            <h2>6. Learning Outcome</h2>
+            <p>
+              Students will implement Linux file operations using POSIX system
+              calls, analyze file management mechanisms, compare different I/O
+              techniques, interpret performance results, and justify appropriate
+              file handling strategies for real-world applications.
+            </p>
+          </div>
+          <div class="card detail-card">
+            <h2>7. Dataset / Test Data</h2>
+            <p>
+              Use text files of approximately 1 KB, 100 KB, 1 MB, 10 MB, and 100
+              MB. Perform sequential copying, random access using lseek(),
+              metadata retrieval using stat(), and compare different buffer
+              sizes (1 KB, 4 KB, 16 KB, and 64 KB). Record execution time,
+              throughput, and system call counts.
+            </p>
+          </div>
+          <div class="card detail-card">
+            <h2>8. Tools / Technology to be Used</h2>
+            <ul>
+              <li>Ubuntu 24.04 LTS</li>
+              <li>GCC Compiler</li>
+              <li>Linux Terminal</li>
+              <li>POSIX APIs</li>
+              <li>
+                <code>open()</code>
+              </li>
+              <li>
+                <code>read()</code>
+              </li>
+              <li>
+                <code>write()</code>
+              </li>
+              <li>
+                <code>lseek()</code>
+              </li>
+              <li>
+                <code>stat()</code>
+              </li>
+              <li>
+                <code>close()</code>
+              </li>
+              <li>
+                <code>strace</code>
+              </li>
+              <li>
+                <code>stat</code>
+              </li>
+              <li>
+                <code>lsof</code>
+              </li>
+              <li>
+                <code>/proc filesystem</code>
+              </li>
+              <li>
+                <code>time utility</code>
+              </li>
+            </ul>
+          </div>
+          <div class="card detail-card">
+            <h2>9. Total Hours of Problem Definition and Implementation</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Problem Definition &amp; Analysis</td>
+                  <td>0.5</td>
+                </tr>
+                <tr>
+                  <td>Implementation &amp; Testing</td>
+                  <td>1.5</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <th>2.0</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card detail-card">
+            <h2>10. Total Hours of Engagement</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pre-lab Study</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>Laboratory Session</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>Result Analysis</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>Post-lab Work</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <th>5</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card detail-card">
+            <h2>11. Post Laboratory Work Description</h2>
+            <p>
+              Prepare a comparative report on POSIX system calls, standard C
+              library I/O, memory-mapped I/O (mmap), and sendfile(). Compare
+              their performance, portability, kernel involvement, memory usage,
+              and suitable application domains. Recommend an appropriate
+              approach for large-scale backup and storage systems.
+            </p>
+          </div>
+          <div class="card detail-card">
+            <h2>12. Rubrics</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Criterion</th>
+                  <th>Marks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Problem Analysis</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>Implementation</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>Analysis &amp; Interpretation</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>Supplementary Problem</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>Post Laboratory Work</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>Viva</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <th>10</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card detail-card">
+            <h2>13. Sample Programs</h2>
+            <p>Download the sample programs for this practical.</p>
+            <a
+              class="topic-link program-placeholder"
+              href="practical3/practical3.zip"
+              data-status="soon"
+              data-file="practicals/practical3/practical3.zip"
+            >
+              <span>Download sample programs</span>
+              <span class="badge">ZIP archive</span>
+            </a>
+          </div>
+        </div>
+        <div style="margin-top: 20px">
+          <a class="btn" href="../practicals.html"> ← All practical sessions</a>
+        </div>
+      </div>
+    </section>
+    <div id="site-footer"></div>
+    <script src="../assets/js/script.js"></script>
+  </body>
 </html>

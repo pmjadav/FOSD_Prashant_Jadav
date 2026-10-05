@@ -97,6 +97,7 @@ function initializeSiteFeatures() {
             }
         });
     });
+
 }
 
 const announcementTypes = new Set(["important", "academic", "practical", "resource", "website"]);
@@ -201,6 +202,53 @@ function formatAnnouncementDetailLabel(key) {
         .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
         .toLowerCase();
     return label.replace(/^./, character => character.toUpperCase());
+}
+
+function getAnnouncementEventDate(announcement) {
+    const eventDate = announcement.eventDetails?.date;
+    if (typeof eventDate !== "string" || !eventDate.trim()) {
+        return announcement.date;
+    }
+
+    const isoDate = eventDate.trim().match(/^(\d{4}-\d{2}-\d{2})$/);
+    if (isoDate) {
+        const parsedDate = new Date(`${isoDate[1]}T00:00:00Z`);
+        if (!Number.isNaN(parsedDate.getTime()) && parsedDate.toISOString().slice(0, 10) === isoDate[1]) {
+            return isoDate[1];
+        }
+    }
+
+    const dateText = eventDate.trim();
+    const monthNames = [
+        "january", "february", "march", "april", "may", "june",
+        "july", "august", "september", "october", "november", "december"
+    ];
+    const monthFirst = dateText.match(
+        /\b([a-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s+(?:and|&)\s+\d{1,2}(?:st|nd|rd|th)?)?[,]?\s+(\d{4})\b/i
+    );
+    const dayFirst = dateText.match(/\b(\d{1,2})(?:st|nd|rd|th)?\s+([a-z]+)\s+(\d{4})\b/i);
+    const dateMatch = monthFirst || dayFirst;
+    if (dateMatch) {
+        const monthName = (monthFirst ? dateMatch[1] : dateMatch[2]).toLowerCase();
+        const month = monthNames.indexOf(monthName);
+        const day = Number(monthFirst ? dateMatch[2] : dateMatch[1]);
+        const year = Number(dateMatch[3]);
+        if (month !== -1 && day >= 1 && day <= 31) {
+            const date = new Date(Date.UTC(year, month, day));
+            if (date.getUTCFullYear() === year && date.getUTCMonth() === month && date.getUTCDate() === day) {
+                return date.toISOString().slice(0, 10);
+            }
+        }
+    }
+
+    return announcement.date;
+}
+
+function getLocalDateString(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
 }
 
 async function loadAnnouncements() {
@@ -377,8 +425,14 @@ async function renderAnnouncements() {
         if (fullList && !renderAnnouncementList(fullList, announcements, announcements.length)) {
             showAnnouncementMessage(fullList, "No announcements are available at this time.");
         }
-        if (homepageList && renderAnnouncementList(homepageList, announcements, 3, true)) {
-            homepageSection.hidden = false;
+        if (homepageList) {
+            const today = getLocalDateString(new Date());
+            const upcomingAnnouncements = announcements.filter(
+                announcement => getAnnouncementEventDate(announcement) >= today
+            );
+            if (renderAnnouncementList(homepageList, upcomingAnnouncements, 3, true)) {
+                homepageSection.hidden = false;
+            }
         }
     } catch (error) {
         console.error("Unable to load announcements:", error);
