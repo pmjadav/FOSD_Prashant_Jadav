@@ -120,6 +120,17 @@
         margin-bottom: 8px;
       }
 
+      .resource-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .resource-tags .badge {
+        font-size: 0.68rem;
+      }
+
       .resource-card .resource-link {
         margin-top: auto;
         display: inline-flex;
@@ -274,11 +285,14 @@
           topics, and practical Linux system work.
         </p>
         <div class="resource-tabs">
-          <a href="#textbooks">Text Books</a
-          ><a href="#references">Reference Books</a
-          ><a href="#bridge">Bridge & Self-Study</a
-          ><a href="#online">Online Learning</a
-          ><a href="#interactive">Interactive Learning</a>
+          <a href="#bridge">Bridge & Self-Study</a>
+          <a href="#online">Online Learning</a>
+          <a href="#online-courses">Online Courses</a>
+          <a href="#course-material">Lecture Notes & Course Material</a>
+          <a href="#textbooks">Free Online Textbooks</a>
+          <a href="#references">Online References & Documentation</a>
+          <a href="#interactive">Interactive Learning</a>
+          <a href="#rhce-linux">Additional Technical Learning</a>
         </div>
       </div>
     </header>
@@ -373,7 +387,11 @@
             </p>
           </div>
 
-          <div class="section-title" style="margin-top: 34px">
+          <div
+            class="section-title"
+            id="online-courses"
+            style="margin-top: 34px"
+          >
             <div>
               <div class="kicker">Structured Courses</div>
               <h2>Online Courses</h2>
@@ -455,7 +473,11 @@
             </article>
           </div>
 
-          <div class="section-title" style="margin-top: 42px">
+          <div
+            class="section-title"
+            id="course-material"
+            style="margin-top: 42px"
+          >
             <div>
               <div class="kicker">University Resources</div>
               <h2>Lecture Notes & Course Material</h2>
@@ -518,7 +540,7 @@
             </article>
           </div>
 
-          <div class="section-title" style="margin-top: 42px">
+          <div class="section-title" id="textbooks" style="margin-top: 42px">
             <div>
               <div class="kicker">Open Learning Material</div>
               <h2>Free Online Textbooks</h2>
@@ -547,7 +569,7 @@
             </article>
           </div>
 
-          <div class="section-title" style="margin-top: 42px">
+          <div class="section-title" id="references" style="margin-top: 42px">
             <div>
               <div class="kicker">Technical References</div>
               <h2>Online References & Documentation</h2>
@@ -607,31 +629,6 @@
                 >Open man-pages →</a
               >
             </article>
-            <article class="resource-card">
-              <div class="icon">🔬</div>
-              <div class="meta">Course Materials</div>
-              <h3>Topic-wise Lecture PDFs</h3>
-              <p>
-                Course-specific lecture PDFs are provided through the Lecture
-                Notes page as they are uploaded.
-              </p>
-              <a class="resource-link" href="lectures.html"
-                >Go to Lecture Notes →</a
-              >
-            </article>
-            <article class="resource-card">
-              <div class="icon">🧪</div>
-              <div class="meta">Course Practice</div>
-              <h3>Laboratory Manual & Practicals</h3>
-              <p>
-                Use the practical sessions to connect OS theory with Linux
-                system calls, processes, threads, synchronization, memory, I/O,
-                and performance analysis.
-              </p>
-              <a class="resource-link" href="practicals.html"
-                >Open Practicals →</a
-              >
-            </article>
           </div>
         </div>
       </section>
@@ -650,22 +647,6 @@
           </div>
 
           <div class="resource-grid">
-            <article class="resource-card">
-              <div class="icon">🧪</div>
-              <div class="meta">Government of India · Virtual Labs</div>
-              <h3>Operating Systems Virtual Lab</h3>
-              <p>
-                Interactive experiments for process states, context switching,
-                scheduling, and synchronization-related OS concepts.
-              </p>
-              <a
-                class="resource-link"
-                href="https://www.vlab.co.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Open Virtual Labs →</a
-              >
-            </article>
             <article class="resource-card">
               <div class="icon">🖥️</div>
               <div class="meta">Interactive OS Simulator</div>
@@ -696,6 +677,125 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 >Explore Simulations →</a
+              >
+            </article>
+            <article class="resource-card">
+              <div class="icon" aria-hidden="true">🎨</div>
+              <div class="meta">Interactive OS Visualizer</div>
+              <h3>OS Visualiser</h3>
+              <p>
+                Interactive visualizations for CPU scheduling, process
+                management, synchronization, deadlocks, memory management, page
+                replacement, disk scheduling, and file systems.
+              </p>
+              <div class="resource-tags" aria-label="Topics">
+                <span class="badge">CPU Scheduling</span>
+                <span class="badge">Process Management</span>
+                <span class="badge">Synchronization</span>
+                <span class="badge">Deadlock</span>
+                <span class="badge">Memory Management</span>
+                <span class="badge">Page Replacement</span>
+                <span class="badge">Disk Scheduling</span>
+                <span class="badge">File Systems</span>
+              </div>
+              <a
+                class="resource-link"
+                href="https://himanshusinghpatel998.github.io/os_visualiser/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open Resource →</a
+              >
+            </article>
+            <article class="resource-card">
+              <div class="icon" aria-hidden="true">💻</div>
+              <div class="meta">Browser-based OS Simulator</div>
+              <h3>Mini OS Simulator</h3>
+              <p>
+                Explore processes, threads, CPU scheduling, synchronization,
+                deadlocks, memory management, virtual memory, and file systems
+                in a browser-based simulator.
+              </p>
+              <div class="resource-tags" aria-label="Topics">
+                <span class="badge">CPU Scheduling</span>
+                <span class="badge">Process Management</span>
+                <span class="badge">Synchronization</span>
+                <span class="badge">Deadlock</span>
+                <span class="badge">Memory Management</span>
+                <span class="badge">File Systems</span>
+              </div>
+              <a
+                class="resource-link"
+                href="https://mini-os-simulator-ten.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open Resource →</a
+              >
+            </article>
+            <article class="resource-card">
+              <div class="icon" aria-hidden="true">🧪</div>
+              <div class="meta">Interactive OS Laboratory</div>
+              <h3>Operating System Lab</h3>
+              <p>
+                Interactive simulations for CPU scheduling, memory allocation,
+                paging, page replacement, and disk scheduling.
+              </p>
+              <div class="resource-tags" aria-label="Topics">
+                <span class="badge">CPU Scheduling</span>
+                <span class="badge">Memory Management</span>
+                <span class="badge">Page Replacement</span>
+                <span class="badge">Disk Scheduling</span>
+              </div>
+              <a
+                class="resource-link"
+                href="https://oslab.xikai.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open Resource →</a
+              >
+            </article>
+            <article class="resource-card">
+              <div class="icon" aria-hidden="true">🧩</div>
+              <div class="meta">Open-source Teaching Tools</div>
+              <h3>OS Teaching Tools</h3>
+              <p>
+                Interactive simulators for CPU scheduling, deadlock, disk
+                scheduling, page replacement, and paging.
+              </p>
+              <div class="resource-tags" aria-label="Topics">
+                <span class="badge">CPU Scheduling</span>
+                <span class="badge">Deadlock</span>
+                <span class="badge">Disk Scheduling</span>
+                <span class="badge">Page Replacement</span>
+                <span class="badge">Memory Management</span>
+              </div>
+              <a
+                class="resource-link"
+                href="https://github.com/nasimbayati/os-teaching-tools"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open Resource →</a
+              >
+            </article>
+            <article class="resource-card">
+              <div class="icon" aria-hidden="true">🔬</div>
+              <div class="meta">Open-source Virtual Lab</div>
+              <h3>OSVirtualLab</h3>
+              <p>
+                An open-source virtual lab for exploring Operating System
+                algorithms and concepts.
+              </p>
+              <div class="resource-tags" aria-label="Topics">
+                <span class="badge">CPU Scheduling</span>
+                <span class="badge">Process Management</span>
+                <span class="badge">Memory Management</span>
+                <span class="badge">File Systems</span>
+              </div>
+              <a
+                class="resource-link"
+                href="https://github.com/smit-1923/OSVirtualLab"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open Resource →</a
               >
             </article>
           </div>
