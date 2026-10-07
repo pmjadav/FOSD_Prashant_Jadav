@@ -215,6 +215,12 @@ html.dark {
 
 h1{font-size:clamp(2rem,4vw,2.6rem);line-height:1.1}
 h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2}
+.back-to-top{position:fixed;right:24px;bottom:24px;z-index:60;display:flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid var(--blue);border-radius:999px;background:var(--blue);color:#fff;font:inherit;font-size:.85rem;font-weight:800;box-shadow:0 8px 20px rgba(20,121,255,.28);cursor:pointer;transition:background .2s,transform .2s}
+.back-to-top:hover{background:var(--blue2);transform:translateY(-2px)}
+.back-to-top:focus-visible{outline:3px solid var(--blue2);outline-offset:3px}
+.back-to-top span:first-child{font-size:1.1rem;line-height:1}
+@media(max-width:560px){.back-to-top{right:14px;bottom:14px;padding:9px 12px}}
+.practical-return-nav{margin-top:20px;text-align:right}
 .card,.quick-card,.resource,.info-strip>div,.topic-link,.stat{border-left:4px solid var(--card-accent,var(--blue))}
 body .resource-card,body .book-item,body .bridge-item{border-left:4px solid var(--card-accent,var(--blue))}
 :is(.cards,.quick-grid,.resource-grid,.resource-list,.topic-list,.info-strip,.stat-grid,.bridge-grid,.book-list,.announcement-grid)>:nth-child(9n+1){--card-accent:#1479ff}

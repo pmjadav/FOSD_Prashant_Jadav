@@ -65,6 +65,17 @@ function setActiveNavigation() {
 }
 
 function initializeSiteFeatures() {
+    const backToTop = document.createElement("button");
+    backToTop.className = "back-to-top";
+    backToTop.type = "button";
+    backToTop.setAttribute("aria-label", "Go to top of page");
+    backToTop.title = "Go to top";
+    backToTop.innerHTML = "<span aria-hidden=\"true\">↑</span><span>Top</span>";
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    document.body.append(backToTop);
+
     const nav = document.getElementById("navLinks");
     const menu = document.getElementById("menuToggle");
     if (menu && nav) {
