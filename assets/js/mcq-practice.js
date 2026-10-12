@@ -21,6 +21,7 @@ const mcqElements = {
     shuffleOptions: document.getElementById("shuffle-options"),
     apply: document.getElementById("apply-filters"),
     restart: document.getElementById("restart-practice"),
+    setup: document.getElementById("practice-setup"),
     matchCount: document.getElementById("match-count"),
     loadError: document.getElementById("load-error"),
     emptyState: document.getElementById("empty-state"),
@@ -48,7 +49,8 @@ const mcqElements = {
     incorrectReview: document.getElementById("incorrect-review"),
     incorrectList: document.getElementById("incorrect-list"),
     retryIncorrect: document.getElementById("retry-incorrect"),
-    restartSummary: document.getElementById("restart-summary")
+    restartSummary: document.getElementById("restart-summary"),
+    newPractice: document.getElementById("new-practice")
 };
 
 const mcqState = {
@@ -215,6 +217,7 @@ function beginSession(questions) {
     });
     mcqState.hintVisible = false;
     mcqState.reviewing = false;
+    mcqElements.setup.classList.add("mcq-hidden");
     mcqElements.summary.classList.add("mcq-hidden");
     mcqElements.panel.classList.remove("mcq-hidden");
     mcqElements.returnSummaryPractice.classList.add("mcq-hidden");
@@ -336,6 +339,7 @@ function showSummary() {
     mcqElements.incorrectReview.classList.toggle("mcq-hidden", incorrectQuestions.length === 0);
     mcqElements.retryIncorrect.classList.toggle("mcq-hidden", incorrectQuestions.length === 0);
     mcqElements.panel.classList.add("mcq-hidden");
+    mcqElements.setup.classList.add("mcq-hidden");
     mcqElements.summary.classList.remove("mcq-hidden");
     mcqState.reviewing = false;
     mcqElements.summary.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -364,6 +368,15 @@ function startPractice() {
         return;
     }
     beginSession(makeQuestionSet(mcqState.filteredQuestions));
+}
+
+function showPracticeSetup() {
+    mcqState.reviewing = false;
+    mcqElements.panel.classList.add("mcq-hidden");
+    mcqElements.summary.classList.add("mcq-hidden");
+    mcqElements.setup.classList.remove("mcq-hidden");
+    mcqElements.restart.disabled = true;
+    mcqElements.apply.focus();
 }
 
 async function loadQuestionBank() {
@@ -426,6 +439,7 @@ mcqElements.submit.addEventListener("click", () => {
 });
 mcqElements.finish.addEventListener("click", showSummary);
 mcqElements.returnSummaryPractice.addEventListener("click", showSummary);
+mcqElements.newPractice.addEventListener("click", showPracticeSetup);
 mcqElements.incorrectList.addEventListener("click", event => {
     const reviewButton = event.target.closest("[data-question-id]");
     if (reviewButton) showReviewQuestion(reviewButton.dataset.questionId);
