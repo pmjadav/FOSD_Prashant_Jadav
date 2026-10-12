@@ -41,6 +41,7 @@ function setActiveNavigation() {
     const pagePath = relativePath || "index.html";
     const questionBankPages = new Set([
         "question-bank.html",
+        "mcq-practice.html",
         "conceptual.html",
         "numerical.html",
         "gate-pyqs.html",

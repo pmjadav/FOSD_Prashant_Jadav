@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MCQ Practice | FOSD · CEUC301</title>
+    <meta name="description" content="Self-paced original MCQ practice for all nine Fundamentals of Operating System Design syllabus units.">
+    <script>if(localStorage.getItem("fosd-dark")==="true"){document.documentElement.classList.add("dark");}</script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png">
+</head>
+<body>
+    <div class="topbar">
+        <div class="container">Fundamentals of Operating System Design · CEUC301 · Prashant Jadav</div>
+    </div>
+    <div id="site-navbar"></div>
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">Home / Question Bank / MCQ Practice</div>
+            <h1>MCQ Practice Centre</h1>
+            <p>Build understanding with original, self-paced questions across the FOSD syllabus.</p>
+        </div>
+    </div>
+    <main>
+        <section>
+            <div class="container">
+                <div class="question-bank-return question-bank-return-top">
+                    <a class="btn" href="question-bank.html">← Question Bank</a>
+                </div>
+                <div class="notice" role="note">
+                    This practice centre is for personal learning only. Scores are not transmitted, stored as official marks, or used for rankings or assessment.
+                </div>
+                <section class="card detail-card" aria-labelledby="filter-heading">
+                    <div class="section-head">
+                        <div>
+                            <span class="kicker">Build a practice set</span>
+                            <h2 id="filter-heading">Choose your questions</h2>
+                            <p>Filter by unit, topic and difficulty, then select a practice length.</p>
+                        </div>
+                    </div>
+                    <div class="mcq-controls">
+                        <label class="mcq-field" for="unit-filter">Syllabus unit
+                            <select id="unit-filter">
+                                <option value="all">All units</option>
+                            </select>
+                        </label>
+                        <label class="mcq-field" for="topic-filter">Topic
+                            <select id="topic-filter">
+                                <option value="all">All topics</option>
+                            </select>
+                        </label>
+                        <label class="mcq-field" for="difficulty-filter">Difficulty
+                            <select id="difficulty-filter">
+                                <option value="all">All difficulties</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </label>
+                        <label class="mcq-field" for="question-count">Practice length
+                            <select id="question-count">
+                                <option value="all">All matching questions</option>
+                                <option value="5">5 questions</option>
+                                <option value="10">10 questions</option>
+                                <option value="15">15 questions</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="mcq-checks">
+                        <label class="mcq-check"><input id="shuffle-questions" type="checkbox"> Shuffle questions</label>
+                        <label class="mcq-check"><input id="shuffle-options" type="checkbox" checked> Shuffle answer options</label>
+                    </div>
+                    <div class="mcq-toolbar">
+                        <p id="match-count" aria-live="polite">Loading question bank…</p>
+                        <div class="mcq-actions">
+                            <button class="btn btn-primary" id="apply-filters" type="button" disabled>Start practice</button>
+                            <button class="btn" id="restart-practice" type="button" disabled>Restart</button>
+                        </div>
+                    </div>
+                    <p class="notice mcq-error mcq-hidden" id="load-error" role="alert"></p>
+                    <p class="notice mcq-filter-empty mcq-hidden" id="empty-state" role="status"></p>
+                </section>
+
+                <section class="card mcq-question-card mcq-hidden" id="practice-panel" aria-labelledby="question-text">
+                    <div class="mcq-toolbar">
+                        <p id="question-progress" aria-live="polite">Question 1 of 1</p>
+                        <span class="badge" id="question-difficulty"></span>
+                    </div>
+                    <progress class="mcq-progress" id="practice-progress" max="1" value="1" aria-label="Practice progress"></progress>
+                    <div class="mcq-tags" id="question-tags"></div>
+                    <p class="mcq-overline" id="question-topic"></p>
+                    <h2 id="question-text" tabindex="-1"></h2>
+                    <fieldset class="mcq-options" id="answer-options">
+                        <legend class="mcq-hidden">Choose one answer</legend>
+                    </fieldset>
+                    <p class="notice mcq-hint mcq-hidden" id="question-hint"></p>
+                    <div class="notice mcq-feedback mcq-hidden" id="answer-feedback" role="status" aria-live="polite"></div>
+                    <div class="mcq-actions mcq-question-actions">
+                        <button class="btn" id="previous-question" type="button">← Previous</button>
+                        <button class="btn" id="show-hint" type="button">Show hint</button>
+                        <button class="btn btn-primary" id="submit-answer" type="button" disabled>Submit answer</button>
+                        <button class="btn" id="next-question" type="button">Next →</button>
+                        <button class="btn" id="finish-practice" type="button">Finish practice</button>
+                        <button class="btn mcq-hidden" id="return-summary-practice" type="button">Back to summary</button>
+                    </div>
+                </section>
+
+                <section class="card detail-card mcq-hidden" id="summary-panel" aria-labelledby="summary-heading" aria-live="polite">
+                    <span class="kicker">Personal practice summary</span>
+                    <h2 id="summary-heading" tabindex="-1">Practice complete</h2>
+                    <p class="mcq-note">This score is only for your own learning and is not submitted or recorded.</p>
+                    <div class="mcq-summary-grid">
+                        <div class="mcq-summary-stat"><span>Attempted</span><strong id="summary-attempted">0</strong></div>
+                        <div class="mcq-summary-stat"><span>Correct</span><strong id="summary-correct">0</strong></div>
+                        <div class="mcq-summary-stat"><span>Incorrect</span><strong id="summary-incorrect">0</strong></div>
+                        <div class="mcq-summary-stat"><span>Score</span><strong id="summary-score">0%</strong></div>
+                    </div>
+                    <p class="mcq-note">The percentage is based on attempted questions; unanswered questions are not included.</p>
+                    <div id="incorrect-review" class="mcq-hidden">
+                        <h3>Review incorrect answers</h3>
+                        <div class="mcq-review-list" id="incorrect-list"></div>
+                    </div>
+                    <div class="mcq-actions">
+                        <button class="btn btn-primary" id="retry-incorrect" type="button">Retry incorrect questions</button>
+                        <button class="btn" id="restart-summary" type="button">Restart this set</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/mcq-practice.js" defer></script>
+</body>
+</html>
