@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png">
     <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png">
+<script data-goatcounter="https://pmjadav.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </head>
 
 <body>
@@ -59,6 +61,25 @@
                 <div class="quick-icon">🧩</div><strong>Units</strong><span>Explore by topic</span>
             </a></div>
     </div>
+    <section class="visitor-statistics" aria-labelledby="visitor-statistics-heading">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <div class="kicker">Site activity</div>
+                    <h2 id="visitor-statistics-heading">Website Statistics</h2>
+                </div>
+            </div>
+            <div class="visitor-stat-grid">
+                <article class="card visitor-stat-card">
+                    <div class="card-icon" aria-hidden="true">👁️</div>
+                    <h3>Total Page Views</h3>
+                    <p class="visitor-stat-value" id="visitor-total-count" aria-live="polite">Loading page-view total…</p>
+                    <p class="visitor-stat-note">This site starts sending page views when tracking is deployed. GoatCounter totals may take up to four hours to refresh.</p>
+                    <p class="visitor-stat-status" id="visitor-stat-status" role="status" aria-live="polite"></p>
+                </article>
+            </div>
+        </div>
+    </section>
     <section id="latest-announcements" class="announcement-section" aria-labelledby="latest-announcements-heading" hidden>
         <div class="container">
             <div class="section-head">
@@ -166,6 +187,7 @@
                 </a></div>
             <div id="site-footer"></div>
             <script src="assets/js/script.js"></script>
+            <script src="assets/js/visitor-statistics.js" defer></script>
 </body>
 
 </html>

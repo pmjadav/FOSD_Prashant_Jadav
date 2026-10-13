@@ -25,3 +25,10 @@ Add questions to `data/mcqs.json` as JSON objects with these fields:
 - `explanation`, optional `hint`, `tags` (an array of strings), and optional `source`.
 
 The practice page fetches and validates this JSON at runtime. Use double-quoted JSON strings and property names, and do not add comments or trailing commas. The existing questions are original self-practice material, not official GATE previous-year questions. Scores exist only in page memory, are cleared on reload, and are not submitted or used as official marks.
+
+## GoatCounter analytics and visitor statistics
+The GoatCounter tracking script is included once in each public standalone HTML page. The home page requests the documented public `https://pmjadav.goatcounter.com/counter/TOTAL.json` endpoint to display the cumulative page-view count; it does not use an administrative API token or label page views as unique visitors. Counts start when this integration is deployed and may take up to four hours to refresh. Daily visits and popular-page statistics are not displayed.
+
+To allow the total to appear, enable **Allow adding visitor counts on your website** in the GoatCounter site settings. This setting is off by default. Until it is enabled, the home page displays a configuration message instead of a fabricated count. The integration starts sending this site's page views when deployed; the displayed total is read from GoatCounter and may take up to four hours to refresh.
+
+For local layout testing, serve the project over HTTP (for example, `python -m http.server 8000`) and open `http://localhost:8000/`. GoatCounter may ignore localhost traffic, and its public count endpoint requires the hosted site origin and public-count setting. After deploying to GitHub Pages and enabling that setting, open the home page and confirm the real total replaces the status message.
