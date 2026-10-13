@@ -14,22 +14,24 @@ function renderVisitorCounter() {
         window.goatcounter.visit_count({
             append: "#visitor-total-count",
             path: "TOTAL",
-            type: "html",
+            type: "svg",
             no_branding: true,
             attr: {
-                width: "220",
-                height: "60",
-                title: "Total page views recorded by GoatCounter"
-            },
-            style: `div {
-                border: 0;
-                background: transparent;
-                color: ${document.body.classList.contains("dark") ? "#f3f6fc" : "#12213a"};
-                font-family: system-ui, sans-serif;
-                font-size: 1.25rem;
-                font-weight: 800;
-            }`
+                width: "200",
+                height: "80",
+                title: "Total page views recorded by GoatCounter",
+                alt: "Total page views recorded by GoatCounter"
+            }
         });
+        const counterImage = visitorCounter.querySelector("img");
+        if (counterImage) {
+            counterImage.addEventListener("load", () => {
+                visitorCounterStatus.textContent = "";
+            }, { once: true });
+            counterImage.addEventListener("error", () => {
+                visitorCounterStatus.textContent = "The GoatCounter visitor counter could not be displayed. Check that visitor counts are enabled in the GoatCounter site settings.";
+            }, { once: true });
+        }
     } catch (error) {
         console.error("Unable to display the GoatCounter visitor count:", error);
         visitorCounterStatus.textContent = "The total page-view counter could not be displayed. Please check the GoatCounter visitor-count setting.";
@@ -50,16 +52,6 @@ function waitForVisitorCounter(attempt = 0) {
 }
 
 waitForVisitorCounter();
-
-const visitorThemeObserver = new MutationObserver(() => {
-    if (visitorCounter.querySelector("iframe")) {
-        renderVisitorCounter();
-    }
-});
-visitorThemeObserver.observe(document.body, {
-    attributes: true,
-    attributeFilter: ["class"]
-});
 
 if (visitorCounterScript) {
     visitorCounterScript.addEventListener("error", () => {
