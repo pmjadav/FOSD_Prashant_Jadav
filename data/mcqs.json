@@ -16076,7 +16076,7 @@
   {
     "id": "u9-q8",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "OS domains",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16111,7 +16111,7 @@
   {
     "id": "u9-q9",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Real-time correctness",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16146,7 +16146,7 @@
   {
     "id": "u9-q10",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Soft real-time",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16181,7 +16181,7 @@
   {
     "id": "u9-q11",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Hard versus soft RT",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16216,7 +16216,7 @@
   {
     "id": "u9-q12",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Determinism",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16251,7 +16251,7 @@
   {
     "id": "u9-q13",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "RMS",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16286,7 +16286,7 @@
   {
     "id": "u9-q14",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "EDF",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16321,7 +16321,7 @@
   {
     "id": "u9-q15",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "RMS versus EDF",
     "difficulty": "Hard",
     "type": "single_select",
@@ -16356,7 +16356,7 @@
   {
     "id": "u9-q16",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Deadline miss",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16391,7 +16391,7 @@
   {
     "id": "u9-q17",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "WCET",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16426,7 +16426,7 @@
   {
     "id": "u9-q18",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Priority inversion",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16461,7 +16461,7 @@
   {
     "id": "u9-q19",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Priority inheritance",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16496,7 +16496,7 @@
   {
     "id": "u9-q20",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Priority ceiling",
     "difficulty": "Hard",
     "type": "single_select",
@@ -16531,7 +16531,7 @@
   {
     "id": "u9-q21",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Critical-section duration",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16566,7 +16566,7 @@
   {
     "id": "u9-q22",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Resource sharing",
     "difficulty": "Hard",
     "type": "single_select",
@@ -16601,7 +16601,7 @@
   {
     "id": "u9-q23",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Embedded OS constraints",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16636,7 +16636,7 @@
   {
     "id": "u9-q24",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Footprint",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16671,7 +16671,7 @@
   {
     "id": "u9-q25",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "RTOS versus embedded",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16706,7 +16706,7 @@
   {
     "id": "u9-q26",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Interrupt latency",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16741,7 +16741,7 @@
   {
     "id": "u9-q27",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Scheduling jitter",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16776,7 +16776,7 @@
   {
     "id": "u9-q28",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Power-aware scheduling",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16811,7 +16811,7 @@
   {
     "id": "u9-q29",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Dynamic voltage and frequency scaling",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16846,7 +16846,7 @@
   {
     "id": "u9-q30",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "DVFS trade-off",
     "difficulty": "Hard",
     "type": "single_select",
@@ -16881,7 +16881,7 @@
   {
     "id": "u9-q31",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Mobile OS power",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16916,7 +16916,7 @@
   {
     "id": "u9-q32",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Mobile sandboxing",
     "difficulty": "Easy",
     "type": "single_select",
@@ -16951,7 +16951,7 @@
   {
     "id": "u9-q33",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Permissions and capabilities",
     "difficulty": "Medium",
     "type": "single_select",
@@ -16986,7 +16986,7 @@
   {
     "id": "u9-q34",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Process isolation",
     "difficulty": "Medium",
     "type": "single_select",
@@ -17021,7 +17021,7 @@
   {
     "id": "u9-q35",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Inter-process communication",
     "difficulty": "Easy",
     "type": "single_select",
@@ -17056,7 +17056,7 @@
   {
     "id": "u9-q36",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Message passing",
     "difficulty": "Medium",
     "type": "single_select",
@@ -17091,7 +17091,7 @@
   {
     "id": "u9-q37",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Shared memory",
     "difficulty": "Medium",
     "type": "single_select",
@@ -17126,7 +17126,7 @@
   {
     "id": "u9-q38",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Microkernel in embedded systems",
     "difficulty": "Hard",
     "type": "single_select",
@@ -17161,7 +17161,7 @@
   {
     "id": "u9-q39",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Monolithic embedded kernel",
     "difficulty": "Hard",
     "type": "single_select",
@@ -17196,7 +17196,7 @@
   {
     "id": "u9-q40",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Safety versus performance",
     "difficulty": "Hard",
     "type": "single_select",
@@ -17231,7 +17231,7 @@
   {
     "id": "u9-q41",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Memory constraints",
     "difficulty": "Medium",
     "type": "single_select",
@@ -17266,7 +17266,7 @@
   {
     "id": "u9-q42",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Static allocation",
     "difficulty": "Medium",
     "type": "single_select",
@@ -17301,7 +17301,7 @@
   {
     "id": "u9-q43",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Watchdog timer",
     "difficulty": "Easy",
     "type": "single_select",
@@ -17336,7 +17336,7 @@
   {
     "id": "u9-q44",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Fault recovery",
     "difficulty": "Medium",
     "type": "single_select",
@@ -17371,7 +17371,7 @@
   {
     "id": "u9-q45",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Real-time communication",
     "difficulty": "Hard",
     "type": "single_select",
@@ -17406,7 +17406,7 @@
   {
     "id": "u9-q46",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Performance metrics",
     "difficulty": "Easy",
     "type": "single_select",
@@ -17441,7 +17441,7 @@
   {
     "id": "u9-q47",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Mobile performance",
     "difficulty": "Medium",
     "type": "single_select",
@@ -17476,7 +17476,7 @@
   {
     "id": "u9-q48",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Real-time admission control",
     "difficulty": "Hard",
     "type": "single_select",
@@ -17511,7 +17511,7 @@
   {
     "id": "u9-q49",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "Mixed-criticality scheduling",
     "difficulty": "Hard",
     "type": "single_select",
@@ -17546,7 +17546,7 @@
   {
     "id": "u9-q50",
     "unitId": 9,
-    "unitTitle": "Specialized Operating Systems",
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
     "topic": "RTOS design trade-off",
     "difficulty": "Hard",
     "type": "single_select",
