@@ -29,12 +29,12 @@ function renderVisitorCounter() {
                 visitorCounterStatus.textContent = "";
             }, { once: true });
             counterImage.addEventListener("error", () => {
-                visitorCounterStatus.textContent = "The GoatCounter visitor counter could not be displayed. Check that visitor counts are enabled in the GoatCounter site settings.";
+                visitorCounterStatus.textContent = "The GoatCounter counter could not be reached. Check your connection and confirm public visitor counts are enabled in GoatCounter.";
             }, { once: true });
         }
     } catch (error) {
         console.error("Unable to display the GoatCounter visitor count:", error);
-        visitorCounterStatus.textContent = "The total page-view counter could not be displayed. Please check the GoatCounter visitor-count setting.";
+        visitorCounterStatus.textContent = "The total page-view counter could not be displayed. Check your connection and the GoatCounter public visitor-count setting.";
     }
     return true;
 }
@@ -45,7 +45,7 @@ function waitForVisitorCounter(attempt = 0) {
     }
     if (attempt >= 50) {
         visitorCounter.textContent = "—";
-        visitorCounterStatus.textContent = "The GoatCounter counter could not be loaded. Please check your connection and the visitor-count setting.";
+        visitorCounterStatus.textContent = "The GoatCounter counter could not be loaded. Check your connection and confirm public visitor counts are enabled.";
         return;
     }
     window.setTimeout(() => waitForVisitorCounter(attempt + 1), 100);
