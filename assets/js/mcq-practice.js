@@ -11,15 +11,24 @@ const unitTitles = new Map([
     [9, "Specialized Operating Systems: Design and Performance Overview"]
 ]);
 const allowedDifficulties = new Set(["Easy", "Medium", "Hard"]);
+const questionCategories = [
+    "Conceptual",
+    "Numerical",
+    "Application/Scenario-based",
+    "GATE PYQ"
+];
+const unspecifiedValue = "unspecified";
 
 const mcqElements = {
     unit: document.getElementById("unit-filter"),
     topic: document.getElementById("topic-filter"),
+    questionType: document.getElementById("question-type-filter"),
     difficulty: document.getElementById("difficulty-filter"),
     count: document.getElementById("question-count"),
     shuffleQuestions: document.getElementById("shuffle-questions"),
     shuffleOptions: document.getElementById("shuffle-options"),
     apply: document.getElementById("apply-filters"),
+    resetFilters: document.getElementById("reset-filters"),
     restart: document.getElementById("restart-practice"),
     setup: document.getElementById("practice-setup"),
     matchCount: document.getElementById("match-count"),
@@ -81,12 +90,18 @@ function validateQuestionBank(questions) {
             throw new Error(`${position} has a missing or duplicate ID.`);
         }
         datasetIds.add(question.id);
-        if (!Number.isInteger(question.unitId) || !unitTitles.has(question.unitId)
-            || question.unitTitle !== unitTitles.get(question.unitId)) {
+        if (question.unitId !== undefined && question.unitId !== null
+            && (!Number.isInteger(question.unitId) || !unitTitles.has(question.unitId))) {
             throw new Error(`${position} has an invalid syllabus unit.`);
         }
-        if (typeof question.topic !== "string" || !question.topic.trim()
-            || !allowedDifficulties.has(question.difficulty)
+        if ((question.unitTitle !== undefined && typeof question.unitTitle !== "string")
+            || (question.unitTitle && question.unitId
+                && question.unitTitle !== unitTitles.get(question.unitId))) {
+            throw new Error(`${position} has an invalid syllabus unit title.`);
+        }
+        if ((question.topic !== undefined && question.topic !== null && typeof question.topic !== "string")
+            || (question.difficulty !== undefined && question.difficulty !== null
+                && typeof question.difficulty !== "string")
             || question.type !== "single_select"
             || typeof question.question !== "string" || !question.question.trim()
             || typeof question.explanation !== "string" || !question.explanation.trim()) {
@@ -137,32 +152,84 @@ function addOption(select, value, label) {
 
 function fillUnitFilter() {
     unitTitles.forEach((title, id) => addOption(mcqElements.unit, String(id), `Unit ${id} · ${title}`));
+    addOption(mcqElements.unit, unspecifiedValue, "Unit not specified");
+}
+
+function getQuestionTopic(question) {
+    return typeof question.topic === "string" && question.topic.trim()
+        ? question.topic
+        : unspecifiedValue;
+}
+
+function getQuestionDifficulty(question) {
+    return allowedDifficulties.has(question.difficulty)
+        ? question.difficulty
+        : unspecifiedValue;
+}
+
+function getQuestionCategory(question) {
+    if (questionCategories.includes(question.questionType)) {
+        return question.questionType;
+    }
+    if (questionCategories.includes(question.category)) {
+        return question.category;
+    }
+
+    const sourceAndTags = [question.source, question.topic, ...(Array.isArray(question.tags) ? question.tags : [])]
+        .filter(value => typeof value === "string")
+        .join(" ");
+    if (/\b(GATE|PYQ|previous[\s-]*year)\b/i.test(sourceAndTags)) {
+        return "GATE PYQ";
+    }
+
+    const topic = getQuestionTopic(question);
+    const text = `${topic} ${question.question}`;
+    if (/\b(numerical|calculation|calculating)\b/i.test(topic)
+        || (/\b(calculate|compute|numerical|what is the (?:average|total|value)|how many (?:bits|page faults|cylinders|milliseconds)|how much)\b/i.test(text)
+            && /\d/.test(text))) {
+        return "Numerical";
+    }
+    if (/\b(application|scenario|case study|integrated|trade[- ]off)\b/i.test(topic)
+        || /\b(suppose|consider a scenario|in this scenario|what should (?:the|an?)|which (?:design|approach|policy|mechanism) should|how would you|most appropriate|best suited)\b/i.test(question.question)) {
+        return "Application/Scenario-based";
+    }
+    return "Conceptual";
+}
+
+function matchesNonTopicFilters(question) {
+    const selectedUnit = mcqElements.unit.value;
+    const selectedCategory = mcqElements.questionType.value;
+    const selectedDifficulty = mcqElements.difficulty.value;
+    return (selectedUnit === "all"
+            || (selectedUnit === unspecifiedValue
+                ? !Number.isInteger(question.unitId) || !unitTitles.has(question.unitId)
+                : question.unitId === Number(selectedUnit)))
+        && (selectedCategory === "all" || getQuestionCategory(question) === selectedCategory)
+        && (selectedDifficulty === "all"
+            || getQuestionDifficulty(question) === selectedDifficulty);
 }
 
 function updateTopicFilter() {
     const previousTopic = mcqElements.topic.value;
-    const selectedUnit = mcqElements.unit.value;
     const topics = [...new Set(mcqState.questions
-        .filter(question => selectedUnit === "all" || question.unitId === Number(selectedUnit))
-        .map(question => question.topic))]
+        .filter(matchesNonTopicFilters)
+        .map(getQuestionTopic))]
         .sort((left, right) => left.localeCompare(right));
 
     mcqElements.topic.replaceChildren();
     addOption(mcqElements.topic, "all", "All topics");
-    topics.forEach(topic => addOption(mcqElements.topic, topic, topic));
+    topics.forEach(topic => addOption(
+        mcqElements.topic,
+        topic,
+        topic === unspecifiedValue ? "Topic not specified" : topic
+    ));
     mcqElements.topic.value = topics.includes(previousTopic) ? previousTopic : "all";
 }
 
 function getFilteredQuestions() {
-    const selectedUnit = mcqElements.unit.value;
     const selectedTopic = mcqElements.topic.value;
-    const selectedDifficulty = mcqElements.difficulty.value;
-
-    return mcqState.questions.filter(question =>
-        (selectedUnit === "all" || question.unitId === Number(selectedUnit))
-        && (selectedTopic === "all" || question.topic === selectedTopic)
-        && (selectedDifficulty === "all" || question.difficulty === selectedDifficulty)
-    );
+    return mcqState.questions.filter(question => matchesNonTopicFilters(question)
+        && (selectedTopic === "all" || getQuestionTopic(question) === selectedTopic));
 }
 
 function updateMatchCount() {
@@ -171,7 +238,9 @@ function updateMatchCount() {
     mcqElements.matchCount.textContent = `${count} matching ${count === 1 ? "question" : "questions"}`;
     mcqElements.apply.disabled = count === 0;
     if (count === 0) {
-        mcqElements.emptyState.textContent = "No questions match these filters. Choose another unit, topic or difficulty.";
+        mcqElements.emptyState.textContent = mcqElements.questionType.value === "GATE PYQ"
+            ? "No GATE PYQs are currently identified in this question bank. Add a verified GATE source or question-type label to include one."
+            : "No questions match these filters. Change a filter or reset all filters to try again.";
         mcqElements.emptyState.classList.remove("mcq-hidden");
         mcqElements.panel.classList.add("mcq-hidden");
         mcqElements.summary.classList.add("mcq-hidden");
@@ -246,11 +315,17 @@ function renderQuestion() {
     );
     mcqElements.progress.max = mcqState.sessionQuestions.length;
     mcqElements.progress.value = mcqState.currentIndex + 1;
-    setElementText(mcqElements.difficultyLabel, question.difficulty);
-    setElementText(mcqElements.topicLabel, `Unit ${question.unitId} · ${question.topic}`);
+    setElementText(mcqElements.difficultyLabel, question.difficulty || "Difficulty not specified");
+    setElementText(
+        mcqElements.topicLabel,
+        `${Number.isInteger(question.unitId) ? `Unit ${question.unitId}` : "Unit not specified"} · ${getQuestionTopic(question)} · ${getQuestionCategory(question)}`
+    );
     setElementText(mcqElements.question, question.question);
     mcqElements.tags.replaceChildren();
-    [question.unitTitle, ...question.tags].forEach(tag => {
+    const unitTitle = question.unitTitle
+        || (Number.isInteger(question.unitId) ? unitTitles.get(question.unitId) : "")
+        || "Unit not specified";
+    [unitTitle, getQuestionCategory(question), ...question.tags].forEach(tag => {
         const tagElement = document.createElement("span");
         tagElement.className = "mcq-tag";
         tagElement.textContent = tag;
@@ -400,12 +475,22 @@ async function loadQuestionBank() {
     }
 }
 
-mcqElements.unit.addEventListener("change", () => {
+function refreshFilters() {
     updateTopicFilter();
     updateMatchCount();
-});
+}
+
+mcqElements.unit.addEventListener("change", refreshFilters);
 mcqElements.topic.addEventListener("change", updateMatchCount);
-mcqElements.difficulty.addEventListener("change", updateMatchCount);
+mcqElements.questionType.addEventListener("change", refreshFilters);
+mcqElements.difficulty.addEventListener("change", refreshFilters);
+mcqElements.resetFilters.addEventListener("click", () => {
+    mcqElements.unit.value = "all";
+    mcqElements.questionType.value = "all";
+    mcqElements.difficulty.value = "all";
+    mcqElements.topic.value = "all";
+    refreshFilters();
+});
 mcqElements.apply.addEventListener("click", startPractice);
 mcqElements.restart.addEventListener("click", () => beginSession(mcqState.sessionMembers));
 mcqElements.previous.addEventListener("click", () => {

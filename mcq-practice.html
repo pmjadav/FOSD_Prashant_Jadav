@@ -38,7 +38,7 @@
                         <div>
                             <span class="kicker">Build a practice set</span>
                             <h2 id="filter-heading">Choose your questions</h2>
-                            <p>Filter by unit, topic and difficulty, then select a practice length.</p>
+                            <p>Filter by unit, topic, question type and difficulty, then select a practice length.</p>
                         </div>
                     </div>
                     <div class="mcq-controls">
@@ -52,12 +52,22 @@
                                 <option value="all">All topics</option>
                             </select>
                         </label>
+                        <label class="mcq-field" for="question-type-filter">Question type
+                            <select id="question-type-filter">
+                                <option value="all">All question types</option>
+                                <option value="Conceptual">Conceptual</option>
+                                <option value="Numerical">Numerical</option>
+                                <option value="Application/Scenario-based">Application/Scenario-based</option>
+                                <option value="GATE PYQ">GATE PYQ</option>
+                            </select>
+                        </label>
                         <label class="mcq-field" for="difficulty-filter">Difficulty
                             <select id="difficulty-filter">
                                 <option value="all">All difficulties</option>
                                 <option value="Easy">Easy</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Hard">Hard</option>
+                                <option value="unspecified">Unspecified</option>
                             </select>
                         </label>
                         <label class="mcq-field" for="question-count">Practice length
@@ -77,6 +87,7 @@
                         <p id="match-count" aria-live="polite">Loading question bank…</p>
                         <div class="mcq-actions">
                             <button class="btn btn-primary" id="apply-filters" type="button" disabled>Start practice</button>
+                            <button class="btn" id="reset-filters" type="button">Reset filters</button>
                             <button class="btn" id="restart-practice" type="button" disabled>Restart</button>
                         </div>
                     </div>
