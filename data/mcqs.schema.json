@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pmjadav.github.io/FOSD_Prashant_Jadav/data/mcqs.schema.json",
+  "title": "FOSD CEUC301 MCQ Question Bank",
+  "description": "Question schema for single-select and multi-select practice questions. Multi-select answers require an exact option-ID set; the practice interface awards no partial credit.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "unitId",
+      "unitTitle",
+      "topic",
+      "difficulty",
+      "type",
+      "question",
+      "options",
+      "explanation",
+      "tags"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "unitId": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 9
+      },
+      "unitTitle": {
+        "type": "string",
+        "minLength": 1
+      },
+      "topic": {
+        "type": "string",
+        "minLength": 1
+      },
+      "difficulty": {
+        "enum": ["Easy", "Medium", "Hard"]
+      },
+      "type": {
+        "enum": ["single_select", "multi_select"]
+      },
+      "question": {
+        "type": "string",
+        "minLength": 1
+      },
+      "options": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "required": ["id", "text"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "correctOptionId": {
+        "type": "string",
+        "minLength": 1
+      },
+      "correctOptionIds": {
+        "type": "array",
+        "minItems": 2,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "explanation": {
+        "type": "string",
+        "minLength": 1
+      },
+      "hint": {
+        "type": "string"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "source": {
+        "type": "string"
+      },
+      "image": {
+        "type": "object",
+        "required": ["src", "alt"],
+        "properties": {
+          "src": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?![a-zA-Z][a-zA-Z0-9+.-]*:).+\\.(png|jpe?g|webp|svg)(\\?.*)?$|^https?://.+\\.(png|jpe?g|webp|svg)(\\?.*)?$"
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "caption": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "oneOf": [
+      {
+        "properties": {
+          "type": {
+            "const": "single_select"
+          },
+          "correctOptionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "correctOptionIds": false
+        },
+        "required": ["correctOptionId"]
+      },
+      {
+        "properties": {
+          "type": {
+            "const": "multi_select"
+          },
+          "correctOptionId": false,
+          "correctOptionIds": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": ["correctOptionIds"]
+      }
+    ]
+  }
+}

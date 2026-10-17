@@ -245,11 +245,15 @@ h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2}
 .mcq-progress{width:100%;height:12px;accent-color:var(--blue)}
 .mcq-question-card{margin-top:18px}
 .mcq-question-card h2{margin:7px 0 18px;color:var(--ink);font-size:clamp(1.15rem,2.6vw,1.55rem);line-height:1.45}
+.mcq-question-image{margin:0 0 20px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.mcq-question-image img{display:block;width:auto;height:auto;max-width:100%;max-height:min(460px,60vh);margin:0 auto;object-fit:contain}
+.mcq-question-image figcaption{margin-top:10px;color:var(--muted);font-size:.9rem;text-align:center}
 .mcq-overline{color:var(--blue2);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
 .mcq-options{display:grid;gap:10px;margin:0;padding:0;border:0}
 .mcq-option{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer}
 .mcq-option:hover{border-color:#9dcaff;background:var(--soft)}
 .mcq-option input{flex:0 0 auto;width:18px;height:18px;margin-top:3px;accent-color:var(--blue)}
+.mcq-option-instructions{grid-column:1/-1;margin:0 0 3px;color:var(--muted);font-size:.9rem;font-weight:800}
 .mcq-option.is-selected{border-color:var(--blue);box-shadow:0 0 0 2px rgba(20,121,255,.14)}
 .mcq-option.is-correct{border-color:#159447;background:#eaf8ef;color:#12592e}
 .mcq-option.is-incorrect{border-color:#d64a4a;background:#fff0f0;color:#852b2b}

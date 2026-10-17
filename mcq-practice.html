@@ -31,7 +31,7 @@
                     <a class="btn" href="question-bank.html">← Question Bank</a>
                 </div>
                 <div class="notice" role="note">
-                    This practice centre is for personal learning only. Scores are not transmitted, stored as official marks, or used for rankings or assessment.
+                    This practice centre is for personal learning only. Multi-select questions require every correct option and award no partial credit. Scores are not transmitted, stored as official marks, or used for rankings or assessment.
                 </div>
                 <section class="card detail-card" id="practice-setup" aria-labelledby="filter-heading">
                     <div class="section-head">
@@ -61,13 +61,19 @@
                                 <option value="GATE PYQ">GATE PYQ</option>
                             </select>
                         </label>
+                        <label class="mcq-field" for="answer-format-filter">Answer format
+                            <select id="answer-format-filter">
+                                <option value="all">All answer formats</option>
+                                <option value="single_select">Single-select</option>
+                                <option value="multi_select">Multi-select</option>
+                            </select>
+                        </label>
                         <label class="mcq-field" for="difficulty-filter">Difficulty
                             <select id="difficulty-filter">
                                 <option value="all">All difficulties</option>
                                 <option value="Easy">Easy</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Hard">Hard</option>
-                                <option value="unspecified">Unspecified</option>
                             </select>
                         </label>
                         <label class="mcq-field" for="question-count">Practice length
@@ -104,6 +110,7 @@
                     <div class="mcq-tags" id="question-tags"></div>
                     <p class="mcq-overline" id="question-topic"></p>
                     <h2 id="question-text" tabindex="-1"></h2>
+                    <figure class="mcq-question-image mcq-hidden" id="question-image"></figure>
                     <fieldset class="mcq-options" id="answer-options">
                         <legend class="mcq-hidden">Choose one answer</legend>
                     </fieldset>

@@ -11,6 +11,7 @@ const unitTitles = new Map([
     [9, "Specialized Operating Systems: Design and Performance Overview"]
 ]);
 const allowedDifficulties = new Set(["Easy", "Medium", "Hard"]);
+const questionTypes = new Set(["single_select", "multi_select"]);
 const questionCategories = [
     "Conceptual",
     "Numerical",
@@ -23,6 +24,7 @@ const mcqElements = {
     unit: document.getElementById("unit-filter"),
     topic: document.getElementById("topic-filter"),
     questionType: document.getElementById("question-type-filter"),
+    answerFormat: document.getElementById("answer-format-filter"),
     difficulty: document.getElementById("difficulty-filter"),
     count: document.getElementById("question-count"),
     shuffleQuestions: document.getElementById("shuffle-questions"),
@@ -41,6 +43,7 @@ const mcqElements = {
     tags: document.getElementById("question-tags"),
     topicLabel: document.getElementById("question-topic"),
     question: document.getElementById("question-text"),
+    image: document.getElementById("question-image"),
     options: document.getElementById("answer-options"),
     hint: document.getElementById("question-hint"),
     feedback: document.getElementById("answer-feedback"),
@@ -102,7 +105,7 @@ function validateQuestionBank(questions) {
         if ((question.topic !== undefined && question.topic !== null && typeof question.topic !== "string")
             || (question.difficulty !== undefined && question.difficulty !== null
                 && typeof question.difficulty !== "string")
-            || question.type !== "single_select"
+            || !questionTypes.has(question.type)
             || typeof question.question !== "string" || !question.question.trim()
             || typeof question.explanation !== "string" || !question.explanation.trim()) {
             throw new Error(`${position} has invalid required question fields.`);
@@ -129,8 +132,17 @@ function validateQuestionBank(questions) {
             optionIds.add(option.id);
             datasetIds.add(option.id);
         });
-        if (typeof question.correctOptionId !== "string" || !optionIds.has(question.correctOptionId)) {
-            throw new Error(`${position} has no matching correct option ID.`);
+        if (question.type === "single_select") {
+            if (typeof question.correctOptionId !== "string" || !optionIds.has(question.correctOptionId)
+                || question.correctOptionIds !== undefined) {
+                throw new Error(`${position} has no matching single correct option ID.`);
+            }
+        } else if (!Array.isArray(question.correctOptionIds)
+            || question.correctOptionIds.length < 2
+            || new Set(question.correctOptionIds).size !== question.correctOptionIds.length
+            || question.correctOptionIds.some(optionId => !optionIds.has(optionId))
+            || question.correctOptionId !== undefined) {
+            throw new Error(`${position} must have at least two unique correct option IDs.`);
         }
     });
     return questions;
@@ -152,7 +164,21 @@ function addOption(select, value, label) {
 
 function fillUnitFilter() {
     unitTitles.forEach((title, id) => addOption(mcqElements.unit, String(id), `Unit ${id} · ${title}`));
-    addOption(mcqElements.unit, unspecifiedValue, "Unit not specified");
+    const hasUnspecifiedUnit = mcqState.questions.some(question =>
+        !Number.isInteger(question.unitId) || !unitTitles.has(question.unitId)
+    );
+    if (hasUnspecifiedUnit) {
+        addOption(mcqElements.unit, unspecifiedValue, "Unit not specified");
+    }
+}
+
+function fillDifficultyFilter() {
+    const hasUnspecifiedDifficulty = mcqState.questions.some(question =>
+        !allowedDifficulties.has(question.difficulty)
+    );
+    if (hasUnspecifiedDifficulty) {
+        addOption(mcqElements.difficulty, unspecifiedValue, "Unspecified");
+    }
 }
 
 function getQuestionTopic(question) {
@@ -199,12 +225,14 @@ function getQuestionCategory(question) {
 function matchesNonTopicFilters(question) {
     const selectedUnit = mcqElements.unit.value;
     const selectedCategory = mcqElements.questionType.value;
+    const selectedFormat = mcqElements.answerFormat.value;
     const selectedDifficulty = mcqElements.difficulty.value;
     return (selectedUnit === "all"
             || (selectedUnit === unspecifiedValue
                 ? !Number.isInteger(question.unitId) || !unitTitles.has(question.unitId)
                 : question.unitId === Number(selectedUnit)))
         && (selectedCategory === "all" || getQuestionCategory(question) === selectedCategory)
+        && (selectedFormat === "all" || question.type === selectedFormat)
         && (selectedDifficulty === "all"
             || getQuestionDifficulty(question) === selectedDifficulty);
 }
@@ -300,6 +328,100 @@ function setElementText(element, text) {
     element.textContent = text;
 }
 
+function getSelectedOptionIds(question) {
+    const selection = mcqState.selections.get(question.id);
+    if (question.type === "multi_select") {
+        return Array.isArray(selection) ? selection : [];
+    }
+    return typeof selection === "string" ? [selection] : [];
+}
+
+function hasAnswerSelection(question) {
+    return getSelectedOptionIds(question).length > 0;
+}
+
+function isAnswerCorrect(question, selectedOptionIds) {
+    if (question.type === "multi_select") {
+        const selected = new Set(selectedOptionIds);
+        return selected.size === question.correctOptionIds.length
+            && question.correctOptionIds.every(optionId => selected.has(optionId));
+    }
+    return selectedOptionIds.length === 1
+        && selectedOptionIds[0] === question.correctOptionId;
+}
+
+function getCorrectOptionIds(question) {
+    return question.type === "multi_select"
+        ? question.correctOptionIds
+        : [question.correctOptionId];
+}
+
+function getValidQuestionImage(image) {
+    if (!image || typeof image !== "object" || Array.isArray(image)
+        || typeof image.src !== "string" || !image.src.trim()
+        || typeof image.alt !== "string" || !image.alt.trim()) {
+        return null;
+    }
+
+    const source = image.src.trim();
+    const isAbsoluteUrl = /^[a-z][a-z\d+.-]*:/i.test(source);
+    let imageUrl;
+    try {
+        imageUrl = new URL(source, document.baseURI);
+    } catch {
+        return null;
+    }
+    if ((isAbsoluteUrl && !["http:", "https:"].includes(imageUrl.protocol))
+        || (!isAbsoluteUrl && (source.startsWith("/") || source.startsWith("\\")))
+        || !/\.(png|jpe?g|webp|svg)$/i.test(imageUrl.pathname)) {
+        return null;
+    }
+
+    return {
+        src: imageUrl.href,
+        alt: image.alt.trim(),
+        caption: typeof image.caption === "string" ? image.caption.trim() : ""
+    };
+}
+
+function renderQuestionImage(imageMetadata, questionId) {
+    const image = getValidQuestionImage(imageMetadata);
+    mcqElements.image.replaceChildren();
+    mcqElements.image.classList.add("mcq-hidden");
+    if (!image) {
+        if (imageMetadata !== undefined && imageMetadata !== null) {
+            console.warn(`Ignoring invalid image metadata for question ${questionId}.`);
+        }
+        return;
+    }
+
+    const imageElement = document.createElement("img");
+    imageElement.alt = image.alt;
+    imageElement.decoding = "async";
+    imageElement.referrerPolicy = "no-referrer";
+    imageElement.addEventListener("load", () => {
+        if (mcqElements.image.querySelector("img") === imageElement) {
+            mcqElements.image.classList.remove("mcq-hidden");
+        }
+    }, { once: true });
+    imageElement.addEventListener("error", () => {
+        if (mcqElements.image.querySelector("img") === imageElement) {
+            mcqElements.image.replaceChildren();
+            mcqElements.image.classList.add("mcq-hidden");
+            console.warn(`Unable to load the optional image for question ${questionId}.`);
+        }
+    }, { once: true });
+
+    if (image.caption) {
+        const caption = document.createElement("figcaption");
+        caption.textContent = image.caption;
+        mcqElements.image.append(imageElement, caption);
+    } else {
+        mcqElements.image.append(imageElement);
+    }
+    imageElement.src = image.src;
+}
+
 function renderQuestion() {
     const question = mcqState.sessionQuestions[mcqState.currentIndex];
     if (!question) {
@@ -308,7 +430,8 @@ function renderQuestion() {
     }
 
     const answerResult = mcqState.results.get(question.id);
-    const selectedOptionId = mcqState.selections.get(question.id);
+    const selectedOptionIds = getSelectedOptionIds(question);
+    const correctOptionIds = new Set(getCorrectOptionIds(question));
     setElementText(
         mcqElements.progressText,
         `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${mcqState.results.size} submitted`
@@ -321,11 +444,17 @@ function renderQuestion() {
         `${Number.isInteger(question.unitId) ? `Unit ${question.unitId}` : "Unit not specified"} · ${getQuestionTopic(question)} · ${getQuestionCategory(question)}`
     );
     setElementText(mcqElements.question, question.question);
+    renderQuestionImage(question.image, question.id);
     mcqElements.tags.replaceChildren();
     const unitTitle = question.unitTitle
         || (Number.isInteger(question.unitId) ? unitTitles.get(question.unitId) : "")
         || "Unit not specified";
-    [unitTitle, getQuestionCategory(question), ...question.tags].forEach(tag => {
+    [
+        unitTitle,
+        getQuestionCategory(question),
+        question.type === "multi_select" ? "Multi-select" : "Single-select",
+        ...question.tags
+    ].forEach(tag => {
         const tagElement = document.createElement("span");
         tagElement.className = "mcq-tag";
         tagElement.textContent = tag;
@@ -334,30 +463,42 @@ function renderQuestion() {
 
     mcqElements.options.replaceChildren();
     const legend = document.createElement("legend");
-    legend.className = "mcq-visually-hidden";
-    legend.textContent = "Choose one answer";
+    legend.className = question.type === "multi_select" ? "mcq-option-instructions" : "mcq-visually-hidden";
+    legend.textContent = question.type === "multi_select"
+        ? "Select all that apply. All correct options must be selected."
+        : "Choose one answer";
     mcqElements.options.append(legend);
     const optionOrder = mcqState.optionOrder.get(question.id) || question.options;
     optionOrder.forEach(option => {
         const label = document.createElement("label");
         label.className = "mcq-option";
-        if (answerResult && option.id === question.correctOptionId) {
+        if (answerResult && correctOptionIds.has(option.id)) {
             label.classList.add("is-correct");
         }
-        if (answerResult && selectedOptionId === option.id && !answerResult.correct) {
+        if (answerResult && selectedOptionIds.includes(option.id) && !correctOptionIds.has(option.id)) {
             label.classList.add("is-incorrect");
         }
         const input = document.createElement("input");
-        input.type = "radio";
-        input.name = `answer-${question.id}`;
+        input.type = question.type === "multi_select" ? "checkbox" : "radio";
+        input.name = question.type === "multi_select"
+            ? `answer-${question.id}-${option.id}`
+            : `answer-${question.id}`;
         input.value = option.id;
-        input.checked = selectedOptionId === option.id;
+        input.checked = selectedOptionIds.includes(option.id);
         input.disabled = Boolean(answerResult);
         input.addEventListener("change", () => {
-            mcqState.selections.set(question.id, option.id);
-            mcqElements.submit.disabled = false;
-            mcqElements.options.querySelectorAll(".mcq-option").forEach(optionLabel => {
-                optionLabel.classList.toggle("is-selected", optionLabel === label);
+            if (question.type === "multi_select") {
+                const updatedSelection = new Set(getSelectedOptionIds(question));
+                if (input.checked) updatedSelection.add(option.id);
+                else updatedSelection.delete(option.id);
+                mcqState.selections.set(question.id, [...updatedSelection]);
+            } else {
+                mcqState.selections.set(question.id, option.id);
+            }
+            mcqElements.submit.disabled = !hasAnswerSelection(question);
+            mcqElements.options.querySelectorAll(".mcq-option").forEach((optionLabel, index) => {
+                const orderedOption = optionOrder[index];
+                optionLabel.classList.toggle("is-selected", getSelectedOptionIds(question).includes(orderedOption.id));
             });
         });
         const text = document.createElement("span");
@@ -370,7 +511,12 @@ function renderQuestion() {
     });
 
     if (answerResult) {
-        mcqElements.feedback.textContent = `${answerResult.correct ? "Correct." : "Not quite."} Correct answer: ${question.options.find(option => option.id === question.correctOptionId).text} Explanation: ${question.explanation}`;
+        const correctAnswers = question.options
+            .filter(option => correctOptionIds.has(option.id))
+            .map(option => option.text)
+            .join("; ");
+        const correctAnswerLabel = question.type === "multi_select" ? "Correct answers:" : "Correct answer:";
+        mcqElements.feedback.textContent = `${answerResult.correct ? "Correct." : "Not quite."} ${correctAnswerLabel} ${correctAnswers} Explanation: ${question.explanation}`;
         mcqElements.feedback.dataset.result = answerResult.correct ? "correct" : "incorrect";
         mcqElements.feedback.classList.remove("mcq-hidden");
     } else {
@@ -385,7 +531,7 @@ function renderQuestion() {
     mcqElements.showHint.textContent = mcqState.hintVisible ? "Hide hint" : "Show hint";
     mcqElements.previous.disabled = mcqState.currentIndex === 0;
     mcqElements.next.disabled = mcqState.currentIndex === mcqState.sessionQuestions.length - 1;
-    mcqElements.submit.disabled = Boolean(answerResult) || !selectedOptionId;
+    mcqElements.submit.disabled = Boolean(answerResult) || !hasAnswerSelection(question);
     mcqElements.returnSummaryPractice.classList.toggle("mcq-hidden", !mcqState.reviewing);
 }
 
@@ -463,6 +609,7 @@ async function loadQuestionBank() {
         const questionData = await response.json();
         mcqState.questions = validateQuestionBank(questionData);
         fillUnitFilter();
+        fillDifficultyFilter();
         updateTopicFilter();
         updateMatchCount();
         mcqElements.apply.disabled = false;
@@ -483,10 +630,12 @@ function refreshFilters() {
 mcqElements.unit.addEventListener("change", refreshFilters);
 mcqElements.topic.addEventListener("change", updateMatchCount);
 mcqElements.questionType.addEventListener("change", refreshFilters);
+mcqElements.answerFormat.addEventListener("change", refreshFilters);
 mcqElements.difficulty.addEventListener("change", refreshFilters);
 mcqElements.resetFilters.addEventListener("click", () => {
     mcqElements.unit.value = "all";
     mcqElements.questionType.value = "all";
+    mcqElements.answerFormat.value = "all";
     mcqElements.difficulty.value = "all";
     mcqElements.topic.value = "all";
     refreshFilters();
@@ -515,10 +664,10 @@ mcqElements.showHint.addEventListener("click", () => {
 });
 mcqElements.submit.addEventListener("click", () => {
     const question = mcqState.sessionQuestions[mcqState.currentIndex];
-    const selectedOptionId = mcqState.selections.get(question.id);
-    if (!selectedOptionId || mcqState.results.has(question.id)) return;
+    const selectedOptionIds = getSelectedOptionIds(question);
+    if (!selectedOptionIds.length || mcqState.results.has(question.id)) return;
     mcqState.results.set(question.id, {
-        correct: selectedOptionId === question.correctOptionId
+        correct: isAnswerCorrect(question, selectedOptionIds)
     });
     renderQuestion();
 });
