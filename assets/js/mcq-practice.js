@@ -27,6 +27,7 @@ const mcqElements = {
     answerFormat: document.getElementById("answer-format-filter"),
     difficulty: document.getElementById("difficulty-filter"),
     count: document.getElementById("question-count"),
+    mode: document.getElementById("quiz-mode"),
     shuffleQuestions: document.getElementById("shuffle-questions"),
     shuffleOptions: document.getElementById("shuffle-options"),
     apply: document.getElementById("apply-filters"),
@@ -54,6 +55,9 @@ const mcqElements = {
     finish: document.getElementById("finish-practice"),
     returnSummaryPractice: document.getElementById("return-summary-practice"),
     summary: document.getElementById("summary-panel"),
+    summaryMode: document.getElementById("summary-mode"),
+    summaryNote: document.querySelector("#summary-panel .mcq-note"),
+    summaryScoreNote: document.getElementById("summary-score-note"),
     summaryAttempted: document.getElementById("summary-attempted"),
     summaryCorrect: document.getElementById("summary-correct"),
     summaryIncorrect: document.getElementById("summary-incorrect"),
@@ -75,7 +79,8 @@ const mcqState = {
     results: new Map(),
     optionOrder: new Map(),
     hintVisible: false,
-    reviewing: false
+    reviewing: false,
+    mode: "practice"
 };
 
 function validateQuestionBank(questions) {
@@ -314,10 +319,14 @@ function beginSession(questions) {
     });
     mcqState.hintVisible = false;
     mcqState.reviewing = false;
+    mcqState.mode = mcqElements.mode.value;
     mcqElements.setup.classList.add("mcq-hidden");
     mcqElements.summary.classList.add("mcq-hidden");
     mcqElements.panel.classList.remove("mcq-hidden");
     mcqElements.returnSummaryPractice.classList.add("mcq-hidden");
+    mcqElements.submit.classList.toggle("mcq-hidden", mcqState.mode === "exam");
+    mcqElements.showHint.classList.toggle("mcq-hidden", mcqState.mode === "exam");
+    mcqElements.finish.textContent = mcqState.mode === "exam" ? "Submit exam" : "Finish practice";
     mcqElements.restart.disabled = false;
     mcqElements.emptyState.classList.add("mcq-hidden");
     renderQuestion();
@@ -434,7 +443,9 @@ function renderQuestion() {
     const correctOptionIds = new Set(getCorrectOptionIds(question));
     setElementText(
         mcqElements.progressText,
-        `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${mcqState.results.size} submitted`
+        `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${
+            mcqState.mode === "exam" ? `${mcqState.selections.size} answered` : `${mcqState.results.size} submitted`
+        }`
     );
     mcqElements.progress.max = mcqState.sessionQuestions.length;
     mcqElements.progress.value = mcqState.currentIndex + 1;
@@ -495,6 +506,12 @@ function renderQuestion() {
             } else {
                 mcqState.selections.set(question.id, option.id);
             }
+            if (mcqState.mode === "exam") {
+                setElementText(
+                    mcqElements.progressText,
+                    `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${mcqState.selections.size} answered`
+                );
+            }
             mcqElements.submit.disabled = !hasAnswerSelection(question);
             mcqElements.options.querySelectorAll(".mcq-option").forEach((optionLabel, index) => {
                 const orderedOption = optionOrder[index];
@@ -527,7 +544,7 @@ function renderQuestion() {
 
     mcqElements.hint.textContent = question.hint || "No hint is available for this question.";
     mcqElements.hint.classList.toggle("mcq-hidden", !mcqState.hintVisible);
-    mcqElements.showHint.disabled = !question.hint;
+    mcqElements.showHint.disabled = !question.hint || mcqState.mode === "exam";
     mcqElements.showHint.textContent = mcqState.hintVisible ? "Hide hint" : "Show hint";
     mcqElements.previous.disabled = mcqState.currentIndex === 0;
     mcqElements.next.disabled = mcqState.currentIndex === mcqState.sessionQuestions.length - 1;
@@ -537,17 +554,44 @@ function renderQuestion() {
 
 function showSummary() {
     const total = mcqState.sessionQuestions.length;
-    const attempted = mcqState.results.size;
+    if (mcqState.mode === "exam") {
+        mcqState.sessionQuestions.forEach(question => {
+            const selectedOptionIds = getSelectedOptionIds(question);
+            mcqState.results.set(question.id, {
+                correct: selectedOptionIds.length > 0 && isAnswerCorrect(question, selectedOptionIds)
+            });
+        });
+    }
+    const attempted = mcqState.mode === "exam"
+        ? mcqState.sessionQuestions.filter(question => hasAnswerSelection(question)).length
+        : mcqState.results.size;
     const correct = [...mcqState.results.values()].filter(result => result.correct).length;
     const incorrectQuestions = mcqState.sessionQuestions.filter(question =>
         mcqState.results.has(question.id) && !mcqState.results.get(question.id).correct
     );
-    const percentage = attempted ? Math.round((correct / attempted) * 100) : 0;
+    const percentageDenominator = mcqState.mode === "exam" ? total : attempted;
+    const percentage = percentageDenominator ? Math.round((correct / percentageDenominator) * 100) : 0;
 
     setElementText(mcqElements.summaryAttempted, `${attempted} / ${total}`);
     setElementText(mcqElements.summaryCorrect, String(correct));
     setElementText(mcqElements.summaryIncorrect, String(incorrectQuestions.length));
     setElementText(mcqElements.summaryScore, `${percentage}%`);
+    setElementText(
+        mcqElements.summaryMode,
+        mcqState.mode === "exam" ? "Exam results" : "Personal practice summary"
+    );
+    setElementText(
+        mcqElements.summaryNote,
+        mcqState.mode === "exam"
+            ? "Your score is based on all questions; unanswered questions count as incorrect. This result is not transmitted or recorded."
+            : "This score is only for your own learning and is not submitted or recorded."
+    );
+    setElementText(
+        mcqElements.summaryScoreNote,
+        mcqState.mode === "exam"
+            ? "The percentage is based on all questions in the exam."
+            : "The percentage is based on attempted questions; unanswered questions are not included."
+    );
     mcqElements.incorrectList.replaceChildren();
     incorrectQuestions.forEach(question => {
         const reviewButton = document.createElement("button");
@@ -641,6 +685,9 @@ mcqElements.resetFilters.addEventListener("click", () => {
     refreshFilters();
 });
 mcqElements.apply.addEventListener("click", startPractice);
+mcqElements.mode.addEventListener("change", () => {
+    mcqElements.apply.textContent = mcqElements.mode.value === "exam" ? "Start exam" : "Start practice";
+});
 mcqElements.restart.addEventListener("click", () => beginSession(mcqState.sessionMembers));
 mcqElements.previous.addEventListener("click", () => {
     if (mcqState.currentIndex > 0) {

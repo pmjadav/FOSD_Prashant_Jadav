@@ -84,6 +84,12 @@
                                 <option value="15">15 questions</option>
                             </select>
                         </label>
+                        <label class="mcq-field" for="quiz-mode">Quiz mode
+                            <select id="quiz-mode">
+                                <option value="practice">Practice — check each answer</option>
+                                <option value="exam">Exam — see score at the end</option>
+                            </select>
+                        </label>
                     </div>
                     <div class="mcq-checks">
                         <label class="mcq-check"><input id="shuffle-questions" type="checkbox"> Shuffle questions</label>
@@ -127,7 +133,7 @@
                 </section>
 
                 <section class="card detail-card mcq-hidden" id="summary-panel" aria-labelledby="summary-heading" aria-live="polite">
-                    <span class="kicker">Personal practice summary</span>
+                    <span class="kicker" id="summary-mode">Personal practice summary</span>
                     <h2 id="summary-heading" tabindex="-1">Practice complete</h2>
                     <p class="mcq-note">This score is only for your own learning and is not submitted or recorded.</p>
                     <div class="mcq-summary-grid">
@@ -136,7 +142,7 @@
                         <div class="mcq-summary-stat"><span>Incorrect</span><strong id="summary-incorrect">0</strong></div>
                         <div class="mcq-summary-stat"><span>Score</span><strong id="summary-score">0%</strong></div>
                     </div>
-                    <p class="mcq-note">The percentage is based on attempted questions; unanswered questions are not included.</p>
+                    <p class="mcq-note" id="summary-score-note">The percentage is based on attempted questions; unanswered questions are not included.</p>
                     <div id="incorrect-review" class="mcq-hidden">
                         <h3>Review incorrect answers</h3>
                         <div class="mcq-review-list" id="incorrect-list"></div>
