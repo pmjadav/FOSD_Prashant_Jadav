@@ -1,154 +1,288 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>MCQ Exam Centre | FOSD · CEUC301</title>
-    <meta name="description" content="Take FOSD multiple-choice exams across all nine syllabus units.">
-    <script>if(localStorage.getItem("fosd-dark")==="true"){document.documentElement.classList.add("dark");}</script>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png">
-    <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png">
-<script data-goatcounter="https://pmjadav.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
-</head>
-<body>
+    <meta
+      name="description"
+      content="Take FOSD multiple-choice exams across all nine syllabus units."
+    />
+    <script>
+      if (localStorage.getItem("fosd-dark") === "true") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png" />
+    <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png" />
+    <script
+      data-goatcounter="https://pmjadav.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+  </head>
+  <body>
     <div class="topbar">
-        <div class="container">Fundamentals of Operating System Design · CEUC301 · Prashant Jadav</div>
+      <div class="container">
+        Fundamentals of Operating System Design · CEUC301 · Prashant Jadav
+      </div>
     </div>
     <div id="site-navbar"></div>
     <div class="page-hero">
-        <div class="container">
-            <div class="breadcrumb">Home / Question Bank / MCQ Exam Centre</div>
-            <h1>MCQ Exam Centre</h1>
-            <p>Take exams across the FOSD syllabus and see your score when you finish.</p>
-        </div>
+      <div class="container">
+        <div class="breadcrumb">Home / Question Bank / MCQ Exam Centre</div>
+        <h1>MCQ Practice Centre</h1>
+        <p>
+          Take practice quiz across the FOSD syllabus and see your score when
+          you finish.
+        </p>
+      </div>
     </div>
     <main>
-        <section>
-            <div class="container">
-                <div class="question-bank-return question-bank-return-top">
-                    <a class="btn" href="question-bank.html">← Question Bank</a>
-                </div>
-                <div class="notice" role="note">
-                    Multi-select questions require every correct option and award no partial credit. Scores are not transmitted, stored as official marks, or used for rankings or assessment.
-                </div>
-                <section class="card detail-card" id="exam-setup" aria-labelledby="filter-heading">
-                    <div class="section-head">
-                        <div>
-                            <span class="kicker">Configure an exam</span>
-                            <h2 id="filter-heading">Choose your questions</h2>
-                            <p>Filter by unit, topic, question type and difficulty, then choose how many questions to attempt.</p>
-                        </div>
-                    </div>
-                    <div class="mcq-controls">
-                        <label class="mcq-field" for="unit-filter">Syllabus unit
-                            <select id="unit-filter">
-                                <option value="all">All units</option>
-                            </select>
-                        </label>
-                        <label class="mcq-field" for="topic-filter">Topic
-                            <select id="topic-filter">
-                                <option value="all">All topics</option>
-                            </select>
-                        </label>
-                        <label class="mcq-field" for="question-type-filter">Question type
-                            <select id="question-type-filter">
-                                <option value="all">All question types</option>
-                                <option value="Conceptual">Conceptual</option>
-                                <option value="Numerical">Numerical</option>
-                                <option value="Application/Scenario-based">Application/Scenario-based</option>
-                                <option value="GATE PYQ">GATE PYQ</option>
-                            </select>
-                        </label>
-                        <label class="mcq-field" for="answer-format-filter">Answer format
-                            <select id="answer-format-filter">
-                                <option value="all">All answer formats</option>
-                                <option value="single_select">Single-select</option>
-                                <option value="multi_select">Multi-select</option>
-                            </select>
-                        </label>
-                        <label class="mcq-field" for="difficulty-filter">Difficulty
-                            <select id="difficulty-filter">
-                                <option value="all">All difficulties</option>
-                                <option value="Easy">Easy</option>
-                                <option value="Medium">Medium</option>
-                                <option value="Hard">Hard</option>
-                            </select>
-                        </label>
-                        <label class="mcq-field" for="question-count">Questions to attempt
-                            <input id="question-count" type="number" min="1" step="1" required inputmode="numeric" aria-describedby="question-count-help">
-                        </label>
-                    </div>
-                    <p class="mcq-note" id="question-count-help" aria-live="polite">Choose a whole number between 1 and the number of matching questions.</p>
-                    <p class="mcq-note">To take a faculty-assigned exam, paste the token provided by your faculty. Students using the same token receive the same questions, with question and option order shuffled for each session.</p>
-                    <p class="notice mcq-token-status mcq-hidden" id="exam-token-status" role="status" aria-live="polite"></p>
-                    <label class="mcq-field" for="exam-token-input">Student: load a faculty exam token
-                        <textarea id="exam-token-input" rows="3" maxlength="2048" autocomplete="off" placeholder="Paste the token provided by your faculty"></textarea>
-                    </label>
-                    <div class="mcq-actions">
-                        <button class="btn" id="load-exam-token" type="button" disabled>Load token and start exam</button>
-                    </div>
-                    <p class="mcq-note">Question and answer-option order are randomized for each exam.</p>
-                    <div class="mcq-toolbar">
-                        <p id="match-count" aria-live="polite">Loading question bank…</p>
-                        <div class="mcq-actions">
-                            <button class="btn btn-primary" id="apply-filters" type="button" disabled>Start exam</button>
-                            <button class="btn" id="reset-filters" type="button">Reset filters</button>
-                            <button class="btn" id="restart-exam" type="button" disabled>Restart exam</button>
-                        </div>
-                    </div>
-                    <p class="notice mcq-error mcq-hidden" id="load-error" role="alert"></p>
-                    <p class="notice mcq-filter-empty mcq-hidden" id="empty-state" role="status"></p>
-                </section>
-
-                <section class="card mcq-question-card mcq-hidden" id="exam-panel" aria-labelledby="question-text">
-                    <div class="mcq-toolbar">
-                        <p id="question-progress" aria-live="polite">Question 1 of 1</p>
-                        <span class="badge" id="question-difficulty"></span>
-                    </div>
-                    <progress class="mcq-progress" id="exam-progress" max="1" value="1" aria-label="Exam progress"></progress>
-                    <div class="mcq-tags" id="question-tags"></div>
-                    <p class="mcq-overline" id="question-topic"></p>
-                    <h2 id="question-text" tabindex="-1"></h2>
-                    <figure class="mcq-question-image mcq-hidden" id="question-image"></figure>
-                    <fieldset class="mcq-options" id="answer-options">
-                        <legend class="mcq-hidden">Choose one answer</legend>
-                    </fieldset>
-                    <div class="notice mcq-feedback mcq-hidden" id="answer-feedback" role="status" aria-live="polite"></div>
-                    <div class="mcq-actions mcq-question-actions">
-                        <button class="btn" id="previous-question" type="button">← Previous</button>
-                        <button class="btn" id="next-question" type="button">Next →</button>
-                        <button class="btn btn-primary" id="finish-exam" type="button">Submit exam</button>
-                        <button class="btn mcq-hidden" id="return-summary-results" type="button">Back to results</button>
-                    </div>
-                </section>
-
-                <section class="card detail-card mcq-hidden" id="summary-panel" aria-labelledby="summary-heading" aria-live="polite">
-                    <span class="kicker">Exam results</span>
-                    <h2 id="summary-heading" tabindex="-1">Exam complete</h2>
-                    <p class="mcq-note">Your score is based on all questions; unanswered questions count as incorrect. This result is not transmitted or recorded.</p>
-                    <div class="mcq-summary-grid">
-                        <div class="mcq-summary-stat"><span>Attempted</span><strong id="summary-attempted">0</strong></div>
-                        <div class="mcq-summary-stat"><span>Correct</span><strong id="summary-correct">0</strong></div>
-                        <div class="mcq-summary-stat"><span>Incorrect</span><strong id="summary-incorrect">0</strong></div>
-                        <div class="mcq-summary-stat"><span>Score</span><strong id="summary-score">0%</strong></div>
-                    </div>
-                    <p class="mcq-note">The percentage is based on all questions in the exam.</p>
-                    <div id="incorrect-review" class="mcq-hidden">
-                        <h3>Review incorrect answers</h3>
-                        <div class="mcq-review-list" id="incorrect-list"></div>
-                    </div>
-                    <div class="mcq-actions">
-                        <button class="btn" id="restart-summary" type="button">Restart this exam</button>
-                        <button class="btn btn-primary" id="new-exam" type="button">Configure another exam</button>
-                    </div>
-                </section>
+      <section>
+        <div class="container">
+          <div class="question-bank-return question-bank-return-top">
+            <a class="btn" href="question-bank.html">← Question Bank</a>
+          </div>
+          <div class="notice" role="note">
+            Multi-select questions require every correct option and award no
+            partial credit. Scores are not transmitted, stored as official
+            marks, or used for rankings or assessment.
+          </div>
+          <section
+            class="card detail-card"
+            id="exam-setup"
+            aria-labelledby="filter-heading"
+          >
+            <div class="section-head">
+              <div>
+                <span class="kicker">Configure an exam</span>
+                <h2 id="filter-heading">Choose your questions</h2>
+                <p>
+                  Filter by unit, topic, question type and difficulty, then
+                  choose how many questions to attempt.
+                </p>
+              </div>
             </div>
-        </section>
+            <div class="mcq-controls">
+              <label class="mcq-field" for="unit-filter"
+                >Syllabus unit
+                <select id="unit-filter">
+                  <option value="all">All units</option>
+                </select>
+              </label>
+              <label class="mcq-field" for="topic-filter"
+                >Topic
+                <select id="topic-filter">
+                  <option value="all">All topics</option>
+                </select>
+              </label>
+              <label class="mcq-field" for="question-type-filter"
+                >Question type
+                <select id="question-type-filter">
+                  <option value="all">All question types</option>
+                  <option value="Conceptual">Conceptual</option>
+                  <option value="Numerical">Numerical</option>
+                  <option value="Application/Scenario-based">
+                    Application/Scenario-based
+                  </option>
+                  <option value="GATE PYQ">GATE PYQ</option>
+                </select>
+              </label>
+              <label class="mcq-field" for="answer-format-filter"
+                >Answer format
+                <select id="answer-format-filter">
+                  <option value="all">All answer formats</option>
+                  <option value="single_select">Single-select</option>
+                  <option value="multi_select">Multi-select</option>
+                </select>
+              </label>
+              <label class="mcq-field" for="difficulty-filter"
+                >Difficulty
+                <select id="difficulty-filter">
+                  <option value="all">All difficulties</option>
+                  <option value="Easy">Easy</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Hard">Hard</option>
+                </select>
+              </label>
+              <label class="mcq-field" for="question-count"
+                >Questions to attempt
+                <input
+                  id="question-count"
+                  type="number"
+                  min="1"
+                  step="1"
+                  required
+                  inputmode="numeric"
+                  aria-describedby="question-count-help"
+                />
+              </label>
+            </div>
+            <p class="mcq-note" id="question-count-help" aria-live="polite">
+              Choose a whole number between 1 and the number of matching
+              questions.
+            </p>
+            <p class="mcq-note">
+              To take a faculty-assigned exam, paste the token provided by your
+              faculty. Students using the same token receive the same questions,
+              with question and option order shuffled for each session.
+            </p>
+            <p
+              class="notice mcq-token-status mcq-hidden"
+              id="exam-token-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <label class="mcq-field" for="exam-token-input"
+              >Student: load a faculty exam token
+              <textarea
+                id="exam-token-input"
+                rows="3"
+                maxlength="2048"
+                autocomplete="off"
+                placeholder="Paste the token provided by your faculty"
+              ></textarea>
+            </label>
+            <div class="mcq-actions">
+              <button class="btn" id="load-exam-token" type="button" disabled>
+                Load token and start exam
+              </button>
+            </div>
+            <p class="mcq-note">
+              Question and answer-option order are randomized for each exam.
+            </p>
+            <div class="mcq-toolbar">
+              <p id="match-count" aria-live="polite">Loading question bank…</p>
+              <div class="mcq-actions">
+                <button
+                  class="btn btn-primary"
+                  id="apply-filters"
+                  type="button"
+                  disabled
+                >
+                  Start exam
+                </button>
+                <button class="btn" id="reset-filters" type="button">
+                  Reset filters
+                </button>
+                <button class="btn" id="restart-exam" type="button" disabled>
+                  Restart exam
+                </button>
+              </div>
+            </div>
+            <p
+              class="notice mcq-error mcq-hidden"
+              id="load-error"
+              role="alert"
+            ></p>
+            <p
+              class="notice mcq-filter-empty mcq-hidden"
+              id="empty-state"
+              role="status"
+            ></p>
+          </section>
+
+          <section
+            class="card mcq-question-card mcq-hidden"
+            id="exam-panel"
+            aria-labelledby="question-text"
+          >
+            <div class="mcq-toolbar">
+              <p id="question-progress" aria-live="polite">Question 1 of 1</p>
+              <span class="badge" id="question-difficulty"></span>
+            </div>
+            <progress
+              class="mcq-progress"
+              id="exam-progress"
+              max="1"
+              value="1"
+              aria-label="Exam progress"
+            ></progress>
+            <div class="mcq-tags" id="question-tags"></div>
+            <p class="mcq-overline" id="question-topic"></p>
+            <h2 id="question-text" tabindex="-1"></h2>
+            <figure
+              class="mcq-question-image mcq-hidden"
+              id="question-image"
+            ></figure>
+            <fieldset class="mcq-options" id="answer-options">
+              <legend class="mcq-hidden">Choose one answer</legend>
+            </fieldset>
+            <div
+              class="notice mcq-feedback mcq-hidden"
+              id="answer-feedback"
+              role="status"
+              aria-live="polite"
+            ></div>
+            <div class="mcq-actions mcq-question-actions">
+              <button class="btn" id="previous-question" type="button">
+                ← Previous
+              </button>
+              <button class="btn" id="next-question" type="button">
+                Next →
+              </button>
+              <button class="btn btn-primary" id="finish-exam" type="button">
+                Submit exam
+              </button>
+              <button
+                class="btn mcq-hidden"
+                id="return-summary-results"
+                type="button"
+              >
+                Back to results
+              </button>
+            </div>
+          </section>
+
+          <section
+            class="card detail-card mcq-hidden"
+            id="summary-panel"
+            aria-labelledby="summary-heading"
+            aria-live="polite"
+          >
+            <span class="kicker">Exam results</span>
+            <h2 id="summary-heading" tabindex="-1">Exam complete</h2>
+            <p class="mcq-note">
+              Your score is based on all questions; unanswered questions count
+              as incorrect. This result is not transmitted or recorded.
+            </p>
+            <div class="mcq-summary-grid">
+              <div class="mcq-summary-stat">
+                <span>Attempted</span><strong id="summary-attempted">0</strong>
+              </div>
+              <div class="mcq-summary-stat">
+                <span>Correct</span><strong id="summary-correct">0</strong>
+              </div>
+              <div class="mcq-summary-stat">
+                <span>Incorrect</span><strong id="summary-incorrect">0</strong>
+              </div>
+              <div class="mcq-summary-stat">
+                <span>Score</span><strong id="summary-score">0%</strong>
+              </div>
+            </div>
+            <p class="mcq-note">
+              The percentage is based on all questions in the exam.
+            </p>
+            <div id="incorrect-review" class="mcq-hidden">
+              <h3>Review incorrect answers</h3>
+              <div class="mcq-review-list" id="incorrect-list"></div>
+            </div>
+            <div class="mcq-actions">
+              <button class="btn" id="restart-summary" type="button">
+                Restart this exam
+              </button>
+              <button class="btn btn-primary" id="new-exam" type="button">
+                Configure another exam
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
     </main>
     <div id="site-footer"></div>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/mcq-practice.js" defer></script>
-</body>
+  </body>
 </html>

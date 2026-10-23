@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MCQ Exam | FOSD · CEUC301</title>
+    <meta name="description" content="Load and take a faculty-issued FOSD multiple-choice exam.">
+    <script>if(localStorage.getItem("fosd-dark")==="true"){document.documentElement.classList.add("dark");}</script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/exam.css">
+    <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png">
+</head>
+<body>
+    <div class="topbar">
+        <div class="container">Fundamentals of Operating System Design · CEUC301 · Prashant Jadav</div>
+    </div>
+    <div id="site-navbar"></div>
+    <header class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">Home / MCQ Exam</div>
+            <h1>MCQ Exam</h1>
+            <p>Enter a faculty-issued quiz token to load and take your exam.</p>
+        </div>
+    </header>
+    <main class="exam-main">
+        <div class="container">
+            <section class="card exam-token-card" aria-labelledby="exam-token-heading">
+                <h2 id="exam-token-heading">Start an exam</h2>
+                <p>Enter the token supplied by your faculty. The quiz and questions are loaded from the exam service.</p>
+                <form id="exam-token-form">
+                    <label class="mcq-field" for="exam-token">Quiz token
+                        <input id="exam-token" name="token" type="text" maxlength="200" required autocomplete="off" placeholder="Enter quiz token">
+                    </label>
+                    <button class="btn btn-primary" id="start-exam" type="submit">Start Exam</button>
+                </form>
+            </section>
+
+            <p class="notice exam-status" id="exam-status" role="status" aria-live="polite">Enter your token to load the exam.</p>
+
+            <section class="card exam-content mcq-hidden" id="exam-content" aria-labelledby="question-text">
+                <div class="exam-toolbar">
+                    <p id="question-progress" aria-live="polite"></p>
+                    <span class="badge" id="quiz-title"></span>
+                </div>
+                <progress class="mcq-progress" id="exam-progress" max="1" value="0" aria-label="Exam progress"></progress>
+                <div class="exam-question-meta">
+                    <span id="question-unit"></span>
+                    <span id="question-topic"></span>
+                    <span id="question-difficulty"></span>
+                </div>
+                <h2 id="question-text" tabindex="-1"></h2>
+                <fieldset class="mcq-options exam-options" id="answer-options">
+                    <legend class="mcq-visually-hidden" id="answer-legend">Choose an answer</legend>
+                </fieldset>
+                <div class="exam-navigation">
+                    <button class="btn" id="previous-question" type="button" disabled>← Previous</button>
+                    <button class="btn" id="next-question" type="button" disabled>Next →</button>
+                </div>
+                <section class="exam-unanswered" aria-labelledby="unanswered-heading">
+                    <h3 id="unanswered-heading">Unanswered questions</h3>
+                    <p id="unanswered-count" aria-live="polite"></p>
+                    <div class="exam-question-list" id="unanswered-list"></div>
+                </section>
+                <div class="exam-submit-area">
+                    <p class="mcq-note">Answers are saved to the exam server as you go. Review unanswered questions before submitting.</p>
+                    <button class="btn btn-primary" id="submit-exam" type="button" disabled>Submit exam</button>
+                </div>
+            </section>
+
+            <section class="card exam-results mcq-hidden" id="exam-results" aria-labelledby="exam-results-heading">
+                <h2 id="exam-results-heading">Exam result</h2>
+                <div id="exam-result-summary" aria-live="polite"></div>
+                <section aria-labelledby="exam-review-heading">
+                    <h3 id="exam-review-heading">Answer review</h3>
+                    <div id="exam-result-review"></div>
+                </section>
+            </section>
+        </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/exam.js" defer></script>
+</body>
+</html>

@@ -27,7 +27,14 @@ Add questions to `data/mcqs.json` as JSON objects with these fields:
 - `correctOptionId`: the ID of exactly one option above; do not use its array position.
 - `explanation`, optional `hint`, `tags` (an array of strings), and optional `source`.
 
-The practice page fetches and validates this JSON at runtime. Use double-quoted JSON strings and property names, and do not add comments or trailing commas. The existing questions are original self-practice material, not official GATE previous-year questions. Scores exist only in page memory, are cleared on reload, and are not submitted or used as official marks.
+The MCQ question bank fetches and validates this JSON at runtime. Use double-quoted JSON strings and property names, and do not add comments or trailing commas. The existing questions are original self-practice material, not official GATE previous-year questions. Scores exist only in page memory, are cleared on reload, and are not submitted or used as official marks.
+
+## MCQ exam frontend and backend requirements
+The dedicated `exam.html` page starts a server-side attempt with the student-entered token using `action=startAttempt`. The configured Apps Script `/exec` URL is in `assets/js/exam.js`. The start response must include an `attemptId` and a non-empty `questions` array; every question must provide an ID, question text, an explicit `type` of `single_select` or `multi_select`, and options with IDs and text. The frontend preserves option IDs and does not show hints or explanations during the exam.
+
+The student endpoint must omit all correct-answer and grading fields before submission, return clear invalid-token/inactive-quiz errors, and be publicly accessible to students. The exam frontend uses the Apps Script actions `startAttempt`, `saveAnswer`, and `submitQuiz` via JSON POST bodies sent as `text/plain` to avoid a preflight request. It starts an attempt with the quiz token and an opaque random `studentKey` stored in browser local storage, saves selections using `selectedOptionIds`, and renders the server-returned score and review only after submission. Multi-select saving requires the backend to accept an array of option IDs, including an empty array to clear a response.
+
+The random browser key is not authenticated student identity: a student can clear or change browser storage, so it must not be treated as reliable identity or as strong attempt-limit enforcement. Use a trusted authentication mechanism if those guarantees are required. The frontend does not claim to enforce timers or exam security.
 
 ## GoatCounter analytics and visitor statistics
 
