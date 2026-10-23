@@ -76,13 +76,8 @@
                                 <option value="Hard">Hard</option>
                             </select>
                         </label>
-                        <label class="mcq-field" for="question-count">Practice length
-                            <select id="question-count">
-                                <option value="all">All matching questions</option>
-                                <option value="5">5 questions</option>
-                                <option value="10">10 questions</option>
-                                <option value="15">15 questions</option>
-                            </select>
+                        <label class="mcq-field" for="question-count">Questions to attempt
+                            <input id="question-count" type="number" min="1" step="1" required inputmode="numeric" aria-describedby="question-count-help">
                         </label>
                         <label class="mcq-field" for="quiz-mode">Quiz mode
                             <select id="quiz-mode">
@@ -90,6 +85,15 @@
                                 <option value="exam">Exam — see score at the end</option>
                             </select>
                         </label>
+                    </div>
+                    <p class="mcq-note" id="question-count-help" aria-live="polite">Choose a whole number between 1 and the number of matching questions.</p>
+                    <p class="mcq-note">To take a faculty-assigned exam, paste the token provided by your faculty. Students using the same token receive the same questions, with question and option order shuffled for each session.</p>
+                    <p class="notice mcq-token-status mcq-hidden" id="exam-token-status" role="status" aria-live="polite"></p>
+                    <label class="mcq-field" for="exam-token-input">Student: load a faculty exam token
+                        <textarea id="exam-token-input" rows="3" maxlength="2048" autocomplete="off" placeholder="Paste the token provided by your faculty"></textarea>
+                    </label>
+                    <div class="mcq-actions">
+                        <button class="btn" id="load-exam-token" type="button" disabled>Load token and start exam</button>
                     </div>
                     <div class="mcq-checks">
                         <label class="mcq-check"><input id="shuffle-questions" type="checkbox"> Shuffle questions</label>

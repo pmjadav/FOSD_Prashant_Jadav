@@ -27,7 +27,11 @@ const mcqElements = {
     answerFormat: document.getElementById("answer-format-filter"),
     difficulty: document.getElementById("difficulty-filter"),
     count: document.getElementById("question-count"),
+    countHelp: document.getElementById("question-count-help"),
     mode: document.getElementById("quiz-mode"),
+    examTokenInput: document.getElementById("exam-token-input"),
+    loadExamToken: document.getElementById("load-exam-token"),
+    examTokenStatus: document.getElementById("exam-token-status"),
     shuffleQuestions: document.getElementById("shuffle-questions"),
     shuffleOptions: document.getElementById("shuffle-options"),
     apply: document.getElementById("apply-filters"),
@@ -71,6 +75,7 @@ const mcqElements = {
 
 const mcqState = {
     questions: [],
+    questionBankFingerprint: "",
     filteredQuestions: [],
     sessionQuestions: [],
     sessionMembers: [],
@@ -268,8 +273,9 @@ function getFilteredQuestions() {
 function updateMatchCount() {
     mcqState.filteredQuestions = getFilteredQuestions();
     const count = mcqState.filteredQuestions.length;
-    mcqElements.matchCount.textContent = `${count} matching ${count === 1 ? "question" : "questions"}`;
-    mcqElements.apply.disabled = count === 0;
+    mcqElements.matchCount.textContent = `${count} matching ${count === 1 ? "question" : "questions"}; choose 1–${count}`;
+    mcqElements.count.max = String(count);
+    updateQuestionCountValidity(count);
     if (count === 0) {
         mcqElements.emptyState.textContent = mcqElements.questionType.value === "GATE PYQ"
             ? "No GATE PYQs are currently identified in this question bank. Add a verified GATE source or question-type label to include one."
@@ -284,6 +290,27 @@ function updateMatchCount() {
     }
 }
 
+function updateQuestionCountValidity(matchingCount = mcqState.filteredQuestions.length) {
+    const value = mcqElements.count.value;
+    const questionCount = Number(value);
+    const isValid = value !== ""
+        && Number.isInteger(questionCount)
+        && questionCount >= 1
+        && questionCount <= matchingCount;
+
+    if (matchingCount === 0) {
+        mcqElements.countHelp.textContent = "No questions match the current filters.";
+    } else if (value === "") {
+        mcqElements.countHelp.textContent = `Enter a whole number from 1 to ${matchingCount}.`;
+    } else if (!isValid) {
+        mcqElements.countHelp.textContent = `Enter a whole number from 1 to ${matchingCount}.`;
+    } else {
+        mcqElements.countHelp.textContent = `Choose between 1 and ${matchingCount} matching questions.`;
+    }
+
+    mcqElements.apply.disabled = !isValid;
+}
+
 function shuffle(items) {
     const shuffled = [...items];
     for (let index = shuffled.length - 1; index > 0; index -= 1) {
@@ -293,17 +320,115 @@ function shuffle(items) {
     return shuffled;
 }
 
-function makeQuestionSet(questions) {
-    const candidates = mcqElements.shuffleQuestions.checked ? shuffle(questions) : [...questions];
-    const requestedCount = mcqElements.count.value === "all"
-        ? candidates.length
-        : Number(mcqElements.count.value);
+function createSeededRandom(seed) {
+    let state = 2166136261;
+    for (let index = 0; index < seed.length; index += 1) {
+        state = Math.imul(state ^ seed.charCodeAt(index), 16777619);
+    }
+    return () => {
+        state += 0x6D2B79F5;
+        let value = state;
+        value = Math.imul(value ^ (value >>> 15), value | 1);
+        value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+        return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+    };
+}
+
+function seededShuffle(items, seed) {
+    const shuffled = [...items];
+    const random = createSeededRandom(seed);
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(random() * (index + 1));
+        [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+    return shuffled;
+}
+
+function makeQuestionSet(questions, seed = "") {
+    const candidates = seed
+        ? seededShuffle(questions, seed)
+        : mcqElements.shuffleQuestions.checked ? shuffle(questions) : [...questions];
+    const requestedCount = Number(mcqElements.count.value);
     return candidates.slice(0, requestedCount);
 }
 
+function getQuestionBankFingerprint(questions) {
+    const serialized = JSON.stringify(questions);
+    let first = 2166136261;
+    let second = 5381;
+    for (let index = 0; index < serialized.length; index += 1) {
+        const code = serialized.charCodeAt(index);
+        first = Math.imul(first ^ code, 16777619);
+        second = Math.imul(second, 33) ^ code;
+    }
+    return `${(first >>> 0).toString(16).padStart(8, "0")}${(second >>> 0).toString(16).padStart(8, "0")}`;
+}
+
+function decodeExamToken(token) {
+    const match = /^FOSD1-([A-Za-z0-9_-]+)$/.exec(token.trim());
+    if (!match || token.length > 2048) {
+        throw new Error("The exam token is invalid or unsupported.");
+    }
+    const base64 = match[1].replace(/-/g, "+").replace(/_/g, "/");
+    const binary = atob(base64.padEnd(Math.ceil(base64.length / 4) * 4, "="));
+    const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+    const configuration = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
+    if (!configuration || typeof configuration !== "object" || Array.isArray(configuration)) {
+        throw new Error("The exam token does not contain a valid configuration.");
+    }
+    return configuration;
+}
+
+function loadExamToken() {
+    const configuration = decodeExamToken(mcqElements.examTokenInput.value);
+    const validUnits = new Set(["all", unspecifiedValue, ...[...unitTitles.keys()].map(String)]);
+    const validCount = configuration.count === "all"
+        || (typeof configuration.count === "string" && /^\d+$/.test(configuration.count));
+    if (configuration.version !== 1
+        || configuration.bank !== mcqState.questionBankFingerprint
+        || typeof configuration.seed !== "string"
+        || !configuration.seed.trim()
+        || configuration.seed.length > 80
+        || !validUnits.has(configuration.unit)
+        || typeof configuration.topic !== "string"
+        || !["all", ...questionCategories].includes(configuration.category)
+        || !["all", ...questionTypes].includes(configuration.format)
+        || !["all", unspecifiedValue, ...allowedDifficulties].includes(configuration.difficulty)
+        || !validCount) {
+        throw new Error("This token is invalid, uses an unsupported version, or does not match the current question bank.");
+    }
+
+    mcqElements.unit.value = configuration.unit;
+    mcqElements.questionType.value = configuration.category;
+    mcqElements.answerFormat.value = configuration.format;
+    mcqElements.difficulty.value = configuration.difficulty;
+    updateTopicFilter();
+    if (![...mcqElements.topic.options].some(option => option.value === configuration.topic)) {
+        throw new Error("This token refers to a topic that is not available in the current question bank.");
+    }
+    mcqElements.topic.value = configuration.topic;
+    const matchingQuestions = getFilteredQuestions();
+    const requestedCount = configuration.count === "all"
+        ? matchingQuestions.length
+        : Number(configuration.count);
+    if (!Number.isInteger(requestedCount)
+        || requestedCount < 1
+        || requestedCount > matchingQuestions.length) {
+        throw new Error("The question count in this token must be between 1 and the number of questions matching its filters.");
+    }
+    mcqElements.count.value = String(requestedCount);
+    mcqElements.mode.value = "exam";
+    mcqElements.apply.textContent = "Start exam";
+
+    mcqElements.loadError.classList.add("mcq-hidden");
+    updateMatchCount();
+    beginSession(makeQuestionSet(matchingQuestions, configuration.seed));
+}
+
 function beginSession(questions) {
+    mcqState.mode = mcqElements.mode.value;
     mcqState.sessionQuestions = [...questions];
-    if (mcqElements.shuffleQuestions.checked) {
+    if (mcqState.mode === "exam" || mcqElements.shuffleQuestions.checked) {
         mcqState.sessionQuestions = shuffle(mcqState.sessionQuestions);
     }
     mcqState.sessionMembers = [...mcqState.sessionQuestions];
@@ -312,14 +437,13 @@ function beginSession(questions) {
     mcqState.results.clear();
     mcqState.optionOrder.clear();
     mcqState.sessionQuestions.forEach(question => {
-        const options = mcqElements.shuffleOptions.checked
+        const options = mcqState.mode === "exam" || mcqElements.shuffleOptions.checked
             ? shuffle(question.options)
             : [...question.options];
         mcqState.optionOrder.set(question.id, options);
     });
     mcqState.hintVisible = false;
     mcqState.reviewing = false;
-    mcqState.mode = mcqElements.mode.value;
     mcqElements.setup.classList.add("mcq-hidden");
     mcqElements.summary.classList.add("mcq-hidden");
     mcqElements.panel.classList.remove("mcq-hidden");
@@ -626,10 +750,12 @@ function showReviewQuestion(questionId) {
 function startPractice() {
     mcqElements.loadError.classList.add("mcq-hidden");
     mcqState.filteredQuestions = getFilteredQuestions();
-    if (mcqState.filteredQuestions.length === 0) {
-        mcqElements.panel.classList.add("mcq-hidden");
-        mcqElements.summary.classList.add("mcq-hidden");
+    const requestedCount = Number(mcqElements.count.value);
+    if (!Number.isInteger(requestedCount)
+        || requestedCount < 1
+        || requestedCount > mcqState.filteredQuestions.length) {
         updateMatchCount();
+        mcqElements.count.focus();
         return;
     }
     beginSession(makeQuestionSet(mcqState.filteredQuestions));
@@ -652,11 +778,16 @@ async function loadQuestionBank() {
         }
         const questionData = await response.json();
         mcqState.questions = validateQuestionBank(questionData);
+        mcqState.questionBankFingerprint = getQuestionBankFingerprint(mcqState.questions);
         fillUnitFilter();
         fillDifficultyFilter();
         updateTopicFilter();
         updateMatchCount();
-        mcqElements.apply.disabled = false;
+        if (!mcqElements.count.value && mcqState.filteredQuestions.length > 0) {
+            mcqElements.count.value = String(mcqState.filteredQuestions.length);
+            updateQuestionCountValidity();
+        }
+        mcqElements.loadExamToken.disabled = false;
     } catch (error) {
         console.error("Unable to load MCQ question bank:", error);
         const details = error instanceof SyntaxError
@@ -676,6 +807,7 @@ mcqElements.topic.addEventListener("change", updateMatchCount);
 mcqElements.questionType.addEventListener("change", refreshFilters);
 mcqElements.answerFormat.addEventListener("change", refreshFilters);
 mcqElements.difficulty.addEventListener("change", refreshFilters);
+mcqElements.count.addEventListener("input", () => updateQuestionCountValidity());
 mcqElements.resetFilters.addEventListener("click", () => {
     mcqElements.unit.value = "all";
     mcqElements.questionType.value = "all";
@@ -687,6 +819,18 @@ mcqElements.resetFilters.addEventListener("click", () => {
 mcqElements.apply.addEventListener("click", startPractice);
 mcqElements.mode.addEventListener("change", () => {
     mcqElements.apply.textContent = mcqElements.mode.value === "exam" ? "Start exam" : "Start practice";
+});
+mcqElements.loadExamToken.addEventListener("click", () => {
+    try {
+        loadExamToken();
+        mcqElements.examTokenStatus.textContent = "Exam token loaded. Your question and option order is randomized for this session.";
+        mcqElements.examTokenStatus.dataset.result = "success";
+        mcqElements.examTokenStatus.classList.remove("mcq-hidden");
+    } catch (error) {
+        mcqElements.examTokenStatus.textContent = error.message || "The exam token could not be loaded.";
+        mcqElements.examTokenStatus.dataset.result = "error";
+        mcqElements.examTokenStatus.classList.remove("mcq-hidden");
+    }
 });
 mcqElements.restart.addEventListener("click", () => beginSession(mcqState.sessionMembers));
 mcqElements.previous.addEventListener("click", () => {
