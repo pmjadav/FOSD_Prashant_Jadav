@@ -28,49 +28,39 @@ const mcqElements = {
     difficulty: document.getElementById("difficulty-filter"),
     count: document.getElementById("question-count"),
     countHelp: document.getElementById("question-count-help"),
-    mode: document.getElementById("quiz-mode"),
     examTokenInput: document.getElementById("exam-token-input"),
     loadExamToken: document.getElementById("load-exam-token"),
     examTokenStatus: document.getElementById("exam-token-status"),
-    shuffleQuestions: document.getElementById("shuffle-questions"),
-    shuffleOptions: document.getElementById("shuffle-options"),
     apply: document.getElementById("apply-filters"),
     resetFilters: document.getElementById("reset-filters"),
-    restart: document.getElementById("restart-practice"),
-    setup: document.getElementById("practice-setup"),
+    restart: document.getElementById("restart-exam"),
+    setup: document.getElementById("exam-setup"),
     matchCount: document.getElementById("match-count"),
     loadError: document.getElementById("load-error"),
     emptyState: document.getElementById("empty-state"),
-    panel: document.getElementById("practice-panel"),
+    panel: document.getElementById("exam-panel"),
     progressText: document.getElementById("question-progress"),
-    progress: document.getElementById("practice-progress"),
+    progress: document.getElementById("exam-progress"),
     difficultyLabel: document.getElementById("question-difficulty"),
     tags: document.getElementById("question-tags"),
     topicLabel: document.getElementById("question-topic"),
     question: document.getElementById("question-text"),
     image: document.getElementById("question-image"),
     options: document.getElementById("answer-options"),
-    hint: document.getElementById("question-hint"),
     feedback: document.getElementById("answer-feedback"),
     previous: document.getElementById("previous-question"),
-    showHint: document.getElementById("show-hint"),
-    submit: document.getElementById("submit-answer"),
     next: document.getElementById("next-question"),
-    finish: document.getElementById("finish-practice"),
-    returnSummaryPractice: document.getElementById("return-summary-practice"),
+    finish: document.getElementById("finish-exam"),
+    returnSummary: document.getElementById("return-summary-results"),
     summary: document.getElementById("summary-panel"),
-    summaryMode: document.getElementById("summary-mode"),
-    summaryNote: document.querySelector("#summary-panel .mcq-note"),
-    summaryScoreNote: document.getElementById("summary-score-note"),
     summaryAttempted: document.getElementById("summary-attempted"),
     summaryCorrect: document.getElementById("summary-correct"),
     summaryIncorrect: document.getElementById("summary-incorrect"),
     summaryScore: document.getElementById("summary-score"),
     incorrectReview: document.getElementById("incorrect-review"),
     incorrectList: document.getElementById("incorrect-list"),
-    retryIncorrect: document.getElementById("retry-incorrect"),
     restartSummary: document.getElementById("restart-summary"),
-    newPractice: document.getElementById("new-practice")
+    newExam: document.getElementById("new-exam")
 };
 
 const mcqState = {
@@ -83,9 +73,7 @@ const mcqState = {
     selections: new Map(),
     results: new Map(),
     optionOrder: new Map(),
-    hintVisible: false,
-    reviewing: false,
-    mode: "practice"
+    reviewing: false
 };
 
 function validateQuestionBank(questions) {
@@ -345,9 +333,7 @@ function seededShuffle(items, seed) {
 }
 
 function makeQuestionSet(questions, seed = "") {
-    const candidates = seed
-        ? seededShuffle(questions, seed)
-        : mcqElements.shuffleQuestions.checked ? shuffle(questions) : [...questions];
+    const candidates = seed ? seededShuffle(questions, seed) : shuffle(questions);
     const requestedCount = Number(mcqElements.count.value);
     return candidates.slice(0, requestedCount);
 }
@@ -417,40 +403,27 @@ function loadExamToken() {
         throw new Error("The question count in this token must be between 1 and the number of questions matching its filters.");
     }
     mcqElements.count.value = String(requestedCount);
-    mcqElements.mode.value = "exam";
-    mcqElements.apply.textContent = "Start exam";
-
     mcqElements.loadError.classList.add("mcq-hidden");
     updateMatchCount();
     beginSession(makeQuestionSet(matchingQuestions, configuration.seed));
 }
 
 function beginSession(questions) {
-    mcqState.mode = mcqElements.mode.value;
     mcqState.sessionQuestions = [...questions];
-    if (mcqState.mode === "exam" || mcqElements.shuffleQuestions.checked) {
-        mcqState.sessionQuestions = shuffle(mcqState.sessionQuestions);
-    }
+    mcqState.sessionQuestions = shuffle(mcqState.sessionQuestions);
     mcqState.sessionMembers = [...mcqState.sessionQuestions];
     mcqState.currentIndex = 0;
     mcqState.selections.clear();
     mcqState.results.clear();
     mcqState.optionOrder.clear();
     mcqState.sessionQuestions.forEach(question => {
-        const options = mcqState.mode === "exam" || mcqElements.shuffleOptions.checked
-            ? shuffle(question.options)
-            : [...question.options];
-        mcqState.optionOrder.set(question.id, options);
+        mcqState.optionOrder.set(question.id, shuffle(question.options));
     });
-    mcqState.hintVisible = false;
     mcqState.reviewing = false;
     mcqElements.setup.classList.add("mcq-hidden");
     mcqElements.summary.classList.add("mcq-hidden");
     mcqElements.panel.classList.remove("mcq-hidden");
-    mcqElements.returnSummaryPractice.classList.add("mcq-hidden");
-    mcqElements.submit.classList.toggle("mcq-hidden", mcqState.mode === "exam");
-    mcqElements.showHint.classList.toggle("mcq-hidden", mcqState.mode === "exam");
-    mcqElements.finish.textContent = mcqState.mode === "exam" ? "Submit exam" : "Finish practice";
+    mcqElements.returnSummary.classList.add("mcq-hidden");
     mcqElements.restart.disabled = false;
     mcqElements.emptyState.classList.add("mcq-hidden");
     renderQuestion();
@@ -567,9 +540,7 @@ function renderQuestion() {
     const correctOptionIds = new Set(getCorrectOptionIds(question));
     setElementText(
         mcqElements.progressText,
-        `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${
-            mcqState.mode === "exam" ? `${mcqState.selections.size} answered` : `${mcqState.results.size} submitted`
-        }`
+        `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${mcqState.selections.size} answered`
     );
     mcqElements.progress.max = mcqState.sessionQuestions.length;
     mcqElements.progress.value = mcqState.currentIndex + 1;
@@ -630,13 +601,10 @@ function renderQuestion() {
             } else {
                 mcqState.selections.set(question.id, option.id);
             }
-            if (mcqState.mode === "exam") {
-                setElementText(
-                    mcqElements.progressText,
-                    `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${mcqState.selections.size} answered`
-                );
-            }
-            mcqElements.submit.disabled = !hasAnswerSelection(question);
+            setElementText(
+                mcqElements.progressText,
+                `Question ${mcqState.currentIndex + 1} of ${mcqState.sessionQuestions.length} · ${mcqState.selections.size} answered`
+            );
             mcqElements.options.querySelectorAll(".mcq-option").forEach((optionLabel, index) => {
                 const orderedOption = optionOrder[index];
                 optionLabel.classList.toggle("is-selected", getSelectedOptionIds(question).includes(orderedOption.id));
@@ -666,56 +634,31 @@ function renderQuestion() {
         mcqElements.feedback.classList.add("mcq-hidden");
     }
 
-    mcqElements.hint.textContent = question.hint || "No hint is available for this question.";
-    mcqElements.hint.classList.toggle("mcq-hidden", !mcqState.hintVisible);
-    mcqElements.showHint.disabled = !question.hint || mcqState.mode === "exam";
-    mcqElements.showHint.textContent = mcqState.hintVisible ? "Hide hint" : "Show hint";
     mcqElements.previous.disabled = mcqState.currentIndex === 0;
     mcqElements.next.disabled = mcqState.currentIndex === mcqState.sessionQuestions.length - 1;
-    mcqElements.submit.disabled = Boolean(answerResult) || !hasAnswerSelection(question);
-    mcqElements.returnSummaryPractice.classList.toggle("mcq-hidden", !mcqState.reviewing);
+    mcqElements.finish.classList.toggle("mcq-hidden", mcqState.reviewing);
+    mcqElements.returnSummary.classList.toggle("mcq-hidden", !mcqState.reviewing);
 }
 
 function showSummary() {
     const total = mcqState.sessionQuestions.length;
-    if (mcqState.mode === "exam") {
-        mcqState.sessionQuestions.forEach(question => {
-            const selectedOptionIds = getSelectedOptionIds(question);
-            mcqState.results.set(question.id, {
-                correct: selectedOptionIds.length > 0 && isAnswerCorrect(question, selectedOptionIds)
-            });
+    mcqState.sessionQuestions.forEach(question => {
+        const selectedOptionIds = getSelectedOptionIds(question);
+        mcqState.results.set(question.id, {
+            correct: selectedOptionIds.length > 0 && isAnswerCorrect(question, selectedOptionIds)
         });
-    }
-    const attempted = mcqState.mode === "exam"
-        ? mcqState.sessionQuestions.filter(question => hasAnswerSelection(question)).length
-        : mcqState.results.size;
+    });
+    const attempted = mcqState.sessionQuestions.filter(question => hasAnswerSelection(question)).length;
     const correct = [...mcqState.results.values()].filter(result => result.correct).length;
     const incorrectQuestions = mcqState.sessionQuestions.filter(question =>
         mcqState.results.has(question.id) && !mcqState.results.get(question.id).correct
     );
-    const percentageDenominator = mcqState.mode === "exam" ? total : attempted;
-    const percentage = percentageDenominator ? Math.round((correct / percentageDenominator) * 100) : 0;
+    const percentage = total ? Math.round((correct / total) * 100) : 0;
 
     setElementText(mcqElements.summaryAttempted, `${attempted} / ${total}`);
     setElementText(mcqElements.summaryCorrect, String(correct));
     setElementText(mcqElements.summaryIncorrect, String(incorrectQuestions.length));
     setElementText(mcqElements.summaryScore, `${percentage}%`);
-    setElementText(
-        mcqElements.summaryMode,
-        mcqState.mode === "exam" ? "Exam results" : "Personal practice summary"
-    );
-    setElementText(
-        mcqElements.summaryNote,
-        mcqState.mode === "exam"
-            ? "Your score is based on all questions; unanswered questions count as incorrect. This result is not transmitted or recorded."
-            : "This score is only for your own learning and is not submitted or recorded."
-    );
-    setElementText(
-        mcqElements.summaryScoreNote,
-        mcqState.mode === "exam"
-            ? "The percentage is based on all questions in the exam."
-            : "The percentage is based on attempted questions; unanswered questions are not included."
-    );
     mcqElements.incorrectList.replaceChildren();
     incorrectQuestions.forEach(question => {
         const reviewButton = document.createElement("button");
@@ -726,7 +669,6 @@ function showSummary() {
         mcqElements.incorrectList.append(reviewButton);
     });
     mcqElements.incorrectReview.classList.toggle("mcq-hidden", incorrectQuestions.length === 0);
-    mcqElements.retryIncorrect.classList.toggle("mcq-hidden", incorrectQuestions.length === 0);
     mcqElements.panel.classList.add("mcq-hidden");
     mcqElements.setup.classList.add("mcq-hidden");
     mcqElements.summary.classList.remove("mcq-hidden");
@@ -747,7 +689,7 @@ function showReviewQuestion(questionId) {
     mcqElements.panel.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function startPractice() {
+function startExam() {
     mcqElements.loadError.classList.add("mcq-hidden");
     mcqState.filteredQuestions = getFilteredQuestions();
     const requestedCount = Number(mcqElements.count.value);
@@ -761,7 +703,7 @@ function startPractice() {
     beginSession(makeQuestionSet(mcqState.filteredQuestions));
 }
 
-function showPracticeSetup() {
+function showExamSetup() {
     mcqState.reviewing = false;
     mcqElements.panel.classList.add("mcq-hidden");
     mcqElements.summary.classList.add("mcq-hidden");
@@ -816,10 +758,7 @@ mcqElements.resetFilters.addEventListener("click", () => {
     mcqElements.topic.value = "all";
     refreshFilters();
 });
-mcqElements.apply.addEventListener("click", startPractice);
-mcqElements.mode.addEventListener("change", () => {
-    mcqElements.apply.textContent = mcqElements.mode.value === "exam" ? "Start exam" : "Start practice";
-});
+mcqElements.apply.addEventListener("click", startExam);
 mcqElements.loadExamToken.addEventListener("click", () => {
     try {
         loadExamToken();
@@ -836,7 +775,6 @@ mcqElements.restart.addEventListener("click", () => beginSession(mcqState.sessio
 mcqElements.previous.addEventListener("click", () => {
     if (mcqState.currentIndex > 0) {
         mcqState.currentIndex -= 1;
-        mcqState.hintVisible = false;
         renderQuestion();
         mcqElements.question.focus();
     }
@@ -844,36 +782,16 @@ mcqElements.previous.addEventListener("click", () => {
 mcqElements.next.addEventListener("click", () => {
     if (mcqState.currentIndex < mcqState.sessionQuestions.length - 1) {
         mcqState.currentIndex += 1;
-        mcqState.hintVisible = false;
         renderQuestion();
         mcqElements.question.focus();
     }
 });
-mcqElements.showHint.addEventListener("click", () => {
-    mcqState.hintVisible = !mcqState.hintVisible;
-    renderQuestion();
-});
-mcqElements.submit.addEventListener("click", () => {
-    const question = mcqState.sessionQuestions[mcqState.currentIndex];
-    const selectedOptionIds = getSelectedOptionIds(question);
-    if (!selectedOptionIds.length || mcqState.results.has(question.id)) return;
-    mcqState.results.set(question.id, {
-        correct: isAnswerCorrect(question, selectedOptionIds)
-    });
-    renderQuestion();
-});
 mcqElements.finish.addEventListener("click", showSummary);
-mcqElements.returnSummaryPractice.addEventListener("click", showSummary);
-mcqElements.newPractice.addEventListener("click", showPracticeSetup);
+mcqElements.returnSummary.addEventListener("click", showSummary);
+mcqElements.newExam.addEventListener("click", showExamSetup);
 mcqElements.incorrectList.addEventListener("click", event => {
     const reviewButton = event.target.closest("[data-question-id]");
     if (reviewButton) showReviewQuestion(reviewButton.dataset.questionId);
-});
-mcqElements.retryIncorrect.addEventListener("click", () => {
-    const incorrectQuestions = mcqState.sessionQuestions.filter(question =>
-        mcqState.results.has(question.id) && !mcqState.results.get(question.id).correct
-    );
-    if (incorrectQuestions.length) beginSession(incorrectQuestions);
 });
 mcqElements.restartSummary.addEventListener("click", () => beginSession(mcqState.sessionMembers));
 
