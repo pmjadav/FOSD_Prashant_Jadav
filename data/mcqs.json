@@ -1619,5 +1619,3168 @@
       "energy efficiency"
     ],
     "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u1-q6",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "Kernel architecture",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which kernel architecture generally offers stronger fault isolation by running many services outside privileged kernel space?",
+    "options": [
+      {
+        "id": "u1-q6-a",
+        "text": "Monolithic kernel"
+      },
+      {
+        "id": "u1-q6-b",
+        "text": "Microkernel"
+      },
+      {
+        "id": "u1-q6-c",
+        "text": "Single-tasking kernel"
+      },
+      {
+        "id": "u1-q6-d",
+        "text": "Unprotected kernel"
+      }
+    ],
+    "correctOptionId": "u1-q6-b",
+    "explanation": "A microkernel keeps a minimal set of mechanisms in kernel space and can run services such as drivers in user space, improving isolation.",
+    "hint": "Consider which design minimizes code running in privileged kernel mode.",
+    "tags": [
+      "kernel architecture",
+      "microkernel",
+      "fault isolation"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u1-q7",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "System calls",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "A user program needs the operating system to read a protected file. Which mechanism provides a controlled entry into the kernel?",
+    "options": [
+      {
+        "id": "u1-q7-a",
+        "text": "A direct write to a kernel address"
+      },
+      {
+        "id": "u1-q7-b",
+        "text": "A system call"
+      },
+      {
+        "id": "u1-q7-c",
+        "text": "A CPU cache miss"
+      },
+      {
+        "id": "u1-q7-d",
+        "text": "A normal function call that bypasses the OS"
+      }
+    ],
+    "correctOptionId": "u1-q7-b",
+    "explanation": "A system call is the defined interface through which a user program requests a kernel service.",
+    "hint": "Distinguish an OS service request from an ordinary function call.",
+    "tags": [
+      "system calls",
+      "user mode",
+      "kernel mode"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u2-q6",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "FCFS scheduling",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Three processes arrive together in order P1, P2, P3, with CPU bursts 5, 3, and 2 time units. Under non-preemptive FCFS, what is P3's waiting time?",
+    "options": [
+      {
+        "id": "u2-q6-a",
+        "text": "2 time units"
+      },
+      {
+        "id": "u2-q6-b",
+        "text": "5 time units"
+      },
+      {
+        "id": "u2-q6-c",
+        "text": "8 time units"
+      },
+      {
+        "id": "u2-q6-d",
+        "text": "10 time units"
+      }
+    ],
+    "correctOptionId": "u2-q6-c",
+    "explanation": "P3 waits for P1 and P2 to finish: 5 + 3 = 8 time units.",
+    "hint": "Add the burst times of processes scheduled before P3.",
+    "tags": [
+      "FCFS",
+      "waiting time",
+      "scheduling calculation"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u2-q7",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "SRTF scheduling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "At time 0, P1 arrives with a burst of 7 units. P2 arrives at time 2 with a burst of 3 units. Under SRTF, which process runs immediately after P2 arrives?",
+    "options": [
+      {
+        "id": "u2-q7-a",
+        "text": "P1, because it arrived first"
+      },
+      {
+        "id": "u2-q7-b",
+        "text": "P2, because its burst is shorter than P1's remaining time"
+      },
+      {
+        "id": "u2-q7-c",
+        "text": "Both on the same single CPU"
+      },
+      {
+        "id": "u2-q7-d",
+        "text": "Neither; the CPU must be idle"
+      }
+    ],
+    "correctOptionId": "u2-q7-b",
+    "explanation": "At time 2, P1 has 5 units remaining while P2 needs 3, so SRTF selects P2.",
+    "hint": "Compare remaining time, not original burst time or arrival order.",
+    "tags": [
+      "SRTF",
+      "preemptive scheduling"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u3-q6",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Critical section",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is the primary purpose of mutual exclusion around a critical section that updates a shared counter?",
+    "options": [
+      {
+        "id": "u3-q6-a",
+        "text": "Only one participating thread executes the protected section at a time"
+      },
+      {
+        "id": "u3-q6-b",
+        "text": "Every thread runs at the same speed"
+      },
+      {
+        "id": "u3-q6-c",
+        "text": "The OS stops scheduling threads"
+      },
+      {
+        "id": "u3-q6-d",
+        "text": "The counter becomes read-only"
+      }
+    ],
+    "correctOptionId": "u3-q6-a",
+    "explanation": "Mutual exclusion prevents concurrent execution of the protected critical section, avoiding conflicting updates to shared state.",
+    "hint": "Think about the race that can occur when two updates overlap.",
+    "tags": [
+      "critical section",
+      "mutual exclusion",
+      "race condition"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u3-q7",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Semaphore",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A counting semaphore represents three identical available resources and is initialized to 3. What does a successful wait operation normally do?",
+    "options": [
+      {
+        "id": "u3-q7-a",
+        "text": "Increases the count by one"
+      },
+      {
+        "id": "u3-q7-b",
+        "text": "Decreases the count by one to acquire a resource"
+      },
+      {
+        "id": "u3-q7-c",
+        "text": "Resets the count to zero"
+      },
+      {
+        "id": "u3-q7-d",
+        "text": "Terminates the calling thread"
+      }
+    ],
+    "correctOptionId": "u3-q7-b",
+    "explanation": "A wait operation acquires one available resource by decrementing the count; it blocks if no resource is available.",
+    "hint": "Relate the count to the number of free resources.",
+    "tags": [
+      "semaphore",
+      "resource counting",
+      "synchronization"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u4-q6",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Deadlock prevention",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which strategy directly prevents deadlock by eliminating the hold-and-wait condition?",
+    "options": [
+      {
+        "id": "u4-q6-a",
+        "text": "Allow circular wait"
+      },
+      {
+        "id": "u4-q6-b",
+        "text": "Require processes to request all needed resources together before execution"
+      },
+      {
+        "id": "u4-q6-c",
+        "text": "Increase the number of competing processes"
+      },
+      {
+        "id": "u4-q6-d",
+        "text": "Allow processes to hold resources indefinitely"
+      }
+    ],
+    "correctOptionId": "u4-q6-b",
+    "explanation": "Requiring all needed resources at once removes hold-and-wait, although it can reduce resource utilization.",
+    "hint": "Recall the four necessary conditions for deadlock.",
+    "tags": [
+      "deadlock prevention",
+      "hold and wait"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u4-q7",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Banker's algorithm",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does the Banker's algorithm check before granting a resource request?",
+    "options": [
+      {
+        "id": "u4-q7-a",
+        "text": "Whether the resulting state is safe"
+      },
+      {
+        "id": "u4-q7-b",
+        "text": "Whether all processes have completed"
+      },
+      {
+        "id": "u4-q7-c",
+        "text": "Whether CPU utilization is exactly 100%"
+      },
+      {
+        "id": "u4-q7-d",
+        "text": "Whether resources can never be released"
+      }
+    ],
+    "correctOptionId": "u4-q7-a",
+    "explanation": "The algorithm grants a request only if the resulting allocation leaves the system in a safe state.",
+    "hint": "The goal is to preserve a safe completion sequence.",
+    "tags": [
+      "Banker's algorithm",
+      "safe state",
+      "deadlock avoidance"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u5-q6",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Base and limit protection",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In a base-and-limit scheme, a process generates a logical address equal to its limit. What should the hardware do?",
+    "options": [
+      {
+        "id": "u5-q6-a",
+        "text": "Allow access because equality is valid"
+      },
+      {
+        "id": "u5-q6-b",
+        "text": "Add the base and access memory"
+      },
+      {
+        "id": "u5-q6-c",
+        "text": "Raise a protection fault because valid offsets are below the limit"
+      },
+      {
+        "id": "u5-q6-d",
+        "text": "Increase the limit automatically"
+      }
+    ],
+    "correctOptionId": "u5-q6-c",
+    "explanation": "The logical offset must be less than the limit. An offset equal to the limit lies outside the permitted range and must be rejected.",
+    "hint": "The limit specifies the size of the valid logical address range.",
+    "tags": [
+      "base and limit",
+      "relocation",
+      "memory protection"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u5-q7",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Internal fragmentation",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "A process is allocated a fixed-size partition of 16 MiB but uses only 11 MiB. How much internal fragmentation is present?",
+    "options": [
+      {
+        "id": "u5-q7-a",
+        "text": "3 MiB"
+      },
+      {
+        "id": "u5-q7-b",
+        "text": "5 MiB"
+      },
+      {
+        "id": "u5-q7-c",
+        "text": "11 MiB"
+      },
+      {
+        "id": "u5-q7-d",
+        "text": "27 MiB"
+      }
+    ],
+    "correctOptionId": "u5-q7-b",
+    "explanation": "Internal fragmentation is unused space inside the allocated partition: 16 − 11 = 5 MiB.",
+    "hint": "Subtract the amount used from the allocated partition size.",
+    "tags": [
+      "internal fragmentation",
+      "partitioning"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u6-q6",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "FIFO page replacement",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A process references pages 1, 2, 3, 1. It has three initially empty frames and uses FIFO. How many page faults occur?",
+    "options": [
+      {
+        "id": "u6-q6-a",
+        "text": "One"
+      },
+      {
+        "id": "u6-q6-b",
+        "text": "Two"
+      },
+      {
+        "id": "u6-q6-c",
+        "text": "Three"
+      },
+      {
+        "id": "u6-q6-d",
+        "text": "Four"
+      }
+    ],
+    "correctOptionId": "u6-q6-c",
+    "explanation": "The first references to pages 1, 2, and 3 each fault. The final reference to page 1 is a hit, so there are 3 faults.",
+    "hint": "Track the frame contents after each reference.",
+    "tags": [
+      "FIFO",
+      "page faults",
+      "page replacement"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u6-q7",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "Demand paging",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In demand paging, what does a page fault normally indicate?",
+    "options": [
+      {
+        "id": "u6-q7-a",
+        "text": "A requested page is not currently resident and requires fault handling"
+      },
+      {
+        "id": "u6-q7-b",
+        "text": "The CPU has permanently failed"
+      },
+      {
+        "id": "u6-q7-c",
+        "text": "The replacement algorithm has finished"
+      },
+      {
+        "id": "u6-q7-d",
+        "text": "The process has necessarily caused an illegal access"
+      }
+    ],
+    "correctOptionId": "u6-q7-a",
+    "explanation": "A page fault invokes OS handling to validate the access and, when appropriate, bring the page into memory. Not every page fault is an invalid access.",
+    "hint": "Distinguish a missing resident page from an illegal memory access.",
+    "tags": [
+      "demand paging",
+      "page fault",
+      "virtual memory"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u7-q6",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "File allocation",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which file allocation method stores a file's blocks in a linked sequence, with each block pointing to the next?",
+    "options": [
+      {
+        "id": "u7-q6-a",
+        "text": "Contiguous allocation"
+      },
+      {
+        "id": "u7-q6-b",
+        "text": "Linked allocation"
+      },
+      {
+        "id": "u7-q6-c",
+        "text": "Indexed allocation"
+      },
+      {
+        "id": "u7-q6-d",
+        "text": "Hashed allocation"
+      }
+    ],
+    "correctOptionId": "u7-q6-b",
+    "explanation": "Linked allocation connects file blocks through pointers, allowing blocks to be scattered but making direct access less efficient.",
+    "hint": "Look for the method where each block identifies the next block.",
+    "tags": [
+      "file allocation",
+      "linked allocation"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u7-q7",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "Journaling file system",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What is a primary purpose of journaling in a file system?",
+    "options": [
+      {
+        "id": "u7-q7-a",
+        "text": "Eliminate the need for storage devices"
+      },
+      {
+        "id": "u7-q7-b",
+        "text": "Record updates so recovery after a crash is more reliable"
+      },
+      {
+        "id": "u7-q7-c",
+        "text": "Guarantee that no disk operation ever fails"
+      },
+      {
+        "id": "u7-q7-d",
+        "text": "Replace file permissions with encryption"
+      }
+    ],
+    "correctOptionId": "u7-q7-b",
+    "explanation": "A journal records updates so the file system can recover or replay operations after a crash, improving consistency depending on the journaling mode.",
+    "hint": "Consider how the file system recovers from an interrupted update.",
+    "tags": [
+      "journaling",
+      "file system reliability"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u8-q6",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "SCAN disk scheduling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "In SCAN disk scheduling, what does the disk head do after moving in one direction servicing requests?",
+    "options": [
+      {
+        "id": "u8-q6-a",
+        "text": "Reverse at the last request without reaching the disk boundary"
+      },
+      {
+        "id": "u8-q6-b",
+        "text": "Continue to the end of the disk in that direction before reversing"
+      },
+      {
+        "id": "u8-q6-c",
+        "text": "Jump immediately to the nearest request regardless of direction"
+      },
+      {
+        "id": "u8-q6-d",
+        "text": "Service requests only in arrival order"
+      }
+    ],
+    "correctOptionId": "u8-q6-b",
+    "explanation": "SCAN moves toward one end of the disk, servicing requests along the way, reaches the end, and then reverses.",
+    "hint": "Compare SCAN with LOOK, which reverses at the last request in that direction.",
+    "tags": [
+      "SCAN",
+      "disk scheduling"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u8-q7",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "LOOK disk scheduling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "How does LOOK differ from SCAN?",
+    "options": [
+      {
+        "id": "u8-q7-a",
+        "text": "LOOK reverses at the last pending request in the current direction instead of travelling to the physical disk end"
+      },
+      {
+        "id": "u8-q7-b",
+        "text": "LOOK always moves in only one direction"
+      },
+      {
+        "id": "u8-q7-c",
+        "text": "LOOK services requests randomly"
+      },
+      {
+        "id": "u8-q7-d",
+        "text": "LOOK is identical to FCFS"
+      }
+    ],
+    "correctOptionId": "u8-q7-a",
+    "explanation": "LOOK avoids travelling to the disk boundary when no request exists beyond the last request in that direction.",
+    "hint": "Focus on where the head reverses direction.",
+    "tags": [
+      "LOOK",
+      "disk scheduling"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u9-q6",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "Hard real-time systems",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "For a hard real-time system, which property is most critical?",
+    "options": [
+      {
+        "id": "u9-q6-a",
+        "text": "Average throughput is always highest"
+      },
+      {
+        "id": "u9-q6-b",
+        "text": "Every task uses the same CPU time"
+      },
+      {
+        "id": "u9-q6-c",
+        "text": "Critical deadlines are met within specified timing constraints"
+      },
+      {
+        "id": "u9-q6-d",
+        "text": "Tasks execute alphabetically"
+      }
+    ],
+    "correctOptionId": "u9-q6-c",
+    "explanation": "Hard real-time correctness depends on meeting specified deadlines; a missed critical deadline can constitute system failure.",
+    "hint": "Distinguish deadline correctness from average performance.",
+    "tags": [
+      "real-time OS",
+      "hard real-time",
+      "deadlines"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u9-q7",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "Earliest Deadline First",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "On a single preemptive processor, Earliest Deadline First (EDF) selects the ready task with:",
+    "options": [
+      {
+        "id": "u9-q7-a",
+        "text": "The earliest absolute deadline"
+      },
+      {
+        "id": "u9-q7-b",
+        "text": "The largest memory footprint"
+      },
+      {
+        "id": "u9-q7-c",
+        "text": "The longest execution time"
+      },
+      {
+        "id": "u9-q7-d",
+        "text": "The latest arrival time in every case"
+      }
+    ],
+    "correctOptionId": "u9-q7-a",
+    "explanation": "EDF prioritizes the ready job with the earliest absolute deadline, preempting as needed under the scheduling model.",
+    "hint": "Look at the deadline, not task size or arrival order alone.",
+    "tags": [
+      "EDF",
+      "real-time scheduling"
+    ],
+    "source": "Original FOSD practice question."
+  },
+  {
+    "id": "u1-q8",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "OS design goals",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which operating-system design goal is most directly concerned with continuing to provide service when a component fails?",
+    "options": [
+      {
+        "id": "u1-q8-a",
+        "text": "Reliability"
+      },
+      {
+        "id": "u1-q8-b",
+        "text": "Portability"
+      },
+      {
+        "id": "u1-q8-c",
+        "text": "Interoperability"
+      },
+      {
+        "id": "u1-q8-d",
+        "text": "Visual consistency"
+      }
+    ],
+    "correctOptionId": "u1-q8-a",
+    "explanation": "Reliability concerns dependable operation and continued service under faults. Portability concerns moving software across platforms, while interoperability concerns working with other systems.",
+    "hint": "Focus on dependable operation and fault handling.",
+    "tags": [
+      "design goals",
+      "reliability"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u1-q9",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "OS design goals",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A new OS runs well on one processor family but requires extensive redesign to run on another. Which design goal is weakest?",
+    "options": [
+      {
+        "id": "u1-q9-a",
+        "text": "Portability"
+      },
+      {
+        "id": "u1-q9-b",
+        "text": "Reliability"
+      },
+      {
+        "id": "u1-q9-c",
+        "text": "Throughput"
+      },
+      {
+        "id": "u1-q9-d",
+        "text": "Fault isolation"
+      }
+    ],
+    "correctOptionId": "u1-q9-a",
+    "explanation": "Portability is the ease with which software can be adapted to different hardware or system environments. Hardware abstraction can improve portability.",
+    "hint": "Which goal concerns moving software across platforms?",
+    "tags": [
+      "design goals",
+      "portability"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u1-q10",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "OS design goals",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A service must support a growing number of users and CPUs without performance collapsing. Which design goal is most directly implicated?",
+    "options": [
+      {
+        "id": "u1-q10-a",
+        "text": "Scalability"
+      },
+      {
+        "id": "u1-q10-b",
+        "text": "Portability"
+      },
+      {
+        "id": "u1-q10-c",
+        "text": "Interoperability"
+      },
+      {
+        "id": "u1-q10-d",
+        "text": "Determinism only"
+      }
+    ],
+    "correctOptionId": "u1-q10-a",
+    "explanation": "Scalability concerns maintaining acceptable behavior as workload or system size grows. It may require attention to contention, parallelism, and resource-management overhead.",
+    "hint": "Think about growth in workload or system size.",
+    "tags": [
+      "design goals",
+      "scalability"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u1-q11",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "OS design goals",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "A kernel change improves average throughput but allows one faulty driver to corrupt kernel memory and crash the whole machine. Which evaluation is most defensible?",
+    "options": [
+      {
+        "id": "u1-q11-a",
+        "text": "The change improves every design goal because throughput increased."
+      },
+      {
+        "id": "u1-q11-b",
+        "text": "The change may improve performance while worsening reliability and fault isolation."
+      },
+      {
+        "id": "u1-q11-c",
+        "text": "The change improves portability but has no reliability implications."
+      },
+      {
+        "id": "u1-q11-d",
+        "text": "Throughput and reliability are interchangeable metrics."
+      }
+    ],
+    "correctOptionId": "u1-q11-b",
+    "explanation": "Design goals can conflict. Moving code into a less-privileged, isolated service can improve fault containment but may introduce communication and context-switching costs.",
+    "hint": "Evaluate performance separately from reliability.",
+    "tags": [
+      "design trade-offs",
+      "performance",
+      "reliability",
+      "fault isolation"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u1-q12",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "Kernel architecture",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which statement best characterizes a traditional monolithic kernel?",
+    "options": [
+      {
+        "id": "u1-q12-a",
+        "text": "Most core OS services execute in kernel space, often allowing direct calls but increasing the impact of faults in privileged components."
+      },
+      {
+        "id": "u1-q12-b",
+        "text": "All OS services must execute as separate user processes."
+      },
+      {
+        "id": "u1-q12-c",
+        "text": "It contains no device drivers."
+      },
+      {
+        "id": "u1-q12-d",
+        "text": "It eliminates the need for privilege separation."
+      }
+    ],
+    "correctOptionId": "u1-q12-a",
+    "explanation": "A monolithic design places many services, such as file systems and drivers, in kernel space. This can reduce communication overhead but enlarges the privileged code base and fault impact.",
+    "hint": "Consider where core services and drivers execute.",
+    "tags": [
+      "monolithic kernel",
+      "kernel architecture"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u1-q13",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "Kernel architecture",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A microkernel design moves many services to user space. What is a likely trade-off?",
+    "options": [
+      {
+        "id": "u1-q13-a",
+        "text": "Potentially better isolation, with possible IPC and context-switching overhead."
+      },
+      {
+        "id": "u1-q13-b",
+        "text": "Guaranteed zero communication overhead."
+      },
+      {
+        "id": "u1-q13-c",
+        "text": "All services gain unrestricted kernel privileges."
+      },
+      {
+        "id": "u1-q13-d",
+        "text": "Portability becomes impossible."
+      }
+    ],
+    "correctOptionId": "u1-q13-a",
+    "explanation": "User-space services can be isolated from the kernel and one another, but service requests may require inter-process communication and additional transitions.",
+    "hint": "Pair the isolation benefit with the cost of crossing service boundaries.",
+    "tags": [
+      "microkernel",
+      "IPC",
+      "trade-offs"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u1-q14",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "Kernel architecture",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "A team wants a kernel design that retains high-performance in-kernel paths for selected services but uses modular separation for others. Which statement is most accurate?",
+    "options": [
+      {
+        "id": "u1-q14-a",
+        "text": "A hybrid design may combine elements of monolithic and microkernel approaches; its exact properties depend on implementation."
+      },
+      {
+        "id": "u1-q14-b",
+        "text": "A hybrid design always runs every driver in user space."
+      },
+      {
+        "id": "u1-q14-c",
+        "text": "A hybrid design is identical to a pure microkernel by definition."
+      },
+      {
+        "id": "u1-q14-d",
+        "text": "A hybrid design removes all kernel-mode code."
+      }
+    ],
+    "correctOptionId": "u1-q14-a",
+    "explanation": "Hybrid kernels combine design ideas rather than following one strict placement rule. The performance and isolation properties depend on which services remain privileged and how components communicate.",
+    "hint": "Do not assume every hybrid kernel uses the same component placement.",
+    "tags": [
+      "hybrid kernel",
+      "architecture comparison"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u1-q15",
+    "unitId": 1,
+    "unitTitle": "Operating System Design, Processes and Threads",
+    "topic": "Kernel architecture",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "A high-throughput server is sensitive to IPC overhead, but driver faults are causing system-wide crashes. Which design recommendation best reflects the trade-off?",
+    "options": [
+      {
+        "id": "u1-q15-a",
+        "text": "Choose solely by the name of the architecture; implementation details do not matter."
+      },
+      {
+        "id": "u1-q15-b",
+        "text": "Compare a monolithic design's fast in-kernel paths with the isolation benefits and communication costs of more separated or hybrid designs."
+      },
+      {
+        "id": "u1-q15-c",
+        "text": "Move all applications into kernel mode."
+      },
+      {
+        "id": "u1-q15-d",
+        "text": "Ignore fault frequency because throughput is the only measurable goal."
+      }
+    ],
+    "correctOptionId": "u1-q15-b",
+    "explanation": "The scenario requires balancing performance and reliability. Architecture choice should consider driver placement, fault containment, communication overhead, and actual workload measurements.",
+    "hint": "Identify both the performance requirement and the fault-containment requirement.",
+    "tags": [
+      "architecture",
+      "HOTS",
+      "performance",
+      "reliability"
+    ],
+    "source": "Original FOSD practice question aligned to the CEUC301 syllabus."
+  },
+  {
+    "id": "u2-q8",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "Scheduling metrics",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "A process arrives at 4 ms and first receives the CPU at 11 ms. What is its response time?",
+    "options": [
+      {
+        "id": "u2-q8-a",
+        "text": "4 ms"
+      },
+      {
+        "id": "u2-q8-b",
+        "text": "7 ms"
+      },
+      {
+        "id": "u2-q8-c",
+        "text": "11 ms"
+      },
+      {
+        "id": "u2-q8-d",
+        "text": "15 ms"
+      }
+    ],
+    "correctOptionId": "u2-q8-b",
+    "explanation": "Response time = first CPU start − arrival = 11 − 4 = 7 ms.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "Scheduling metrics"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u2-q9",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "Scheduling metrics",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A process arrives at time 2, completes at time 17, and has a CPU burst of 9 units. Assuming no other waiting definition is needed, what are its turnaround and total waiting times?",
+    "options": [
+      {
+        "id": "u2-q9-a",
+        "text": "Turnaround 15; waiting 6"
+      },
+      {
+        "id": "u2-q9-b",
+        "text": "Turnaround 17; waiting 8"
+      },
+      {
+        "id": "u2-q9-c",
+        "text": "Turnaround 9; waiting 6"
+      },
+      {
+        "id": "u2-q9-d",
+        "text": "Turnaround 15; waiting 9"
+      }
+    ],
+    "correctOptionId": "u2-q9-a",
+    "explanation": "Turnaround = completion − arrival = 17 − 2 = 15. For a single CPU burst, waiting = turnaround − burst = 15 − 9 = 6.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "Scheduling metrics"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u2-q10",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "Workload characterization",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A workload contains many short interactive jobs mixed with a few long CPU-bound jobs. Which metric is especially important for the interactive jobs?",
+    "options": [
+      {
+        "id": "u2-q10-a",
+        "text": "Average response time"
+      },
+      {
+        "id": "u2-q10-b",
+        "text": "Disk capacity only"
+      },
+      {
+        "id": "u2-q10-c",
+        "text": "Number of source files"
+      },
+      {
+        "id": "u2-q10-d",
+        "text": "Kernel image size only"
+      }
+    ],
+    "correctOptionId": "u2-q10-a",
+    "explanation": "Interactive workloads are sensitive to the delay before first service, so response time is a key metric alongside fairness and throughput.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "Workload characterization"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u2-q11",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "Throughput and utilization",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A scheduler completes 240 jobs in 60 seconds. What is its throughput over that interval?",
+    "options": [
+      {
+        "id": "u2-q11-a",
+        "text": "0.25 jobs/s"
+      },
+      {
+        "id": "u2-q11-b",
+        "text": "4 jobs/s"
+      },
+      {
+        "id": "u2-q11-c",
+        "text": "60 jobs/s"
+      },
+      {
+        "id": "u2-q11-d",
+        "text": "240 jobs/s"
+      }
+    ],
+    "correctOptionId": "u2-q11-b",
+    "explanation": "Throughput = completed jobs / elapsed time = 240 / 60 = 4 jobs per second.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "Throughput and utilization"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u2-q12",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "FCFS scheduling",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Three processes arrive together in the order P1, P2, P3 with bursts 4, 6, and 2 ms. Under non-preemptive FCFS, what is P2 turnaround time?",
+    "options": [
+      {
+        "id": "u2-q12-a",
+        "text": "4 ms"
+      },
+      {
+        "id": "u2-q12-b",
+        "text": "6 ms"
+      },
+      {
+        "id": "u2-q12-c",
+        "text": "10 ms"
+      },
+      {
+        "id": "u2-q12-d",
+        "text": "12 ms"
+      }
+    ],
+    "correctOptionId": "u2-q12-c",
+    "explanation": "P2 completes after P1 and its own burst: 4 + 6 = 10 ms. All arrive at time 0, so turnaround equals completion time.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "FCFS scheduling"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u2-q13",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "FCFS scheduling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "P1 arrives at 0 with burst 8; P2 arrives at 1 with burst 2; P3 arrives at 2 with burst 1. Under non-preemptive FCFS, what is P3 waiting time?",
+    "options": [
+      {
+        "id": "u2-q13-a",
+        "text": "6"
+      },
+      {
+        "id": "u2-q13-b",
+        "text": "7"
+      },
+      {
+        "id": "u2-q13-c",
+        "text": "8"
+      },
+      {
+        "id": "u2-q13-d",
+        "text": "9"
+      }
+    ],
+    "correctOptionId": "u2-q13-c",
+    "explanation": "P1 runs 0–8, P2 runs 8–10, and P3 starts at 10. P3 arrived at 2, so it waits 10 − 2 = 8 time units.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "FCFS scheduling"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u2-q14",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "SJF scheduling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Two jobs arrive at time 0 with CPU bursts 3 and 9 units. Under non-preemptive SJF, what is the average waiting time?",
+    "options": [
+      {
+        "id": "u2-q14-a",
+        "text": "1.5 units"
+      },
+      {
+        "id": "u2-q14-b",
+        "text": "3 units"
+      },
+      {
+        "id": "u2-q14-c",
+        "text": "4.5 units"
+      },
+      {
+        "id": "u2-q14-d",
+        "text": "6 units"
+      }
+    ],
+    "correctOptionId": "u2-q14-a",
+    "explanation": "The 3-unit job waits 0; the 9-unit job waits 3. Average waiting = (0 + 3)/2 = 1.5 units.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "SJF scheduling"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u2-q15",
+    "unitId": 2,
+    "unitTitle": "CPU Scheduling and Performance Evaluation",
+    "topic": "SJF trade-offs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Why can non-preemptive SJF be difficult to implement optimally for general workloads?",
+    "options": [
+      {
+        "id": "u2-q15-a",
+        "text": "Exact next CPU-burst lengths are usually not known in advance"
+      },
+      {
+        "id": "u2-q15-b",
+        "text": "It requires every process to have the same priority"
+      },
+      {
+        "id": "u2-q15-c",
+        "text": "It always preempts the running process"
+      },
+      {
+        "id": "u2-q15-d",
+        "text": "It cannot run CPU-bound jobs"
+      }
+    ],
+    "correctOptionId": "u2-q15-a",
+    "explanation": "SJF needs the next CPU-burst length. Operating systems typically estimate bursts rather than knowing them exactly, and long jobs can experience starvation.",
+    "hint": "Work through the scheduling rule or metric definition carefully.",
+    "tags": [
+      "FOSD",
+      "CEUC301",
+      "Unit 2",
+      "SJF trade-offs"
+    ],
+    "source": "Original question authored for the FOSD CEUC301 question bank"
+  },
+  {
+    "id": "u3-q8",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Race conditions",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Two threads execute `counter = counter + 1` concurrently. Why can the final counter be smaller than the number of increments requested?",
+    "options": [
+      {
+        "id": "u3-q8-a",
+        "text": "The assignment is always atomic on every processor"
+      },
+      {
+        "id": "u3-q8-b",
+        "text": "The operation may involve a read, modification, and write that interleave"
+      },
+      {
+        "id": "u3-q8-c",
+        "text": "A context switch permanently resets counter"
+      },
+      {
+        "id": "u3-q8-d",
+        "text": "The scheduler serializes all memory accesses automatically"
+      }
+    ],
+    "correctOptionId": "u3-q8-b",
+    "explanation": "The increment is typically a read-modify-write sequence. Two threads can read the same old value and overwrite one another's updates.",
+    "hint": "Trace the individual read and write steps.",
+    "tags": [
+      "race-condition;interleaving"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u3-q9",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Critical-section requirements",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which set lists the three classic requirements for a correct critical-section solution?",
+    "options": [
+      {
+        "id": "u3-q9-a",
+        "text": "Mutual exclusion, progress, bounded waiting"
+      },
+      {
+        "id": "u3-q9-b",
+        "text": "Atomicity, locality, throughput"
+      },
+      {
+        "id": "u3-q9-c",
+        "text": "Deadlock freedom, paging, fairness"
+      },
+      {
+        "id": "u3-q9-d",
+        "text": "Preemption, priority, portability"
+      }
+    ],
+    "correctOptionId": "u3-q9-a",
+    "explanation": "Classic critical-section requirements are mutual exclusion, progress, and bounded waiting.",
+    "hint": "One requirement prevents simultaneous entry; another prevents indefinite postponement.",
+    "tags": [
+      "critical-section;correctness"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u3-q10",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Mutexes",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is the primary purpose of a mutex protecting shared data?",
+    "options": [
+      {
+        "id": "u3-q10-a",
+        "text": "To guarantee that every thread runs at the same speed"
+      },
+      {
+        "id": "u3-q10-b",
+        "text": "To ensure only one eligible thread owns the protected region at a time"
+      },
+      {
+        "id": "u3-q10-c",
+        "text": "To increase the number of simultaneous writers"
+      },
+      {
+        "id": "u3-q10-d",
+        "text": "To replace the operating-system scheduler"
+      }
+    ],
+    "correctOptionId": "u3-q10-b",
+    "explanation": "A mutex provides exclusive ownership while a thread accesses a protected critical section.",
+    "hint": "Think of exclusive ownership of a lock.",
+    "tags": [
+      "mutex;mutual-exclusion"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u3-q11",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Semaphore semantics",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A counting semaphore is initialized to 3. Assuming correct use, what does this initialization most naturally represent?",
+    "options": [
+      {
+        "id": "u3-q11-a",
+        "text": "Exactly three threads must terminate before any can proceed"
+      },
+      {
+        "id": "u3-q11-b",
+        "text": "Up to three units of a resource are available"
+      },
+      {
+        "id": "u3-q11-c",
+        "text": "Three threads are permanently assigned to the semaphore"
+      },
+      {
+        "id": "u3-q11-d",
+        "text": "The protected code may never execute more than three times in total"
+      }
+    ],
+    "correctOptionId": "u3-q11-b",
+    "explanation": "A counting semaphore tracks a non-negative resource count or number of available permits; three permits allow up to three concurrent acquisitions.",
+    "hint": "Interpret the count as available permits.",
+    "tags": [
+      "semaphore;resource-counting"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u3-q12",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Binary semaphore versus mutex",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which statement is generally correct about a mutex compared with a semaphore?",
+    "options": [
+      {
+        "id": "u3-q12-a",
+        "text": "A mutex commonly has ownership semantics: the thread that locks it should unlock it"
+      },
+      {
+        "id": "u3-q12-b",
+        "text": "A mutex must always allow multiple owners"
+      },
+      {
+        "id": "u3-q12-c",
+        "text": "A semaphore can never be used for signaling"
+      },
+      {
+        "id": "u3-q12-d",
+        "text": "A mutex is a CPU scheduling algorithm"
+      }
+    ],
+    "correctOptionId": "u3-q12-a",
+    "explanation": "Mutexes generally associate ownership with the locking thread, while semaphores can be used for signaling and need not have the same ownership rule.",
+    "hint": "Focus on ownership rather than the number of states.",
+    "tags": [
+      "mutex;semaphore"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u3-q13",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Deadlock in locking",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Thread A acquires lock L1 and then waits for L2. Thread B acquires L2 and then waits for L1. What is the most direct diagnosis?",
+    "options": [
+      {
+        "id": "u3-q13-a",
+        "text": "Starvation only"
+      },
+      {
+        "id": "u3-q13-b",
+        "text": "A race condition without blocking"
+      },
+      {
+        "id": "u3-q13-c",
+        "text": "Deadlock caused by circular wait"
+      },
+      {
+        "id": "u3-q13-d",
+        "text": "Priority inversion is guaranteed"
+      }
+    ],
+    "correctOptionId": "u3-q13-c",
+    "explanation": "Each thread holds one lock while waiting for the other, forming a circular wait and preventing progress.",
+    "hint": "Draw the wait-for cycle.",
+    "tags": [
+      "deadlock;lock-ordering"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u3-q14",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Lock ordering",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Two locks are needed by several code paths. Which design most directly prevents deadlock caused by inconsistent acquisition order?",
+    "options": [
+      {
+        "id": "u3-q14-a",
+        "text": "Acquire whichever lock is nearest in memory first"
+      },
+      {
+        "id": "u3-q14-b",
+        "text": "Use a single global order and acquire locks according to that order"
+      },
+      {
+        "id": "u3-q14-c",
+        "text": "Increase the number of threads"
+      },
+      {
+        "id": "u3-q14-d",
+        "text": "Release locks only when the process terminates"
+      }
+    ],
+    "correctOptionId": "u3-q14-b",
+    "explanation": "A consistent global lock order removes the circular-wait condition for those locks.",
+    "hint": "Make every code path follow the same order.",
+    "tags": [
+      "deadlock-prevention;lock-ordering"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u3-q15",
+    "unitId": 3,
+    "unitTitle": "Synchronization and Concurrency Control Design",
+    "topic": "Producer-consumer",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "In a bounded-buffer producer-consumer design with capacity N, which semaphore initialization is conventional?",
+    "options": [
+      {
+        "id": "u3-q15-a",
+        "text": "empty = 0, full = N, mutex = N"
+      },
+      {
+        "id": "u3-q15-b",
+        "text": "empty = N, full = 0, mutex = 1"
+      },
+      {
+        "id": "u3-q15-c",
+        "text": "empty = 1, full = 1, mutex = 0"
+      },
+      {
+        "id": "u3-q15-d",
+        "text": "empty = N, full = N, mutex = 0"
+      }
+    ],
+    "correctOptionId": "u3-q15-b",
+    "explanation": "`empty` counts initially available slots, `full` counts initially occupied slots, and a binary mutex protects buffer updates.",
+    "hint": "Initially the buffer contains no items.",
+    "tags": [
+      "producer-consumer;semaphore"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q8",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Deadlock conditions",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which set contains the four necessary Coffman conditions traditionally used to characterize deadlock?",
+    "options": [
+      {
+        "id": "u4-q8-a",
+        "text": "Mutual exclusion, hold and wait, no preemption, circular wait"
+      },
+      {
+        "id": "u4-q8-b",
+        "text": "Starvation, fairness, priority inversion, livelock"
+      },
+      {
+        "id": "u4-q8-c",
+        "text": "Paging, segmentation, swapping, compaction"
+      },
+      {
+        "id": "u4-q8-d",
+        "text": "Atomicity, visibility, locality, portability"
+      }
+    ],
+    "correctOptionId": "u4-q8-a",
+    "explanation": "The four Coffman conditions are mutual exclusion, hold and wait, no preemption, and circular wait. Deadlock requires all four conditions to hold in the classical model.",
+    "hint": "Recall the four conditions associated with resource allocation.",
+    "tags": [
+      "deadlock;coffman-conditions"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q9",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Resource-allocation graphs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "In a resource-allocation graph, what does an edge from a process to a resource type normally represent?",
+    "options": [
+      {
+        "id": "u4-q9-a",
+        "text": "The process is requesting an instance of that resource"
+      },
+      {
+        "id": "u4-q9-b",
+        "text": "The resource has been released by the process"
+      },
+      {
+        "id": "u4-q9-c",
+        "text": "The process has terminated"
+      },
+      {
+        "id": "u4-q9-d",
+        "text": "The resource is permanently unavailable"
+      }
+    ],
+    "correctOptionId": "u4-q9-a",
+    "explanation": "A request edge from a process to a resource indicates that the process is waiting for an instance of that resource type.",
+    "hint": "Distinguish request edges from assignment edges.",
+    "tags": [
+      "resource-allocation-graph"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q10",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Cycle detection",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "For a resource-allocation graph in which each resource type has exactly one instance, what does a directed cycle imply?",
+    "options": [
+      {
+        "id": "u4-q10-a",
+        "text": "A cycle is unrelated to deadlock"
+      },
+      {
+        "id": "u4-q10-b",
+        "text": "A cycle implies deadlock"
+      },
+      {
+        "id": "u4-q10-c",
+        "text": "A cycle guarantees starvation but not deadlock"
+      },
+      {
+        "id": "u4-q10-d",
+        "text": "A cycle means all resources are free"
+      }
+    ],
+    "correctOptionId": "u4-q10-b",
+    "explanation": "With one instance per resource type, a cycle in the resource-allocation graph is both necessary and sufficient for deadlock.",
+    "hint": "Pay attention to the single-instance assumption.",
+    "tags": [
+      "cycle-detection;single-instance"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q11",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Multiple resource instances",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "If resource types can have multiple instances, how should a cycle in a resource-allocation graph be interpreted?",
+    "options": [
+      {
+        "id": "u4-q11-a",
+        "text": "It always proves deadlock"
+      },
+      {
+        "id": "u4-q11-b",
+        "text": "It proves that every process will finish"
+      },
+      {
+        "id": "u4-q11-c",
+        "text": "It may indicate the possibility of deadlock, but a cycle alone is not sufficient to prove deadlock"
+      },
+      {
+        "id": "u4-q11-d",
+        "text": "It means no process is waiting"
+      }
+    ],
+    "correctOptionId": "u4-q11-c",
+    "explanation": "With multiple instances per resource type, a cycle is necessary for deadlock in the standard graph model but is not sufficient by itself.",
+    "hint": "The number of instances changes the implication of a cycle.",
+    "tags": [
+      "cycle-detection;multiple-instances"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q12",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Deadlock prevention",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which policy directly prevents circular wait among resource types?",
+    "options": [
+      {
+        "id": "u4-q12-a",
+        "text": "Require processes to request resources in a globally consistent order"
+      },
+      {
+        "id": "u4-q12-b",
+        "text": "Allow processes to hold resources while requesting them in arbitrary order"
+      },
+      {
+        "id": "u4-q12-c",
+        "text": "Increase the number of threads"
+      },
+      {
+        "id": "u4-q12-d",
+        "text": "Use round-robin CPU scheduling"
+      }
+    ],
+    "correctOptionId": "u4-q12-a",
+    "explanation": "A global resource ordering forces acquisitions to follow one direction, preventing a circular ordering of resource dependencies.",
+    "hint": "Break one Coffman condition systematically.",
+    "tags": [
+      "deadlock-prevention;resource-ordering"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q13",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Deadlock avoidance",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What information does a deadlock-avoidance algorithm such as the Banker's algorithm require beyond the current allocation?",
+    "options": [
+      {
+        "id": "u4-q13-a",
+        "text": "Only the process IDs"
+      },
+      {
+        "id": "u4-q13-b",
+        "text": "The maximum resource demand declared by each process, along with available and allocated resource information"
+      },
+      {
+        "id": "u4-q13-c",
+        "text": "Only CPU burst lengths"
+      },
+      {
+        "id": "u4-q13-d",
+        "text": "The physical address of each resource"
+      }
+    ],
+    "correctOptionId": "u4-q13-b",
+    "explanation": "The Banker's algorithm uses maximum demand, current allocation, and available resources to test whether granting a request preserves a safe state.",
+    "hint": "Safe-state analysis needs future maximum claims.",
+    "tags": [
+      "bankers-algorithm;avoidance"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q14",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Safe state",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does it mean for a system state to be safe?",
+    "options": [
+      {
+        "id": "u4-q14-a",
+        "text": "No process can ever wait"
+      },
+      {
+        "id": "u4-q14-b",
+        "text": "There exists at least one order in which every process can obtain its remaining resources and finish"
+      },
+      {
+        "id": "u4-q14-c",
+        "text": "All resources are currently unused"
+      },
+      {
+        "id": "u4-q14-d",
+        "text": "The system has already detected a deadlock"
+      }
+    ],
+    "correctOptionId": "u4-q14-b",
+    "explanation": "A safe state has at least one safe sequence that allows all processes to complete using currently available resources plus resources released by completed processes.",
+    "hint": "A safe sequence is an existence claim.",
+    "tags": [
+      "safe-state;bankers-algorithm"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u4-q15",
+    "unitId": 4,
+    "unitTitle": "Deadlock Modeling and System-level Handling",
+    "topic": "Safe-state calculation",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "A system has 3 units of resource R available. Processes P1, P2, and P3 have remaining needs of 2, 3, and 4 units respectively. If P1 finishes first and releases 2 units, which statement follows?",
+    "options": [
+      {
+        "id": "u4-q15-a",
+        "text": "Available becomes 1"
+      },
+      {
+        "id": "u4-q15-b",
+        "text": "Available becomes 5, so P2 can finish next and release its resources if it has no other unmet needs"
+      },
+      {
+        "id": "u4-q15-c",
+        "text": "Available remains 3"
+      },
+      {
+        "id": "u4-q15-d",
+        "text": "The system must be deadlocked"
+      }
+    ],
+    "correctOptionId": "u4-q15-b",
+    "explanation": "Starting with 3 available units, P1 can finish because its need is 2; after releasing its 2 allocated units, availability rises to 5. P2's remaining need of 3 can then be met, subject to the stated single-resource simplification.",
+    "hint": "Add the resources released by the completed process.",
+    "tags": [
+      "safe-sequence;resource-calculation"
+    ],
+    "source": "Original practice question based on the FOSD CEUC301 syllabus"
+  },
+  {
+    "id": "u5-q8",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Relocation and address binding",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which statement best distinguishes logical addresses from physical addresses?",
+    "options": [
+      {
+        "id": "u5-q8-a",
+        "text": "A logical address is generated by the CPU for a process; a physical address identifies a location in RAM."
+      },
+      {
+        "id": "u5-q8-b",
+        "text": "A logical address is always a disk block number."
+      },
+      {
+        "id": "u5-q8-c",
+        "text": "Logical and physical addresses must be identical in every system."
+      },
+      {
+        "id": "u5-q8-d",
+        "text": "A physical address is generated by the compiler and never changes."
+      }
+    ],
+    "correctOptionId": "u5-q8-a",
+    "explanation": "The CPU generates logical addresses; the MMU translates them to physical memory addresses.",
+    "hint": "Separate the process view from the actual RAM location.",
+    "tags": [
+      "logical address",
+      "physical address",
+      "MMU"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u5-q9",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Relocation and address binding",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A relocation base is 8000 and a logical address is 1200. What physical address results from simple base relocation?",
+    "options": [
+      {
+        "id": "u5-q9-a",
+        "text": "6800"
+      },
+      {
+        "id": "u5-q9-b",
+        "text": "8000"
+      },
+      {
+        "id": "u5-q9-c",
+        "text": "9200"
+      },
+      {
+        "id": "u5-q9-d",
+        "text": "1200"
+      }
+    ],
+    "correctOptionId": "u5-q9-c",
+    "explanation": "Physical address = base + logical address = 8000 + 1200 = 9200.",
+    "hint": "Add the relocation base and logical address.",
+    "tags": [
+      "relocation",
+      "numerical"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u5-q10",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Relocation and address binding",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which capability allows a program to be loaded at different physical locations without recompilation?",
+    "options": [
+      {
+        "id": "u5-q10-a",
+        "text": "Absolute physical addressing only"
+      },
+      {
+        "id": "u5-q10-b",
+        "text": "Run-time address translation"
+      },
+      {
+        "id": "u5-q10-c",
+        "text": "Disabling memory protection"
+      },
+      {
+        "id": "u5-q10-d",
+        "text": "A separate CPU for each process"
+      }
+    ],
+    "correctOptionId": "u5-q10-b",
+    "explanation": "Run-time translation maps a process address space to its current physical location.",
+    "hint": "The program should not depend on a fixed load address.",
+    "tags": [
+      "relocation",
+      "MMU"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u5-q11",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Memory protection",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In a base-and-limit scheme, which access should be rejected?",
+    "options": [
+      {
+        "id": "u5-q11-a",
+        "text": "An address within the permitted range"
+      },
+      {
+        "id": "u5-q11-b",
+        "text": "An address beyond the process limit"
+      },
+      {
+        "id": "u5-q11-c",
+        "text": "A valid read from the process code segment"
+      },
+      {
+        "id": "u5-q11-d",
+        "text": "A legal stack access within bounds"
+      }
+    ],
+    "correctOptionId": "u5-q11-b",
+    "explanation": "The limit bounds the permitted logical address range; an out-of-range access causes a protection fault.",
+    "hint": "Compare the address with the process bounds.",
+    "tags": [
+      "protection",
+      "base-limit"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u5-q12",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Memory protection",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Why are separate process address spaces useful?",
+    "options": [
+      {
+        "id": "u5-q12-a",
+        "text": "They make all memory globally writable"
+      },
+      {
+        "id": "u5-q12-b",
+        "text": "They prevent direct access to another process’s private mappings"
+      },
+      {
+        "id": "u5-q12-c",
+        "text": "They eliminate all kernel access checks"
+      },
+      {
+        "id": "u5-q12-d",
+        "text": "They guarantee software cannot crash"
+      }
+    ],
+    "correctOptionId": "u5-q12-b",
+    "explanation": "Separate address spaces and permission checks help isolate processes from one another.",
+    "hint": "Consider which addresses a process is allowed to access.",
+    "tags": [
+      "isolation",
+      "security"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u5-q13",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Memory sharing",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Two processes use the same read-only library code. Which approach usually saves physical memory?",
+    "options": [
+      {
+        "id": "u5-q13-a",
+        "text": "Keep a writable private copy for each process"
+      },
+      {
+        "id": "u5-q13-b",
+        "text": "Map the same physical code pages read-only into both processes"
+      },
+      {
+        "id": "u5-q13-c",
+        "text": "Disable virtual memory"
+      },
+      {
+        "id": "u5-q13-d",
+        "text": "Place the library in each process stack"
+      }
+    ],
+    "correctOptionId": "u5-q13-b",
+    "explanation": "Shared read-only mappings let processes use the same physical code pages safely.",
+    "hint": "Sharing does not require shared write permission.",
+    "tags": [
+      "sharing",
+      "paging",
+      "protection"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u5-q14",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Fixed and dynamic partitioning",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What commonly causes internal fragmentation with fixed partitions?",
+    "options": [
+      {
+        "id": "u5-q14-a",
+        "text": "A process uses less space than its allocated partition provides"
+      },
+      {
+        "id": "u5-q14-b",
+        "text": "Free memory is split into scattered holes"
+      },
+      {
+        "id": "u5-q14-c",
+        "text": "A page table is multi-level"
+      },
+      {
+        "id": "u5-q14-d",
+        "text": "A disk file has unused bytes"
+      }
+    ],
+    "correctOptionId": "u5-q14-a",
+    "explanation": "Unused space inside an allocated partition is internal fragmentation.",
+    "hint": "The wasted space is inside the allocated region.",
+    "tags": [
+      "fixed partitioning",
+      "internal fragmentation"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u5-q15",
+    "unitId": 5,
+    "unitTitle": "Memory Management System Design",
+    "topic": "Fixed and dynamic partitioning",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is external fragmentation?",
+    "options": [
+      {
+        "id": "u5-q15-a",
+        "text": "Unused bytes inside an allocated block"
+      },
+      {
+        "id": "u5-q15-b",
+        "text": "Free memory is split into holes that cannot satisfy a large contiguous request"
+      },
+      {
+        "id": "u5-q15-c",
+        "text": "CPU time spent in kernel mode"
+      },
+      {
+        "id": "u5-q15-d",
+        "text": "A page contains two processes"
+      }
+    ],
+    "correctOptionId": "u5-q15-b",
+    "explanation": "External fragmentation occurs when free memory is scattered among separate holes.",
+    "hint": "The free space is outside allocations and separated into holes.",
+    "tags": [
+      "external fragmentation"
+    ],
+    "source": "Generated for FOSD CEUC301 question bank; aligned to Unit 5 syllabus."
+  },
+  {
+    "id": "u6-q8",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "Address translation",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In a paged system, which structure maps a process's virtual page number to a physical frame number?",
+    "options": [
+      {
+        "id": "u6-q8-a",
+        "text": "Page table"
+      },
+      {
+        "id": "u6-q8-b",
+        "text": "File allocation table"
+      },
+      {
+        "id": "u6-q8-c",
+        "text": "Process queue"
+      },
+      {
+        "id": "u6-q8-d",
+        "text": "Disk scheduling queue"
+      }
+    ],
+    "correctOptionId": "u6-q8-a",
+    "explanation": "A page table records the mapping from virtual pages to physical frames, along with status and protection information.",
+    "hint": "Look for the structure used during virtual-to-physical address translation.",
+    "tags": [
+      "page table",
+      "address translation"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u6-q9",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "Address translation",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "A virtual address is divided into which two fields in a simple paging scheme?",
+    "options": [
+      {
+        "id": "u6-q9-a",
+        "text": "Page number and page offset"
+      },
+      {
+        "id": "u6-q9-b",
+        "text": "Segment limit and file number"
+      },
+      {
+        "id": "u6-q9-c",
+        "text": "Frame number and disk cylinder"
+      },
+      {
+        "id": "u6-q9-d",
+        "text": "TLB tag and process priority"
+      }
+    ],
+    "correctOptionId": "u6-q9-a",
+    "explanation": "The page number selects a page-table entry; the offset identifies a byte within that page.",
+    "hint": "Separate the address into a page-sized region and a position inside it.",
+    "tags": [
+      "virtual address",
+      "paging"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u6-q10",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "Page size",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A system uses 4 KiB pages and 32-bit virtual addresses. How many bits are used for the page offset?",
+    "options": [
+      {
+        "id": "u6-q10-a",
+        "text": "12"
+      },
+      {
+        "id": "u6-q10-b",
+        "text": "10"
+      },
+      {
+        "id": "u6-q10-c",
+        "text": "20"
+      },
+      {
+        "id": "u6-q10-d",
+        "text": "32"
+      }
+    ],
+    "correctOptionId": "u6-q10-a",
+    "explanation": "4 KiB = 4096 bytes = 2^12 bytes, so the offset requires 12 bits.",
+    "hint": "Convert the page size to a power of two.",
+    "tags": [
+      "page size",
+      "numerical"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u6-q11",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "Page-table size",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A process has a 32-bit virtual address space and 4 KiB pages. Ignoring entry overhead, how many virtual pages are addressable?",
+    "options": [
+      {
+        "id": "u6-q11-a",
+        "text": "2^20"
+      },
+      {
+        "id": "u6-q11-b",
+        "text": "2^12"
+      },
+      {
+        "id": "u6-q11-c",
+        "text": "2^32"
+      },
+      {
+        "id": "u6-q11-d",
+        "text": "2^10"
+      }
+    ],
+    "correctOptionId": "u6-q11-a",
+    "explanation": "The page number has 32 − 12 = 20 bits, giving 2^20 virtual pages.",
+    "hint": "Subtract offset bits from virtual-address bits.",
+    "tags": [
+      "page table",
+      "numerical"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u6-q12",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "TLB purpose",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is the primary purpose of a Translation Lookaside Buffer (TLB)?",
+    "options": [
+      {
+        "id": "u6-q12-a",
+        "text": "Cache recent virtual-to-physical address translations"
+      },
+      {
+        "id": "u6-q12-b",
+        "text": "Store dirty file-system blocks permanently"
+      },
+      {
+        "id": "u6-q12-c",
+        "text": "Schedule disk requests"
+      },
+      {
+        "id": "u6-q12-d",
+        "text": "Replace the process control block"
+      }
+    ],
+    "correctOptionId": "u6-q12-a",
+    "explanation": "A TLB caches recent page-table translations to reduce the average cost of address translation.",
+    "hint": "It is a small, fast cache associated with memory translation.",
+    "tags": [
+      "TLB",
+      "address translation"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u6-q13",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "TLB hit",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "A TLB hit means that:",
+    "options": [
+      {
+        "id": "u6-q13-a",
+        "text": "The required translation is found in the TLB"
+      },
+      {
+        "id": "u6-q13-b",
+        "text": "The requested page is guaranteed to be on disk"
+      },
+      {
+        "id": "u6-q13-c",
+        "text": "The process has caused a protection fault"
+      },
+      {
+        "id": "u6-q13-d",
+        "text": "The CPU cache contains the requested data"
+      }
+    ],
+    "correctOptionId": "u6-q13-a",
+    "explanation": "On a TLB hit, the translation is available without walking the page table in the usual way.",
+    "hint": "Distinguish translation caching from data caching.",
+    "tags": [
+      "TLB hit"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u6-q14",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "TLB miss",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A TLB miss occurs, but the page is present in main memory. What is the usual consequence?",
+    "options": [
+      {
+        "id": "u6-q14-a",
+        "text": "The system obtains the translation from the page table and may update the TLB"
+      },
+      {
+        "id": "u6-q14-b",
+        "text": "The page must always be fetched from disk"
+      },
+      {
+        "id": "u6-q14-c",
+        "text": "The process must be terminated"
+      },
+      {
+        "id": "u6-q14-d",
+        "text": "The page is necessarily replaced"
+      }
+    ],
+    "correctOptionId": "u6-q14-a",
+    "explanation": "A TLB miss means the translation is not cached; it does not imply that the page is absent from RAM.",
+    "hint": "A translation-cache miss is not the same as a page fault.",
+    "tags": [
+      "TLB miss",
+      "page fault"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u6-q15",
+    "unitId": 6,
+    "unitTitle": "Virtual Memory and Page Replacement Design",
+    "topic": "Effective access time",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Assume a TLB lookup costs 10 ns, memory access costs 100 ns, and the TLB hit ratio is 0.9. On a hit, total time is 110 ns; on a miss, a single-level page-table lookup adds one memory access before data access, for 210 ns total. What is the effective access time?",
+    "options": [
+      {
+        "id": "u6-q15-a",
+        "text": "120 ns"
+      },
+      {
+        "id": "u6-q15-b",
+        "text": "110 ns"
+      },
+      {
+        "id": "u6-q15-c",
+        "text": "200 ns"
+      },
+      {
+        "id": "u6-q15-d",
+        "text": "210 ns"
+      }
+    ],
+    "correctOptionId": "u6-q15-a",
+    "explanation": "EAT = 0.9(110) + 0.1(210) = 99 + 21 = 120 ns under the stated timing assumptions.",
+    "hint": "Weight the hit and miss times by their probabilities.",
+    "tags": [
+      "TLB",
+      "effective access time",
+      "numerical"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q8",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "File abstraction",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is the primary purpose of a file-system abstraction?",
+    "options": [
+      {
+        "id": "u7-q8-a",
+        "text": "To provide a consistent way to name, store, retrieve, and manage data"
+      },
+      {
+        "id": "u7-q8-b",
+        "text": "To schedule CPU instructions"
+      },
+      {
+        "id": "u7-q8-c",
+        "text": "To translate virtual addresses into frames"
+      },
+      {
+        "id": "u7-q8-d",
+        "text": "To allocate CPU priorities"
+      }
+    ],
+    "correctOptionId": "u7-q8-a",
+    "explanation": "A file system organizes persistent data and exposes operations such as create, open, read, write, and delete.",
+    "hint": "Think about how applications interact with persistent data.",
+    "tags": [
+      "file system",
+      "abstraction"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q9",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "File metadata",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which item is typically file metadata rather than file content?",
+    "options": [
+      {
+        "id": "u7-q9-a",
+        "text": "File permissions"
+      },
+      {
+        "id": "u7-q9-b",
+        "text": "The bytes stored in the file"
+      },
+      {
+        "id": "u7-q9-c",
+        "text": "The image pixels in a JPEG"
+      },
+      {
+        "id": "u7-q9-d",
+        "text": "The text characters in a document"
+      }
+    ],
+    "correctOptionId": "u7-q9-a",
+    "explanation": "Metadata describes a file, including attributes such as permissions, owner, size, timestamps, and location information.",
+    "hint": "Choose an attribute describing the file rather than its payload.",
+    "tags": [
+      "metadata"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q10",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "Directory",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is a directory primarily used for in a conventional file system?",
+    "options": [
+      {
+        "id": "u7-q10-a",
+        "text": "Associating names with files and/or other directories"
+      },
+      {
+        "id": "u7-q10-b",
+        "text": "Storing CPU register values"
+      },
+      {
+        "id": "u7-q10-c",
+        "text": "Mapping virtual pages to physical frames"
+      },
+      {
+        "id": "u7-q10-d",
+        "text": "Recording only disk temperature"
+      }
+    ],
+    "correctOptionId": "u7-q10-a",
+    "explanation": "Directories provide a naming hierarchy and map names to file-system objects or their identifiers.",
+    "hint": "A directory organizes names and paths.",
+    "tags": [
+      "directory",
+      "naming"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q11",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "File descriptor",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In POSIX-style APIs, a file descriptor is best described as:",
+    "options": [
+      {
+        "id": "u7-q11-a",
+        "text": "A small integer handle referring to an open file or I/O object"
+      },
+      {
+        "id": "u7-q11-b",
+        "text": "The full contents of a file"
+      },
+      {
+        "id": "u7-q11-c",
+        "text": "A disk block number that never changes"
+      },
+      {
+        "id": "u7-q11-d",
+        "text": "A file's cryptographic checksum"
+      }
+    ],
+    "correctOptionId": "u7-q11-a",
+    "explanation": "A file descriptor is a process-level handle used by system calls such as read(), write(), and close().",
+    "hint": "It is an open-object handle, not the file data itself.",
+    "tags": [
+      "file descriptor",
+      "POSIX"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q12",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "Open file table",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Why may an operating system maintain both per-process descriptor tables and system-wide open-file descriptions?",
+    "options": [
+      {
+        "id": "u7-q12-a",
+        "text": "Descriptors can refer to shared open state such as file offset and status flags"
+      },
+      {
+        "id": "u7-q12-b",
+        "text": "Each open file must be stored entirely in CPU registers"
+      },
+      {
+        "id": "u7-q12-c",
+        "text": "File descriptors are used only for directories"
+      },
+      {
+        "id": "u7-q12-d",
+        "text": "System-wide tables eliminate permission checks"
+      }
+    ],
+    "correctOptionId": "u7-q12-a",
+    "explanation": "A descriptor refers to an open-file description that can hold shared state, including the current offset; duplicated or inherited descriptors may share it.",
+    "hint": "Distinguish the process's handle from the underlying open state.",
+    "tags": [
+      "open file table"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q13",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "Inode",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "In a Unix-like file system, an inode commonly stores:",
+    "options": [
+      {
+        "id": "u7-q13-a",
+        "text": "File metadata and references to data blocks, but not the filename itself"
+      },
+      {
+        "id": "u7-q13-b",
+        "text": "Only the filename and no metadata"
+      },
+      {
+        "id": "u7-q13-c",
+        "text": "The current CPU scheduling queue"
+      },
+      {
+        "id": "u7-q13-d",
+        "text": "The entire file content inside a fixed-size record in every case"
+      }
+    ],
+    "correctOptionId": "u7-q13-a",
+    "explanation": "Names are generally stored in directory entries that refer to inode numbers; inodes store attributes and data-location information.",
+    "hint": "Separate directory naming from the file's metadata structure.",
+    "tags": [
+      "inode",
+      "Unix"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q14",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "Hard link",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What is a hard link in a Unix-like file system?",
+    "options": [
+      {
+        "id": "u7-q14-a",
+        "text": "Another directory entry referring to the same inode"
+      },
+      {
+        "id": "u7-q14-b",
+        "text": "A shortcut containing a separate copy of all file data"
+      },
+      {
+        "id": "u7-q14-c",
+        "text": "A symbolic path string resolved at access time"
+      },
+      {
+        "id": "u7-q14-d",
+        "text": "A backup stored automatically on another disk"
+      }
+    ],
+    "correctOptionId": "u7-q14-a",
+    "explanation": "Hard links create multiple names for the same underlying inode; they generally cannot cross file-system boundaries.",
+    "hint": "A hard link names the same underlying file object.",
+    "tags": [
+      "hard link",
+      "inode"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u7-q15",
+    "unitId": 7,
+    "unitTitle": "File System Design and Performance",
+    "topic": "Symbolic link",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "How does a symbolic link differ from a hard link?",
+    "options": [
+      {
+        "id": "u7-q15-a",
+        "text": "It stores a pathname reference that is resolved when followed"
+      },
+      {
+        "id": "u7-q15-b",
+        "text": "It must always share the target's inode number"
+      },
+      {
+        "id": "u7-q15-c",
+        "text": "It duplicates the target's data blocks"
+      },
+      {
+        "id": "u7-q15-d",
+        "text": "It cannot become dangling"
+      }
+    ],
+    "correctOptionId": "u7-q15-a",
+    "explanation": "A symbolic link is a separate file containing a path; it can point across file systems and can become dangling if the target disappears.",
+    "hint": "Its content is a path, not another directory entry to the same inode.",
+    "tags": [
+      "symbolic link"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q8",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "I/O architecture",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is a primary responsibility of the OS I/O subsystem?",
+    "options": [
+      {
+        "id": "u8-q8-a",
+        "text": "Provide common interfaces and coordinate device-specific I/O"
+      },
+      {
+        "id": "u8-q8-b",
+        "text": "Schedule only arithmetic instructions"
+      },
+      {
+        "id": "u8-q8-c",
+        "text": "Translate all addresses without page tables"
+      },
+      {
+        "id": "u8-q8-d",
+        "text": "Manage only user passwords"
+      }
+    ],
+    "correctOptionId": "u8-q8-a",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "i/o-architecture",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q9",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "Device drivers",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is the main role of a device driver?",
+    "options": [
+      {
+        "id": "u8-q9-a",
+        "text": "Store all files in CPU cache"
+      },
+      {
+        "id": "u8-q9-b",
+        "text": "Translate OS I/O requests into device-specific operations"
+      },
+      {
+        "id": "u8-q9-c",
+        "text": "Replace the directory structure"
+      },
+      {
+        "id": "u8-q9-d",
+        "text": "Choose every CPU process"
+      }
+    ],
+    "correctOptionId": "u8-q9-b",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "device-drivers",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q10",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "Interrupts",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is a typical purpose of an I/O hardware interrupt?",
+    "options": [
+      {
+        "id": "u8-q10-a",
+        "text": "Replace every form of polling"
+      },
+      {
+        "id": "u8-q10-b",
+        "text": "Increase physical memory size"
+      },
+      {
+        "id": "u8-q10-c",
+        "text": "Notify the CPU that an event needs attention"
+      },
+      {
+        "id": "u8-q10-d",
+        "text": "Guarantee direct transfer to a user variable"
+      }
+    ],
+    "correctOptionId": "u8-q10-c",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "interrupts",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q11",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "Polling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "When can polling be reasonable compared with interrupt-driven I/O?",
+    "options": [
+      {
+        "id": "u8-q11-a",
+        "text": "Only when status registers do not exist"
+      },
+      {
+        "id": "u8-q11-b",
+        "text": "When every event must interrupt the CPU"
+      },
+      {
+        "id": "u8-q11-c",
+        "text": "When the CPU must never inspect status"
+      },
+      {
+        "id": "u8-q11-d",
+        "text": "When events are frequent or predictable and polling overhead is acceptable"
+      }
+    ],
+    "correctOptionId": "u8-q11-d",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "polling",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q12",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "Interrupt handler",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Why should interrupt handlers do bounded essential work and defer lengthy processing?",
+    "options": [
+      {
+        "id": "u8-q12-a",
+        "text": "To reduce interrupt latency and avoid delaying urgent work"
+      },
+      {
+        "id": "u8-q12-b",
+        "text": "To keep the disk queue always empty"
+      },
+      {
+        "id": "u8-q12-c",
+        "text": "To disable concurrency"
+      },
+      {
+        "id": "u8-q12-d",
+        "text": "To eliminate device drivers"
+      }
+    ],
+    "correctOptionId": "u8-q12-a",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "interrupt-handler",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q13",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "DMA",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is the principal advantage of Direct Memory Access?",
+    "options": [
+      {
+        "id": "u8-q13-a",
+        "text": "It replaces drivers with page tables"
+      },
+      {
+        "id": "u8-q13-b",
+        "text": "A controller transfers blocks with limited per-byte CPU involvement"
+      },
+      {
+        "id": "u8-q13-c",
+        "text": "It eliminates physical memory"
+      },
+      {
+        "id": "u8-q13-d",
+        "text": "It guarantees no interrupts"
+      }
+    ],
+    "correctOptionId": "u8-q13-b",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "dma",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q14",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "DMA completion",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "How does the CPU commonly learn that a DMA transfer completed?",
+    "options": [
+      {
+        "id": "u8-q14-a",
+        "text": "The TLB invalidates all entries"
+      },
+      {
+        "id": "u8-q14-b",
+        "text": "The scheduler changes process priority"
+      },
+      {
+        "id": "u8-q14-c",
+        "text": "The controller signals completion, often through an interrupt"
+      },
+      {
+        "id": "u8-q14-d",
+        "text": "The CPU copies every byte itself"
+      }
+    ],
+    "correctOptionId": "u8-q14-c",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "dma-completion",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u8-q15",
+    "unitId": 8,
+    "unitTitle": "I/O Subsystem and Storage System Design",
+    "topic": "DMA cache coherence",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "On a non-coherent system, why may DMA require cache maintenance?",
+    "options": [
+      {
+        "id": "u8-q15-a",
+        "text": "DMA changes the instruction set"
+      },
+      {
+        "id": "u8-q15-b",
+        "text": "Directory names disappear"
+      },
+      {
+        "id": "u8-q15-c",
+        "text": "DMA updates every virtual address automatically"
+      },
+      {
+        "id": "u8-q15-d",
+        "text": "CPU cache lines may be stale or dirty relative to DMA-visible memory"
+      }
+    ],
+    "correctOptionId": "u8-q15-d",
+    "explanation": "The correct choice follows the stated operating-system I/O or storage principle. For numerical questions, calculate the relevant absolute head movement or compare the stated request distances.",
+    "hint": "Identify the governing I/O mechanism, scheduling rule, or performance trade-off before choosing.",
+    "tags": [
+      "dma-cache-coherence",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q8",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "OS domains",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which characteristic most strongly distinguishes a real-time operating system from a general-purpose desktop OS?",
+    "options": [
+      {
+        "id": "u9-q8-a",
+        "text": "It is designed to provide predictable timing and bounded response behavior"
+      },
+      {
+        "id": "u9-q8-b",
+        "text": "It always has the highest average throughput"
+      },
+      {
+        "id": "u9-q8-c",
+        "text": "It never uses interrupts"
+      },
+      {
+        "id": "u9-q8-d",
+        "text": "It cannot run multiple tasks"
+      }
+    ],
+    "correctOptionId": "u9-q8-a",
+    "explanation": "The correct choice reflects the relevant design principle for os domains in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "os-domains",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q9",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "Real-time correctness",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In a hard real-time system, a result produced after its deadline is generally considered:",
+    "options": [
+      {
+        "id": "u9-q9-a",
+        "text": "A successful deadline extension"
+      },
+      {
+        "id": "u9-q9-b",
+        "text": "A system failure, even if the computed value is otherwise correct"
+      },
+      {
+        "id": "u9-q9-c",
+        "text": "Always acceptable if the value is correct"
+      },
+      {
+        "id": "u9-q9-d",
+        "text": "Equivalent to a cache hit"
+      }
+    ],
+    "correctOptionId": "u9-q9-b",
+    "explanation": "The correct choice reflects the relevant design principle for real-time correctness in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "real-time-correctness",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q10",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "Soft real-time",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which statement best describes a soft real-time workload?",
+    "options": [
+      {
+        "id": "u9-q10-a",
+        "text": "It never uses priorities"
+      },
+      {
+        "id": "u9-q10-b",
+        "text": "It must run only on a single-core processor"
+      },
+      {
+        "id": "u9-q10-c",
+        "text": "Missing a deadline degrades quality of service but does not necessarily make the system fail"
+      },
+      {
+        "id": "u9-q10-d",
+        "text": "Every missed deadline is catastrophic"
+      }
+    ],
+    "correctOptionId": "u9-q10-c",
+    "explanation": "The correct choice reflects the relevant design principle for soft real-time in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "soft-real-time",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q11",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "Hard versus soft RT",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A vehicle airbag controller must react within a strict maximum time. Which requirement is most relevant?",
+    "options": [
+      {
+        "id": "u9-q11-a",
+        "text": "Maximum average throughput only"
+      },
+      {
+        "id": "u9-q11-b",
+        "text": "The smallest executable size regardless of timing"
+      },
+      {
+        "id": "u9-q11-c",
+        "text": "A high cache hit rate without deadline analysis"
+      },
+      {
+        "id": "u9-q11-d",
+        "text": "A worst-case response-time bound that meets the deadline"
+      }
+    ],
+    "correctOptionId": "u9-q11-d",
+    "explanation": "The correct choice reflects the relevant design principle for hard versus soft rt in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "hard-versus-soft-rt",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q12",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "Determinism",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Why is predictability important in real-time OS design?",
+    "options": [
+      {
+        "id": "u9-q12-a",
+        "text": "It allows designers to reason about worst-case timing and deadline satisfaction"
+      },
+      {
+        "id": "u9-q12-b",
+        "text": "It guarantees that all tasks finish at the same instant"
+      },
+      {
+        "id": "u9-q12-c",
+        "text": "It removes the need for scheduling"
+      },
+      {
+        "id": "u9-q12-d",
+        "text": "It ensures every task uses equal CPU time"
+      }
+    ],
+    "correctOptionId": "u9-q12-a",
+    "explanation": "The correct choice reflects the relevant design principle for determinism in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "determinism",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q13",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "RMS",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Rate Monotonic Scheduling (RMS) assigns higher fixed priority to tasks with:",
+    "options": [
+      {
+        "id": "u9-q13-a",
+        "text": "More recent file modifications"
+      },
+      {
+        "id": "u9-q13-b",
+        "text": "Shorter periods"
+      },
+      {
+        "id": "u9-q13-c",
+        "text": "Longer periods"
+      },
+      {
+        "id": "u9-q13-d",
+        "text": "Larger memory footprints"
+      }
+    ],
+    "correctOptionId": "u9-q13-b",
+    "explanation": "The correct choice reflects the relevant design principle for rms in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "rms",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q14",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "EDF",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Earliest Deadline First (EDF) dynamically prioritizes the ready task with:",
+    "options": [
+      {
+        "id": "u9-q14-a",
+        "text": "The largest stack"
+      },
+      {
+        "id": "u9-q14-b",
+        "text": "The earliest process creation time"
+      },
+      {
+        "id": "u9-q14-c",
+        "text": "The nearest absolute deadline"
+      },
+      {
+        "id": "u9-q14-d",
+        "text": "The shortest period in every case"
+      }
+    ],
+    "correctOptionId": "u9-q14-c",
+    "explanation": "The correct choice reflects the relevant design principle for edf in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "edf",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
+  },
+  {
+    "id": "u9-q15",
+    "unitId": 9,
+    "unitTitle": "Specialized Operating Systems: Design and Performance Overview",
+    "topic": "RMS versus EDF",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "Which comparison between RMS and EDF is accurate in the standard single-processor preemptive periodic-task model?",
+    "options": [
+      {
+        "id": "u9-q15-a",
+        "text": "Both always use fixed priorities based on task IDs"
+      },
+      {
+        "id": "u9-q15-b",
+        "text": "EDF never preempts tasks"
+      },
+      {
+        "id": "u9-q15-c",
+        "text": "RMS requires knowing every future release time to set priorities"
+      },
+      {
+        "id": "u9-q15-d",
+        "text": "RMS uses fixed priorities based on periods; EDF selects by earliest absolute deadline"
+      }
+    ],
+    "correctOptionId": "u9-q15-d",
+    "explanation": "The correct choice reflects the relevant design principle for rms versus edf in specialized operating systems.",
+    "hint": "Identify the main system requirement—timing, predictability, energy, isolation, or resource constraint.",
+    "tags": [
+      "rms-versus-edf",
+      "FOSD"
+    ],
+    "source": "Generated for the FOSD CEUC301 syllabus; review before publication."
   }
 ]
