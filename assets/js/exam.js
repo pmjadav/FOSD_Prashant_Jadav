@@ -32,7 +32,9 @@ const examState = {
   questions: [],
   currentIndex: 0,
   answers: new Map(),
-  answerSaves: new Map(),
+  dirtyAnswers: new Map(),
+  saveTimer: null,
+  saveInFlight: null,
   busy: false,
   submitted: false,
 };
@@ -327,70 +329,92 @@ function setBusy(busy) {
   });
 }
 
+// Debounce answer persistence: one batched Apps Script request instead of one
+// serialized request per selection. The in-memory answer map remains the source
+// of truth for the current page; dirtyAnswers contains changes not yet confirmed
+// by the server.
 function queueAnswerSave(question, selectedOptionIds) {
   const questionId = String(question.id);
   const optionIds = Array.isArray(selectedOptionIds)
-    ? [...selectedOptionIds]
+    ? [...selectedOptionIds].map(String)
     : [];
 
-  if (!examState.answerSaveQueue) {
-    examState.answerSaveQueue = Promise.resolve();
+  examState.dirtyAnswers.set(questionId, optionIds);
+
+  if (examState.saveTimer !== null) {
+    clearTimeout(examState.saveTimer);
   }
-
-  const save = examState.answerSaveQueue
-    .catch(() => {})
-    .then(() =>
-      postAction({
-        action: "saveAnswer",
-        attemptId: examState.attemptId,
-        questionId,
-        optionIds,
-      }),
-    );
-
-  examState.answerSaveQueue = save;
-  examState.answerSaves.set(questionId, save);
-
-  setStatus("Saving your answer…", "loading");
-
-  save
-    .then(() => {
+  examState.saveTimer = setTimeout(() => {
+    examState.saveTimer = null;
+    flushAnswerSaves().catch((error) => {
+      console.error("Unable to autosave answers:", error);
       if (!examState.busy && !examState.submitted) {
-        setStatus("Answer saved. You can continue the exam.", "success");
+        setStatus(
+          `Answer is retained on this page but server sync failed: ${error.message}. Submission will retry the save.`,
+          "error",
+        );
       }
-    })
-    .catch((error) => {
-      console.error("Unable to save answer:", error);
-      setStatus(`Answer not saved: ${error.message}. Please retry.`, "error");
     });
+  }, 700);
 
-  return save;
+  setStatus("Answer recorded. Saving in background…", "loading");
 }
 
-async function saveAllAnswers() {
-  // Wait for pending autosaves to complete.
-  await Promise.all([...examState.answerSaves.values()].map((save) => save));
-
-  // Collect the latest answers.
-  const answers = [];
-
-  for (const question of examState.questions) {
-    const questionId = String(question.id);
-
-    if (!examState.answers.has(questionId)) continue;
-
-    const answer = examState.answers.get(questionId);
-    const optionIds = (Array.isArray(answer) ? answer : [answer]).map(String);
-
-    answers.push({ questionId, optionIds });
+async function flushAnswerSaves() {
+  if (examState.saveTimer !== null) {
+    clearTimeout(examState.saveTimer);
+    examState.saveTimer = null;
   }
 
-  // Save all current answers in one request.
-  return postAction({
-    action: "saveAnswersBatch",
-    attemptId: examState.attemptId,
-    answers,
-  });
+  // Loop until every edit is acknowledged. The loop also serializes concurrent
+  // timer/submit flushes so two requests cannot overwrite each other's snapshots.
+  while (true) {
+    if (examState.saveInFlight) {
+      await examState.saveInFlight;
+      continue;
+    }
+    if (examState.dirtyAnswers.size === 0) return;
+
+    const batch = [...examState.dirtyAnswers.entries()].map(
+      ([questionId, optionIds]) => ({
+        questionId,
+        optionIds: [...optionIds],
+      }),
+    );
+    // Remove only the snapshot being sent. New edits made during the request stay dirty.
+    batch.forEach(({ questionId }) =>
+      examState.dirtyAnswers.delete(questionId),
+    );
+
+    const request = postAction({
+      action: "saveAnswersBatch",
+      attemptId: examState.attemptId,
+      answers: batch,
+    });
+    examState.saveInFlight = request;
+
+    try {
+      const result = await request;
+      if (result.saved !== true || result.ok !== true) {
+        throw new Error("The server did not confirm saving the answers.");
+      }
+      if (!examState.busy && !examState.submitted) {
+        setStatus("Answers saved. You can continue the exam.", "success");
+      }
+    } catch (error) {
+      // Restore failed entries unless a newer selection for that question exists.
+      batch.forEach(({ questionId, optionIds }) => {
+        if (!examState.dirtyAnswers.has(questionId)) {
+          examState.dirtyAnswers.set(questionId, optionIds);
+        }
+      });
+      throw error;
+    } finally {
+      if (examState.saveInFlight === request) {
+        examState.saveInFlight = null;
+      }
+    }
+  }
 }
 
 function startExam(attempt) {
@@ -401,7 +425,12 @@ function startExam(attempt) {
   examState.questions = validateQuestions(attempt);
   examState.currentIndex = 0;
   examState.answers.clear();
-  examState.answerSaves.clear();
+  examState.dirtyAnswers.clear();
+  examState.saveInFlight = null;
+  if (examState.saveTimer !== null) {
+    clearTimeout(examState.saveTimer);
+    examState.saveTimer = null;
+  }
   examState.submitted = false;
   examElements.token.readOnly = true;
   examElements.start.disabled = true;
@@ -529,11 +558,8 @@ examElements.submit.addEventListener("click", async () => {
   setStatus("Saving answers and submitting your exam…", "loading");
 
   try {
-    // Wait for all queued answer saves to finish.
-    await saveAllAnswers();
-
-    // Also wait for the global queue, if it exists.
-    await (examState.answerSaveQueue || Promise.resolve());
+    // Flush pending edits in one batch before server-side grading.
+    await flushAnswerSaves();
 
     const result = await postAction({
       action: "submitQuiz",
