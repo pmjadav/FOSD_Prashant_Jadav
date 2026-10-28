@@ -8152,5 +8152,3805 @@
     "bankVersion": "fosd-500-v1",
     "active": true,
     "correctOptionId": "u9-q25-b"
+  },
+  {
+    "id": "linux-q001",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Shell navigation",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command prints the current working directory?",
+    "options": [
+      {
+        "id": "linux-q001-a",
+        "text": "pwd"
+      },
+      {
+        "id": "linux-q001-b",
+        "text": "cd"
+      },
+      {
+        "id": "linux-q001-c",
+        "text": "ls -a"
+      },
+      {
+        "id": "linux-q001-d",
+        "text": "dirname"
+      }
+    ],
+    "explanation": "pwd prints the path of the current working directory.",
+    "hint": "Distinguish displaying the current location from changing directories.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "shell-navigation"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q001-a"
+  },
+  {
+    "id": "linux-q002",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "File listing",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command lists all directory entries, including names beginning with a dot?",
+    "options": [
+      {
+        "id": "linux-q002-a",
+        "text": "ls -a"
+      },
+      {
+        "id": "linux-q002-b",
+        "text": "ls -t"
+      },
+      {
+        "id": "linux-q002-c",
+        "text": "ls -S"
+      },
+      {
+        "id": "linux-q002-d",
+        "text": "ls -R"
+      }
+    ],
+    "explanation": "The -a option includes hidden entries whose names begin with a dot.",
+    "hint": "Look for the option that includes hidden entries.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "file-listing"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q002-a"
+  },
+  {
+    "id": "linux-q003",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Copying files",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command copies file.txt to backup.txt in the same directory?",
+    "options": [
+      {
+        "id": "linux-q003-a",
+        "text": "cp file.txt backup.txt"
+      },
+      {
+        "id": "linux-q003-b",
+        "text": "mv file.txt backup.txt"
+      },
+      {
+        "id": "linux-q003-c",
+        "text": "ln file.txt backup.txt"
+      },
+      {
+        "id": "linux-q003-d",
+        "text": "touch file.txt backup.txt"
+      }
+    ],
+    "explanation": "cp creates a copy at the destination while leaving the source in place.",
+    "hint": "Choose the command that preserves the original file.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "copying-files"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q003-a"
+  },
+  {
+    "id": "linux-q004",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Searching files",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command finds regular files named report.txt beneath /home/student?",
+    "options": [
+      {
+        "id": "linux-q004-a",
+        "text": "find /home/student -type f -name \"report.txt\""
+      },
+      {
+        "id": "linux-q004-b",
+        "text": "grep -r \"report.txt\" /home/student"
+      },
+      {
+        "id": "linux-q004-c",
+        "text": "chmod -R report.txt /home/student"
+      },
+      {
+        "id": "linux-q004-d",
+        "text": "ps -ef report.txt"
+      }
+    ],
+    "explanation": "find traverses directories; -type f restricts results to regular files and -name matches the filename.",
+    "hint": "Identify the command designed to traverse directories and match filenames.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "searching-files"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q004-a"
+  },
+  {
+    "id": "linux-q005",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Text search",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command searches for the word ERROR in application.log and prints matching lines?",
+    "options": [
+      {
+        "id": "linux-q005-a",
+        "text": "grep \"ERROR\" application.log"
+      },
+      {
+        "id": "linux-q005-b",
+        "text": "chmod ERROR application.log"
+      },
+      {
+        "id": "linux-q005-c",
+        "text": "wc -l ERROR application.log"
+      },
+      {
+        "id": "linux-q005-d",
+        "text": "mkdir ERROR application.log"
+      }
+    ],
+    "explanation": "grep searches input text for lines matching a pattern.",
+    "hint": "Choose the text-pattern search utility.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "text-search"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q005-a"
+  },
+  {
+    "id": "linux-q006",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Output redirection",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In Bash, what does `command > output.txt` normally do?",
+    "options": [
+      {
+        "id": "linux-q006-a",
+        "text": "Redirects standard output to output.txt, replacing its previous contents"
+      },
+      {
+        "id": "linux-q006-b",
+        "text": "Appends standard output to output.txt"
+      },
+      {
+        "id": "linux-q006-c",
+        "text": "Redirects standard error only"
+      },
+      {
+        "id": "linux-q006-d",
+        "text": "Sends output to the printer"
+      }
+    ],
+    "explanation": "> redirects standard output and normally truncates an existing destination file.",
+    "hint": "Compare overwrite redirection with append redirection.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "output-redirection"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q006-a"
+  },
+  {
+    "id": "linux-q007",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Append redirection",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which Bash operator appends standard output to an existing file instead of truncating it?",
+    "options": [
+      {
+        "id": "linux-q007-a",
+        "text": ">>"
+      },
+      {
+        "id": "linux-q007-b",
+        "text": ">"
+      },
+      {
+        "id": "linux-q007-c",
+        "text": "<"
+      },
+      {
+        "id": "linux-q007-d",
+        "text": "2>"
+      }
+    ],
+    "explanation": ">> appends standard output to the destination file.",
+    "hint": "Select the doubled greater-than operator.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "append-redirection"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q007-a"
+  },
+  {
+    "id": "linux-q008",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Pipelines",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `grep 'root' /etc/passwd | wc -l` report?",
+    "options": [
+      {
+        "id": "linux-q008-a",
+        "text": "The number of lines from /etc/passwd that contain root"
+      },
+      {
+        "id": "linux-q008-b",
+        "text": "The number of bytes in /etc/passwd"
+      },
+      {
+        "id": "linux-q008-c",
+        "text": "The number of root-owned files"
+      },
+      {
+        "id": "linux-q008-d",
+        "text": "The number of processes owned by root"
+      }
+    ],
+    "explanation": "The pipe sends grep's matching lines to wc -l, which counts lines.",
+    "hint": "Follow the data passed from the first command to the second.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "pipelines"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q008-a"
+  },
+  {
+    "id": "linux-q009",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Exit status",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "In a shell, what does an exit status of 0 conventionally indicate?",
+    "options": [
+      {
+        "id": "linux-q009-a",
+        "text": "The command succeeded"
+      },
+      {
+        "id": "linux-q009-b",
+        "text": "The command was interrupted in every case"
+      },
+      {
+        "id": "linux-q009-c",
+        "text": "The command found no files in every case"
+      },
+      {
+        "id": "linux-q009-d",
+        "text": "The shell must exit immediately"
+      }
+    ],
+    "explanation": "By convention, status 0 indicates success; nonzero values usually indicate an error or other condition.",
+    "hint": "Recall the conventional success value used by Unix commands.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "exit-status"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q009-a"
+  },
+  {
+    "id": "linux-q010",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Globbing",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In a typical Bash pathname pattern, what does `*.txt` match?",
+    "options": [
+      {
+        "id": "linux-q010-a",
+        "text": "Names ending in .txt in the current directory, subject to shell globbing rules"
+      },
+      {
+        "id": "linux-q010-b",
+        "text": "Every file containing txt in its contents"
+      },
+      {
+        "id": "linux-q010-c",
+        "text": "Only one file named *.txt literally"
+      },
+      {
+        "id": "linux-q010-d",
+        "text": "All files recursively in every subdirectory"
+      }
+    ],
+    "explanation": "The shell expands * to match pathname characters; the pattern does not recursively search by itself.",
+    "hint": "Distinguish filename expansion from searching file contents or trees.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "globbing"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q010-a"
+  },
+  {
+    "id": "linux-q011",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Permissions",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A regular file has mode `-rw-r-----`. Which permission set does the group have?",
+    "options": [
+      {
+        "id": "linux-q011-a",
+        "text": "Read only"
+      },
+      {
+        "id": "linux-q011-b",
+        "text": "Read and write"
+      },
+      {
+        "id": "linux-q011-c",
+        "text": "Read and execute"
+      },
+      {
+        "id": "linux-q011-d",
+        "text": "No permissions"
+      }
+    ],
+    "explanation": "The group triplet is r--, which grants read permission only.",
+    "hint": "Read the three permission characters immediately after the owner's triplet.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "permissions"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q011-a"
+  },
+  {
+    "id": "linux-q012",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Numeric permissions",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What permissions does `chmod 640 report.txt` set on a regular file?",
+    "options": [
+      {
+        "id": "linux-q012-a",
+        "text": "Owner read/write; group read; others none"
+      },
+      {
+        "id": "linux-q012-b",
+        "text": "Owner read/write/execute; group read; others none"
+      },
+      {
+        "id": "linux-q012-c",
+        "text": "Owner read; group write; others execute"
+      },
+      {
+        "id": "linux-q012-d",
+        "text": "Owner read/write; group read/write; others read"
+      }
+    ],
+    "explanation": "6 means read+write, 4 means read, and 0 means no permissions.",
+    "hint": "Convert each octal digit separately for owner, group, and others.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "numeric-permissions"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q012-a"
+  },
+  {
+    "id": "linux-q013",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Add permission",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command adds execute permission for the file owner without changing other permission bits?",
+    "options": [
+      {
+        "id": "linux-q013-a",
+        "text": "chmod u+x script.sh"
+      },
+      {
+        "id": "linux-q013-b",
+        "text": "chmod a+x script.sh"
+      },
+      {
+        "id": "linux-q013-c",
+        "text": "chmod 755 script.sh"
+      },
+      {
+        "id": "linux-q013-d",
+        "text": "chmod g+x script.sh"
+      }
+    ],
+    "explanation": "u+x adds execute permission to the owner class while preserving other bits.",
+    "hint": "Choose the symbolic mode that names only the owner class.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "add-permission"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q013-a"
+  },
+  {
+    "id": "linux-q014",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Ownership",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command changes the owner of file.txt to alice when run with sufficient privileges?",
+    "options": [
+      {
+        "id": "linux-q014-a",
+        "text": "chown alice file.txt"
+      },
+      {
+        "id": "linux-q014-b",
+        "text": "chmod alice file.txt"
+      },
+      {
+        "id": "linux-q014-c",
+        "text": "usermod file.txt alice"
+      },
+      {
+        "id": "linux-q014-d",
+        "text": "passwd alice file.txt"
+      }
+    ],
+    "explanation": "chown changes file ownership; chmod changes permission bits.",
+    "hint": "Separate ownership changes from permission changes.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "ownership"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q014-a"
+  },
+  {
+    "id": "linux-q015",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Symbolic links",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command creates a symbolic link named shortcut pointing to /opt/data/report.csv?",
+    "options": [
+      {
+        "id": "linux-q015-a",
+        "text": "ln -s /opt/data/report.csv shortcut"
+      },
+      {
+        "id": "linux-q015-b",
+        "text": "ln /opt/data/report.csv shortcut"
+      },
+      {
+        "id": "linux-q015-c",
+        "text": "cp -s /opt/data/report.csv shortcut"
+      },
+      {
+        "id": "linux-q015-d",
+        "text": "chmod -s /opt/data/report.csv shortcut"
+      }
+    ],
+    "explanation": "ln -s creates a symbolic link whose target is the supplied path.",
+    "hint": "A symbolic link is created with an option to ln.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "symbolic-links"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q015-a"
+  },
+  {
+    "id": "linux-q016",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Hard links",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Two hard links refer to the same inode. What normally happens when one name is removed?",
+    "options": [
+      {
+        "id": "linux-q016-a",
+        "text": "The other name can still access the file while its link remains"
+      },
+      {
+        "id": "linux-q016-b",
+        "text": "The other name is automatically deleted"
+      },
+      {
+        "id": "linux-q016-c",
+        "text": "The file contents are immediately erased"
+      },
+      {
+        "id": "linux-q016-d",
+        "text": "The remaining name becomes a symbolic link"
+      }
+    ],
+    "explanation": "Removing one hard-link name decreases the link count; another name can still reference the inode.",
+    "hint": "Think of hard links as multiple directory names for the same inode.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "hard-links"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q016-a"
+  },
+  {
+    "id": "linux-q017",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Disk space",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command reports filesystem space usage in human-readable units?",
+    "options": [
+      {
+        "id": "linux-q017-a",
+        "text": "df -h"
+      },
+      {
+        "id": "linux-q017-b",
+        "text": "du -a"
+      },
+      {
+        "id": "linux-q017-c",
+        "text": "free -m"
+      },
+      {
+        "id": "linux-q017-d",
+        "text": "lsblk -f"
+      }
+    ],
+    "explanation": "df reports filesystem-level space usage, and -h formats sizes for readability.",
+    "hint": "Choose the command that reports filesystem capacity and free space.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "disk-space"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q017-a"
+  },
+  {
+    "id": "linux-q018",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Directory usage",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command estimates the disk space used by directory /var/log?",
+    "options": [
+      {
+        "id": "linux-q018-a",
+        "text": "du -sh /var/log"
+      },
+      {
+        "id": "linux-q018-b",
+        "text": "df -sh /var/log"
+      },
+      {
+        "id": "linux-q018-c",
+        "text": "free -h /var/log"
+      },
+      {
+        "id": "linux-q018-d",
+        "text": "ps -sh /var/log"
+      }
+    ],
+    "explanation": "du estimates space used by files and directories; -s summarizes and -h uses human-readable units.",
+    "hint": "Distinguish directory usage from filesystem capacity.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "directory-usage"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q018-a"
+  },
+  {
+    "id": "linux-q019",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Block devices",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command commonly displays block devices and their partition relationships?",
+    "options": [
+      {
+        "id": "linux-q019-a",
+        "text": "lsblk"
+      },
+      {
+        "id": "linux-q019-b",
+        "text": "lsmod"
+      },
+      {
+        "id": "linux-q019-c",
+        "text": "lscpu"
+      },
+      {
+        "id": "linux-q019-d",
+        "text": "uname -r"
+      }
+    ],
+    "explanation": "lsblk lists block devices in a tree-like view, including partitions.",
+    "hint": "Choose the utility focused on block storage devices.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "block-devices"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q019-a"
+  },
+  {
+    "id": "linux-q020",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Process listing",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command commonly displays a snapshot of processes with detailed information?",
+    "options": [
+      {
+        "id": "linux-q020-a",
+        "text": "ps aux"
+      },
+      {
+        "id": "linux-q020-b",
+        "text": "chmod aux"
+      },
+      {
+        "id": "linux-q020-c",
+        "text": "ip aux"
+      },
+      {
+        "id": "linux-q020-d",
+        "text": "mount aux"
+      }
+    ],
+    "explanation": "ps aux displays a process snapshot on common Linux procps installations.",
+    "hint": "Choose the process-status utility.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "process-listing"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q020-a"
+  },
+  {
+    "id": "linux-q021",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Live process monitoring",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command provides an interactive, continuously refreshed process view on many Linux systems?",
+    "options": [
+      {
+        "id": "linux-q021-a",
+        "text": "top"
+      },
+      {
+        "id": "linux-q021-b",
+        "text": "touch"
+      },
+      {
+        "id": "linux-q021-c",
+        "text": "tee"
+      },
+      {
+        "id": "linux-q021-d",
+        "text": "type"
+      }
+    ],
+    "explanation": "top provides a dynamic view of processes and resource usage.",
+    "hint": "Choose the interactive process monitor.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "live-process-monitoring"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q021-a"
+  },
+  {
+    "id": "linux-q022",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Terminate process",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command sends the default TERM signal to process ID 2468?",
+    "options": [
+      {
+        "id": "linux-q022-a",
+        "text": "kill 2468"
+      },
+      {
+        "id": "linux-q022-b",
+        "text": "kill -9 2468"
+      },
+      {
+        "id": "linux-q022-c",
+        "text": "ps 2468"
+      },
+      {
+        "id": "linux-q022-d",
+        "text": "wait 2468"
+      }
+    ],
+    "explanation": "kill PID sends SIGTERM by default on typical Unix-like systems.",
+    "hint": "The default signal is a termination request, not SIGKILL.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "terminate-process"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q022-a"
+  },
+  {
+    "id": "linux-q023",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Forceful termination",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command explicitly sends SIGKILL to process ID 2468?",
+    "options": [
+      {
+        "id": "linux-q023-a",
+        "text": "kill -KILL 2468"
+      },
+      {
+        "id": "linux-q023-b",
+        "text": "kill -STOP 2468"
+      },
+      {
+        "id": "linux-q023-c",
+        "text": "nice -9 2468"
+      },
+      {
+        "id": "linux-q023-d",
+        "text": "wait -KILL 2468"
+      }
+    ],
+    "explanation": "kill -KILL (equivalently kill -9) sends SIGKILL, which the target cannot catch or ignore.",
+    "hint": "Identify the signal that cannot be handled by the target process.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "forceful-termination"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q023-a"
+  },
+  {
+    "id": "linux-q024",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Background jobs",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In an interactive Bash shell, what does appending `&` to a command generally do?",
+    "options": [
+      {
+        "id": "linux-q024-a",
+        "text": "Starts the command asynchronously in the background"
+      },
+      {
+        "id": "linux-q024-b",
+        "text": "Runs the command with administrator privileges"
+      },
+      {
+        "id": "linux-q024-c",
+        "text": "Sends standard output to a file automatically"
+      },
+      {
+        "id": "linux-q024-d",
+        "text": "Repeats the command until it succeeds"
+      }
+    ],
+    "explanation": "The shell starts the command as a background job and returns the prompt without waiting for completion.",
+    "hint": "Consider how the shell behaves after launching the command.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "background-jobs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q024-a"
+  },
+  {
+    "id": "linux-q025",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Foreground job",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which Bash built-in brings a suspended or background job to the foreground?",
+    "options": [
+      {
+        "id": "linux-q025-a",
+        "text": "fg"
+      },
+      {
+        "id": "linux-q025-b",
+        "text": "bg"
+      },
+      {
+        "id": "linux-q025-c",
+        "text": "jobs"
+      },
+      {
+        "id": "linux-q025-d",
+        "text": "nohup"
+      }
+    ],
+    "explanation": "fg brings a job to the foreground and resumes it if it is stopped.",
+    "hint": "Choose the job-control command referring to foreground execution.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "foreground-job"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q025-a"
+  },
+  {
+    "id": "linux-q026",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Priority adjustment",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What is the usual effect of a higher nice value for a normal Linux process?",
+    "options": [
+      {
+        "id": "linux-q026-a",
+        "text": "It generally gives the process lower CPU scheduling priority"
+      },
+      {
+        "id": "linux-q026-b",
+        "text": "It gives the process higher real-time priority"
+      },
+      {
+        "id": "linux-q026-c",
+        "text": "It increases the process memory limit automatically"
+      },
+      {
+        "id": "linux-q026-d",
+        "text": "It guarantees the process runs next"
+      }
+    ],
+    "explanation": "For normal scheduling, higher nice values generally correspond to lower CPU scheduling priority.",
+    "hint": "Remember that a higher nice value means the process is more willing to yield CPU time.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "priority-adjustment"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q026-a"
+  },
+  {
+    "id": "linux-q027",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Current user",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command prints the effective username of the current process in a typical Linux shell?",
+    "options": [
+      {
+        "id": "linux-q027-a",
+        "text": "whoami"
+      },
+      {
+        "id": "linux-q027-b",
+        "text": "hostname"
+      },
+      {
+        "id": "linux-q027-c",
+        "text": "uname -a"
+      },
+      {
+        "id": "linux-q027-d",
+        "text": "pwd"
+      }
+    ],
+    "explanation": "whoami prints the effective user name associated with the current process credentials.",
+    "hint": "Choose the command that reports the effective username.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "current-user"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q027-a"
+  },
+  {
+    "id": "linux-q028",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "User creation",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command is commonly used by an administrator to create a local user account on Ubuntu?",
+    "options": [
+      {
+        "id": "linux-q028-a",
+        "text": "sudo adduser newuser"
+      },
+      {
+        "id": "linux-q028-b",
+        "text": "chmod newuser"
+      },
+      {
+        "id": "linux-q028-c",
+        "text": "passwd --create newuser"
+      },
+      {
+        "id": "linux-q028-d",
+        "text": "mkdir /etc/passwd/newuser"
+      }
+    ],
+    "explanation": "Ubuntu provides adduser as a common tool for creating a local user account; administrator privileges are normally required.",
+    "hint": "Choose the account-management command, not a permission or directory command.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "user-creation"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q028-a"
+  },
+  {
+    "id": "linux-q029",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Group membership",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command adds existing user alice to supplementary group developers while preserving existing supplementary groups?",
+    "options": [
+      {
+        "id": "linux-q029-a",
+        "text": "sudo usermod -aG developers alice"
+      },
+      {
+        "id": "linux-q029-b",
+        "text": "sudo usermod -G alice developers"
+      },
+      {
+        "id": "linux-q029-c",
+        "text": "chmod -a developers alice"
+      },
+      {
+        "id": "linux-q029-d",
+        "text": "groupadd -a alice developers"
+      }
+    ],
+    "explanation": "usermod -aG appends the specified supplementary group while preserving existing supplementary memberships.",
+    "hint": "The append option matters when adding supplementary groups.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "group-membership"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q029-a"
+  },
+  {
+    "id": "linux-q030",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Privilege escalation",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What is the purpose of `sudo` in a typical Linux administration workflow?",
+    "options": [
+      {
+        "id": "linux-q030-a",
+        "text": "Run an authorized command with another user's privileges, commonly root"
+      },
+      {
+        "id": "linux-q030-b",
+        "text": "Encrypt every file in the current directory"
+      },
+      {
+        "id": "linux-q030-c",
+        "text": "Change the current directory to /root"
+      },
+      {
+        "id": "linux-q030-d",
+        "text": "Disable all access-control checks permanently"
+      }
+    ],
+    "explanation": "sudo runs a command using privileges granted by its policy, commonly root privileges.",
+    "hint": "Think of controlled privilege elevation rather than disabling security.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "privilege-escalation"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q030-a"
+  },
+  {
+    "id": "linux-q031",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Service status",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command checks the status of a systemd service named ssh?",
+    "options": [
+      {
+        "id": "linux-q031-a",
+        "text": "systemctl status ssh"
+      },
+      {
+        "id": "linux-q031-b",
+        "text": "journalctl enable ssh"
+      },
+      {
+        "id": "linux-q031-c",
+        "text": "service status --all ssh"
+      },
+      {
+        "id": "linux-q031-d",
+        "text": "ps status ssh"
+      }
+    ],
+    "explanation": "systemctl status displays the state and recent status information for the named systemd unit.",
+    "hint": "Choose the systemd unit-management command.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "service-status"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q031-a"
+  },
+  {
+    "id": "linux-q032",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Enable service",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command enables the systemd service named cron to start automatically at boot?",
+    "options": [
+      {
+        "id": "linux-q032-a",
+        "text": "sudo systemctl enable cron"
+      },
+      {
+        "id": "linux-q032-b",
+        "text": "sudo systemctl status cron"
+      },
+      {
+        "id": "linux-q032-c",
+        "text": "sudo journalctl -u cron"
+      },
+      {
+        "id": "linux-q032-d",
+        "text": "sudo systemctl mask --runtime cron"
+      }
+    ],
+    "explanation": "systemctl enable configures a service to start through boot-time dependencies; it does not necessarily start it immediately.",
+    "hint": "Distinguish enabling at boot from checking status or viewing logs.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "enable-service"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q032-a"
+  },
+  {
+    "id": "linux-q033",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Service logs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command displays journal entries for a systemd unit named ssh?",
+    "options": [
+      {
+        "id": "linux-q033-a",
+        "text": "journalctl -u ssh"
+      },
+      {
+        "id": "linux-q033-b",
+        "text": "systemctl cat-log ssh"
+      },
+      {
+        "id": "linux-q033-c",
+        "text": "dmesg -u ssh"
+      },
+      {
+        "id": "linux-q033-d",
+        "text": "grep -u ssh /etc/passwd"
+      }
+    ],
+    "explanation": "journalctl -u filters the systemd journal to entries associated with the specified unit.",
+    "hint": "Choose the journal query command and its unit filter.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "service-logs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q033-a"
+  },
+  {
+    "id": "linux-q034",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Scheduled jobs",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command is commonly used to edit the current user's personal cron table?",
+    "options": [
+      {
+        "id": "linux-q034-a",
+        "text": "crontab -e"
+      },
+      {
+        "id": "linux-q034-b",
+        "text": "cron -u edit"
+      },
+      {
+        "id": "linux-q034-c",
+        "text": "systemctl edit-cron"
+      },
+      {
+        "id": "linux-q034-d",
+        "text": "at -e"
+      }
+    ],
+    "explanation": "crontab -e opens the current user's crontab for editing on standard cron installations.",
+    "hint": "Choose the crontab interface for editing scheduled commands.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "scheduled-jobs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q034-a"
+  },
+  {
+    "id": "linux-q035",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Kernel release",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command prints the Linux kernel release string?",
+    "options": [
+      {
+        "id": "linux-q035-a",
+        "text": "uname -r"
+      },
+      {
+        "id": "linux-q035-b",
+        "text": "hostname -I"
+      },
+      {
+        "id": "linux-q035-c",
+        "text": "who -r"
+      },
+      {
+        "id": "linux-q035-d",
+        "text": "lsb_release -p"
+      }
+    ],
+    "explanation": "uname -r prints the kernel release identifier.",
+    "hint": "Choose the uname option that reports the kernel release.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "kernel-release"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q035-a"
+  },
+  {
+    "id": "linux-q036",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Memory usage",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command reports memory and swap usage in human-readable units on Linux?",
+    "options": [
+      {
+        "id": "linux-q036-a",
+        "text": "free -h"
+      },
+      {
+        "id": "linux-q036-b",
+        "text": "df -h"
+      },
+      {
+        "id": "linux-q036-c",
+        "text": "du -sh /"
+      },
+      {
+        "id": "linux-q036-d",
+        "text": "lsmem -h"
+      }
+    ],
+    "explanation": "free reports RAM and swap totals and usage; -h formats values for readability.",
+    "hint": "Choose the memory-usage utility rather than disk-space tools.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "memory-usage"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q036-a"
+  },
+  {
+    "id": "linux-q037",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Kernel messages",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command is commonly used to display kernel ring-buffer messages?",
+    "options": [
+      {
+        "id": "linux-q037-a",
+        "text": "dmesg"
+      },
+      {
+        "id": "linux-q037-b",
+        "text": "journalctl --user"
+      },
+      {
+        "id": "linux-q037-c",
+        "text": "who"
+      },
+      {
+        "id": "linux-q037-d",
+        "text": "crontab -l"
+      }
+    ],
+    "explanation": "dmesg displays messages from the kernel ring buffer, subject to system permissions and configuration.",
+    "hint": "Think of messages emitted by the kernel, especially during device initialization.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "kernel-messages"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q037-a"
+  },
+  {
+    "id": "linux-q038",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Network interfaces",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which modern Linux command displays IP addresses assigned to network interfaces?",
+    "options": [
+      {
+        "id": "linux-q038-a",
+        "text": "ip addr"
+      },
+      {
+        "id": "linux-q038-b",
+        "text": "route add"
+      },
+      {
+        "id": "linux-q038-c",
+        "text": "ss -l"
+      },
+      {
+        "id": "linux-q038-d",
+        "text": "dig addr"
+      }
+    ],
+    "explanation": "ip addr (or ip address) displays addresses configured on network interfaces.",
+    "hint": "Choose the ip subcommand used to inspect addresses.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "network-interfaces"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q038-a"
+  },
+  {
+    "id": "linux-q039",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Listening ports",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command can show listening TCP and UDP sockets with numeric ports?",
+    "options": [
+      {
+        "id": "linux-q039-a",
+        "text": "ss -lntu"
+      },
+      {
+        "id": "linux-q039-b",
+        "text": "ip addr show"
+      },
+      {
+        "id": "linux-q039-c",
+        "text": "ping -lntu"
+      },
+      {
+        "id": "linux-q039-d",
+        "text": "dig -t socket"
+      }
+    ],
+    "explanation": "ss -lntu selects listening sockets and displays numeric addresses and ports for TCP and UDP.",
+    "hint": "Identify the socket-statistics tool and its listening/numeric options.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "listening-ports"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q039-a"
+  },
+  {
+    "id": "linux-q040",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Connectivity test",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "What does a successful `ping` response primarily demonstrate?",
+    "options": [
+      {
+        "id": "linux-q040-a",
+        "text": "ICMP echo traffic received a response from the destination"
+      },
+      {
+        "id": "linux-q040-b",
+        "text": "Every TCP application port on the destination is open"
+      },
+      {
+        "id": "linux-q040-c",
+        "text": "DNS records are always correct"
+      },
+      {
+        "id": "linux-q040-d",
+        "text": "The destination disk is healthy"
+      }
+    ],
+    "explanation": "A successful ping shows that an ICMP echo response was received; it does not prove application ports or services are available.",
+    "hint": "Limit the conclusion to the protocol and response being tested.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "connectivity-test"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q040-a"
+  },
+  {
+    "id": "linux-q041",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "DNS lookup",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command-line tool can query DNS records for a hostname?",
+    "options": [
+      {
+        "id": "linux-q041-a",
+        "text": "dig"
+      },
+      {
+        "id": "linux-q041-b",
+        "text": "chmod"
+      },
+      {
+        "id": "linux-q041-c",
+        "text": "lsblk"
+      },
+      {
+        "id": "linux-q041-d",
+        "text": "mkfs"
+      }
+    ],
+    "explanation": "dig performs DNS queries and displays DNS response information.",
+    "hint": "Choose the DNS diagnostic utility.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "dns-lookup"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q041-a"
+  },
+  {
+    "id": "linux-q042",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Secure remote login",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Which command initiates an SSH login to user alice on host server.example.com?",
+    "options": [
+      {
+        "id": "linux-q042-a",
+        "text": "ssh alice@server.example.com"
+      },
+      {
+        "id": "linux-q042-b",
+        "text": "scp alice@server.example.com"
+      },
+      {
+        "id": "linux-q042-c",
+        "text": "ftp --ssh alice server.example.com"
+      },
+      {
+        "id": "linux-q042-d",
+        "text": "telnet -key alice server.example.com"
+      }
+    ],
+    "explanation": "ssh user@host initiates a secure shell session to the specified account and host.",
+    "hint": "Choose the command for an interactive secure remote shell.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "secure-remote-login"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q042-a"
+  },
+  {
+    "id": "linux-q043",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Ubuntu package install",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "On Ubuntu, which command installs the package named tree using APT?",
+    "options": [
+      {
+        "id": "linux-q043-a",
+        "text": "sudo apt install tree"
+      },
+      {
+        "id": "linux-q043-b",
+        "text": "sudo rpm -i tree"
+      },
+      {
+        "id": "linux-q043-c",
+        "text": "sudo pacman -S tree"
+      },
+      {
+        "id": "linux-q043-d",
+        "text": "sudo systemctl install tree"
+      }
+    ],
+    "explanation": "Ubuntu uses APT; apt install installs a package from configured repositories when available.",
+    "hint": "Match the package manager to Ubuntu.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "ubuntu-package-install"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q043-a"
+  },
+  {
+    "id": "linux-q044",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Archive creation",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command creates an uncompressed tar archive named backup.tar from directory project?",
+    "options": [
+      {
+        "id": "linux-q044-a",
+        "text": "tar -cf backup.tar project"
+      },
+      {
+        "id": "linux-q044-b",
+        "text": "tar -xf backup.tar project"
+      },
+      {
+        "id": "linux-q044-c",
+        "text": "gzip -d backup.tar project"
+      },
+      {
+        "id": "linux-q044-d",
+        "text": "zip -r backup.tar project"
+      }
+    ],
+    "explanation": "tar -c creates an archive and -f specifies the archive filename; without a compression option it is uncompressed.",
+    "hint": "Recall the tar create option and archive-file option.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "archive-creation"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q044-a"
+  },
+  {
+    "id": "linux-q045",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Compressed archive",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command creates a gzip-compressed tar archive named backup.tar.gz from directory project?",
+    "options": [
+      {
+        "id": "linux-q045-a",
+        "text": "tar -czf backup.tar.gz project"
+      },
+      {
+        "id": "linux-q045-b",
+        "text": "tar -xzf backup.tar.gz project"
+      },
+      {
+        "id": "linux-q045-c",
+        "text": "gzip -r backup.tar.gz project"
+      },
+      {
+        "id": "linux-q045-d",
+        "text": "tar -tf backup.tar.gz project"
+      }
+    ],
+    "explanation": "tar -c creates, -z applies gzip compression, and -f names the archive.",
+    "hint": "Combine tar's create, gzip, and filename options.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "compressed-archive"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q045-a"
+  },
+  {
+    "id": "linux-q046",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Shell variable",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "In Bash, which command assigns the text hello to variable greeting without printing it?",
+    "options": [
+      {
+        "id": "linux-q046-a",
+        "text": "greeting=hello"
+      },
+      {
+        "id": "linux-q046-b",
+        "text": "$greeting=hello"
+      },
+      {
+        "id": "linux-q046-c",
+        "text": "set greeting hello"
+      },
+      {
+        "id": "linux-q046-d",
+        "text": "export =greeting hello"
+      }
+    ],
+    "explanation": "Shell assignment uses name=value with no spaces around the equals sign; $ is used when expanding a variable.",
+    "hint": "Choose valid assignment syntax rather than variable expansion syntax.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "shell-variable"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q046-a"
+  },
+  {
+    "id": "linux-q047",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Positional parameter",
+    "difficulty": "Easy",
+    "type": "single_select",
+    "question": "Inside a Bash script, what does `$1` normally expand to?",
+    "options": [
+      {
+        "id": "linux-q047-a",
+        "text": "The first positional argument passed to the script or function"
+      },
+      {
+        "id": "linux-q047-b",
+        "text": "The script's exit status"
+      },
+      {
+        "id": "linux-q047-c",
+        "text": "The process ID of the shell"
+      },
+      {
+        "id": "linux-q047-d",
+        "text": "The number of all positional arguments"
+      }
+    ],
+    "explanation": "$1 refers to the first positional parameter; $# gives the number of positional parameters.",
+    "hint": "Distinguish the first argument from the argument count and process ID.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "positional-parameter"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q047-a"
+  },
+  {
+    "id": "linux-q048",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "File test",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "In Bash, which test checks whether file.txt exists as a regular file?",
+    "options": [
+      {
+        "id": "linux-q048-a",
+        "text": "[ -f file.txt ]"
+      },
+      {
+        "id": "linux-q048-b",
+        "text": "[ -d file.txt ]"
+      },
+      {
+        "id": "linux-q048-c",
+        "text": "[ -p file.txt ]"
+      },
+      {
+        "id": "linux-q048-d",
+        "text": "[ -z file.txt ]"
+      }
+    ],
+    "explanation": "The -f test succeeds when the path exists and is a regular file; -d tests for a directory.",
+    "hint": "Choose the file test that means regular file.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "file-test"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q048-a"
+  },
+  {
+    "id": "linux-q049",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Loop arguments",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which Bash expression expands to all positional arguments while preserving each argument as a separate word when quoted?",
+    "options": [
+      {
+        "id": "linux-q049-a",
+        "text": "\"$@\""
+      },
+      {
+        "id": "linux-q049-b",
+        "text": "\"$#\""
+      },
+      {
+        "id": "linux-q049-c",
+        "text": "\"$?\""
+      },
+      {
+        "id": "linux-q049-d",
+        "text": "\"$$\""
+      }
+    ],
+    "explanation": "\"$@\" expands to positional arguments as separate words; $# is the argument count, $? is the last status, and $$ is the shell PID.",
+    "hint": "Use the special parameter that expands to all positional arguments.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "loop-arguments"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q049-a"
+  },
+  {
+    "id": "linux-q050",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Command substitution",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `today=$(date +%F)` do in Bash?",
+    "options": [
+      {
+        "id": "linux-q050-a",
+        "text": "Stores date command output formatted as YYYY-MM-DD in variable today"
+      },
+      {
+        "id": "linux-q050-b",
+        "text": "Runs date only if today is a directory"
+      },
+      {
+        "id": "linux-q050-c",
+        "text": "Redirects variable today into the date command"
+      },
+      {
+        "id": "linux-q050-d",
+        "text": "Creates a file named today"
+      }
+    ],
+    "explanation": "Command substitution captures standard output; date +%F produces a year-month-day date.",
+    "hint": "Recognize the $(...) command-substitution syntax.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "command-substitution"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q050-a"
+  },
+  {
+    "id": "linux-q051",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "File permissions",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "A file has permissions `-rwxr-x---`. Which statement is correct?",
+    "options": [
+      {
+        "id": "linux-q051-a",
+        "text": "Owner can read, write, and execute; group can read and execute; others have no permissions"
+      },
+      {
+        "id": "linux-q051-b",
+        "text": "Owner can read and write only; group has no permissions; others can execute"
+      },
+      {
+        "id": "linux-q051-c",
+        "text": "Everyone can read; only owner can write"
+      },
+      {
+        "id": "linux-q051-d",
+        "text": "Owner and group have identical permissions"
+      }
+    ],
+    "explanation": "Permission bits are read, write, execute for owner, group, and others. The group bits are r-x and the others bits are ---.",
+    "hint": "Split the nine permission bits into three groups of three.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "file-permissions"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q051-a"
+  },
+  {
+    "id": "linux-q052",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "File permissions",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `chmod u+x script.sh` do?",
+    "options": [
+      {
+        "id": "linux-q052-a",
+        "text": "Adds execute permission for the file owner"
+      },
+      {
+        "id": "linux-q052-b",
+        "text": "Removes execute permission from everyone"
+      },
+      {
+        "id": "linux-q052-c",
+        "text": "Adds execute permission for the group only"
+      },
+      {
+        "id": "linux-q052-d",
+        "text": "Makes the file readable by everyone"
+      }
+    ],
+    "explanation": "The `u` class means user/owner and `+x` adds execute permission.",
+    "hint": "Interpret u as owner and +x as adding execute.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "file-permissions"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q052-a"
+  },
+  {
+    "id": "linux-q053",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Umask",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "If the umask is `027`, what permissions will a newly created regular file typically receive, assuming the usual base mode 666?",
+    "options": [
+      {
+        "id": "linux-q053-a",
+        "text": "640"
+      },
+      {
+        "id": "linux-q053-b",
+        "text": "750"
+      },
+      {
+        "id": "linux-q053-c",
+        "text": "660"
+      },
+      {
+        "id": "linux-q053-d",
+        "text": "777"
+      }
+    ],
+    "explanation": "The resulting mode is 666 with masked bits removed: 640.",
+    "hint": "Apply the umask to the base mode 666.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "umask"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q053-a"
+  },
+  {
+    "id": "linux-q054",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Umask",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "With umask `022`, what permissions will a newly created directory typically receive, assuming base mode 777?",
+    "options": [
+      {
+        "id": "linux-q054-a",
+        "text": "755"
+      },
+      {
+        "id": "linux-q054-b",
+        "text": "644"
+      },
+      {
+        "id": "linux-q054-c",
+        "text": "700"
+      },
+      {
+        "id": "linux-q054-d",
+        "text": "775"
+      }
+    ],
+    "explanation": "For directories, the usual base mode is 777; umask 022 removes write permission for group and others, yielding 755.",
+    "hint": "Start with 777 and remove masked bits.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "umask"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q054-a"
+  },
+  {
+    "id": "linux-q055",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "ACLs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command displays access-control lists for a file on a Linux system?",
+    "options": [
+      {
+        "id": "linux-q055-a",
+        "text": "getfacl"
+      },
+      {
+        "id": "linux-q055-b",
+        "text": "chmod --show-acl"
+      },
+      {
+        "id": "linux-q055-c",
+        "text": "lsacl -r"
+      },
+      {
+        "id": "linux-q055-d",
+        "text": "showperm"
+      }
+    ],
+    "explanation": "`getfacl` displays POSIX ACL entries for files and directories.",
+    "hint": "Think of the command paired with setfacl.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "acls"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q055-a"
+  },
+  {
+    "id": "linux-q056",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "ACLs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command adds read permission for user `maya` on `report.txt` using a POSIX ACL?",
+    "options": [
+      {
+        "id": "linux-q056-a",
+        "text": "setfacl -m u:maya:r report.txt"
+      },
+      {
+        "id": "linux-q056-b",
+        "text": "chmod maya+r report.txt"
+      },
+      {
+        "id": "linux-q056-c",
+        "text": "chown maya:r report.txt"
+      },
+      {
+        "id": "linux-q056-d",
+        "text": "getfacl -u maya report.txt"
+      }
+    ],
+    "explanation": "`setfacl -m u:maya:r` modifies the ACL to grant user maya read access.",
+    "hint": "ACL modifications use setfacl -m.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "acls"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q056-a"
+  },
+  {
+    "id": "linux-q057",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Filesystem",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command reports filesystem type, total size, used space, and available space for mounted filesystems?",
+    "options": [
+      {
+        "id": "linux-q057-a",
+        "text": "df -hT"
+      },
+      {
+        "id": "linux-q057-b",
+        "text": "du -shT"
+      },
+      {
+        "id": "linux-q057-c",
+        "text": "free -h"
+      },
+      {
+        "id": "linux-q057-d",
+        "text": "lsblk -f /"
+      }
+    ],
+    "explanation": "`df -hT` reports filesystem capacity in human-readable units and includes filesystem type.",
+    "hint": "df reports filesystem-level capacity.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "filesystem"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q057-a"
+  },
+  {
+    "id": "linux-q058",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Filesystem",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What is the main difference between `du -sh directory` and `df -h`?",
+    "options": [
+      {
+        "id": "linux-q058-a",
+        "text": "du estimates space used by directory contents; df reports space usage of filesystems"
+      },
+      {
+        "id": "linux-q058-b",
+        "text": "du reports CPU usage; df reports memory usage"
+      },
+      {
+        "id": "linux-q058-c",
+        "text": "du lists users; df lists groups"
+      },
+      {
+        "id": "linux-q058-d",
+        "text": "They always report identical values"
+      }
+    ],
+    "explanation": "`du` summarizes disk usage for paths, whereas `df` reports filesystem-level usage and free space.",
+    "hint": "Compare path-level usage with mounted-filesystem capacity.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "filesystem"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q058-a"
+  },
+  {
+    "id": "linux-q059",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Filesystem",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command checks and repairs a filesystem, typically when it is unmounted?",
+    "options": [
+      {
+        "id": "linux-q059-a",
+        "text": "fsck"
+      },
+      {
+        "id": "linux-q059-b",
+        "text": "fdisk"
+      },
+      {
+        "id": "linux-q059-c",
+        "text": "mkfs"
+      },
+      {
+        "id": "linux-q059-d",
+        "text": "mount"
+      }
+    ],
+    "explanation": "`fsck` checks and may repair filesystem inconsistencies; filesystem-specific tools may be invoked underneath.",
+    "hint": "The command name means filesystem check.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "filesystem"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q059-a"
+  },
+  {
+    "id": "linux-q060",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Mounting",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which file commonly defines persistent filesystem mounts on Linux?",
+    "options": [
+      {
+        "id": "linux-q060-a",
+        "text": "/etc/fstab"
+      },
+      {
+        "id": "linux-q060-b",
+        "text": "/etc/hosts"
+      },
+      {
+        "id": "linux-q060-c",
+        "text": "/etc/passwd"
+      },
+      {
+        "id": "linux-q060-d",
+        "text": "/var/log/mounts"
+      }
+    ],
+    "explanation": "`/etc/fstab` describes filesystems and mount options used during boot or by mount tooling.",
+    "hint": "Look for the filesystem table configuration file.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "mounting"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q060-a"
+  },
+  {
+    "id": "linux-q061",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Mounting",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "Why should a filesystem's UUID often be used in `/etc/fstab` instead of `/dev/sdb1`?",
+    "options": [
+      {
+        "id": "linux-q061-a",
+        "text": "Device names can change across boots or hardware discovery; UUIDs identify the filesystem more consistently"
+      },
+      {
+        "id": "linux-q061-b",
+        "text": "UUIDs make every disk faster"
+      },
+      {
+        "id": "linux-q061-c",
+        "text": "Device names cannot be used in fstab"
+      },
+      {
+        "id": "linux-q061-d",
+        "text": "UUIDs automatically encrypt the filesystem"
+      }
+    ],
+    "explanation": "Kernel device enumeration can change; a filesystem UUID is generally a more stable identifier.",
+    "hint": "Consider what happens when device discovery order changes.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "mounting"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q061-a"
+  },
+  {
+    "id": "linux-q062",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Storage",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `lsblk -f` primarily show?",
+    "options": [
+      {
+        "id": "linux-q062-a",
+        "text": "Block devices with filesystem and mount-related information"
+      },
+      {
+        "id": "linux-q062-b",
+        "text": "All running processes sorted by CPU"
+      },
+      {
+        "id": "linux-q062-c",
+        "text": "Only network interfaces"
+      },
+      {
+        "id": "linux-q062-d",
+        "text": "Contents of every text file on a disk"
+      }
+    ],
+    "explanation": "`lsblk` lists block devices; `-f` adds filesystem information such as type, label, UUID, and mountpoint.",
+    "hint": "The command lists block devices, with filesystem fields.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "storage"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q062-a"
+  },
+  {
+    "id": "linux-q063",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Storage",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command is commonly used to inspect partition tables interactively?",
+    "options": [
+      {
+        "id": "linux-q063-a",
+        "text": "fdisk -l"
+      },
+      {
+        "id": "linux-q063-b",
+        "text": "chmod -l"
+      },
+      {
+        "id": "linux-q063-c",
+        "text": "ps -l"
+      },
+      {
+        "id": "linux-q063-d",
+        "text": "ip -l"
+      }
+    ],
+    "explanation": "`fdisk -l` lists partition tables for detected disks; administrative privileges may be required.",
+    "hint": "The utility name is associated with disk partitioning.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "storage"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q063-a"
+  },
+  {
+    "id": "linux-q064",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Processes",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does the `STAT` column in `ps aux` indicate?",
+    "options": [
+      {
+        "id": "linux-q064-a",
+        "text": "Process state and related status flags"
+      },
+      {
+        "id": "linux-q064-b",
+        "text": "The process's disk quota"
+      },
+      {
+        "id": "linux-q064-c",
+        "text": "The user's password status"
+      },
+      {
+        "id": "linux-q064-d",
+        "text": "The file permissions of the executable only"
+      }
+    ],
+    "explanation": "The STAT field shows process state and additional flags, such as sleeping, running, or stopped.",
+    "hint": "It describes the process state.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "processes"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q064-a"
+  },
+  {
+    "id": "linux-q065",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Processes",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which signal is normally sent by `kill PID` when no signal is specified?",
+    "options": [
+      {
+        "id": "linux-q065-a",
+        "text": "SIGTERM"
+      },
+      {
+        "id": "linux-q065-b",
+        "text": "SIGKILL"
+      },
+      {
+        "id": "linux-q065-c",
+        "text": "SIGSTOP"
+      },
+      {
+        "id": "linux-q065-d",
+        "text": "SIGCONT"
+      }
+    ],
+    "explanation": "The default signal for `kill` is SIGTERM, requesting graceful termination.",
+    "hint": "The default is a termination request, not an unconditional kill.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "processes"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q065-a"
+  },
+  {
+    "id": "linux-q066",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Processes",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "Why should `kill -9 PID` generally be a last resort?",
+    "options": [
+      {
+        "id": "linux-q066-a",
+        "text": "SIGKILL cannot be caught or handled, preventing the process from cleaning up gracefully"
+      },
+      {
+        "id": "linux-q066-b",
+        "text": "SIGKILL pauses the process temporarily"
+      },
+      {
+        "id": "linux-q066-c",
+        "text": "SIGKILL only works on kernel threads"
+      },
+      {
+        "id": "linux-q066-d",
+        "text": "It always kills every process owned by the user"
+      }
+    ],
+    "explanation": "SIGKILL cannot be caught, blocked, or ignored, so the process cannot perform normal cleanup.",
+    "hint": "Compare graceful termination with an uncatchable signal.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "processes"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q066-a"
+  },
+  {
+    "id": "linux-q067",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Processes",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `pgrep -a sshd` do?",
+    "options": [
+      {
+        "id": "linux-q067-a",
+        "text": "Finds processes matching sshd and displays their command lines"
+      },
+      {
+        "id": "linux-q067-b",
+        "text": "Starts the SSH daemon"
+      },
+      {
+        "id": "linux-q067-c",
+        "text": "Lists SSH keys in the user's home directory"
+      },
+      {
+        "id": "linux-q067-d",
+        "text": "Shows failed SSH logins only"
+      }
+    ],
+    "explanation": "`pgrep` matches process names; `-a` includes the full command line.",
+    "hint": "pgrep searches existing processes.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "processes"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q067-a"
+  },
+  {
+    "id": "linux-q068",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Processes",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command displays a live, interactive view of processes and resource usage?",
+    "options": [
+      {
+        "id": "linux-q068-a",
+        "text": "top"
+      },
+      {
+        "id": "linux-q068-b",
+        "text": "touch"
+      },
+      {
+        "id": "linux-q068-c",
+        "text": "tee"
+      },
+      {
+        "id": "linux-q068-d",
+        "text": "tr"
+      }
+    ],
+    "explanation": "`top` provides a dynamic process and system-resource view.",
+    "hint": "It continuously refreshes process information.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "processes"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q068-a"
+  },
+  {
+    "id": "linux-q069",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Scheduling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `nice -n 10 command` generally do for a process launched by that command?",
+    "options": [
+      {
+        "id": "linux-q069-a",
+        "text": "Starts it with a higher nice value, usually giving it lower CPU scheduling priority"
+      },
+      {
+        "id": "linux-q069-b",
+        "text": "Sets real-time priority to the maximum"
+      },
+      {
+        "id": "linux-q069-c",
+        "text": "Limits it to exactly 10% CPU usage"
+      },
+      {
+        "id": "linux-q069-d",
+        "text": "Delays it by 10 seconds before every instruction"
+      }
+    ],
+    "explanation": "Higher nice values generally mean lower scheduling priority for normal Linux processes.",
+    "hint": "Nice values influence relative CPU scheduling priority.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "scheduling"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q069-a"
+  },
+  {
+    "id": "linux-q070",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Scheduling",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command changes the nice value of an already running process?",
+    "options": [
+      {
+        "id": "linux-q070-a",
+        "text": "renice"
+      },
+      {
+        "id": "linux-q070-b",
+        "text": "niceonly"
+      },
+      {
+        "id": "linux-q070-c",
+        "text": "chprio"
+      },
+      {
+        "id": "linux-q070-d",
+        "text": "schedset"
+      }
+    ],
+    "explanation": "`renice` adjusts the nice value of running processes, subject to permission constraints.",
+    "hint": "It is the counterpart used after a process has started.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "scheduling"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q070-a"
+  },
+  {
+    "id": "linux-q071",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Jobs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "In an interactive shell, what does `command &` normally do?",
+    "options": [
+      {
+        "id": "linux-q071-a",
+        "text": "Starts the command as a background job"
+      },
+      {
+        "id": "linux-q071-b",
+        "text": "Runs the command with administrator privileges"
+      },
+      {
+        "id": "linux-q071-c",
+        "text": "Sends the command to another computer"
+      },
+      {
+        "id": "linux-q071-d",
+        "text": "Deletes the command after execution"
+      }
+    ],
+    "explanation": "The ampersand asks the shell to run the command asynchronously in the background.",
+    "hint": "It changes foreground execution to background execution.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "jobs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q071-a"
+  },
+  {
+    "id": "linux-q072",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Jobs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `fg %1` do in a shell with job 1 available?",
+    "options": [
+      {
+        "id": "linux-q072-a",
+        "text": "Brings job 1 to the foreground"
+      },
+      {
+        "id": "linux-q072-b",
+        "text": "Terminates job 1"
+      },
+      {
+        "id": "linux-q072-c",
+        "text": "Changes job 1's owner"
+      },
+      {
+        "id": "linux-q072-d",
+        "text": "Lists files modified in the last hour"
+      }
+    ],
+    "explanation": "`fg` resumes or brings a shell job to the foreground.",
+    "hint": "fg means foreground.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "jobs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q072-a"
+  },
+  {
+    "id": "linux-q073",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Jobs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which keyboard shortcut commonly suspends the foreground process by sending SIGTSTP?",
+    "options": [
+      {
+        "id": "linux-q073-a",
+        "text": "Ctrl+Z"
+      },
+      {
+        "id": "linux-q073-b",
+        "text": "Ctrl+C"
+      },
+      {
+        "id": "linux-q073-c",
+        "text": "Ctrl+D"
+      },
+      {
+        "id": "linux-q073-d",
+        "text": "Ctrl+L"
+      }
+    ],
+    "explanation": "Ctrl+Z typically sends SIGTSTP to suspend the foreground job.",
+    "hint": "Ctrl+C usually interrupts; Ctrl+Z suspends.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "jobs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q073-a"
+  },
+  {
+    "id": "linux-q074",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Systemd",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command enables a systemd service to start automatically at boot?",
+    "options": [
+      {
+        "id": "linux-q074-a",
+        "text": "systemctl enable service-name"
+      },
+      {
+        "id": "linux-q074-b",
+        "text": "systemctl start --boot service-name"
+      },
+      {
+        "id": "linux-q074-c",
+        "text": "service-name --enable-now-only"
+      },
+      {
+        "id": "linux-q074-d",
+        "text": "journalctl enable service-name"
+      }
+    ],
+    "explanation": "`systemctl enable` configures the service for activation at boot; it does not necessarily start it immediately.",
+    "hint": "Distinguish enable from start.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "systemd"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q074-a"
+  },
+  {
+    "id": "linux-q075",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Systemd",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command both starts a service now and enables it for future boots?",
+    "options": [
+      {
+        "id": "linux-q075-a",
+        "text": "systemctl enable --now service-name"
+      },
+      {
+        "id": "linux-q075-b",
+        "text": "systemctl status --now service-name"
+      },
+      {
+        "id": "linux-q075-c",
+        "text": "journalctl --enable service-name"
+      },
+      {
+        "id": "linux-q075-d",
+        "text": "systemctl mask --now service-name"
+      }
+    ],
+    "explanation": "`systemctl enable --now` enables the unit and starts it immediately.",
+    "hint": "Combine boot-time enablement with immediate start.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "systemd"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q075-a"
+  },
+  {
+    "id": "linux-q076",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Systemd",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `systemctl mask nginx` generally do?",
+    "options": [
+      {
+        "id": "linux-q076-a",
+        "text": "Prevents the unit from being started by linking it to /dev/null"
+      },
+      {
+        "id": "linux-q076-b",
+        "text": "Restarts nginx every minute"
+      },
+      {
+        "id": "linux-q076-c",
+        "text": "Enables nginx at boot"
+      },
+      {
+        "id": "linux-q076-d",
+        "text": "Displays only nginx error logs"
+      }
+    ],
+    "explanation": "Masking blocks manual and dependency-based activation unless the mask is removed.",
+    "hint": "Masking is stronger than merely disabling a service.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "systemd"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q076-a"
+  },
+  {
+    "id": "linux-q077",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Logs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command follows new log entries from the systemd journal as they arrive?",
+    "options": [
+      {
+        "id": "linux-q077-a",
+        "text": "journalctl -f"
+      },
+      {
+        "id": "linux-q077-b",
+        "text": "journalctl -r -n 0"
+      },
+      {
+        "id": "linux-q077-c",
+        "text": "dmesg -c -f-only"
+      },
+      {
+        "id": "linux-q077-d",
+        "text": "logread --freeze"
+      }
+    ],
+    "explanation": "`journalctl -f` follows the journal similarly to `tail -f`.",
+    "hint": "The option is commonly called follow.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "logs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q077-a"
+  },
+  {
+    "id": "linux-q078",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Logs",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command filters the systemd journal to entries from a specific service unit?",
+    "options": [
+      {
+        "id": "linux-q078-a",
+        "text": "journalctl -u ssh.service"
+      },
+      {
+        "id": "linux-q078-b",
+        "text": "systemctl -u ssh.service --logs-only"
+      },
+      {
+        "id": "linux-q078-c",
+        "text": "grep -u ssh.service /etc/fstab"
+      },
+      {
+        "id": "linux-q078-d",
+        "text": "dmesg -u ssh.service"
+      }
+    ],
+    "explanation": "`journalctl -u UNIT` filters journal entries by systemd unit.",
+    "hint": "Use the unit-selection option with journalctl.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "logs"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q078-a"
+  },
+  {
+    "id": "linux-q079",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Boot",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command commonly displays the current system's kernel ring-buffer messages?",
+    "options": [
+      {
+        "id": "linux-q079-a",
+        "text": "dmesg"
+      },
+      {
+        "id": "linux-q079-b",
+        "text": "passwd"
+      },
+      {
+        "id": "linux-q079-c",
+        "text": "crontab"
+      },
+      {
+        "id": "linux-q079-d",
+        "text": "hostnamectl --logs"
+      }
+    ],
+    "explanation": "`dmesg` displays kernel ring-buffer messages, often useful for hardware and driver diagnostics.",
+    "hint": "Look for the command used for kernel messages.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "boot"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q079-a"
+  },
+  {
+    "id": "linux-q080",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Kernel",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `uname -r` print?",
+    "options": [
+      {
+        "id": "linux-q080-a",
+        "text": "The running kernel release"
+      },
+      {
+        "id": "linux-q080-b",
+        "text": "The Linux distribution's full package list"
+      },
+      {
+        "id": "linux-q080-c",
+        "text": "The current user's login shell"
+      },
+      {
+        "id": "linux-q080-d",
+        "text": "The root filesystem UUID"
+      }
+    ],
+    "explanation": "`uname -r` prints the kernel release string.",
+    "hint": "The -r option means kernel release.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "kernel"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q080-a"
+  },
+  {
+    "id": "linux-q081",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Memory",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does the `available` value in `free -h` estimate?",
+    "options": [
+      {
+        "id": "linux-q081-a",
+        "text": "Memory that can be made available to applications without swapping, including reclaimable cache"
+      },
+      {
+        "id": "linux-q081-b",
+        "text": "Only completely unused physical RAM, excluding cache"
+      },
+      {
+        "id": "linux-q081-c",
+        "text": "The total disk space remaining"
+      },
+      {
+        "id": "linux-q081-d",
+        "text": "The maximum virtual address size of one process"
+      }
+    ],
+    "explanation": "The available-memory estimate accounts for reclaimable memory and is more useful than simply reading free memory.",
+    "hint": "Linux uses otherwise idle RAM for caches that can be reclaimed.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "memory"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q081-a"
+  },
+  {
+    "id": "linux-q082",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Memory",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command reports virtual memory statistics, including paging and swapping activity?",
+    "options": [
+      {
+        "id": "linux-q082-a",
+        "text": "vmstat"
+      },
+      {
+        "id": "linux-q082-b",
+        "text": "vmtouch"
+      },
+      {
+        "id": "linux-q082-c",
+        "text": "memstatfs"
+      },
+      {
+        "id": "linux-q082-d",
+        "text": "free -dmesg"
+      }
+    ],
+    "explanation": "`vmstat` reports processes, memory, paging, block I/O, and CPU statistics.",
+    "hint": "Think of virtual-memory statistics.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "memory"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q082-a"
+  },
+  {
+    "id": "linux-q083",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Network",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command displays IP addresses assigned to network interfaces using modern Linux networking tools?",
+    "options": [
+      {
+        "id": "linux-q083-a",
+        "text": "ip addr"
+      },
+      {
+        "id": "linux-q083-b",
+        "text": "ifconfig --dns"
+      },
+      {
+        "id": "linux-q083-c",
+        "text": "route -n addr"
+      },
+      {
+        "id": "linux-q083-d",
+        "text": "netstat -i address"
+      }
+    ],
+    "explanation": "`ip addr` (or `ip address`) displays interface addresses.",
+    "hint": "The ip utility has an address subcommand.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "network"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q083-a"
+  },
+  {
+    "id": "linux-q084",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Network",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `ip route` display?",
+    "options": [
+      {
+        "id": "linux-q084-a",
+        "text": "The kernel's IP routing table"
+      },
+      {
+        "id": "linux-q084-b",
+        "text": "The list of installed packages"
+      },
+      {
+        "id": "linux-q084-c",
+        "text": "The route history of a browser"
+      },
+      {
+        "id": "linux-q084-d",
+        "text": "The filesystems mounted at boot"
+      }
+    ],
+    "explanation": "`ip route` shows routing entries and the default route when configured.",
+    "hint": "Routes determine where IP packets are sent.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "network"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q084-a"
+  },
+  {
+    "id": "linux-q085",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Network",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command tests whether a TCP port is reachable using a tool commonly installed as part of netcat?",
+    "options": [
+      {
+        "id": "linux-q085-a",
+        "text": "nc -vz host.example 443"
+      },
+      {
+        "id": "linux-q085-b",
+        "text": "ping host.example:443"
+      },
+      {
+        "id": "linux-q085-c",
+        "text": "cat /etc/hosts 443"
+      },
+      {
+        "id": "linux-q085-d",
+        "text": "ip addr host.example 443"
+      }
+    ],
+    "explanation": "Netcat's `-v -z` options can probe whether a TCP connection can be established to a host and port.",
+    "hint": "ICMP ping does not test a specific TCP port.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "network"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q085-a"
+  },
+  {
+    "id": "linux-q086",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Network",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command queries DNS records from the command line on many Linux systems?",
+    "options": [
+      {
+        "id": "linux-q086-a",
+        "text": "dig example.com"
+      },
+      {
+        "id": "linux-q086-b",
+        "text": "chmod example.com"
+      },
+      {
+        "id": "linux-q086-c",
+        "text": "df example.com"
+      },
+      {
+        "id": "linux-q086-d",
+        "text": "mount example.com"
+      }
+    ],
+    "explanation": "`dig` performs DNS queries and displays the response.",
+    "hint": "It is a DNS troubleshooting utility.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "network"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q086-a"
+  },
+  {
+    "id": "linux-q087",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Network",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What is the main purpose of `/etc/hosts`?",
+    "options": [
+      {
+        "id": "linux-q087-a",
+        "text": "Provide a local static mapping between hostnames and IP addresses"
+      },
+      {
+        "id": "linux-q087-b",
+        "text": "Store all DNS zone records for the Internet"
+      },
+      {
+        "id": "linux-q087-c",
+        "text": "Store Wi-Fi passwords in plaintext by design"
+      },
+      {
+        "id": "linux-q087-d",
+        "text": "Define firewall rules for incoming traffic"
+      }
+    ],
+    "explanation": "The hosts file supports local name-to-address mappings that can be checked before DNS, depending on name-service configuration.",
+    "hint": "It is a local hostname mapping file.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "network"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q087-a"
+  },
+  {
+    "id": "linux-q088",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "SSH",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which SSH option specifies a non-default port when connecting to a remote host?",
+    "options": [
+      {
+        "id": "linux-q088-a",
+        "text": "ssh -p 2222 user@host"
+      },
+      {
+        "id": "linux-q088-b",
+        "text": "ssh -P 2222 user@host"
+      },
+      {
+        "id": "linux-q088-c",
+        "text": "ssh --portfile 2222 user@host"
+      },
+      {
+        "id": "linux-q088-d",
+        "text": "ssh -n 2222 user@host"
+      }
+    ],
+    "explanation": "OpenSSH uses lowercase `-p` to specify the remote port for a client connection.",
+    "hint": "Remember the lowercase port option for ssh.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "ssh"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q088-a"
+  },
+  {
+    "id": "linux-q089",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "SSH",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command creates a new SSH key pair using Ed25519?",
+    "options": [
+      {
+        "id": "linux-q089-a",
+        "text": "ssh-keygen -t ed25519"
+      },
+      {
+        "id": "linux-q089-b",
+        "text": "ssh-add -t ed25519 --create"
+      },
+      {
+        "id": "linux-q089-c",
+        "text": "ssh-copy-id -t ed25519"
+      },
+      {
+        "id": "linux-q089-d",
+        "text": "ssh-keyscan -g ed25519"
+      }
+    ],
+    "explanation": "`ssh-keygen -t ed25519` generates an Ed25519 key pair.",
+    "hint": "ssh-keygen creates keys; ssh-copy-id installs a public key.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "ssh"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q089-a"
+  },
+  {
+    "id": "linux-q090",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Packages",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "On Ubuntu/Debian, which command refreshes the local package index without upgrading installed packages?",
+    "options": [
+      {
+        "id": "linux-q090-a",
+        "text": "sudo apt update"
+      },
+      {
+        "id": "linux-q090-b",
+        "text": "sudo apt upgrade"
+      },
+      {
+        "id": "linux-q090-c",
+        "text": "sudo apt autoremove"
+      },
+      {
+        "id": "linux-q090-d",
+        "text": "sudo dpkg --configure-all"
+      }
+    ],
+    "explanation": "`apt update` downloads current package index information; it does not itself upgrade installed packages.",
+    "hint": "Update the index, then upgrade packages separately.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "packages"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q090-a"
+  },
+  {
+    "id": "linux-q091",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Packages",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What is the purpose of `sudo apt install --no-install-recommends pkgname`?",
+    "options": [
+      {
+        "id": "linux-q091-a",
+        "text": "Installs the package without automatically installing packages marked as recommended"
+      },
+      {
+        "id": "linux-q091-b",
+        "text": "Installs only recommended packages and skips pkgname"
+      },
+      {
+        "id": "linux-q091-c",
+        "text": "Removes all packages not explicitly required by the kernel"
+      },
+      {
+        "id": "linux-q091-d",
+        "text": "Installs the package from source code"
+      }
+    ],
+    "explanation": "`--no-install-recommends` omits packages classified as recommendations, while dependencies are still installed.",
+    "hint": "Recommended packages differ from required dependencies.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "packages"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q091-a"
+  },
+  {
+    "id": "linux-q092",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Packages",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command lists installed Debian packages matching a search term with dpkg?",
+    "options": [
+      {
+        "id": "linux-q092-a",
+        "text": "dpkg -l '*term*'"
+      },
+      {
+        "id": "linux-q092-b",
+        "text": "dpkg -r '*term*'"
+      },
+      {
+        "id": "linux-q092-c",
+        "text": "apt purge '*term*'"
+      },
+      {
+        "id": "linux-q092-d",
+        "text": "apt update '*term*'"
+      }
+    ],
+    "explanation": "`dpkg -l` lists package states and names; shell quoting helps pass wildcard patterns to dpkg.",
+    "hint": "Use dpkg's list operation, not remove or purge.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "packages"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q092-a"
+  },
+  {
+    "id": "linux-q093",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Archives",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command extracts `backup.tar.gz` into the current directory?",
+    "options": [
+      {
+        "id": "linux-q093-a",
+        "text": "tar -xzf backup.tar.gz"
+      },
+      {
+        "id": "linux-q093-b",
+        "text": "tar -czf backup.tar.gz"
+      },
+      {
+        "id": "linux-q093-c",
+        "text": "gzip -d -c backup.tar.gz > backup.tar.gz"
+      },
+      {
+        "id": "linux-q093-d",
+        "text": "untar --compress backup.tar.gz"
+      }
+    ],
+    "explanation": "For tar archives compressed with gzip, `-x` extracts, `-z` handles gzip, and `-f` names the archive.",
+    "hint": "x means extract; z means gzip compression.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "archives"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q093-a"
+  },
+  {
+    "id": "linux-q094",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Archives",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which tar option lists archive contents without extracting them?",
+    "options": [
+      {
+        "id": "linux-q094-a",
+        "text": "-t"
+      },
+      {
+        "id": "linux-q094-b",
+        "text": "-x"
+      },
+      {
+        "id": "linux-q094-c",
+        "text": "-c"
+      },
+      {
+        "id": "linux-q094-d",
+        "text": "-r"
+      }
+    ],
+    "explanation": "`tar -t` lists archive members; `-f` specifies the archive file.",
+    "hint": "Choose the option for table-of-contents listing.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "archives"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q094-a"
+  },
+  {
+    "id": "linux-q095",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Text processing",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `grep -n 'ERROR' app.log` add to matching output?",
+    "options": [
+      {
+        "id": "linux-q095-a",
+        "text": "Line numbers"
+      },
+      {
+        "id": "linux-q095-b",
+        "text": "Only the number of matches"
+      },
+      {
+        "id": "linux-q095-c",
+        "text": "Context from the next 100 files"
+      },
+      {
+        "id": "linux-q095-d",
+        "text": "A sorted list of filenames only"
+      }
+    ],
+    "explanation": "The `-n` option prefixes matching lines with their line numbers.",
+    "hint": "The option is for line numbering.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "text-processing"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q095-a"
+  },
+  {
+    "id": "linux-q096",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Text processing",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `grep -v '^#' config.txt` select?",
+    "options": [
+      {
+        "id": "linux-q096-a",
+        "text": "Lines that do not begin with #"
+      },
+      {
+        "id": "linux-q096-b",
+        "text": "Only lines beginning with #"
+      },
+      {
+        "id": "linux-q096-c",
+        "text": "Only blank lines"
+      },
+      {
+        "id": "linux-q096-d",
+        "text": "Lines containing the character v"
+      }
+    ],
+    "explanation": "`-v` inverts the match, and `^#` matches lines whose first character is #.",
+    "hint": "Invert the match for comment-prefixed lines.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "text-processing"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q096-a"
+  },
+  {
+    "id": "linux-q097",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Text processing",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What is the effect of `sort -u names.txt`?",
+    "options": [
+      {
+        "id": "linux-q097-a",
+        "text": "Sorts lines and emits one copy of each identical line"
+      },
+      {
+        "id": "linux-q097-b",
+        "text": "Sorts only by file size"
+      },
+      {
+        "id": "linux-q097-c",
+        "text": "Deletes every line that contains a vowel"
+      },
+      {
+        "id": "linux-q097-d",
+        "text": "Preserves original order and duplicates"
+      }
+    ],
+    "explanation": "`sort -u` sorts and suppresses duplicate lines.",
+    "hint": "The u option requests unique output.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "text-processing"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q097-a"
+  },
+  {
+    "id": "linux-q098",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Text processing",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "What does `awk -F: '{print $1}' /etc/passwd` print?",
+    "options": [
+      {
+        "id": "linux-q098-a",
+        "text": "The first colon-separated field from each input line"
+      },
+      {
+        "id": "linux-q098-b",
+        "text": "The last field from each line"
+      },
+      {
+        "id": "linux-q098-c",
+        "text": "Only lines containing a colon, without modification"
+      },
+      {
+        "id": "linux-q098-d",
+        "text": "The number of users in the file"
+      }
+    ],
+    "explanation": "`-F:` sets colon as the field separator, and `$1` refers to the first field.",
+    "hint": "awk fields are numbered starting at $1.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "text-processing"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q098-a"
+  },
+  {
+    "id": "linux-q099",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Cron",
+    "difficulty": "Medium",
+    "type": "single_select",
+    "question": "Which command edits the current user's personal crontab?",
+    "options": [
+      {
+        "id": "linux-q099-a",
+        "text": "crontab -e"
+      },
+      {
+        "id": "linux-q099-b",
+        "text": "cron -edit"
+      },
+      {
+        "id": "linux-q099-c",
+        "text": "systemctl edit crontab-user"
+      },
+      {
+        "id": "linux-q099-d",
+        "text": "at -e"
+      }
+    ],
+    "explanation": "`crontab -e` opens the current user's scheduled-task table for editing.",
+    "hint": "The command manages cron tables.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "cron"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q099-a"
+  },
+  {
+    "id": "linux-q100",
+    "unitId": 10,
+    "unitTitle": "Linux Practical and Administration",
+    "topic": "Security",
+    "difficulty": "Hard",
+    "type": "single_select",
+    "question": "Why is piping a downloaded script directly into `sudo bash` risky?",
+    "options": [
+      {
+        "id": "linux-q100-a",
+        "text": "It executes remote content with elevated privileges before the user has inspected or verified it"
+      },
+      {
+        "id": "linux-q100-b",
+        "text": "It always runs the script in a sandbox"
+      },
+      {
+        "id": "linux-q100-c",
+        "text": "It prevents the script from accessing the network"
+      },
+      {
+        "id": "linux-q100-d",
+        "text": "It only allows read-only commands"
+      }
+    ],
+    "explanation": "Executing unreviewed remote code as root can compromise the system; verify the source and inspect the script first.",
+    "hint": "Consider the privileges granted to the script.",
+    "tags": [
+      "linux",
+      "FOSD",
+      "Linux_Practical",
+      "security"
+    ],
+    "bankVersion": "fosd-500-v1",
+    "active": true,
+    "correctOptionId": "linux-q100-a"
   }
 ]
