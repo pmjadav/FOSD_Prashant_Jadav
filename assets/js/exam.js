@@ -1,10 +1,17 @@
 "use strict";
 
 const GAS_API_URL =
-  "https://script.google.com/macros/s/AKfycbwoBfvepB8g49SYeDJIaSloCM36MbuR5G7U1CVP_ZMuLb6aTubTc0F691R6C30Zk5PQ/exec";
+  "https://script.google.com/a/macros/charusat.ac.in/s/AKfycbz9HdHvpuIC2XRbSvdZyO1bKyWEejoGlRwn-5hMiXHnLgAPs8L9WkP_nRTTIXudRwS_/exec";
+// Public OAuth Web Client ID (not a secret). Must match Script Property GOOGLE_CLIENT_ID.
+const GOOGLE_CLIENT_ID =
+  "804888875561-fl4rd9n8m5lupu6b07r3vudq3d8v8rqk.apps.googleusercontent.com";
+let googleIdToken = "";
+let signedInEmail = "";
 const examElements = {
   form: document.getElementById("exam-token-form"),
   token: document.getElementById("exam-token"),
+  signInButton: document.getElementById("google-signin-button"),
+  authStatus: document.getElementById("auth-status"),
   start: document.getElementById("start-exam"),
   status: document.getElementById("exam-status"),
   content: document.getElementById("exam-content"),
@@ -38,6 +45,8 @@ const examState = {
   busy: false,
   submitted: false,
 };
+
+examElements.start.disabled = true;
 
 const validQuestionTypes = new Set(["single_select", "multi_select"]);
 const gradingKeys = new Set([
@@ -183,22 +192,90 @@ async function requestJson(url, options, action) {
   return data;
 }
 
-function getStudentKey() {
-  const storageKey = "fosd-exam-student-key";
-  let studentKey = localStorage.getItem(storageKey);
-  if (!studentKey) {
-    if (!crypto.randomUUID) {
-      throw new Error(
-        "This browser cannot create the random key required to start an exam. Try a current browser over HTTPS.",
-      );
-    }
-    studentKey = `${crypto.randomUUID()}${crypto.randomUUID()}`;
-    localStorage.setItem(storageKey, studentKey);
+function decodeJwtPayload(jwt) {
+  try {
+    const part = jwt.split(".")[1];
+    const base64 = part.replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(
+      decodeURIComponent(
+        Array.from(
+          atob(base64),
+          (c) => "%" + c.charCodeAt(0).toString(16).padStart(2, "0"),
+        ).join(""),
+      ),
+    );
+  } catch {
+    return {};
   }
-  return studentKey;
+}
+
+function setAuthenticated(credential) {
+  if (!credential || typeof credential.credential !== "string") {
+    throw new Error("Google did not return a valid sign-in credential.");
+  }
+  googleIdToken = credential.credential;
+  const claims = decodeJwtPayload(googleIdToken);
+  signedInEmail =
+    typeof claims.email === "string" ? claims.email : "your Google account";
+  examElements.authStatus.textContent = `Signed in as ${signedInEmail}. The server will verify your institutional account and student-list eligibility.`;
+  examElements.authStatus.dataset.state = "success";
+  examElements.start.disabled = false;
+}
+
+function initializeGoogleIdentity() {
+  if (!window.google?.accounts?.id) {
+    examElements.authStatus.textContent =
+      "Google Sign-In could not be loaded. Check your network or browser settings.";
+    examElements.authStatus.dataset.state = "error";
+    return;
+  }
+  if (!GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID.startsWith("YOUR_")) {
+    examElements.authStatus.textContent =
+      "Google Sign-In needs configuration: set GOOGLE_CLIENT_ID in exam.js.";
+    examElements.authStatus.dataset.state = "error";
+    return;
+  }
+  window.google.accounts.id.initialize({
+    client_id: GOOGLE_CLIENT_ID,
+    callback: (response) => {
+      try {
+        setAuthenticated(response);
+      } catch (error) {
+        googleIdToken = "";
+        examElements.start.disabled = true;
+        examElements.authStatus.textContent = error.message;
+        examElements.authStatus.dataset.state = "error";
+      }
+    },
+    auto_select: false,
+    cancel_on_tap_outside: true,
+  });
+  window.google.accounts.id.renderButton(examElements.signInButton, {
+    type: "standard",
+    theme: "outline",
+    size: "large",
+    text: "signin_with",
+    shape: "rectangular",
+    width: 280,
+  });
+  examElements.authStatus.textContent =
+    "Sign in using your institutional Google Workspace account.";
+  examElements.authStatus.dataset.state = "info";
+}
+
+window.handleGoogleCredential = setAuthenticated;
+if (document.readyState === "complete") {
+  initializeGoogleIdentity();
+} else {
+  window.addEventListener("load", initializeGoogleIdentity, { once: true });
 }
 
 async function postAction(payload) {
+  if (!googleIdToken) {
+    throw new Error(
+      "Sign in with your institutional Google account before continuing.",
+    );
+  }
   return requestJson(
     GAS_API_URL,
     {
@@ -207,7 +284,7 @@ async function postAction(payload) {
         Accept: "application/json",
         "Content-Type": "text/plain;charset=UTF-8",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ ...payload, idToken: googleIdToken }),
       redirect: "follow",
     },
     payload.action,
@@ -416,7 +493,6 @@ async function flushAnswerSaves() {
     }
   }
 }
-
 function startExam(attempt) {
   if (typeof attempt.attemptId !== "string" || !attempt.attemptId) {
     throw new Error("The exam service did not return an attempt ID.");
@@ -495,7 +571,6 @@ examElements.form.addEventListener("submit", async (event) => {
     const attempt = await postAction({
       action: "startAttempt",
       token,
-      studentKey: getStudentKey(),
     });
     if (attempt.alreadySubmitted) {
       examElements.content.classList.add("mcq-hidden");
