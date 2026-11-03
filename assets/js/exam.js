@@ -44,6 +44,9 @@ const examState = {
   saveInFlight: null,
   busy: false,
   submitted: false,
+  deadlineAt: 0,
+  deadlineTimer: null,
+  deadlineCheckInFlight: false,
 };
 
 examElements.start.disabled = true;
@@ -493,6 +496,38 @@ async function flushAnswerSaves() {
     }
   }
 }
+async function checkExamDeadline() {
+  if (
+    examState.submitted ||
+    !examState.attemptId ||
+    !examState.deadlineAt ||
+    Date.now() < examState.deadlineAt ||
+    examState.deadlineCheckInFlight
+  ) {
+    return;
+  }
+
+  examState.deadlineCheckInFlight = true;
+  try {
+    const status = await postAction({
+      action: "checkAttempt",
+      attemptId: examState.attemptId,
+    });
+    if (status.submitted && status.result) {
+      renderResults(status.result);
+      setStatus(
+        "The examination deadline has passed. Your last server-saved answers were submitted automatically.",
+        "success",
+      );
+    }
+  } catch (error) {
+    // The server-side scheduled sweep still finalizes the attempt.
+    console.warn("Deadline status check could not reach the server:", error);
+  } finally {
+    examState.deadlineCheckInFlight = false;
+  }
+}
+
 function startExam(attempt) {
   if (typeof attempt.attemptId !== "string" || !attempt.attemptId) {
     throw new Error("The exam service did not return an attempt ID.");
@@ -507,6 +542,26 @@ function startExam(attempt) {
     clearTimeout(examState.saveTimer);
     examState.saveTimer = null;
   }
+  if (examState.deadlineTimer !== null) {
+    clearInterval(examState.deadlineTimer);
+    examState.deadlineTimer = null;
+  }
+
+  // Restore the last answers acknowledged by the server when resuming.
+  (Array.isArray(attempt.answers) ? attempt.answers : []).forEach((saved) => {
+    const qid = String(saved.questionId);
+    const question = examState.questions.find((q) => String(q.id) === qid);
+    const ids = Array.isArray(saved.optionIds)
+      ? saved.optionIds.map(String)
+      : [];
+    if (!question || !ids.length) return;
+    examState.answers.set(qid, question.type === "multi_select" ? ids : ids[0]);
+  });
+
+  examState.deadlineAt = attempt.deadlineAt
+    ? Date.parse(attempt.deadlineAt)
+    : 0;
+  if (!Number.isFinite(examState.deadlineAt)) examState.deadlineAt = 0;
   examState.submitted = false;
   examElements.token.readOnly = true;
   examElements.start.disabled = true;
@@ -517,6 +572,11 @@ function startExam(attempt) {
   examElements.submit.disabled = false;
   renderQuestion();
   updateUnanswered();
+
+  if (examState.deadlineAt) {
+    examState.deadlineTimer = setInterval(checkExamDeadline, 10000);
+    checkExamDeadline();
+  }
 }
 
 function renderResults(result) {
@@ -554,6 +614,10 @@ function renderResults(result) {
   examElements.results.classList.remove("mcq-hidden");
 
   examState.submitted = true;
+  if (examState.deadlineTimer !== null) {
+    clearInterval(examState.deadlineTimer);
+    examState.deadlineTimer = null;
+  }
 }
 
 examElements.form.addEventListener("submit", async (event) => {
@@ -587,7 +651,12 @@ examElements.form.addEventListener("submit", async (event) => {
     }
 
     startExam(attempt);
-    setStatus("Exam started. Your answers will be saved as you go.", "success");
+    setStatus(
+      attempt.resumed
+        ? "Your previous attempt has been resumed. Previously saved answers have been restored."
+        : "Exam started. Your answers will be saved as you go.",
+      "success",
+    );
   } catch (error) {
     console.error("Unable to start exam:", error);
     setStatus(
@@ -648,10 +717,34 @@ examElements.submit.addEventListener("click", async () => {
     );
   } catch (error) {
     console.error("Unable to submit exam:", error);
-    setStatus(
-      `Submission failed: ${error.message} Your attempt remains open; you can retry.`,
-      "error",
-    );
+    let finalized = false;
+    if (examState.deadlineAt && Date.now() >= examState.deadlineAt) {
+      try {
+        const status = await postAction({
+          action: "checkAttempt",
+          attemptId: examState.attemptId,
+        });
+        if (status.submitted && status.result) {
+          renderResults(status.result);
+          setStatus(
+            "The deadline was reached. Your last server-saved answers were submitted automatically.",
+            "success",
+          );
+          finalized = true;
+        }
+      } catch (statusError) {
+        console.warn(
+          "Could not retrieve automatic submission status:",
+          statusError,
+        );
+      }
+    }
+    if (!finalized) {
+      setStatus(
+        `Submission failed: ${error.message} Your attempt remains available for retry if the deadline has not passed.`,
+        "error",
+      );
+    }
   } finally {
     setBusy(false);
   }
