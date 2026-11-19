@@ -1,48 +1,352 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Numerical Problems | FOSD · CEUC301</title>
-    <meta name="description" content="Numerical problems for FOSD CEUC301 including scheduling, memory management, virtual memory and storage.">
-    <script>if(localStorage.getItem("fosd-dark")==="true"){document.documentElement.classList.add("dark");}</script>
-    <link rel="stylesheet" href="assets/css/style.css">
-<link rel="icon" type="image/png" href="assets/images/fosd-favicon.png">
-    <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png">
-    <script data-goatcounter="https://pmjadav.goatcounter.com/count"
-                async src="//gc.zgo.at/count.js"></script>
-    </head>
-<body>
+    <meta
+      name="description"
+      content="Numerical problems for FOSD CEUC301, organized by CPU scheduling, memory management, synchronization, deadlock, file systems and storage management."
+    />
+    <script>
+      if (localStorage.getItem("fosd-dark") === "true") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png" />
+    <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png" />
+    <script
+      data-goatcounter="https://pmjadav.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+  </head>
+  <body>
     <div class="topbar">
-        <div class="container">Fundamentals of Operating System Design · CEUC301 · Prashant Jadav</div>
+      <div class="container">
+        Fundamentals of Operating System Design · CEUC301 · Prashant Jadav
+      </div>
     </div>
     <div id="site-navbar"></div>
     <div class="page-hero">
-        <div class="container">
-            <div class="breadcrumb">Home / Question Bank / Numerical</div>
-            <h1>Numerical Problems</h1>
-            <p>Quantitative problems for analysis and examination preparation.</p>
-        </div>
+      <div class="container">
+        <div class="breadcrumb">Home / Question Bank / Numerical</div>
+        <h1>Numerical Problems</h1>
+        <p>
+          Quantitative problems for analysis and examination preparation,
+          organized topic-wise.
+        </p>
+      </div>
     </div>
     <section>
-        <div class="container">
-            <div class="question-bank-return question-bank-return-top">
-                <a class="btn" href="question-bank.html">← Question Bank</a>
-            </div>
-            <div class="cards">
-                <div class="card"><div class="card-icon">⏱️</div><h3>CPU Scheduling</h3><p>FCFS, SJF, SRTF, Round Robin, Priority, MLFQ and scheduling metrics.</p><a class="btn" href="files/question-papers/numerical-scheduling.pdf">PDF Coming soon..</a></div>
-                <div class="card"><div class="card-icon">🧮</div><h3>Memory Allocation</h3><p>Fixed/dynamic partitioning, fragmentation, compaction and first/best/worst/next fit.</p><a class="btn" href="files/question-papers/numerical-memory-allocation.pdf">PDF Coming soon..</a></div>
-                <div class="card"><div class="card-icon">📄</div><h3>Paging & Address Translation</h3><p>Logical-to-physical address translation, page tables and multi-level paging.</p><a class="btn" href="files/question-papers/numerical-paging.pdf">PDF Coming soon..</a></div>
-                <div class="card"><div class="card-icon">🔁</div><h3>Page Replacement</h3><p>FIFO, LRU and OPT page-fault calculations and page-fault rates.</p><a class="btn" href="files/question-papers/numerical-page-replacement.pdf">PDF Coming soon..</a></div>
-                <div class="card"><div class="card-icon">⚡</div><h3>TLB & EAT</h3><p>TLB hit ratio, memory access time and effective access time numericals.</p><a class="btn" href="files/question-papers/numerical-tlb.pdf">PDF Coming soon..</a></div>
-                <div class="card"><div class="card-icon">💾</div><h3>Disk Scheduling</h3><p>FCFS, SSTF, SCAN, C-SCAN and related disk-head movement calculations.</p><a class="btn" href="files/question-papers/numerical-disk-scheduling.pdf">PDF Coming soon..</a></div>
-            </div>
-            <div class="question-bank-return">
-                <a class="btn" href="question-bank.html">← Question Bank</a>
-            </div>
+      <div class="container">
+        <div class="question-bank-return question-bank-return-top">
+          <a class="btn" href="question-bank.html">← Question Bank</a>
         </div>
+
+        <h2>1 - CPU Scheduling</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">⏱️</div>
+            <h3>CPU Scheduling Algorithms</h3>
+            <p>
+              FCFS, SJF, SRTF, Round Robin, Priority, Multilevel Queue, Feedback
+              Queue and scheduling metrics.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/CPU_Scheduling_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🚦</div>
+            <h3>Real-Time Scheduling</h3>
+            <p>
+              Earliest Deadline First (EDF), Rate Monotonic Scheduling (RMS),
+              utilization and schedulability analysis.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Real_Time_Scheduling_EDF_RMS_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+        </div>
+
+        <h2>2 — Memory Management</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">🧮</div>
+            <h3>Memory Allocation</h3>
+            <p>
+              Fixed and dynamic partitioning, fragmentation, compaction, First
+              Fit, Best Fit, Worst Fit and Next Fit.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Memory_Allocation_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🧩</div>
+            <h3>Buddy Allocator</h3>
+            <p>
+              Block splitting, allocation, deallocation, buddy merging and
+              internal fragmentation.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Buddy_Allocator_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">📄</div>
+            <h3>Paging & Virtual Memory</h3>
+            <p>
+              Logical-to-physical address translation, paging, segmentation,
+              page tables, demand paging and virtual memory.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Paging_Virtual_Memory_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🗂️</div>
+            <h3>Multi-Level Page Tables</h3>
+            <p>
+              Address-bit division, page-table levels, entries, table size and
+              memory overhead.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Multi_Level_Page_Tables_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🔀</div>
+            <h3>Paging with Segmentation</h3>
+            <p>
+              Segment, page and offset translation; segment limits, page-table
+              lookup and physical-address calculation.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Paging_Combined_with_Segmentation_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>TLB & Effective Access Time</h3>
+            <p>
+              TLB hit ratio, associative lookup, memory access time, page-table
+              access and EAT calculations.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/TLB_Effective_Memory_Access_Time_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🔁</div>
+            <h3>Page Replacement, Thrashing & Working Set</h3>
+            <p>
+              FIFO, LRU, OPT, page faults, Belady's anomaly, working-set
+              calculations and thrashing.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Page_Replacement_Thrashing_Working_Set_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+        </div>
+
+        <h2>3 — Synchronization</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">🔐</div>
+            <h3>Semaphore & Mutex</h3>
+            <p>
+              Binary and counting semaphores, wait/signal tracing, semaphore
+              values, blocking and process execution sequences.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Semaphore_and_Mutex_Numerical_Problems_Workbook.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">📦</div>
+            <h3>Producer–Consumer Problem</h3>
+            <p>
+              Bounded-buffer tracing, buffer states, empty/full/mutex semaphore
+              values and producer-consumer interleavings.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Producer_Consumer_Problem_Numerical_Workbook.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">👥</div>
+            <h3>Readers–Writers Problem</h3>
+            <p>
+              Execution traces, reader and writer synchronization,
+              shared-resource access and semaphore-state calculations.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Readers_Writers_Problem_Numerical_Workbook.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🍴</div>
+            <h3>Dining Philosophers</h3>
+            <p>
+              Resource allocation states, execution sequences, deadlock and
+              starvation analysis.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Dining_Philosophers_Problem_Numerical_Workbook.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Peterson's Solution & Synchronization Tracing</h3>
+            <p>
+              Flag and turn variables, critical-section execution, race
+              conditions and atomic-operation traces.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Peterson_and_Synchronization_Problems_Numerical_Workbook.pdf"
+              >View PDF</a
+            >
+          </div>
+        </div>
+
+        <h2>4 — Deadlock</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">🏦</div>
+            <h3>Banker's Algorithm</h3>
+            <p>
+              Allocation, Maximum, Need and Available matrices; safe sequences,
+              safe/unsafe states and resource requests.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Bankers_Algorithm_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🔎</div>
+            <h3>Deadlock Detection</h3>
+            <p>
+              Work and Finish vectors, resource allocation and request matrices,
+              and identifying deadlocked processes.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Deadlock_Detection_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🕸️</div>
+            <h3>Resource Allocation Graph</h3>
+            <p>
+              Graph construction, cycle analysis, resource instances and
+              deadlock interpretation.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Resource_Allocation_Graph_Numerical_Workbook.pdf"
+              >View PDF</a
+            >
+          </div>
+        </div>
+
+        <h2>5 — File Systems</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">📁</div>
+            <h3>File Allocation Methods</h3>
+            <p>
+              Contiguous, linked and indexed allocation; block mapping, disk
+              accesses, pointer overhead and fragmentation.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/File_Allocation_Methods_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">🗃️</div>
+            <h3>Inode & Multi-Level Indexing</h3>
+            <p>
+              Direct, single-, double- and triple-indirect pointers; maximum
+              file size, block mapping and index overhead.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Inode_and_Multi_Level_Indexing_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+          <div class="card">
+            <div class="card-icon">💽</div>
+            <h3>Free Space Management</h3>
+            <p>
+              Bitmap/bit vector, linked free-space lists, grouping and counting;
+              storage overhead and free-block calculations.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Free_Space_Management_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+        </div>
+
+        <h2>6 — Storage Management</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">💾</div>
+            <h3>Disk Scheduling</h3>
+            <p>
+              FCFS, SSTF, SCAN, LOOK, C-SCAN and C-LOOK; service sequence, total
+              head movement and average movement.
+            </p>
+            <a
+              class="btn"
+              href="files/question-bank/numerical-problems/Disk_Scheduling_Algorithms_Numerical_Problems_Solved.pdf"
+              >View PDF</a
+            >
+          </div>
+        </div>
+        <div class="question-bank-return">
+          <a class="btn" href="question-bank.html">← Question Bank</a>
+        </div>
+      </div>
     </section>
     <div id="site-footer"></div>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
