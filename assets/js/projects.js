@@ -49,7 +49,7 @@ function validateProjectCatalogue(projects) {
             || !project.id.trim()
             || projectSlugs.has(project.id)
             || typeof project.projectId !== "string"
-            || !/^(OS|KRN|CMD|ADM)-\d{3,}$/.test(project.projectId)
+            || !/^(OS|KRN|CMD|ADM|DEV)-\d{3,}$/.test(project.projectId)
             || projectIds.has(project.projectId)
             || typeof project.category !== "string"
             || !project.category.trim()
@@ -65,6 +65,16 @@ function validateProjectCatalogue(projects) {
                 throw new Error(`Project idea ${index + 1} has an invalid ${field} list.`);
             }
         });
+
+        if (
+            project.hardware !== undefined
+            && (
+                !Array.isArray(project.hardware)
+                || project.hardware.some(value => typeof value !== "string")
+            )
+        ) {
+            throw new Error(`Project idea ${index + 1} has an invalid hardware list.`);
+        }
 
         if (
             project.resources !== undefined
@@ -166,6 +176,9 @@ function createProjectCard(project) {
     card.append(heading, createProjectIdControl(project.projectId), description);
     card.append(createProjectList("Related OS concepts", project.concepts));
     card.append(createProjectList("Suggested features", project.features));
+    if (project.hardware?.length) {
+        card.append(createProjectList("Hardware requirements", project.hardware));
+    }
 
     if (project.technologies.length) {
         const technologies = document.createElement("div");

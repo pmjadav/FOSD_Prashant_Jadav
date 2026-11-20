@@ -17,6 +17,10 @@
 .project-id-copy:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .project-id-copy-status{color:var(--muted);font-size:.76rem}
 .project-more .project-id-control{margin-bottom:14px}
+.stat-link{display:block;color:inherit;transition:background .2s,border-color .2s}
+.stat-link:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3)}
+.stat-link:focus-visible{outline:2px solid #65cfff;outline-offset:3px}
+.stat-detail{display:block;margin-top:3px;color:#d9e8f8;font-size:.72rem;line-height:1.35}
 .project-filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:26px 0 12px}
 .project-filter label{display:block;margin-bottom:6px;font-size:.84rem;font-weight:800}
 .project-result-count{color:var(--muted);font-size:.9rem;margin:0 0 16px}
