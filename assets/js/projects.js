@@ -49,7 +49,7 @@ function validateProjectCatalogue(projects) {
             || !project.id.trim()
             || projectSlugs.has(project.id)
             || typeof project.projectId !== "string"
-            || !/^(OS|KRN|CMD|ADM|DEV)-\d{3,}$/.test(project.projectId)
+            || !/^(OS|KRN|CMD|ADM|DEV|SEC|VIR|OSD|DST|RT|TST)-\d{3,}$/.test(project.projectId)
             || projectIds.has(project.projectId)
             || typeof project.category !== "string"
             || !project.category.trim()
