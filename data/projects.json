@@ -1,6 +1,7 @@
 [
   {
     "id": "naive-linux-shell",
+    "projectId": "OS-001",
     "title": "Naive Linux Shell",
     "category": "Linux and System Programming",
     "difficulty": "Intermediate",
@@ -17,6 +18,7 @@
   },
   {
     "id": "shell-redirection-pipes",
+    "projectId": "OS-002",
     "title": "Shell with I/O Redirection and Pipes",
     "category": "Linux and System Programming",
     "difficulty": "Advanced",
@@ -32,6 +34,7 @@
   },
   {
     "id": "linux-system-call-explorer",
+    "projectId": "OS-003",
     "title": "Linux System Call Explorer",
     "category": "Linux and System Programming",
     "difficulty": "Intermediate",
@@ -46,6 +49,7 @@
   },
   {
     "id": "system-call-tracing-tool",
+    "projectId": "OS-004",
     "title": "System Call Tracing Tool",
     "category": "Linux and System Programming",
     "difficulty": "Advanced",
@@ -60,6 +64,7 @@
   },
   {
     "id": "cpu-scheduling-simulator",
+    "projectId": "OS-005",
     "title": "CPU Scheduling Simulator",
     "category": "CPU Scheduling and Process Management",
     "difficulty": "Beginner",
@@ -71,6 +76,7 @@
   },
   {
     "id": "multilevel-feedback-queue-simulator",
+    "projectId": "OS-006",
     "title": "Multilevel Feedback Queue Simulator",
     "category": "CPU Scheduling and Process Management",
     "difficulty": "Intermediate",
@@ -82,6 +88,7 @@
   },
   {
     "id": "process-lifecycle-visualizer",
+    "projectId": "OS-007",
     "title": "Process Lifecycle Visualizer",
     "category": "CPU Scheduling and Process Management",
     "difficulty": "Beginner",
@@ -93,6 +100,7 @@
   },
   {
     "id": "memory-allocation-simulator",
+    "projectId": "OS-008",
     "title": "Memory Allocation Simulator",
     "category": "Memory Management",
     "difficulty": "Beginner",
@@ -104,6 +112,7 @@
   },
   {
     "id": "buddy-allocator-simulator",
+    "projectId": "OS-009",
     "title": "Buddy Allocator Simulator",
     "category": "Memory Management",
     "difficulty": "Intermediate",
@@ -115,6 +124,7 @@
   },
   {
     "id": "slab-allocator-simulator",
+    "projectId": "OS-010",
     "title": "Slab Allocator Simulator",
     "category": "Memory Management",
     "difficulty": "Advanced",
@@ -129,6 +139,7 @@
   },
   {
     "id": "page-replacement-simulator",
+    "projectId": "OS-011",
     "title": "Page Replacement Simulator",
     "category": "Memory Management",
     "difficulty": "Beginner",
@@ -140,6 +151,7 @@
   },
   {
     "id": "multi-level-page-table-simulator",
+    "projectId": "OS-012",
     "title": "Multi-Level Page Table Simulator",
     "category": "Memory Management",
     "difficulty": "Advanced",
@@ -151,6 +163,7 @@
   },
   {
     "id": "tlb-effective-memory-access-calculator",
+    "projectId": "OS-013",
     "title": "TLB and Effective Memory Access Time Calculator",
     "category": "Memory Management",
     "difficulty": "Beginner",
@@ -162,6 +175,7 @@
   },
   {
     "id": "process-synchronization-simulator",
+    "projectId": "OS-014",
     "title": "Process Synchronization Simulator",
     "category": "Process Synchronization",
     "difficulty": "Intermediate",
@@ -173,6 +187,7 @@
   },
   {
     "id": "peterson-algorithm-visualizer",
+    "projectId": "OS-015",
     "title": "Peterson's Algorithm Visualizer",
     "category": "Process Synchronization",
     "difficulty": "Intermediate",
@@ -184,6 +199,7 @@
   },
   {
     "id": "sleeping-barber-simulator",
+    "projectId": "OS-016",
     "title": "Sleeping Barber Problem Simulator",
     "category": "Process Synchronization",
     "difficulty": "Intermediate",
@@ -195,6 +211,7 @@
   },
   {
     "id": "thread-pool-implementation",
+    "projectId": "OS-017",
     "title": "Thread Pool Implementation",
     "category": "Process Synchronization",
     "difficulty": "Advanced",
@@ -206,6 +223,7 @@
   },
   {
     "id": "deadlock-detection-avoidance-simulator",
+    "projectId": "OS-018",
     "title": "Deadlock Detection and Avoidance Simulator",
     "category": "Deadlocks",
     "difficulty": "Advanced",
@@ -217,6 +235,7 @@
   },
   {
     "id": "resource-allocation-graph-visualizer",
+    "projectId": "OS-019",
     "title": "Resource Allocation Graph Visualizer",
     "category": "Deadlocks",
     "difficulty": "Intermediate",
@@ -228,6 +247,7 @@
   },
   {
     "id": "file-allocation-simulator",
+    "projectId": "OS-020",
     "title": "File Allocation Simulator",
     "category": "File Systems and Storage Management",
     "difficulty": "Intermediate",
@@ -239,6 +259,7 @@
   },
   {
     "id": "mini-file-system-implementation",
+    "projectId": "OS-021",
     "title": "Mini File System Implementation",
     "category": "File Systems and Storage Management",
     "difficulty": "Advanced",
@@ -253,6 +274,7 @@
   },
   {
     "id": "inode-block-allocation-simulator",
+    "projectId": "OS-022",
     "title": "Inode and Block Allocation Simulator",
     "category": "File Systems and Storage Management",
     "difficulty": "Intermediate",
@@ -264,6 +286,7 @@
   },
   {
     "id": "disk-scheduling-simulator",
+    "projectId": "OS-023",
     "title": "Disk Scheduling Simulator",
     "category": "File Systems and Storage Management",
     "difficulty": "Intermediate",
@@ -275,6 +298,7 @@
   },
   {
     "id": "ipc-mechanisms-lab",
+    "projectId": "OS-024",
     "title": "IPC Applications: Pipes, FIFO, Shared Memory, and Message Queues",
     "category": "Inter-Process Communication and I/O",
     "difficulty": "Advanced",
@@ -289,6 +313,7 @@
   },
   {
     "id": "io-buffer-cache-visualizer",
+    "projectId": "OS-025",
     "title": "I/O Buffer and Cache Visualizer",
     "category": "Inter-Process Communication and I/O",
     "difficulty": "Intermediate",
@@ -300,6 +325,7 @@
   },
   {
     "id": "mini-operating-system-kernel",
+    "projectId": "OS-026",
     "title": "Mini Operating System Kernel",
     "category": "Advanced and Integrated OS Projects",
     "difficulty": "Advanced",
@@ -314,6 +340,7 @@
   },
   {
     "id": "container-resource-monitor",
+    "projectId": "OS-027",
     "title": "Container Resource Monitor",
     "category": "Advanced and Integrated OS Projects",
     "difficulty": "Advanced",
@@ -328,6 +355,7 @@
   },
   {
     "id": "integrated-os-design-workbench",
+    "projectId": "OS-028",
     "title": "Integrated OS Design Workbench",
     "category": "Advanced and Integrated OS Projects",
     "difficulty": "Advanced",
@@ -339,6 +367,7 @@
   },
   {
     "id": "linux-kernel-process-lifecycle-explorer",
+    "projectId": "KRN-001",
     "title": "Linux Process Lifecycle Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -354,6 +383,7 @@
   },
   {
     "id": "linux-kernel-fork-clone-explorer",
+    "projectId": "KRN-002",
     "title": "Inside fork() and clone()",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -369,6 +399,7 @@
   },
   {
     "id": "linux-kernel-scheduler-source-explorer",
+    "projectId": "KRN-003",
     "title": "Linux Scheduler Source Code Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -384,6 +415,7 @@
   },
   {
     "id": "linux-kernel-cpu-scheduling-visualizer",
+    "projectId": "KRN-004",
     "title": "Linux CPU Scheduling Visualizer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -399,6 +431,7 @@
   },
   {
     "id": "linux-context-switching-analyzer",
+    "projectId": "KRN-005",
     "title": "Context Switching Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -414,6 +447,7 @@
   },
   {
     "id": "linux-priority-nice-analyzer",
+    "projectId": "KRN-006",
     "title": "Linux Priority and Nice Value Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Beginner",
@@ -429,6 +463,7 @@
   },
   {
     "id": "linux-cpu-affinity-explorer",
+    "projectId": "KRN-007",
     "title": "CPU Affinity Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Beginner",
@@ -444,6 +479,7 @@
   },
   {
     "id": "linux-process-creation-overhead-analyzer",
+    "projectId": "KRN-008",
     "title": "Process Creation Overhead Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -459,6 +495,7 @@
   },
   {
     "id": "linux-buddy-allocator-explorer",
+    "projectId": "KRN-009",
     "title": "Linux Buddy Allocator Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -474,6 +511,7 @@
   },
   {
     "id": "linux-buddy-allocator-operations-visualizer",
+    "projectId": "KRN-010",
     "title": "Visualizing Buddy Allocator Operations",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -489,6 +527,7 @@
   },
   {
     "id": "linux-slab-allocator-explorer",
+    "projectId": "KRN-011",
     "title": "Linux Slab Allocator Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -504,6 +543,7 @@
   },
   {
     "id": "linux-slub-allocator-analysis",
+    "projectId": "KRN-012",
     "title": "SLUB Allocator Analysis",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -519,6 +559,7 @@
   },
   {
     "id": "linux-kernel-memory-allocation-analyzer",
+    "projectId": "KRN-013",
     "title": "Kernel Memory Allocation Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -534,6 +575,7 @@
   },
   {
     "id": "linux-page-fault-investigation-tool",
+    "projectId": "KRN-014",
     "title": "Page Fault Investigation Tool",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -549,6 +591,7 @@
   },
   {
     "id": "linux-virtual-memory-explorer",
+    "projectId": "KRN-015",
     "title": "Linux Virtual Memory Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -564,6 +607,7 @@
   },
   {
     "id": "linux-copy-on-write-demonstrator",
+    "projectId": "KRN-016",
     "title": "Copy-on-Write Demonstrator",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -579,6 +623,7 @@
   },
   {
     "id": "linux-kernel-memory-fragmentation-analyzer",
+    "projectId": "KRN-017",
     "title": "Kernel Memory Fragmentation Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -594,6 +639,7 @@
   },
   {
     "id": "linux-memory-reclamation-explorer",
+    "projectId": "KRN-018",
     "title": "Memory Reclamation Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -609,6 +655,7 @@
   },
   {
     "id": "linux-transparent-huge-pages-analyzer",
+    "projectId": "KRN-019",
     "title": "Transparent Huge Pages Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -624,6 +671,7 @@
   },
   {
     "id": "linux-memory-mapping-explorer",
+    "projectId": "KRN-020",
     "title": "Memory Mapping Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -639,6 +687,7 @@
   },
   {
     "id": "linux-system-call-execution-tracer",
+    "projectId": "KRN-021",
     "title": "Linux System Call Execution Tracer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -654,6 +703,7 @@
   },
   {
     "id": "linux-build-custom-system-call",
+    "projectId": "KRN-022",
     "title": "Build a Custom System Call",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -669,6 +719,7 @@
   },
   {
     "id": "linux-system-call-performance-analyzer",
+    "projectId": "KRN-023",
     "title": "System Call Performance Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -684,6 +735,7 @@
   },
   {
     "id": "naive-shell-kernel-exploration",
+    "projectId": "KRN-024",
     "title": "Naive Shell with Kernel-Level Exploration",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -699,6 +751,7 @@
   },
   {
     "id": "linux-file-descriptor-internals-explorer",
+    "projectId": "KRN-025",
     "title": "File Descriptor Internals Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -714,6 +767,7 @@
   },
   {
     "id": "linux-proc-explorer",
+    "projectId": "KRN-026",
     "title": "Linux /proc Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Beginner",
@@ -729,6 +783,7 @@
   },
   {
     "id": "linux-sysfs-explorer",
+    "projectId": "KRN-027",
     "title": "Linux sysfs Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Beginner",
@@ -744,6 +799,7 @@
   },
   {
     "id": "linux-kernel-locking-explorer",
+    "projectId": "KRN-028",
     "title": "Linux Kernel Locking Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -759,6 +815,7 @@
   },
   {
     "id": "linux-spinlock-contention-analyzer",
+    "projectId": "KRN-029",
     "title": "Spinlock Contention Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -774,6 +831,7 @@
   },
   {
     "id": "linux-kernel-race-condition-demonstrator",
+    "projectId": "KRN-030",
     "title": "Kernel Race Condition Demonstrator",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -789,6 +847,7 @@
   },
   {
     "id": "linux-atomic-operations-explorer",
+    "projectId": "KRN-031",
     "title": "Atomic Operations Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -804,6 +863,7 @@
   },
   {
     "id": "linux-kernel-workqueue-explorer",
+    "projectId": "KRN-032",
     "title": "Kernel Workqueue Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -819,6 +879,7 @@
   },
   {
     "id": "linux-interrupt-softirq-explorer",
+    "projectId": "KRN-033",
     "title": "Interrupt and Softirq Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -834,6 +895,7 @@
   },
   {
     "id": "linux-rcu-explorer",
+    "projectId": "KRN-034",
     "title": "Read-Copy-Update (RCU) Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -849,6 +911,7 @@
   },
   {
     "id": "linux-vfs-architecture-explorer",
+    "projectId": "KRN-035",
     "title": "Linux VFS Architecture Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -864,6 +927,7 @@
   },
   {
     "id": "linux-inode-internals-explorer",
+    "projectId": "KRN-036",
     "title": "Inode Internals Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -879,6 +943,7 @@
   },
   {
     "id": "linux-file-open-system-call-tracer",
+    "projectId": "KRN-037",
     "title": "File Open System Call Tracer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -894,6 +959,7 @@
   },
   {
     "id": "mini-linux-file-system",
+    "projectId": "KRN-038",
     "title": "Mini Linux File System",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -909,6 +975,7 @@
   },
   {
     "id": "fuse-file-system-development",
+    "projectId": "KRN-039",
     "title": "FUSE File System Development",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -924,6 +991,7 @@
   },
   {
     "id": "linux-page-cache-analyzer",
+    "projectId": "KRN-040",
     "title": "Page Cache Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -939,6 +1007,7 @@
   },
   {
     "id": "linux-journaling-explorer",
+    "projectId": "KRN-041",
     "title": "Linux Journaling Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -954,6 +1023,7 @@
   },
   {
     "id": "linux-disk-io-request-tracer",
+    "projectId": "KRN-042",
     "title": "Disk I/O Request Tracer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -969,6 +1039,7 @@
   },
   {
     "id": "linux-character-device-driver",
+    "projectId": "KRN-043",
     "title": "Character Device Driver",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -984,6 +1055,7 @@
   },
   {
     "id": "linux-virtual-device-driver",
+    "projectId": "KRN-044",
     "title": "Virtual Device Driver",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -999,6 +1071,7 @@
   },
   {
     "id": "linux-interrupt-handler-demonstrator",
+    "projectId": "KRN-045",
     "title": "Interrupt Handler Demonstrator",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -1014,6 +1087,7 @@
   },
   {
     "id": "linux-kernel-timer-module",
+    "projectId": "KRN-046",
     "title": "Linux Kernel Timer Module",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -1029,6 +1103,7 @@
   },
   {
     "id": "linux-kernel-module-dependency-explorer",
+    "projectId": "KRN-047",
     "title": "Kernel Module Dependency Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Beginner",
@@ -1044,6 +1119,7 @@
   },
   {
     "id": "linux-device-discovery-explorer",
+    "projectId": "KRN-048",
     "title": "Device Discovery Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Beginner",
@@ -1059,6 +1135,7 @@
   },
   {
     "id": "linux-function-call-tracer",
+    "projectId": "KRN-049",
     "title": "Linux Function Call Tracer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1073,6 +1150,7 @@
   },
   {
     "id": "linux-kernel-function-graph-visualizer",
+    "projectId": "KRN-050",
     "title": "Kernel Function Graph Visualizer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1087,6 +1165,7 @@
   },
   {
     "id": "linux-kernel-event-tracing-dashboard",
+    "projectId": "KRN-051",
     "title": "Kernel Event Tracing Dashboard",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1102,6 +1181,7 @@
   },
   {
     "id": "linux-kernel-performance-profiler",
+    "projectId": "KRN-052",
     "title": "Kernel Performance Profiler",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1117,6 +1197,7 @@
   },
   {
     "id": "ebpf-process-monitor",
+    "projectId": "KRN-053",
     "title": "eBPF-Based Process Monitor",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -1132,6 +1213,7 @@
   },
   {
     "id": "linux-kernel-memory-event-monitor",
+    "projectId": "KRN-054",
     "title": "Kernel Memory Event Monitor",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1147,6 +1229,7 @@
   },
   {
     "id": "linux-kernel-latency-analyzer",
+    "projectId": "KRN-055",
     "title": "Kernel Latency Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -1162,6 +1245,7 @@
   },
   {
     "id": "linux-kernel-lock-contention-visualizer",
+    "projectId": "KRN-056",
     "title": "Kernel Lock Contention Visualizer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -1177,6 +1261,7 @@
   },
   {
     "id": "linux-capabilities-explorer",
+    "projectId": "KRN-057",
     "title": "Linux Capabilities Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Beginner",
@@ -1192,6 +1277,7 @@
   },
   {
     "id": "linux-seccomp-system-call-filter",
+    "projectId": "KRN-058",
     "title": "Seccomp System Call Filter",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1207,6 +1293,7 @@
   },
   {
     "id": "linux-namespace-explorer",
+    "projectId": "KRN-059",
     "title": "Linux Namespace Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1222,6 +1309,7 @@
   },
   {
     "id": "linux-cgroups-resource-management-explorer",
+    "projectId": "KRN-060",
     "title": "Cgroups Resource Management Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Intermediate",
@@ -1237,6 +1325,7 @@
   },
   {
     "id": "linux-kernel-module-security-analyzer",
+    "projectId": "KRN-061",
     "title": "Linux Kernel Module Security Analyzer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -1252,6 +1341,7 @@
   },
   {
     "id": "linux-kernel-address-space-protection-explorer",
+    "projectId": "KRN-062",
     "title": "Kernel Address Space Protection Explorer",
     "category": "Linux Kernel Exploration",
     "difficulty": "Advanced",
@@ -1267,6 +1357,7 @@
   },
   {
     "id": "linux-command-ls-directory-listing",
+    "projectId": "CMD-001",
     "title": "ls – Directory Listing Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1278,6 +1369,7 @@
   },
   {
     "id": "linux-command-pwd-working-directory",
+    "projectId": "CMD-002",
     "title": "pwd – Print Working Directory",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1289,6 +1381,7 @@
   },
   {
     "id": "linux-command-mkdir-directory-creation",
+    "projectId": "CMD-003",
     "title": "mkdir – Directory Creation Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1300,6 +1393,7 @@
   },
   {
     "id": "linux-command-rmdir-directory-removal",
+    "projectId": "CMD-004",
     "title": "rmdir – Directory Removal Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1311,6 +1405,7 @@
   },
   {
     "id": "linux-command-touch-timestamp",
+    "projectId": "CMD-005",
     "title": "touch – File Timestamp Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1322,6 +1417,7 @@
   },
   {
     "id": "linux-command-cat-file-display",
+    "projectId": "CMD-006",
     "title": "cat – File Display Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1333,6 +1429,7 @@
   },
   {
     "id": "linux-command-cp-file-copy",
+    "projectId": "CMD-007",
     "title": "cp – File Copy Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1344,6 +1441,7 @@
   },
   {
     "id": "linux-command-mv-file-rename",
+    "projectId": "CMD-008",
     "title": "mv – File Move and Rename Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1355,6 +1453,7 @@
   },
   {
     "id": "linux-command-rm-file-removal",
+    "projectId": "CMD-009",
     "title": "rm – File Removal Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1366,6 +1465,7 @@
   },
   {
     "id": "linux-command-find-file-search",
+    "projectId": "CMD-010",
     "title": "find – File Search Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1377,6 +1477,7 @@
   },
   {
     "id": "linux-command-du-disk-usage",
+    "projectId": "CMD-011",
     "title": "du – Disk Usage Analyzer",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1388,6 +1489,7 @@
   },
   {
     "id": "linux-command-file-type-detector",
+    "projectId": "CMD-012",
     "title": "file – File Type Detector",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1399,6 +1501,7 @@
   },
   {
     "id": "linux-command-ps-process-status",
+    "projectId": "CMD-013",
     "title": "ps – Process Status Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1410,6 +1513,7 @@
   },
   {
     "id": "linux-command-top-process-monitor",
+    "projectId": "CMD-014",
     "title": "top – Process Monitoring Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1421,6 +1525,7 @@
   },
   {
     "id": "linux-command-pstree-process-tree",
+    "projectId": "CMD-015",
     "title": "pstree – Process Tree Visualizer",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1432,6 +1537,7 @@
   },
   {
     "id": "linux-command-kill-process-signal",
+    "projectId": "CMD-016",
     "title": "kill – Process Signal Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1443,6 +1549,7 @@
   },
   {
     "id": "linux-command-nice-priority",
+    "projectId": "CMD-017",
     "title": "nice – Process Priority Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1454,6 +1561,7 @@
   },
   {
     "id": "linux-command-uptime-system-uptime",
+    "projectId": "CMD-018",
     "title": "uptime – System Uptime Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1465,6 +1573,7 @@
   },
   {
     "id": "linux-command-sleep-process-delay",
+    "projectId": "CMD-019",
     "title": "sleep – Process Delay Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1476,6 +1585,7 @@
   },
   {
     "id": "linux-command-who-user-information",
+    "projectId": "CMD-020",
     "title": "who – Logged-in User Information",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1487,6 +1597,7 @@
   },
   {
     "id": "linux-command-pgrep-process-search",
+    "projectId": "CMD-021",
     "title": "pgrep – Process Search Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1498,6 +1609,7 @@
   },
   {
     "id": "linux-command-nohup-persistent-process",
+    "projectId": "CMD-022",
     "title": "nohup – Persistent Process Execution",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1509,6 +1621,7 @@
   },
   {
     "id": "linux-command-chmod-permission-manager",
+    "projectId": "CMD-023",
     "title": "chmod – File Permission Manager",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1520,6 +1633,7 @@
   },
   {
     "id": "linux-command-chown-ownership-manager",
+    "projectId": "CMD-024",
     "title": "chown – File Ownership Manager",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1531,6 +1645,7 @@
   },
   {
     "id": "linux-command-umask-file-creation-mask",
+    "projectId": "CMD-025",
     "title": "umask – File Creation Mask Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1542,6 +1657,7 @@
   },
   {
     "id": "linux-command-access-file-checker",
+    "projectId": "CMD-026",
     "title": "access – File Access Checker",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1553,6 +1669,7 @@
   },
   {
     "id": "linux-command-stat-metadata-explorer",
+    "projectId": "CMD-027",
     "title": "stat – File Metadata Explorer",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1564,6 +1681,7 @@
   },
   {
     "id": "linux-command-ln-hard-symbolic-links",
+    "projectId": "CMD-028",
     "title": "ln – Hard and Symbolic Link Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1575,6 +1693,7 @@
   },
   {
     "id": "linux-command-head-first-lines",
+    "projectId": "CMD-029",
     "title": "head – Display First N Lines",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1586,6 +1705,7 @@
   },
   {
     "id": "linux-command-tail-last-lines",
+    "projectId": "CMD-030",
     "title": "tail – Display Last N Lines",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1597,6 +1717,7 @@
   },
   {
     "id": "linux-command-wc-word-line-counter",
+    "projectId": "CMD-031",
     "title": "wc – Word and Line Counter",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1608,6 +1729,7 @@
   },
   {
     "id": "linux-command-grep-text-search",
+    "projectId": "CMD-032",
     "title": "grep – Text Search Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1619,6 +1741,7 @@
   },
   {
     "id": "linux-command-sort-text",
+    "projectId": "CMD-033",
     "title": "sort – Text Sorting Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1630,6 +1753,7 @@
   },
   {
     "id": "linux-command-uniq-duplicate-lines",
+    "projectId": "CMD-034",
     "title": "uniq – Duplicate Line Detector",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1641,6 +1765,7 @@
   },
   {
     "id": "linux-command-diff-file-comparison",
+    "projectId": "CMD-035",
     "title": "diff – File Comparison Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1652,6 +1777,7 @@
   },
   {
     "id": "linux-command-tee-input-duplication",
+    "projectId": "CMD-036",
     "title": "tee – Input Duplication Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1663,6 +1789,7 @@
   },
   {
     "id": "linux-command-uname-system-information",
+    "projectId": "CMD-037",
     "title": "uname – System Information Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1674,6 +1801,7 @@
   },
   {
     "id": "linux-command-free-memory-monitor",
+    "projectId": "CMD-038",
     "title": "free – Memory Usage Monitor",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1685,6 +1813,7 @@
   },
   {
     "id": "linux-command-df-filesystem-space",
+    "projectId": "CMD-039",
     "title": "df – Filesystem Space Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1696,6 +1825,7 @@
   },
   {
     "id": "linux-command-mount-information-explorer",
+    "projectId": "CMD-040",
     "title": "Mount Information Explorer",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1707,6 +1837,7 @@
   },
   {
     "id": "linux-command-open-file-inspector",
+    "projectId": "CMD-041",
     "title": "lsof-like Open File Inspector",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1718,6 +1849,7 @@
   },
   {
     "id": "linux-command-env-environment-utility",
+    "projectId": "CMD-042",
     "title": "env – Environment Variable Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1729,6 +1861,7 @@
   },
   {
     "id": "linux-command-id-user-group",
+    "projectId": "CMD-043",
     "title": "id – User and Group Information",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1740,6 +1873,7 @@
   },
   {
     "id": "linux-command-hostname-utility",
+    "projectId": "CMD-044",
     "title": "hostname – Hostname Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1751,6 +1885,7 @@
   },
   {
     "id": "linux-command-mini-shell",
+    "projectId": "CMD-045",
     "title": "Mini Linux Shell",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1762,6 +1897,7 @@
   },
   {
     "id": "linux-command-shell-pipe-support",
+    "projectId": "CMD-046",
     "title": "Shell with Pipe Support",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1773,6 +1909,7 @@
   },
   {
     "id": "linux-command-shell-io-redirection",
+    "projectId": "CMD-047",
     "title": "Shell with I/O Redirection",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1784,6 +1921,7 @@
   },
   {
     "id": "linux-command-background-job-manager",
+    "projectId": "CMD-048",
     "title": "Background Job Manager",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1795,6 +1933,7 @@
   },
   {
     "id": "linux-command-history-implementation",
+    "projectId": "CMD-049",
     "title": "Command History Implementation",
     "category": "Linux Command Reimplementation",
     "difficulty": "Beginner",
@@ -1806,6 +1945,7 @@
   },
   {
     "id": "linux-command-mini-xargs",
+    "projectId": "CMD-050",
     "title": "Mini xargs Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1817,6 +1957,7 @@
   },
   {
     "id": "linux-command-mini-timeout",
+    "projectId": "CMD-051",
     "title": "Mini timeout Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1828,6 +1969,7 @@
   },
   {
     "id": "linux-command-mini-watch",
+    "projectId": "CMD-052",
     "title": "Mini watch Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1839,6 +1981,7 @@
   },
   {
     "id": "linux-command-ptrace-system-call-tracer",
+    "projectId": "CMD-053",
     "title": "strace-like System Call Tracer using ptrace()",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1853,6 +1996,7 @@
   },
   {
     "id": "linux-command-ltrace-library-call-tracer",
+    "projectId": "CMD-054",
     "title": "ltrace-like Library Call Tracer",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1864,6 +2008,7 @@
   },
   {
     "id": "linux-command-fuser-file-usage-inspector",
+    "projectId": "CMD-055",
     "title": "fuser-like File Usage Inspector",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1875,6 +2020,7 @@
   },
   {
     "id": "linux-command-vmstat-performance-monitor",
+    "projectId": "CMD-056",
     "title": "vmstat-like Performance Monitor",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1886,6 +2032,7 @@
   },
   {
     "id": "linux-command-iostat-io-monitor",
+    "projectId": "CMD-057",
     "title": "iostat-like I/O Monitor",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1897,6 +2044,7 @@
   },
   {
     "id": "linux-command-process-watchdog",
+    "projectId": "CMD-058",
     "title": "Process Watchdog",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1908,6 +2056,7 @@
   },
   {
     "id": "linux-command-daemon-creation",
+    "projectId": "CMD-059",
     "title": "Daemon Creation Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1919,6 +2068,7 @@
   },
   {
     "id": "linux-command-mini-init-process-manager",
+    "projectId": "CMD-060",
     "title": "Mini init Process Manager",
     "category": "Linux Command Reimplementation",
     "difficulty": "Advanced",
@@ -1930,6 +2080,7 @@
   },
   {
     "id": "linux-command-flock-file-locking",
+    "projectId": "CMD-061",
     "title": "flock-like File Locking Utility",
     "category": "Linux Command Reimplementation",
     "difficulty": "Intermediate",
@@ -1941,6 +2092,7 @@
   },
   {
     "id": "linux-admin-process-activity-monitor",
+    "projectId": "ADM-001",
     "title": "Process Activity Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -1953,6 +2105,7 @@
   },
   {
     "id": "linux-admin-process-resource-usage-tracker",
+    "projectId": "ADM-002",
     "title": "Process Resource Usage Tracker",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -1965,6 +2118,7 @@
   },
   {
     "id": "linux-admin-process-execution-accounting",
+    "projectId": "ADM-003",
     "title": "Process Execution Accounting Tool",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -1977,6 +2131,7 @@
   },
   {
     "id": "linux-admin-per-user-process-accounting",
+    "projectId": "ADM-004",
     "title": "Per-User Process Accounting",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -1989,6 +2144,7 @@
   },
   {
     "id": "linux-admin-long-running-process-detector",
+    "projectId": "ADM-005",
     "title": "Long-Running Process Detector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2001,6 +2157,7 @@
   },
   {
     "id": "linux-admin-zombie-process-detector",
+    "projectId": "ADM-006",
     "title": "Zombie Process Detector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2013,6 +2170,7 @@
   },
   {
     "id": "linux-admin-orphan-process-monitor",
+    "projectId": "ADM-007",
     "title": "Orphan Process Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2025,6 +2183,7 @@
   },
   {
     "id": "linux-admin-process-restart-monitor",
+    "projectId": "ADM-008",
     "title": "Process Restart Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2037,6 +2196,7 @@
   },
   {
     "id": "linux-admin-process-limit-monitor",
+    "projectId": "ADM-009",
     "title": "Process Limit Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2049,6 +2209,7 @@
   },
   {
     "id": "linux-admin-process-fd-monitor",
+    "projectId": "ADM-010",
     "title": "Per-Process File Descriptor Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2061,6 +2222,7 @@
   },
   {
     "id": "linux-admin-cpu-utilization-monitor",
+    "projectId": "ADM-011",
     "title": "CPU Utilization Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2073,6 +2235,7 @@
   },
   {
     "id": "linux-admin-load-average-monitor",
+    "projectId": "ADM-012",
     "title": "Load Average Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2085,6 +2248,7 @@
   },
   {
     "id": "linux-admin-context-switch-monitor",
+    "projectId": "ADM-013",
     "title": "Context Switch Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2097,6 +2261,7 @@
   },
   {
     "id": "linux-admin-cpu-core-activity-dashboard",
+    "projectId": "ADM-014",
     "title": "CPU Core Activity Dashboard",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2109,6 +2274,7 @@
   },
   {
     "id": "linux-admin-system-uptime-monitor",
+    "projectId": "ADM-015",
     "title": "System Uptime Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2121,6 +2287,7 @@
   },
   {
     "id": "linux-admin-cpu-temperature-monitor",
+    "projectId": "ADM-016",
     "title": "CPU Temperature Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2133,6 +2300,7 @@
   },
   {
     "id": "linux-admin-system-performance-logger",
+    "projectId": "ADM-017",
     "title": "System Performance Logger",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2145,6 +2313,7 @@
   },
   {
     "id": "linux-admin-cpu-affinity-inspector",
+    "projectId": "ADM-018",
     "title": "CPU Affinity Inspector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2157,6 +2326,7 @@
   },
   {
     "id": "linux-admin-resource-consumption-alert",
+    "projectId": "ADM-019",
     "title": "Resource Consumption Alert Tool",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2169,6 +2339,7 @@
   },
   {
     "id": "linux-admin-memory-usage-monitor",
+    "projectId": "ADM-020",
     "title": "Memory Usage Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2181,6 +2352,7 @@
   },
   {
     "id": "linux-admin-per-process-memory-analyzer",
+    "projectId": "ADM-021",
     "title": "Per-Process Memory Analyzer",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2193,6 +2365,7 @@
   },
   {
     "id": "linux-admin-memory-leak-observation",
+    "projectId": "ADM-022",
     "title": "Memory Leak Observation Tool",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2205,6 +2378,7 @@
   },
   {
     "id": "linux-admin-swap-usage-monitor",
+    "projectId": "ADM-023",
     "title": "Swap Usage Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2217,6 +2391,7 @@
   },
   {
     "id": "linux-admin-memory-pressure-monitor",
+    "projectId": "ADM-024",
     "title": "Memory Pressure Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2229,6 +2404,7 @@
   },
   {
     "id": "linux-admin-oom-event-monitor",
+    "projectId": "ADM-025",
     "title": "OOM Event Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2241,6 +2417,7 @@
   },
   {
     "id": "linux-admin-shared-memory-inspector",
+    "projectId": "ADM-026",
     "title": "Shared Memory Inspector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2253,6 +2430,7 @@
   },
   {
     "id": "linux-admin-memory-mapping-inspector",
+    "projectId": "ADM-027",
     "title": "Memory Mapping Inspector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2265,6 +2443,7 @@
   },
   {
     "id": "linux-admin-disk-space-monitor",
+    "projectId": "ADM-028",
     "title": "Disk Space Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2277,6 +2456,7 @@
   },
   {
     "id": "linux-admin-directory-usage-analyzer",
+    "projectId": "ADM-029",
     "title": "Directory Usage Analyzer",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2289,6 +2469,7 @@
   },
   {
     "id": "linux-admin-large-file-finder",
+    "projectId": "ADM-030",
     "title": "Large File Finder",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2301,6 +2482,7 @@
   },
   {
     "id": "linux-admin-disk-io-monitor",
+    "projectId": "ADM-031",
     "title": "Disk I/O Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2313,6 +2495,7 @@
   },
   {
     "id": "linux-admin-file-growth-monitor",
+    "projectId": "ADM-032",
     "title": "File Growth Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2325,6 +2508,7 @@
   },
   {
     "id": "linux-admin-inode-usage-monitor",
+    "projectId": "ADM-033",
     "title": "Inode Usage Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2337,6 +2521,7 @@
   },
   {
     "id": "linux-admin-mount-point-monitor",
+    "projectId": "ADM-034",
     "title": "Mount Point Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2349,6 +2534,7 @@
   },
   {
     "id": "linux-admin-deleted-open-file-detector",
+    "projectId": "ADM-035",
     "title": "Deleted-but-Open File Detector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2361,6 +2547,7 @@
   },
   {
     "id": "linux-admin-filesystem-change-monitor",
+    "projectId": "ADM-036",
     "title": "Filesystem Change Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2373,6 +2560,7 @@
   },
   {
     "id": "linux-admin-backup-change-detector",
+    "projectId": "ADM-037",
     "title": "Backup Change Detector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2385,6 +2573,7 @@
   },
   {
     "id": "linux-admin-logged-in-user-monitor",
+    "projectId": "ADM-038",
     "title": "Logged-in User Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2397,6 +2586,7 @@
   },
   {
     "id": "linux-admin-user-session-history-analyzer",
+    "projectId": "ADM-039",
     "title": "User Session History Analyzer",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2409,6 +2599,7 @@
   },
   {
     "id": "linux-admin-per-user-cpu-report",
+    "projectId": "ADM-040",
     "title": "Per-User CPU Usage Report",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2421,6 +2612,7 @@
   },
   {
     "id": "linux-admin-per-user-memory-report",
+    "projectId": "ADM-041",
     "title": "Per-User Memory Usage Report",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2433,6 +2625,7 @@
   },
   {
     "id": "linux-admin-failed-login-monitor",
+    "projectId": "ADM-042",
     "title": "Failed Login Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2445,6 +2638,7 @@
   },
   {
     "id": "linux-admin-user-command-activity-logger",
+    "projectId": "ADM-043",
     "title": "User Command Activity Logger",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2457,6 +2651,7 @@
   },
   {
     "id": "linux-admin-user-resource-quota-monitor",
+    "projectId": "ADM-044",
     "title": "User Resource Quota Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2469,6 +2664,7 @@
   },
   {
     "id": "linux-admin-privileged-process-monitor",
+    "projectId": "ADM-045",
     "title": "Privileged Process Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2481,6 +2677,7 @@
   },
   {
     "id": "linux-admin-sudo-activity-report",
+    "projectId": "ADM-046",
     "title": "Sudo Activity Report Generator",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2493,6 +2690,7 @@
   },
   {
     "id": "linux-admin-account-expiry-monitor",
+    "projectId": "ADM-047",
     "title": "Account Expiry Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2505,6 +2703,7 @@
   },
   {
     "id": "linux-admin-network-interface-monitor",
+    "projectId": "ADM-048",
     "title": "Network Interface Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2517,6 +2716,7 @@
   },
   {
     "id": "linux-admin-network-traffic-monitor",
+    "projectId": "ADM-049",
     "title": "Network Traffic Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2529,6 +2729,7 @@
   },
   {
     "id": "linux-admin-socket-inspector",
+    "projectId": "ADM-050",
     "title": "Socket Inspector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2541,6 +2742,7 @@
   },
   {
     "id": "linux-admin-connection-monitor",
+    "projectId": "ADM-051",
     "title": "Connection Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2553,6 +2755,7 @@
   },
   {
     "id": "linux-admin-port-usage-inspector",
+    "projectId": "ADM-052",
     "title": "Port Usage Inspector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2565,6 +2768,7 @@
   },
   {
     "id": "linux-admin-network-availability-monitor",
+    "projectId": "ADM-053",
     "title": "Network Availability Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Beginner",
@@ -2577,6 +2781,7 @@
   },
   {
     "id": "linux-admin-interface-change-detector",
+    "projectId": "ADM-054",
     "title": "Network Interface Change Detector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2589,6 +2794,7 @@
   },
   {
     "id": "linux-admin-bandwidth-usage-logger",
+    "projectId": "ADM-055",
     "title": "Bandwidth Usage Logger",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2601,6 +2807,7 @@
   },
   {
     "id": "linux-admin-system-health-dashboard",
+    "projectId": "ADM-056",
     "title": "System Health Dashboard",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2613,6 +2820,7 @@
   },
   {
     "id": "linux-admin-critical-service-monitor",
+    "projectId": "ADM-057",
     "title": "Critical Service Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2625,6 +2833,7 @@
   },
   {
     "id": "linux-admin-log-file-monitor",
+    "projectId": "ADM-058",
     "title": "Log File Monitoring Utility",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2637,6 +2846,7 @@
   },
   {
     "id": "linux-admin-system-event-notifier",
+    "projectId": "ADM-059",
     "title": "System Event Notifier",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2649,6 +2859,7 @@
   },
   {
     "id": "linux-admin-scheduled-task-monitor",
+    "projectId": "ADM-060",
     "title": "Scheduled Task Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2661,6 +2872,7 @@
   },
   {
     "id": "linux-admin-file-integrity-monitor",
+    "projectId": "ADM-061",
     "title": "File Integrity Monitor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2673,6 +2885,7 @@
   },
   {
     "id": "linux-admin-reboot-history-analyzer",
+    "projectId": "ADM-062",
     "title": "System Reboot History Analyzer",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2685,6 +2898,7 @@
   },
   {
     "id": "linux-admin-resource-threshold-alert-manager",
+    "projectId": "ADM-063",
     "title": "Resource Threshold Alert Manager",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2697,6 +2911,7 @@
   },
   {
     "id": "linux-admin-service-dependency-checker",
+    "projectId": "ADM-064",
     "title": "Service Dependency Checker",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2709,6 +2924,7 @@
   },
   {
     "id": "linux-admin-automated-cleanup-utility",
+    "projectId": "ADM-065",
     "title": "Automated Cleanup Utility",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2721,6 +2937,7 @@
   },
   {
     "id": "linux-admin-mini-admin-dashboard",
+    "projectId": "ADM-066",
     "title": "Mini Linux Admin Dashboard",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2733,6 +2950,7 @@
   },
   {
     "id": "linux-admin-per-user-resource-accounting",
+    "projectId": "ADM-067",
     "title": "Per-User Resource Accounting System",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2745,6 +2963,7 @@
   },
   {
     "id": "linux-admin-process-activity-recorder",
+    "projectId": "ADM-068",
     "title": "Linux Process Activity Recorder",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2757,6 +2976,7 @@
   },
   {
     "id": "linux-admin-resource-alert-daemon",
+    "projectId": "ADM-069",
     "title": "System Resource Alert Daemon",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2769,6 +2989,7 @@
   },
   {
     "id": "linux-admin-file-access-auditor",
+    "projectId": "ADM-070",
     "title": "Linux File Access Auditor",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2781,6 +3002,7 @@
   },
   {
     "id": "linux-admin-system-administration-toolkit",
+    "projectId": "ADM-071",
     "title": "System Administration Toolkit",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2793,6 +3015,7 @@
   },
   {
     "id": "linux-admin-service-watchdog",
+    "projectId": "ADM-072",
     "title": "Linux Service Watchdog",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2805,6 +3028,7 @@
   },
   {
     "id": "linux-admin-multi-user-server-monitor",
+    "projectId": "ADM-073",
     "title": "Multi-User Server Monitoring Tool",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",
@@ -2817,6 +3041,7 @@
   },
   {
     "id": "linux-admin-system-activity-report-generator",
+    "projectId": "ADM-074",
     "title": "Linux System Activity Report Generator",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Intermediate",
@@ -2829,6 +3054,7 @@
   },
   {
     "id": "linux-admin-resource-usage-anomaly-detector",
+    "projectId": "ADM-075",
     "title": "Resource Usage Anomaly Detector",
     "category": "Linux System Administration and Monitoring Utilities",
     "difficulty": "Advanced",

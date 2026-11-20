@@ -40,20 +40,25 @@ function validateProjectList(projects, label, requiredFields) {
 }
 
 function validateProjectCatalogue(projects) {
+    const projectSlugs = new Set();
     const projectIds = new Set();
     const arrayFields = ["concepts", "features", "technologies", "extensions"];
     projects.forEach((project, index) => {
         if (
             typeof project.id !== "string"
             || !project.id.trim()
-            || projectIds.has(project.id)
+            || projectSlugs.has(project.id)
+            || typeof project.projectId !== "string"
+            || !/^(OS|KRN|CMD|ADM)-\d{3,}$/.test(project.projectId)
+            || projectIds.has(project.projectId)
             || typeof project.category !== "string"
             || !project.category.trim()
             || !projectDifficulties.includes(project.difficulty)
         ) {
             throw new Error(`Project idea ${index + 1} has invalid catalogue details.`);
         }
-        projectIds.add(project.id);
+        projectSlugs.add(project.id);
+        projectIds.add(project.projectId);
 
         arrayFields.forEach(field => {
             if (!Array.isArray(project[field]) || project[field].some(value => typeof value !== "string")) {
@@ -95,6 +100,47 @@ function createProjectList(title, values) {
     return section;
 }
 
+function createProjectIdControl(projectId) {
+    const control = document.createElement("div");
+    control.className = "project-id-control";
+
+    const caption = document.createElement("span");
+    caption.className = "project-id-caption";
+    caption.textContent = "Project ID";
+
+    const value = document.createElement("code");
+    value.className = "project-id-value";
+    value.textContent = projectId;
+
+    const copyButton = document.createElement("button");
+    copyButton.className = "project-id-copy";
+    copyButton.type = "button";
+    copyButton.textContent = "Copy ID";
+    copyButton.setAttribute("aria-label", `Copy project ID ${projectId}`);
+
+    const status = document.createElement("span");
+    status.className = "project-id-copy-status";
+    status.setAttribute("aria-live", "polite");
+    status.setAttribute("aria-atomic", "true");
+
+    copyButton.addEventListener("click", async () => {
+        if (!navigator.clipboard?.writeText) {
+            status.textContent = "Clipboard access is unavailable in this browser.";
+            return;
+        }
+        try {
+            await navigator.clipboard.writeText(projectId);
+            status.textContent = `${projectId} copied to clipboard.`;
+        } catch (error) {
+            console.error(`Unable to copy project ID ${projectId}:`, error);
+            status.textContent = `Could not copy ${projectId}. Select the ID to copy it manually.`;
+        }
+    });
+
+    control.append(caption, value, copyButton, status);
+    return control;
+}
+
 function createProjectCard(project) {
     const card = document.createElement("article");
     card.className = "card project-card";
@@ -117,7 +163,7 @@ function createProjectCard(project) {
 
     const description = document.createElement("p");
     description.textContent = project.description;
-    card.append(heading, description);
+    card.append(heading, createProjectIdControl(project.projectId), description);
     card.append(createProjectList("Related OS concepts", project.concepts));
     card.append(createProjectList("Suggested features", project.features));
 
@@ -142,7 +188,11 @@ function createProjectCard(project) {
     details.className = "project-more";
     const summary = document.createElement("summary");
     summary.textContent = "Possible extensions and resources";
-    details.append(summary, createProjectList("Possible extensions", project.extensions));
+    details.append(
+        summary,
+        createProjectIdControl(project.projectId),
+        createProjectList("Possible extensions", project.extensions)
+    );
 
     if (project.resources?.length) {
         const resourceSection = document.createElement("div");
@@ -248,6 +298,7 @@ function getMatchingProjects() {
 
     return projectCatalogue.projects.filter(project => {
         const searchableText = [
+            project.projectId,
             project.title,
             project.description,
             ...project.concepts
@@ -313,7 +364,7 @@ async function renderProjectIdeas() {
         const projects = await loadProjectData(
             "data/projects.json",
             "Project ideas",
-            ["id", "title", "category", "difficulty", "description"]
+            ["id", "projectId", "title", "category", "difficulty", "description"]
         );
         validateProjectCatalogue(projects);
         if (!projects.length) {
