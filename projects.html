@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projects | FOSD · CEUC301</title>
+    <meta
+      name="description"
+      content="Optional Operating System project ideas and learning resources for FOSD CEUC301."
+    />
+    <script>
+      if (localStorage.getItem("fosd-dark") === "true") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="assets/images/fosd-favicon.png" />
+    <link rel="apple-touch-icon" href="assets/images/fosd-favicon.png" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        Fundamentals of Operating System Design · CEUC301 · Prashant Jadav
+      </div>
+    </div>
+    <div id="site-navbar"></div>
+    <main>
+      <div class="page-hero">
+        <div class="container">
+          <div class="breadcrumb">Home / Projects</div>
+          <h1>Operating System Projects</h1>
+          <p>Explore OS concepts through practical, self-directed projects.</p>
+        </div>
+      </div>
+
+      <section>
+        <div class="container">
+          <div class="projects-intro">
+            <p>
+              These projects are suggested for students interested in exploring
+              Operating System concepts through practical implementation.
+              Participation is completely voluntary. Students can select a topic
+              based on their interests and develop a working application,
+              simulator, or visualization to strengthen their understanding of
+              Operating Systems.
+            </p>
+            <aside class="notice projects-notice" aria-label="Optional learning activity">
+              <strong>Optional Learning Activity</strong>
+              <p>
+                Projects are voluntary learning activities. They are not
+                compulsory and do not contribute to course evaluation or
+                academic marks.
+              </p>
+            </aside>
+          </div>
+
+          <div class="section-head">
+            <div>
+              <span class="kicker">Explore and experiment</span>
+              <h2>Suggested Project Ideas</h2>
+              <p>
+                These are starting points, not prescribed specifications. Feel
+                free to extend or adapt an idea to suit your interests.
+              </p>
+            </div>
+          </div>
+          <div class="project-filters" aria-label="Filter project catalogue">
+            <div class="project-filter project-search-filter">
+              <label for="project-search">Search projects</label>
+              <input
+                class="search-box"
+                id="project-search"
+                type="search"
+                placeholder="Search titles, descriptions, or concepts"
+                autocomplete="off"
+                aria-controls="projects-list"
+              />
+            </div>
+            <div class="project-filter">
+              <label for="project-category">Category</label>
+              <select class="search-box" id="project-category" aria-controls="projects-list">
+                <option value="">All categories</option>
+              </select>
+            </div>
+            <div class="project-filter">
+              <label for="project-difficulty">Difficulty</label>
+              <select class="search-box" id="project-difficulty" aria-controls="projects-list">
+                <option value="">All difficulties</option>
+              </select>
+            </div>
+          </div>
+          <p
+            id="project-result-count"
+            class="project-result-count"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            Loading project ideas…
+          </p>
+          <div
+            id="projects-list"
+            class="cards project-grid"
+            aria-live="polite"
+            aria-busy="true"
+          >
+            <p class="notice projects-list-message" role="status">
+              Loading project ideas…
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container development-guidelines">
+          <div class="section-head">
+            <div>
+              <span class="kicker">A few helpful suggestions</span>
+              <h2>Development Guidelines</h2>
+              <p>Use whichever of these ideas is helpful for your project.</p>
+            </div>
+          </div>
+          <ul class="list">
+            <li>Understand the relevant Operating System concepts before implementation.</li>
+            <li>Start with a small working prototype.</li>
+            <li>Use meaningful input and output examples.</li>
+            <li>Include visualizations wherever they improve understanding.</li>
+            <li>Test the implementation with different scenarios.</li>
+            <li>Explain the algorithms and design decisions in the documentation.</li>
+            <li>Students may explore their own project ideas related to Operating Systems.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="kicker">Made by learners</span>
+              <h2>Student Project Showcase</h2>
+              <p>
+                A place to highlight interesting student projects and
+                visualizations.
+              </p>
+            </div>
+          </div>
+          <div
+            id="student-projects-list"
+            class="cards project-grid"
+            aria-live="polite"
+            aria-busy="true"
+          >
+            <p class="notice projects-list-message" role="status">
+              Loading student project showcase…
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="kicker">Keep learning</span>
+              <h2>Learning Resources</h2>
+              <p>Documentation and tools for exploring operating systems.</p>
+            </div>
+          </div>
+          <div class="resource-list projects-resources">
+            <a class="resource" href="https://man7.org/linux/man-pages/" target="_blank" rel="noopener noreferrer">
+              <span><strong>Linux manual pages</strong><small>Commands, system calls, and library functions</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="resource" href="https://docs.kernel.org/" target="_blank" rel="noopener noreferrer">
+              <span><strong>Linux kernel documentation</strong><small>Guides and references for the Linux kernel</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="resource" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+              <span><strong>GitHub</strong><small>Explore open-source projects and version control</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="resource" href="https://docs.python.org/3/" target="_blank" rel="noopener noreferrer">
+              <span><strong>Python documentation</strong><small>Language reference and standard library</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/projects.js"></script>
+  </body>
+</html>
